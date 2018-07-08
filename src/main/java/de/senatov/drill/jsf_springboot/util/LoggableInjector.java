@@ -1,4 +1,4 @@
-package com.codenotfound.primefaces.util;
+package de.senatov.drill.jsf_springboot.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

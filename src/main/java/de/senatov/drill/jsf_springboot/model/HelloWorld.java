@@ -1,4 +1,4 @@
-package com.codenotfound.primefaces.model;
+package de.senatov.drill.jsf_springboot.model;
 
 import javax.inject.Named;
 

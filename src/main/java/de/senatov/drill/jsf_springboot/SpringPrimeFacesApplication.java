@@ -1,6 +1,5 @@
-package com.codenotfound.primefaces;
+package de.senatov.drill.jsf_springboot;
 
-import com.codenotfound.primefaces.util.BrowserUtl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;

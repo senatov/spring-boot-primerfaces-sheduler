@@ -1,4 +1,4 @@
-package com.codenotfound.primefaces.util;
+package de.senatov.drill.jsf_springboot.util;
 
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
