@@ -1,15 +1,21 @@
 package de.senatov.drill.jsf_springboot;
 
+import de.senatov.drill.jsf_springboot.annotations.Loggable;
+import de.senatov.drill.jsf_springboot.util.BrowserUtl;
+import org.slf4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.core.env.MutablePropertySources;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 @SpringBootApplication
 public class SpringPrimeFacesApplication {
+
+    @Loggable
+    private Logger log;
 
     /**
      * start point of App.
@@ -25,14 +31,13 @@ public class SpringPrimeFacesApplication {
      */
     @EventListener
     public void onApplicationReadyEvent(ApplicationReadyEvent event) {
-        System.out.println("Application started ... launching browser now");
+        log.info("Application started ... launching browser now");
         try {
-            new BrowserUtl().start("/");
+            MutablePropertySources propertySources = event.getApplicationContext().getEnvironment().getPropertySources();
+            new BrowserUtl().start(propertySources);
         }
-        catch (IOException | URISyntaxException e) {
-            e.printStackTrace();
-
+        catch (IOException e) {
+            log.error("onApplicationReadyEvent", e);
         }
     }
 }
-
