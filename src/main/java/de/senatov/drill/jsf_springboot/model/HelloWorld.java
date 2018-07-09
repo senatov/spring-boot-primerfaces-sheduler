@@ -9,22 +9,25 @@ public class HelloWorld {
     private String lastName = "Doe";
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
+
         this.firstName = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
+
         this.lastName = lastName;
     }
 
     public String showGreeting() {
-        return "Hello " + firstName + ' ' + lastName + '!';
+        return "Hello " + this.firstName + ' ' + this.lastName + '!';
     }
 }

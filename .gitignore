@@ -24,3 +24,4 @@ hs_err_pid*
 /jsf-primefaces-spring-boot.iml
 /.idea
 /target
+/*.iml

@@ -22,7 +22,7 @@ public class SpringPrimeFacesApplication {
      *
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String... args) {
         SpringApplication.run(SpringPrimeFacesApplication.class, args);
     }
 
@@ -31,13 +31,13 @@ public class SpringPrimeFacesApplication {
      */
     @EventListener
     public void onApplicationReadyEvent(ApplicationReadyEvent event) {
-        log.info("Application started ... launching browser now");
+        this.log.info("Application started ... launching browser now");
         try {
             MutablePropertySources propertySources = event.getApplicationContext().getEnvironment().getPropertySources();
             new BrowserUtl().start(propertySources);
         }
         catch (IOException e) {
-            log.error("onApplicationReadyEvent", e);
+            this.log.error("onApplicationReadyEvent", e);
         }
     }
 }
