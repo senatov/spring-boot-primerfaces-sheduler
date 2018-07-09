@@ -29,7 +29,13 @@
 
   <dependencies>
 
-    <dependency>
+      <dependency>
+          <groupId>org.primefaces.themes</groupId>
+          <artifactId>all-themes</artifactId>
+          <version>1.0.10</version>
+      </dependency>
+
+      <dependency>
       <groupId>org.joinfaces</groupId>
       <artifactId>primefaces-spring-boot-starter</artifactId>
     </dependency>

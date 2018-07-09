@@ -9,7 +9,8 @@ public class HelloWorld {
     private String lastName = "Doe";
 
     public String getFirstName() {
-        return this.firstName;
+
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -19,7 +20,7 @@ public class HelloWorld {
 
     public String getLastName() {
 
-        return this.lastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
@@ -28,6 +29,7 @@ public class HelloWorld {
     }
 
     public String showGreeting() {
-        return "Hello " + this.firstName + ' ' + this.lastName + '!';
+
+        return "Hello " + firstName + ' ' + lastName + '!';
     }
 }

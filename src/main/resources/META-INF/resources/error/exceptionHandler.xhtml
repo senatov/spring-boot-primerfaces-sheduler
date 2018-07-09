@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Drill up for Spring Boot+Primerfaces+JSF Example</title>
+</h:head>
+
+<h:body>
+
+
+    <h:form>
+        <h3 style="margin-top:0">AJAX</h3>
+        <p:commandButton actionListener="#{exceptionHandlerView.throwViewExpiredException}"
+                         ajax="true"
+                         value="Throw ViewExpiredException!"/>
+        <p:commandButton actionListener="#{exceptionHandlerView.throwNullPointerException}"
+                         ajax="true"
+                         value="Throw NullPointerException!"/>
+        <p:commandButton actionListener="#{exceptionHandlerView.throwWrappedIllegalStateException}"
+                         ajax="true"
+                         value="Throw IllegalStateException!"/>
+
+        <h3>Non-AJAX</h3>
+        <p:commandButton actionListener="#{exceptionHandlerView.throwViewExpiredException}"
+                         ajax="false"
+                         value="Throw ViewExpiredException!"/>
+        <p:commandButton actionListener="#{exceptionHandlerView.throwNullPointerException}"
+                         ajax="false"
+                         value="Throw NullPointerException!"/>
+
+
+        <p:ajaxExceptionHandler type="javax.faces.application.ViewExpiredException"
+                                update="exceptionDialog"
+                                onexception="PF('exceptionDialog').show();"/>
+
+        <p:ajaxExceptionHandler type="java.lang.NullPointerException"
+                                update="exceptionDialog"
+                                onexception="PF('exceptionDialog').show();"/>
+
+        <p:dialog id="exceptionDialog" header="Exception '#{pfExceptionHandler.type}' occured!" widgetVar="exceptionDialog"
+                  height="500px">
+            Message: #{pfExceptionHandler.message} <br/>
+            StackTrace: <h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false"/> <br/>
+
+            <p:button onclick="document.location.href = document.location.href;"
+                      value="Reload!"
+                      rendered="#{pfExceptionHandler.type == 'javax.faces.application.ViewExpiredException'}"/>
+        </p:dialog>
+    </h:form>
+</h:body>
+</html>
+

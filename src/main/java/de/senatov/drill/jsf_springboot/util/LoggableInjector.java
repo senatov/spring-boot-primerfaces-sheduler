@@ -27,7 +27,7 @@ public class LoggableInjector implements BeanPostProcessor {
      * @throws BeansException
      */
     @Override
-    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+    public Object postProcessBeforeInitialization(Object bean, String beanName) {
         ReflectionUtils.doWithFields(bean.getClass(), field -> {
             // make the field accessible if defined private
             ReflectionUtils.makeAccessible(field);
