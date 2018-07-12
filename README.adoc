@@ -1,0 +1,14 @@
+= spring-primefaces-catalog
+
+*Drill in theme prim faces 6.2 / spring boot 2.0.3*
+
+
+1) slf4j bind to @autowired - done.
+
+2) Find start URL for browser in boot classes and start default browser automatically - done.
+
+3) Default and Error pages forwarding - done. Simple Error page and Error Handler Bean added.
+
+4) Forwarding to special Error pages, if error - done.
+
+5) add favicon - done.
