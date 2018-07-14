@@ -20,15 +20,13 @@ import java.io.IOException;
 import java.util.Optional;
 
 
-
 @SpringBootApplication
-public class SpringPrimeFacesApplication{
+public class SpringPrimeFacesApplication {
 
-    public static final String MSG = "Application started ... launching browser now";
+    private static final String MSG = "Application started ... launching browser now";
 
     @Loggable
     private Logger log;
-
 
 
     /**
@@ -42,14 +40,13 @@ public class SpringPrimeFacesApplication{
     }
 
 
-
     /**
      * start point of browser.
      */
     @EventListener
     public void onApplicationReadyEvent(ApplicationReadyEvent event) {
 
-        this.log.info(MSG);
+        log.info(MSG);
         try {
             Optional<MutablePropertySources> oPropSrc = Optional.of(event).map(ApplicationReadyEvent::getApplicationContext)
                                                                 .map(ConfigurableApplicationContext::getEnvironment)
@@ -66,10 +63,12 @@ public class SpringPrimeFacesApplication{
 
     @Bean
     public ViewResolver resourceBundleViewResolver() {
+
         XmlViewResolver bean = new XmlViewResolver();
         bean.setLocation(new ClassPathResource("views.xml"));
         return bean;
     }
+
 }
 
 

@@ -14,6 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
+
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 
 @Controller
@@ -25,25 +29,25 @@ public class CustomErrorWebExceptionHandler {
 
 
     @ExceptionHandler(Exception.class)
-    public ModelAndView exceptionHandler(final HttpServletRequest request, final HttpServletResponse response,
-            final Exception ex) {
+    public ModelAndView exceptionHandler(HttpServletRequest request, HttpServletResponse response, Exception ex) {
 
         // If exception has a ResponseStatus annotation then use its response code
         ResponseStatus responseStatusAnnotation = AnnotationUtils.findAnnotation(ex.getClass(), ResponseStatus.class);
 
         return buildModelAndViewErrorPage(request, response, ex,
-                responseStatusAnnotation != null ? responseStatusAnnotation.value() : HttpStatus.INTERNAL_SERVER_ERROR);
+                Optional.ofNullable(responseStatusAnnotation).map(ResponseStatus::value).orElse(INTERNAL_SERVER_ERROR));
     }
 
 
     @RequestMapping("*")
-    public ModelAndView fallbackHandler(final HttpServletRequest request, final HttpServletResponse response) throws Exception {
+    public ModelAndView fallbackHandler(HttpServletRequest request, HttpServletResponse response) {
 
-        return buildModelAndViewErrorPage(request, response, null, HttpStatus.NOT_FOUND);
+        return buildModelAndViewErrorPage(request, response, null, NOT_FOUND);
     }
 
 
-    private ModelAndView buildModelAndViewErrorPage(final HttpServletRequest request, final HttpServletResponse response, final Exception ex, final HttpStatus httpStatus) {
+    private ModelAndView buildModelAndViewErrorPage(HttpServletRequest request, HttpServletResponse response, Exception ex,
+            HttpStatus httpStatus) {
 
         response.setStatus(httpStatus.value());
 

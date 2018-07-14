@@ -45,7 +45,9 @@ public class BrowserUtl extends Application {
 
         Optional<String> oPort = Optional.of(props) // @formatter:off
                                                .map(o->o.get("server.ports"))
-                                               .map(o->o.getProperty("local.server.port").toString());// @formatter:on
+                                               .map(o->o.getProperty("local.server.port"))
+                                               .map(o -> o.toString() )
+                ;// @formatter:on
 
         if (oPort.isPresent()) {
             getHostServices().showDocument(format("http://%s:%s/%s", InetAddress.getLocalHost().getHostAddress(), oPort.get(),

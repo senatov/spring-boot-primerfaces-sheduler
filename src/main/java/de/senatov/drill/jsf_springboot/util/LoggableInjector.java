@@ -8,6 +8,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 
+
 /**
  * Class to support slf4 logging dpi.
  */

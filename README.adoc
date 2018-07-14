@@ -12,3 +12,5 @@
 4) Forwarding to special Error pages, if error - done.
 
 5) add favicon - done.
+
+6) add debug console on Ctrl-Shift-0

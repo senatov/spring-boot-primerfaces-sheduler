@@ -3,27 +3,31 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+>
 
 <h:head>
     <title>Drill up for Spring Boot+Primerfaces+JSF Example</title>
+    <h:outputScript library="javax.faces" name="jsf.js"/>
     <link rel="icon" type="image/x-icon" href="/icons/favicon.ico"/>
 </h:head>
 
 <h:body>
+    <ui:debug hotkey="0"/>
     <h:form id="helloworld-form">
 
         <p:panel header="Example:">
             <h:panelGrid columns="2" cellpadding="4">
-                <h:outputText value="First Name: "/>
+                <p:outputLabel value="First Name: "/>
                 <p:inputText id="first-name"
                              value="#{helloWorld.firstName}"
-                             label="Ivan"/>
+                             alt="Ivan"/>
 
-                <h:outputText value="Last Name: "/>
+                <p:outputLabel value="Last Name: "/>
                 <p:inputText id="last-name"
                              value="#{helloWorld.lastName}"
-                             label="Susanid"
+                             alt="Susanid"
                 />
 
                 <p:commandButton id="submit" value="Submit"
@@ -32,11 +36,10 @@
             </h:panelGrid>
         </p:panel>
 
-        <p:dialog header="Greeting" widgetVar="greetingDialog"
-                  modal="true" resizable="false">
-            <h:panelGrid id="greeting-panel" columns="1" cellpadding="4">
-                <h:outputText value="#{helloWorld.showGreeting()}"/>
-            </h:panelGrid>
+        <p:dialog header="Greeting" widgetVar="greetingDialog" modal="true" resizable="false">
+            <p:panelGrid id="greeting-panel" columns="1" cellpadding="4">
+                <p:outputLabel value="#{helloWorld.showGreeting()}"/>
+            </p:panelGrid>
         </p:dialog>
 
     </h:form>
