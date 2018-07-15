@@ -14,3 +14,5 @@
 5) add favicon - done.
 
 6) add debug console on `Ctrl-Shift-0`
+
+7) add maven executive jar generation feature / add JEE CDI dependency
