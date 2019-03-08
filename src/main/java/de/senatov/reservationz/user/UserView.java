@@ -3,7 +3,7 @@ package de.senatov.reservationz.user;
 
 
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
+import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,8 @@ public class UserView implements Serializable {
 
     public String prepareForUpdate(Long id) {
 
-	user = userService.getUser(id).get();
+	user = userService.getUser(id)
+			  .get();
 	return "new";
     }
 

@@ -30,7 +30,7 @@ public class UserService implements Serializable {
 
 	List<User> posts = new ArrayList<>();
 	userRepository.findAll()
-		      .forEach(e -> posts.add(e));
+		      .forEach(posts::add);
 	return posts;
     }
 
