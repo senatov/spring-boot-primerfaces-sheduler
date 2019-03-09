@@ -4,7 +4,7 @@
 		xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
 
-	<view-state id="scheduler" view="scheduler.xhtml">
+	<view-state id="scheduler" view="sheduler.xhtml">
 		<transition on="new" to="create">
 		</transition>
 

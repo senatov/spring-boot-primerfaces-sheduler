@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>spring-boot-webflow-jsf</artifactId>
+	<artifactId>roo-reservatio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-boot-webflow-jsf</name>
-	<description>Demo project for Spring Boot</description>
+	<name>r-reservator</name>
+	<description>Room reservations</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -23,7 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<mojarra-version>2.2.16</mojarra-version>
-		<primefaces-version>6.2</primefaces-version>
+		<primefaces-version>7.0.RC3</primefaces-version>
 		<version.springwebflow>2.5.0.RELEASE</version.springwebflow>
 		<java.version>1.8</java.version>
 		<mariadb.version>2.3.0</mariadb.version>
