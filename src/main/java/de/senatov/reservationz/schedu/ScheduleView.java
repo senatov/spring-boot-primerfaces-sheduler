@@ -5,7 +5,9 @@ package de.senatov.reservationz.schedu;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.Calendar;
@@ -21,14 +23,17 @@ import org.primefaces.model.ScheduleModel;
 
 
 
-@ManagedBean
+@ManagedBean(name = "scheduleView", eager = true)
 @ViewScoped
 public class ScheduleView implements Serializable {
 
+    @ManagedProperty("#{eventModel}")
     private ScheduleModel eventModel;
 
+    @ManagedProperty("#{lazyEventModel}")
     private ScheduleModel lazyEventModel;
 
+    @ManagedProperty("#{event}")
     private ScheduleEvent event = new DefaultScheduleEvent();
 
 
@@ -60,7 +65,7 @@ public class ScheduleView implements Serializable {
 
 	Calendar date = Calendar.getInstance();
 	date.setTime(base);
-	date.add(Calendar.DATE, ((int) (Math.random() * 30)) + 1);    //set random day of month
+	date.add(Calendar.DATE, ((int) (Math.random() * 30)) + 1);        //set random day of month
 	return date.getTime();
     }
 
@@ -198,7 +203,7 @@ public class ScheduleView implements Serializable {
 
 
 
-    public void addEvent() {
+    public void addEvent(ActionEvent actionEvent) {
 
 	if (event.getId() == null) {
 	    eventModel.addEvent(event);
@@ -250,3 +255,4 @@ public class ScheduleView implements Serializable {
     }
 
 }
+
