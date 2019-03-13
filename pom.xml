@@ -22,7 +22,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<mojarra-version>2.2.16</mojarra-version>
+		<mojarra-version>2.3</mojarra-version>
 		<version.springwebflow>2.5.0.RELEASE</version.springwebflow>
 		<java.version>1.8</java.version>
 		<mariadb.version>2.3.0</mariadb.version>
@@ -40,8 +40,27 @@
 			<id>jitpack.io</id>
 			<url>https://jitpack.io</url>
 		</repository>
+		<repository>
+			<id>jvnet-nexus-snapshots</id>
+			<name>jvnet-nexus-snapshots</name>
+			<url>https://maven.java.net/content/repositories/snapshots/</url>
+		</repository>
 	</repositories>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.primefaces.extensions</groupId>
+				<artifactId>primefaces-extensions</artifactId>
+				<version>6.2.10</version>
+			</dependency>
+			<dependency>
+				<groupId>org.primefaces</groupId>
+				<artifactId>primefaces</artifactId>
+				<version>6.2</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
 		<dependency>
@@ -82,19 +101,24 @@
 			<version>${version.springwebflow}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>${mojarra-version}</version>
+			<groupId>javax.faces</groupId>
+			<artifactId>javax.faces-api</artifactId>
+			<version>2.3</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>${mojarra-version}</version>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.3.0</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.github.primefaces</groupId>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>primefaces-extensions</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>master-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>

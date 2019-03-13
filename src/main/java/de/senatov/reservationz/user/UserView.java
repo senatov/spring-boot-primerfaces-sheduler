@@ -3,7 +3,7 @@ package de.senatov.reservationz.user;
 
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
