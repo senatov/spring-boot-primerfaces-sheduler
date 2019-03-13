@@ -24,7 +24,6 @@
 		<param-value>.xhtml</param-value>
 	</context-param>
 
-
 	<!-- Enables special Facelets debug output during development -->
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>

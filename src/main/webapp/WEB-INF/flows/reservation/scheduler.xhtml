@@ -9,35 +9,11 @@
     <title>Room Reservation</title>
 </h:head>
 <h:body>
-    <script type="text/javascript">
-        PrimeFaces.locales['tr'] = {
-            closeText: 'kapat',
-            prevText: 'geri',
-            nextText: 'ileri',
-            currentText: 'bugün',
-            monthNames: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
-                'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
-            monthNamesShort: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz',
-                'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
-            dayNames: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
-            dayNamesShort: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
-            dayNamesMin: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
-            weekHeader: 'Hf',
-            firstDay: 1,
-            isRTL: false,
-            showMonthAfterYear: false,
-            yearSuffix: '',
-            month: 'Ay',
-            week: 'Hafta',
-            day: 'Gün',
-            allDayText: 'Tüm Gün'
-        };
-    </script>
     <h:form>
         <p:growl id="messages" showDetail="true"/>
 
         <h:panelGrid columnClasses="value">
-            <h3 style="margin-top: 0">Editable Schedule</h3>
+            <h4 style="font-palette">Editable Schedule</h4>
             <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2">
                 <p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
                 <p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
