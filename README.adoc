@@ -1,18 +1,4 @@
 = spring-primefaces-catalog
 
-`*Drill in theme prim faces 6.2 / spring boot 2.0.3*`
-
-
-1) slf4j bind to _@autowired_ - done.
-
-2) Find start URL for browser in boot classes and start default browser automatically - done.
-
-3) Default and Error pages forwarding - done. Simple Error page and Error Handler Bean added.
-
-4) Forwarding to special Error pages, if error - done.
-
-5) add favicon - done.
-
-6) add debug console on `Ctrl-Shift-0`
-
-7) add maven executive jar generation feature / add JEE CDI dependency
+Example auf Basis Primefaces Scheduler. 
+Components: Spring boot 2.0.3, JSF 2.3, Primerfaces 7.0
