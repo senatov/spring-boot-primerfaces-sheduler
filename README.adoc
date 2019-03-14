@@ -1,5 +1,5 @@
 = spring-primefaces-scheduler
 
-#Example auf Basis Primefaces Scheduler. 
-#Components: Spring boot 2.0.3, JSF 2.3, Primerfaces 7.0
-#JSE8
+#implementation of Basis Primefaces Scheduler. 
+#Components: Spring boot 2.0.3, JSF 2.3, Primerfaces 7.0RC3, JSE8
+
