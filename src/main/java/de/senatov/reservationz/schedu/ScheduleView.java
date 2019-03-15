@@ -10,6 +10,8 @@ import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import org.joda.time.LocalDate;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
@@ -17,7 +19,6 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
-//import org.
 
 
 
@@ -55,10 +56,7 @@ public class ScheduleView implements Serializable {
 
     public Date getInitialDate() {
 
-	Calendar calendar = Calendar.getInstance();
-	calendar.set(calendar.get(Calendar.YEAR), Calendar.FEBRUARY, calendar.get(Calendar.DATE), 0, 0, 0);
-	return calendar.getTime();
-	//LocalDate localDate = new LocalDate();
+	return LocalDate.now().toDate();
     }
 
 
@@ -72,9 +70,8 @@ public class ScheduleView implements Serializable {
 
     private Calendar today() {
 
-	Calendar calendar = Calendar.getInstance();
-	calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 0, 0, 0);
-	return calendar;
+	LocalDate ld = LocalDate.now();
+	return new GregorianCalendar(ld.getYear(), ld.getMonthOfYear(), ld.getDayOfMonth());
     }
 
 
