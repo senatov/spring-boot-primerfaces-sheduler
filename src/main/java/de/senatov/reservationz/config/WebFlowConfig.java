@@ -2,6 +2,8 @@ package de.senatov.reservationz.config;
 
 
 
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.faces.config.AbstractFacesFlowConfiguration;
@@ -20,10 +22,14 @@ import org.springframework.webflow.security.SecurityFlowExecutionListener;
 @Configuration
 public class WebFlowConfig extends AbstractFacesFlowConfiguration {
 
+    @Autowired
+    private Logger log;
+
     @Bean
     public FlowExecutor flowExecutor() {
 
-	return getFlowExecutorBuilder(flowRegistry()).addFlowExecutionListener(new FlowFacesContextLifecycleListener())
+	log.debug("flowExecutor()");
+        return getFlowExecutorBuilder(flowRegistry()).addFlowExecutionListener(new FlowFacesContextLifecycleListener())
 						     .addFlowExecutionListener(new SecurityFlowExecutionListener())
 						     .build();
     }
@@ -33,7 +39,8 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     @Bean
     public FlowDefinitionRegistry flowRegistry() {
 
-	return getFlowDefinitionRegistryBuilder(flowBuilderServices()).setBasePath("/WEB-INF/flows")
+	log.debug("flowRegistry()");
+        return getFlowDefinitionRegistryBuilder(flowBuilderServices()).setBasePath("/WEB-INF/flows")
 								      .addFlowLocationPattern("/**/*-flow.xml")
 								      .build();
     }
@@ -43,7 +50,8 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     @Bean
     public FlowBuilderServices flowBuilderServices() {
 
-	return getFlowBuilderServicesBuilder().setDevelopmentMode(true)
+	log.debug("flowBuilderServices()");
+        return getFlowBuilderServicesBuilder().setDevelopmentMode(true)
 					      .build();
     }
 
@@ -52,10 +60,10 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     @Bean
     public FlowHandlerMapping flowHandlerMapping() {
 
-	FlowHandlerMapping mapping = new FlowHandlerMapping();
+	log.debug("flowHandlerMapping()");
+        FlowHandlerMapping mapping = new FlowHandlerMapping();
 	mapping.setOrder(1);
 	mapping.setFlowRegistry(flowRegistry());
-	/* If no flow matches, map the path to a view, e.g. "/intro" maps to a view named "intro" */
 	mapping.setDefaultHandler(new UrlFilenameViewController());
 	return mapping;
     }
@@ -65,7 +73,8 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     @Bean
     public FlowHandlerAdapter flowHandlerAdapter() {
 
-	JsfFlowHandlerAdapter adapter = new JsfFlowHandlerAdapter();
+	log.debug("flowHandlerAdapter()");
+        JsfFlowHandlerAdapter adapter = new JsfFlowHandlerAdapter();
 	adapter.setFlowExecutor(flowExecutor());
 	return adapter;
     }

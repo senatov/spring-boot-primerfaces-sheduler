@@ -19,6 +19,8 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 
@@ -30,11 +32,15 @@ public class ScheduleView implements Serializable {
 
     private ScheduleEvent event = new DefaultScheduleEvent();
 
+    @Autowired
+    private Logger log;
+
 
 
     @PostConstruct
     public void init() {
 
+	log.debug("init()");
 	eventModel = new DefaultScheduleModel();
 	eventModel.addEvent(new DefaultScheduleEvent("Аудитория 1", previousDay8Pm(), previousDay11Pm()));
 	eventModel.addEvent(new DefaultScheduleEvent("Туалет на втором", today1Pm(), today6Pm()));
@@ -46,6 +52,7 @@ public class ScheduleView implements Serializable {
 
     public Date getRandomDate(Date base) {
 
+	log.debug("getRandomDate()");
 	Calendar date = Calendar.getInstance();
 	date.setTime(base);
 	date.add(Calendar.DATE, ((int) (Math.random() * 30)) + 1);    //set random day of month
@@ -56,7 +63,8 @@ public class ScheduleView implements Serializable {
 
     public Date getInitialDate() {
 
-	return LocalDate.now().toDate();
+	return LocalDate.now()
+			.toDate();
     }
 
 

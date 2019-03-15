@@ -2,6 +2,8 @@ package de.senatov.reservationz.config;
 
 
 
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -16,10 +18,14 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @Configuration
 public class WebMvcConfig {
 
+    @Autowired
+    private Logger log;
+
     @Bean
     public UrlBasedViewResolver faceletsViewResolver() {
 
-	UrlBasedViewResolver resolver = new UrlBasedViewResolver();
+	log.debug("faceletsViewResolver()");
+        UrlBasedViewResolver resolver = new UrlBasedViewResolver();
 	resolver.setViewClass(JsfView.class);
 	resolver.setPrefix("/WEB-INF/");
 	resolver.setSuffix(".xhtml");
@@ -31,6 +37,7 @@ public class WebMvcConfig {
     @Bean
     public SimpleControllerHandlerAdapter simpleControllerHandlerAdapter() {
 
+	log.debug("simpleControllerHandlerAdapter()");
 	return new SimpleControllerHandlerAdapter();
     }
 
@@ -39,7 +46,8 @@ public class WebMvcConfig {
     @Bean
     public DispatcherServlet dispatcherServlet() {
 
-	return new DispatcherServlet();
+	log.debug("dispatcherServlet()");
+        return new DispatcherServlet();
     }
 
 
@@ -47,7 +55,8 @@ public class WebMvcConfig {
     @Bean
     public ServletRegistrationBean dispatcherServletRegistration() {
 
-	ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet(), "/ui/*");
+	log.debug("dispatcherServletRegistration()");
+        ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet(), "/ui/*");
 	registration.setName(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_REGISTRATION_BEAN_NAME);
 	return registration;
     }

@@ -7,6 +7,7 @@ import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,9 @@ import org.springframework.stereotype.Component;
 @Component
 @ViewScoped
 public class UserView implements Serializable {
+
+    @Autowired
+    private Logger log;
 
     @Autowired
     private UserService userService;
@@ -28,10 +32,10 @@ public class UserView implements Serializable {
     @PostConstruct
     public void init() {
 
+	log.debug("init()");
 	user = new User();
 	if (userService != null) {
 	    users = userService.getAllUsers();
-
 	}
     }
 
@@ -39,7 +43,9 @@ public class UserView implements Serializable {
 
     public String prepareForUpdate(Long id) {
 
-	user = userService.getUser(id).get();
+	log.debug("prepareForUpdate()");
+	user = userService.getUser(id)
+			  .get();
 	return "new";
     }
 
@@ -47,6 +53,7 @@ public class UserView implements Serializable {
 
     public String savePerson() {
 
+	log.debug("savePerson()");
 	userService.addUser(user);
 	users = new ArrayList<>();
 	users = userService.getAllUsers();
@@ -58,6 +65,7 @@ public class UserView implements Serializable {
 
     public String newPerson() {
 
+	log.debug("newPerson()");
 	user = new User();
 	System.out.println("new");
 	return "new";

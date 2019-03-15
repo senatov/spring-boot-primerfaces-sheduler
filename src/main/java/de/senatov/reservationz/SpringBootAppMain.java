@@ -5,6 +5,10 @@ package de.senatov.reservationz;
 import javax.faces.webapp.FacesServlet;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.jboss.weld.logging.BeanLogger_$logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.spi.LoggerFactoryBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,6 +24,8 @@ import static java.lang.String.valueOf;
 
 @SpringBootApplication
 public class SpringBootAppMain implements CommandLineRunner {
+
+    private Logger log = LoggerFactory.getLogger(SpringBootAppMain.class);
 
     @Autowired
     private ApplicationContext appContext;
@@ -39,7 +45,7 @@ public class SpringBootAppMain implements CommandLineRunner {
 	      .forEach(o ->
 		       {
 			   String count = valueOf(atomicInteger.getAndDecrement());
-			   System.out.println(format("  %s)  [ %s ]  ", count, o));
+			   log.debug(format("  %s)  [ %s ]  ", count, o));
 		       });
     }
 
@@ -56,6 +62,7 @@ public class SpringBootAppMain implements CommandLineRunner {
     @Bean
     public ServletContextInitializer servletContextInitializer() {
 
+	log.debug("servletContextInitializer()");
 	return sc ->
 	{
 	    sc.addListener(com.sun.faces.config.ConfigureListener.class);
