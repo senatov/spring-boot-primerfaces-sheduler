@@ -45,6 +45,20 @@
 			<url>https://maven.java.net/content/repositories/snapshots/</url>
 		</repository>
 	</repositories>
+
+
+	<developers>
+		<developer>
+			<id>isenatov</id>
+			<name>Iakov Senatov</name>
+			<email>javaentwickler@gmail.com</email>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -225,6 +239,8 @@
 			<version>5.0.7.RELEASE</version>
 		</dependency>
 	</dependencies>
+
+
 	<build>
 		<finalName>booking-faces</finalName>
 		<plugins>

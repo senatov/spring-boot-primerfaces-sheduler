@@ -9,7 +9,7 @@ copyleft _`Iakov Senatov 03.2019.`_
 3) paths:
 
 |===
-|*path* | *description* |*remarks*
+|*path are* | *description* |*remarks*
 
 |http://localhost:8080//ui/person
 | common programm test (DB connect, Boot, JSB connet)
@@ -21,7 +21,7 @@ copyleft _`Iakov Senatov 03.2019.`_
 |===
 
 
-
+mailto://javaentwickler@gmail.com[EMail]
 
 
 
