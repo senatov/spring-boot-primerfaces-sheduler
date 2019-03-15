@@ -20,6 +20,8 @@ copyleft _`Iakov Senatov 03.2019.`_
 | *
 |===
 
+Database: not significant, use any of them, what u've s. file://application.properties[application.properties]
+for the info!
 
 mailto://javaentwickler@gmail.com[EMail]
 

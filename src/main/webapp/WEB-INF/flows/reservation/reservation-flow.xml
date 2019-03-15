@@ -5,16 +5,6 @@
 
 
 	<view-state id="scheduler" view="scheduler.xhtml">
-		<transition on="new" to="create">
-		</transition>
-
-		<transition on="info" to="create">
-		</transition>
 	</view-state>
-
-	<view-state id="create" view="create.xhtml">
-		<transition on="save" to="scheduler"/>
-	</view-state>
-
 	<end-state id="back"/>
 </flow>
