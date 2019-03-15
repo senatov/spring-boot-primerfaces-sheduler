@@ -7,14 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 
 
 
 @Entity
 public class User implements Serializable {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

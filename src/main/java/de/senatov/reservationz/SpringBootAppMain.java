@@ -5,10 +5,8 @@ package de.senatov.reservationz;
 import javax.faces.webapp.FacesServlet;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.jboss.weld.logging.BeanLogger_$logger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.spi.LoggerFactoryBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -30,10 +28,13 @@ public class SpringBootAppMain implements CommandLineRunner {
     @Autowired
     private ApplicationContext appContext;
 
+
+
     public static void main(String[] args) {
 
 	SpringApplication.run(SpringBootAppMain.class, args);
     }
+
 
 
     @Override
@@ -59,6 +60,8 @@ public class SpringBootAppMain implements CommandLineRunner {
 	return servletRegistrationBean;
     }
 
+
+
     @Bean
     public ServletContextInitializer servletContextInitializer() {
 
@@ -78,6 +81,5 @@ public class SpringBootAppMain implements CommandLineRunner {
 	    sc.setInitParameter("primefaces.THEME", "bootstrap");
 	};
     }
-
 
 }

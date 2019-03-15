@@ -5,7 +5,6 @@ package de.senatov.reservationz.logging;
 import java.lang.reflect.Member;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.InjectionPoint;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -16,7 +15,6 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 @Configuration
 public class LoggingConfiguration {
-
 
     @Bean
     @Scope("prototype")

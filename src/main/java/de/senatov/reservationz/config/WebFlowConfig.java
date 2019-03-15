@@ -25,11 +25,13 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     @Autowired
     private Logger log;
 
+
+
     @Bean
     public FlowExecutor flowExecutor() {
 
 	log.debug("flowExecutor()");
-        return getFlowExecutorBuilder(flowRegistry()).addFlowExecutionListener(new FlowFacesContextLifecycleListener())
+	return getFlowExecutorBuilder(flowRegistry()).addFlowExecutionListener(new FlowFacesContextLifecycleListener())
 						     .addFlowExecutionListener(new SecurityFlowExecutionListener())
 						     .build();
     }
@@ -40,7 +42,7 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     public FlowDefinitionRegistry flowRegistry() {
 
 	log.debug("flowRegistry()");
-        return getFlowDefinitionRegistryBuilder(flowBuilderServices()).setBasePath("/WEB-INF/flows")
+	return getFlowDefinitionRegistryBuilder(flowBuilderServices()).setBasePath("/WEB-INF/flows")
 								      .addFlowLocationPattern("/**/*-flow.xml")
 								      .build();
     }
@@ -51,7 +53,7 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     public FlowBuilderServices flowBuilderServices() {
 
 	log.debug("flowBuilderServices()");
-        return getFlowBuilderServicesBuilder().setDevelopmentMode(true)
+	return getFlowBuilderServicesBuilder().setDevelopmentMode(true)
 					      .build();
     }
 
@@ -61,7 +63,7 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     public FlowHandlerMapping flowHandlerMapping() {
 
 	log.debug("flowHandlerMapping()");
-        FlowHandlerMapping mapping = new FlowHandlerMapping();
+	FlowHandlerMapping mapping = new FlowHandlerMapping();
 	mapping.setOrder(1);
 	mapping.setFlowRegistry(flowRegistry());
 	mapping.setDefaultHandler(new UrlFilenameViewController());
@@ -74,7 +76,7 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     public FlowHandlerAdapter flowHandlerAdapter() {
 
 	log.debug("flowHandlerAdapter()");
-        JsfFlowHandlerAdapter adapter = new JsfFlowHandlerAdapter();
+	JsfFlowHandlerAdapter adapter = new JsfFlowHandlerAdapter();
 	adapter.setFlowExecutor(flowExecutor());
 	return adapter;
     }

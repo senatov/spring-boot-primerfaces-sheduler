@@ -18,14 +18,14 @@ public class UserService implements Serializable {
     @Autowired
     private Logger log;
 
-
     @Autowired
     private UserRepository userRepository;
 
+
+
     public UserService(UserRepository userRepository) {
 
-
-        this.userRepository = userRepository;
+	this.userRepository = userRepository;
     }
 
 
@@ -33,7 +33,7 @@ public class UserService implements Serializable {
     public List<User> getAllUsers() {
 
 	log.debug("getAllUsers()");
-        List<User> posts = new ArrayList<>();
+	List<User> posts = new ArrayList<>();
 	userRepository.findAll()
 		      .forEach(e -> posts.add(e));
 	return posts;
@@ -44,7 +44,7 @@ public class UserService implements Serializable {
     public Optional<User> getUser(Long id) {
 
 	log.debug("getUser()");
-        return userRepository.findById(id);
+	return userRepository.findById(id);
     }
 
 
@@ -52,7 +52,7 @@ public class UserService implements Serializable {
     public void addUser(User user) {
 
 	log.debug("addUser()");
-        userRepository.save(user);
+	userRepository.save(user);
     }
 
 
@@ -60,7 +60,7 @@ public class UserService implements Serializable {
     public void updateUser(User user) {
 
 	log.debug("updateUser()");
-        userRepository.save(user);
+	userRepository.save(user);
     }
 
 
@@ -68,7 +68,7 @@ public class UserService implements Serializable {
     public void deleteUser(User user) {
 
 	log.debug("deleteUser()");
-        userRepository.delete(user);
+	userRepository.delete(user);
     }
 
 }

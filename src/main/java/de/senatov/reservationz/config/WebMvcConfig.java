@@ -21,11 +21,13 @@ public class WebMvcConfig {
     @Autowired
     private Logger log;
 
+
+
     @Bean
     public UrlBasedViewResolver faceletsViewResolver() {
 
 	log.debug("faceletsViewResolver()");
-        UrlBasedViewResolver resolver = new UrlBasedViewResolver();
+	UrlBasedViewResolver resolver = new UrlBasedViewResolver();
 	resolver.setViewClass(JsfView.class);
 	resolver.setPrefix("/WEB-INF/");
 	resolver.setSuffix(".xhtml");
@@ -47,7 +49,7 @@ public class WebMvcConfig {
     public DispatcherServlet dispatcherServlet() {
 
 	log.debug("dispatcherServlet()");
-        return new DispatcherServlet();
+	return new DispatcherServlet();
     }
 
 
@@ -56,7 +58,7 @@ public class WebMvcConfig {
     public ServletRegistrationBean dispatcherServletRegistration() {
 
 	log.debug("dispatcherServletRegistration()");
-        ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet(), "/ui/*");
+	ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet(), "/ui/*");
 	registration.setName(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_REGISTRATION_BEAN_NAME);
 	return registration;
     }
