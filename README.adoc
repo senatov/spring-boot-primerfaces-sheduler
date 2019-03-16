@@ -1,5 +1,10 @@
 copyleft _`Iakov Senatov 03.2019.`_
 
+tags: [Spring Boot 2.0.3, JSF 2.3, Primerfaces 7.0RC3, JSF, Spring Web Flow, JSE8]
+
+projects: [spring-primefaces-scheduler]
+
+
 = spring-primefaces-scheduler
 
 1) implementation of Basis Primefaces Scheduler.
