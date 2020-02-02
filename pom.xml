@@ -22,7 +22,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <version.springwebflow>2.5.1.RELEASE</version.springwebflow>
         <java.version>1.8</java.version>
-        <mariadb.version>2.3.0</mariadb.version>
     </properties>
 
 
@@ -100,10 +99,9 @@
             <artifactId>spring-security-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>${mariadb.version}</version>
-            <scope>runtime</scope>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.9</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
