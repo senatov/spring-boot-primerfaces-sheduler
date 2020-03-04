@@ -1,10 +1,11 @@
 copyleft _`Iakov Senatov 02.2020.`_
 
-tags: [Spring Boot 2.0.3, JSF 2.3, Primerfaces 7.0RC3, JSF, Spring Web Flow, JSE8]
+tags: [Spring Boot 2.2.5, Primefaces 8.0.RC1, JSF 2.3, Spring Web Flow 2.5.1.RELEASE, JSE 13]
 
 projects: [spring-primefaces-scheduler]
 
-=  spring-primefaces-scheduler
+=  spring-primefaces-scheduler,  <url>https://www.codenotfound.com/jsf-primefaces-example-spring-boot-maven.html</url>
+
 
 1) implementation of Basis Primefaces Scheduler.
 
@@ -25,7 +26,7 @@ projects: [spring-primefaces-scheduler]
 |===
 
 Database: isn't significant, use any of them, what u've s. file://application.properties[application.properties]
-for the info!
+for the DB connection info and create own! It's simple.
 
 mailto://javaentwickler@gmail.com[EMail]
 

@@ -8,7 +8,6 @@
     <packaging>jar</packaging>
     <name>room-reservation</name>
     <description>Example JSF/ PrimeFaces Example using Spring Boot and Maven from:</description>
-    <url>https://www.codenotfound.com/jsf-primefaces-example-spring-boot-maven.html</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -137,7 +136,7 @@
             <dependency>
                 <groupId>org.primefaces.extensions</groupId>
                 <artifactId>primefaces-extensions</artifactId>
-                <version>7.0.3</version>
+                <version>8.0.RC1</version>
             </dependency>
             <dependency>
                 <groupId>org.primefaces.themes</groupId>
