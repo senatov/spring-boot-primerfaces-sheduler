@@ -17,6 +17,7 @@ import javax.faces.webapp.FacesServlet;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.lang.String.*;
 import static java.lang.String.valueOf;
 
 
