@@ -17,7 +17,6 @@ import javax.faces.webapp.FacesServlet;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static java.lang.String.format;
 import static java.lang.String.valueOf;
 
 
@@ -25,6 +24,7 @@ import static java.lang.String.valueOf;
 @SpringBootApplication
 public class SpringBootAppMain implements CommandLineRunner {
 
+    public static final String FORMAT1 = "  %s)  [ %s ]  ";
     private Logger log = LoggerFactory.getLogger(SpringBootAppMain.class);
     @Autowired
     private ApplicationContext appContext;
@@ -47,7 +47,7 @@ public class SpringBootAppMain implements CommandLineRunner {
                 .forEach(o ->
                 {
                     String count = valueOf(atomicInteger.getAndDecrement());
-                    log.debug(format("  %s)  [ %s ]  ", count, o));
+                    log.debug(format(FORMAT1, count, o));
                 });
     }
 

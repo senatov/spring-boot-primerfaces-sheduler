@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xmlns="http://www.springframework.org/schema/webflow"
-		xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+      xmlns="http://www.springframework.org/schema/webflow"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
-
-	<view-state id="scheduler" view="scheduler.xhtml">
-	</view-state>
-	<end-state id="back"/>
+    <view-state id="scheduler" view="scheduler.xhtml">
+    </view-state>
+    <end-state id="back"/>
 </flow>
