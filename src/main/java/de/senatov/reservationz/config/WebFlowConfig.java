@@ -27,9 +27,9 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
 
 
     @Autowired
-    public WebFlowConfig(Logger log) {
+    public WebFlowConfig(Logger logger) {
 
-        this.LOG = log;
+        this.LOG = logger;
     }
 
 

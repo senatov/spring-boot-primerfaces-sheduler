@@ -19,7 +19,7 @@ import java.util.List;
 public class UserView implements Serializable {
 
     @Autowired
-    private Logger log;
+    private Logger LOG;
     @Autowired
     private UserService userService;
     private List<User> users = new ArrayList<>();
@@ -30,7 +30,7 @@ public class UserView implements Serializable {
     @PostConstruct
     public void init() {
 
-        log.debug("init()");
+        LOG.debug("init()");
         user = new User();
         if (userService != null) {
             users = userService.getAllUsers();
@@ -41,7 +41,7 @@ public class UserView implements Serializable {
 
     public String prepareForUpdate(Long id) {
 
-        log.debug("prepareForUpdate()");
+        LOG.debug("prepareForUpdate()");
         user = userService.getUser(id).get();
         return "new";
     }
@@ -50,7 +50,7 @@ public class UserView implements Serializable {
 
     public String savePerson() {
 
-        log.debug("savePerson()");
+        LOG.debug("savePerson()");
         userService.addUser(user);
         users = new ArrayList<>();
         users = userService.getAllUsers();
@@ -62,7 +62,7 @@ public class UserView implements Serializable {
 
     public String newPerson() {
 
-        log.debug("newPerson()");
+        LOG.debug("newPerson()");
         user = new User();
         System.out.println("new");
         return "new";

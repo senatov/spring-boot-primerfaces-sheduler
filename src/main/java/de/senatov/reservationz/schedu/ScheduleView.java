@@ -2,8 +2,7 @@ package de.senatov.reservationz.schedu;
 
 
 
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
+import lombok.ToString;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
@@ -20,53 +19,35 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
-import java.util.Calendar;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
-import java.util.Locale;
 
 
 
 @ManagedBean
 @ViewScoped
+@ToString
 public class ScheduleView implements Serializable {
 
     private static final long serialVersionUID = 2653991725372403680L;
+    public static final String MINUTE_DELTA = ", Minute delta:";
     private ScheduleModel eventModel;
     private ScheduleEvent event = new DefaultScheduleEvent();
     @Autowired
-    private Logger log;
+    private Logger LOG;
 
 
 
     @PostConstruct
     public void init() {
 
-        log.debug("init()");
+        LOG.debug("init()");
         eventModel = new DefaultScheduleModel();
         eventModel.addEvent(new DefaultScheduleEvent("Аудитория 1", previousDay8Pm(), previousDay11Pm()));
         eventModel.addEvent(new DefaultScheduleEvent("Туалет на втором", today1Pm(), today6Pm()));
         eventModel.addEvent(new DefaultScheduleEvent("Аудитория 4", nextDay9Am(), nextDay11Am()));
         eventModel.addEvent(new DefaultScheduleEvent("Переговорная 103", theDayAfter3Pm(), fourDaysLater3pm()));
-    }
-
-
-
-    public Date getRandomDate(Date base) {
-
-        log.debug("getRandomDate()");
-        Calendar date = Calendar.getInstance();
-        date.setTime(base);
-        date.add(Calendar.DATE, ((int) (Math.random() * 30)) + 1);    //set random day of month
-        return date.getTime();
-    }
-
-
-
-    public Date getInitialDate() {
-
-        LocalDate localDate = LocalDate.now();
-        localDate.withMonthOfYear(1);
-        return localDate.toDate();
     }
 
 
@@ -78,101 +59,83 @@ public class ScheduleView implements Serializable {
 
 
 
-    private Calendar today() {
-
-        log.debug("today()");
-        DateTime dateTime = DateTime.now();
-        return dateTime.toCalendar(Locale.getDefault());
-    }
-
-
-
     private Date previousDay8Pm() {
 
-        log.debug("previousDay8Pm()");
-        Calendar t = getCalendarToday(8, -1);
-        return t.getTime();
-    }
-
-
-
-    private Calendar getCalendarToday(int hour, int date) {
-
-        Calendar t = (Calendar) today().clone();
-        t.set(Calendar.AM_PM, Calendar.PM);
-        t.set(Calendar.DATE, t.get(Calendar.DATE) - date);
-        t.set(Calendar.HOUR, hour);
-        return t;
+        LOG.debug("previousDay8Pm()");
+        LocalDateTime dt = LocalDateTime.now().minusDays(1L).withHour(8).withMinute(0);
+        return Date.from(dt.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 
 
     private Date previousDay11Pm() {
 
-        log.debug("previousDay11Pm()");
-        Calendar t = getCalendarToday(11, -1);
-        return t.getTime();
+        LOG.debug("previousDay11Pm()");
+        LocalDateTime dt = LocalDateTime.now().withHour(11).withMinute(21);
+        return Date.from(dt.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 
 
     private Date today1Pm() {
 
-        log.debug("today1Pm()");
-        Calendar t = getCalendarToday(0, 1);
-        return t.getTime();
+        LOG.debug("today1Pm()");
+        LocalDateTime dt = LocalDateTime.now().withHour(13).withMinute(0);
+        return Date.from(dt.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 
 
     private Date theDayAfter3Pm() {
 
-        log.debug("theDayAfter3Pm()");
-        Calendar t = getCalendarToday(2, 3);
-        return t.getTime();
+        LOG.debug("theDayAfter3Pm()");
+        LocalDateTime dt = LocalDateTime.now().plusDays(1L).withHour(13).withMinute(0);
+        return Date.from(dt.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 
 
     private Date today6Pm() {
 
-        log.debug("today6Pm()");
-        Calendar t = getCalendarToday(0, 6);
-        return t.getTime();
+        LOG.debug("today6Pm()");
+        LocalDateTime dt = LocalDateTime.now().plusDays(2L).withHour(6).withMinute(0);
+        return Date.from(dt.atZone(ZoneId.systemDefault()).toInstant());
+
     }
 
 
 
     private Date nextDay9Am() {
 
-        log.debug("nextDay9Am()");
-        Calendar t = getCalendarToday(1, 9);
-        return t.getTime();
+        LOG.debug("nextDay9Am()");
+        LocalDateTime dt = LocalDateTime.now().plusDays(1L).withHour(9).withMinute(0);
+        return Date.from(dt.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 
 
     private Date nextDay11Am() {
 
-        log.debug("nextDay11Am()");
-        Calendar t = getCalendarToday(1, 11);
-        return t.getTime();
+        LOG.debug("nextDay11Am()");
+        LocalDateTime dt = LocalDateTime.now().plusDays(1L).withHour(11).withMinute(0);
+        return Date.from(dt.atZone(ZoneId.systemDefault()).toInstant());
+
     }
 
 
 
     private Date fourDaysLater3pm() {
 
-        log.debug("fourDaysLater3pm()");
-        Calendar t = getCalendarToday(4, 3);
-        return t.getTime();
+        LOG.debug("fourDaysLater3pm()");
+        LocalDateTime dt = LocalDateTime.now().plusDays(4L).withHour(15).withMinute(0);
+        return Date.from(dt.atZone(ZoneId.systemDefault()).toInstant());
     }
 
 
 
     public ScheduleEvent getEvent() {
 
-        log.debug("getEvent()" + event);
+        LOG.debug("getEvent()" + event);
         return event;
     }
 
@@ -180,7 +143,7 @@ public class ScheduleView implements Serializable {
 
     public void setEvent(ScheduleEvent event) {
 
-        log.debug("setEvent()" + event);
+        LOG.debug("setEvent()" + event);
         this.event = event;
     }
 
@@ -188,7 +151,7 @@ public class ScheduleView implements Serializable {
 
     public void addEvent() {
 
-        log.debug("addEvent()" + event);
+        LOG.debug("addEvent()" + event);
         if (event.getId() == null) {
             eventModel.addEvent(event);
         } else {
@@ -201,7 +164,7 @@ public class ScheduleView implements Serializable {
 
     public void onEventSelect(SelectEvent selectEvent) {
 
-        log.debug("onEventSelect()" + selectEvent);
+        LOG.debug("onEventSelect()" + selectEvent);
         event = (ScheduleEvent) selectEvent.getObject();
     }
 
@@ -209,7 +172,7 @@ public class ScheduleView implements Serializable {
 
     public void onDateSelect(SelectEvent selectEvent) {
 
-        log.debug("onDateSelect()");
+        LOG.debug("onDateSelect()");
         event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
     }
 
@@ -217,9 +180,9 @@ public class ScheduleView implements Serializable {
 
     public void onEventMove(ScheduleEntryMoveEvent event) {
 
-        log.debug("onEventMove()");
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved",
-                "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+        LOG.debug("onEventMove()");
+        String detail = "Day delta:" + event.getDayDelta() + MINUTE_DELTA + event.getMinuteDelta();
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved", detail);
         addMessage(message);
     }
 
@@ -227,9 +190,9 @@ public class ScheduleView implements Serializable {
 
     public void onEventResize(ScheduleEntryResizeEvent event) {
 
-        log.debug("onEventResize()");
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized",
-                "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+        LOG.debug("onEventResize()");
+        String detail = "Day delta:" + event.getDayDelta() + MINUTE_DELTA + event.getMinuteDelta();
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized", detail);
         addMessage(message);
     }
 
@@ -237,9 +200,8 @@ public class ScheduleView implements Serializable {
 
     private void addMessage(FacesMessage message) {
 
-        log.debug("addMessage()");
-        FacesContext.getCurrentInstance()
-                .addMessage(null, message);
+        LOG.debug("addMessage()");
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
 }

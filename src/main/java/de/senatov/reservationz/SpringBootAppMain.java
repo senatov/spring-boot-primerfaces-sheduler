@@ -17,7 +17,7 @@ import javax.faces.webapp.FacesServlet;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static java.lang.String.*;
+import static java.lang.String.format;
 import static java.lang.String.valueOf;
 
 
@@ -26,7 +26,7 @@ import static java.lang.String.valueOf;
 public class SpringBootAppMain implements CommandLineRunner {
 
     public static final String FORMAT1 = "  %s)  [ %s ]  ";
-    private Logger log = LoggerFactory.getLogger(SpringBootAppMain.class);
+    private Logger LOG = LoggerFactory.getLogger(SpringBootAppMain.class);
     @Autowired
     private ApplicationContext appContext;
 
@@ -48,7 +48,7 @@ public class SpringBootAppMain implements CommandLineRunner {
                 .forEach(o ->
                 {
                     String count = valueOf(atomicInteger.getAndDecrement());
-                    log.debug(format(FORMAT1, count, o));
+                    LOG.debug(format(FORMAT1, count, o));
                 });
     }
 
@@ -67,7 +67,7 @@ public class SpringBootAppMain implements CommandLineRunner {
     @Bean
     public ServletContextInitializer servletContextInitializer() {
 
-        log.debug("servletContextInitializer()");
+        LOG.debug("servletContextInitializer()");
         return sc ->
         {
             sc.addListener(com.sun.faces.config.ConfigureListener.class);

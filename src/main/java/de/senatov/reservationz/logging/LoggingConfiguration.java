@@ -20,7 +20,7 @@ public class LoggingConfiguration {
 
     @Bean
     @Scope("prototype")
-    public Logger log(InjectionPoint ip) {
+    public Logger LOG(InjectionPoint ip) {
 
         try {
             return getLogger(of(ip.getMember()).map(Member::getDeclaringClass)
