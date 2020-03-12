@@ -6,12 +6,14 @@
 >
 
 <h:head>
-    <title>Login</title>
+    <title>Login to scheduler </title>
+    <!--
+       demo spring-security
+    -->
 </h:head>
 
 <h:body>
-    <h:form prependId="false">
-
+    <h:form prependId="false" style="align-items: center">
         <p:panelGrid columns="1" styleClass="ui-fluid center ui-noborder">
             <h2>Please login </h2>
             <p:outputLabel value="Login failed!" styleClass="red" rendered="${!empty param['error']}"/>
@@ -19,7 +21,6 @@
             <p:password id="password" placeholder="aaa"/>
             <p:commandButton value="Login" ajax="false"/>
         </p:panelGrid>
-
     </h:form>
 </h:body>
 </html>
