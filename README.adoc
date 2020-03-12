@@ -14,7 +14,7 @@ copyleft _`Iakov Senatov 02.2020.`_
 
 |7.0.
 |JSF
-|2.3
+|Mojarra 2.3.9
 
 |Spring Web Flow
 |2.5.1.RELEASE

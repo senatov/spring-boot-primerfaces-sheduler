@@ -17,6 +17,8 @@ import javax.faces.webapp.FacesServlet;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 import static java.lang.String.format;
 import static java.lang.String.valueOf;
 
@@ -71,15 +73,16 @@ public class SpringBootAppMain implements CommandLineRunner {
         return sc ->
         {
             sc.addListener(com.sun.faces.config.ConfigureListener.class);
-            sc.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
-            sc.setInitParameter("facelets.DEVELOPMENT", Boolean.TRUE.toString());
+            sc.setInitParameter("com.sun.faces.forceLoadConfiguration", TRUE.toString());
+            sc.setInitParameter("facelets.DEVELOPMENT", TRUE.toString());
             sc.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
-            sc.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", Boolean.FALSE.toString());
-            sc.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", Boolean.TRUE.toString());
+            sc.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", FALSE.toString());
+            sc.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", TRUE.toString());
             sc.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
             sc.setInitParameter("javax.faces.STATE_SAVING_METHOD", "server");
-            sc.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", Boolean.TRUE.toString());
-            sc.setInitParameter("primefaces.FONT_AWESOME", Boolean.TRUE.toString());
+            sc.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", TRUE.toString());
+            sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
+            sc.setInitParameter("com.sun.faces.expressionFactory", "org.apache.el.ExpressionFactoryImpl");
             sc.setInitParameter("primefaces.THEME", "bootstrap");
         };
     }
