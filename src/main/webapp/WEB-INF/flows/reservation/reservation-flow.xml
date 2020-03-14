@@ -3,7 +3,16 @@
       xmlns="http://www.springframework.org/schema/webflow"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
-    <view-state id="scheduler" view="scheduler.xhtml">
+    <var name="loginConfig" class="de.senatov.reservationz.config.LoginConfig"/>
+    <view-state id="displayLoginView" view="login.xhtml">
+        <transition on="performLogin" to="performLoginAction"/>
     </view-state>
+    <action-state id="performLoginAction">
+        <evaluate expression="loginService.validateUser(loginBean)"/>
+        <transition on="true" to="displaySuccess"/>
+        <transition on="false" to="displayError"/>
+    </action-state>
+    <view-state id="displaySuccess" view="scheduler.xhtml" model="loginConfig"/>
+    <view-state id="displayError" view="403.xhtml"/>
     <end-state id="back"/>
 </flow>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+<h:head>
+    <title>Login to scheduler </title>
+    <!--
+       demo spring-security
+    -->
+</h:head>
+
+<h:body>
+    <h:form prependId="false" style="align-items: center">
+        <div class="full-box" style="text-align: center">
+            <div class="child-box box-c3" align="center">
+                <p:panelGrid columns="1" styleClass="htCenter" style="background-color: darkgrey">
+                    <h2>Please login </h2>
+                    <p:outputLabel value="Login failed!" styleClass="red" rendered="${!empty param['error']}"/>
+                    <p:inputText id="username" maxlength="40" placeholder="admin" style="background-color: bisque"/>
+                    <p:password id="password" maxlength="40" placeholder="aaa" style="background-color: darksalmon"/>
+                    <p:commandButton value="Login" ajax="false"/>
+                </p:panelGrid>
+            </div>
+        </div>
+    </h:form>
+</h:body>
+</html>
