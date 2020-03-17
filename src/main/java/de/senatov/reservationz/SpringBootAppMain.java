@@ -84,6 +84,7 @@ public class SpringBootAppMain implements CommandLineRunner {
             sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
             sc.setInitParameter("com.sun.faces.expressionFactory", "org.apache.el.ExpressionFactoryImpl");
             sc.setInitParameter("primefaces.THEME", "bootstrap");
+            sc.setInitParameter("springFlowApplication", "/");
         };
     }
 

@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns="http://www.springframework.org/schema/webflow"
-      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
     <var name="loginConfig" class="de.senatov.reservationz.config.LoginConfig"/>
+
     <view-state id="displayLoginView" view="login.xhtml">
-        <transition on="performLogin" to="performLoginAction"/>
+        <transition on="submit" to="performLoginAction" />
     </view-state>
+
     <action-state id="performLoginAction">
         <evaluate expression="loginService.validateUser(loginBean)"/>
         <transition on="true" to="displaySuccess"/>
         <transition on="false" to="displayError"/>
     </action-state>
+
     <view-state id="displaySuccess" view="scheduler.xhtml" model="loginConfig"/>
-    <view-state id="displayError" view="403.xhtml"/>
+
+    <view-state id="displayError" redirect="true"/>
+
     <end-state id="back"/>
 </flow>
