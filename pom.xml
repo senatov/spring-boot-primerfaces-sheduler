@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.senatov</groupId>
     <artifactId>room-reservation</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.4</version>
     <packaging>jar</packaging>
     <name>room-reservation</name>
     <description>Example JSF/ PrimeFaces Example using Spring Boot and Maven from:</description>
@@ -133,7 +133,7 @@
             <dependency>
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
-                <version>6.0.1.Final</version>
+                <version>6.0.18.Final</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish</groupId>

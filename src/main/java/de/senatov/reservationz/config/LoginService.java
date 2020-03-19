@@ -13,11 +13,22 @@ public class LoginService {
 
         String userName = loginBean.getUserName();
         String password = loginBean.getPassword();
-        if (userName.equalsIgnoreCase("admin") && password.equalsIgnoreCase("aaa")) {
-            return "true";
-        } else {
-            return "false";
-        }
+        return isLoggedAsAdmin(userName, password);
+    }
+
+
+
+    /**
+     * is user logged as Admin
+     *
+     * @param userName
+     * @param password
+     * @return
+     */
+    private String isLoggedAsAdmin(String userName, String password) {
+
+        Boolean isAdmin = userName.equalsIgnoreCase("admin") && password.equalsIgnoreCase("aaa");
+        return isAdmin.toString().toLowerCase();
     }
 
 }

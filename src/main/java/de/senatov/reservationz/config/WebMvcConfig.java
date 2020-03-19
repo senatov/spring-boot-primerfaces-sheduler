@@ -16,14 +16,14 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 public class WebMvcConfig {
 
     @Autowired
-    private Logger LOG;
+    private Logger log;
 
 
 
     @Bean
     public UrlBasedViewResolver faceletsViewResolver() {
 
-        LOG.debug("faceletsViewResolver()");
+        log.debug("faceletsViewResolver()");
         UrlBasedViewResolver resolver = new UrlBasedViewResolver();
         resolver.setViewClass(JsfView.class);
         resolver.setPrefix("/WEB-INF/");
@@ -36,19 +36,24 @@ public class WebMvcConfig {
     @Bean
     public SimpleControllerHandlerAdapter simpleControllerHandlerAdapter() {
 
-        LOG.debug("simpleControllerHandlerAdapter()");
+        log.debug("simpleControllerHandlerAdapter()");
         return new SimpleControllerHandlerAdapter();
     }
+    /**
+     @Bean public DispatcherServlet dispatcherServlet() {
+
+     log.debug("dispatcherServlet()");
+     return new DispatcherServlet();
+     }
 
 
-    /*
-    @Bean
-    public ServletRegistrationBean dispatcherServletRegistration() {
 
-        LOG.debug("dispatcherServletRegistration()");
-        ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet(), "/ui/*");
-        registration.setName(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_REGISTRATION_BEAN_NAME);
-        return registration;
-    }*/
+     @Bean public ServletRegistrationBean dispatcherServletRegistration() {
 
+     log.debug("dispatcherServletRegistration()");
+     ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet(), "/ui/*");
+     registration.setName(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_REGISTRATION_BEAN_NAME);
+     return registration;
+     }
+     */
 }
