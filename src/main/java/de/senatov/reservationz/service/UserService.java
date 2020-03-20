@@ -1,7 +1,9 @@
-package de.senatov.reservationz.model;
+package de.senatov.reservationz.service;
 
 
 
+import de.senatov.reservationz.auth.repository.UserRepository;
+import de.senatov.reservationz.model.User;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
