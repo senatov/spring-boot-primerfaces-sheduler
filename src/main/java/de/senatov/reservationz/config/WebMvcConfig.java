@@ -39,21 +39,4 @@ public class WebMvcConfig {
         log.debug("simpleControllerHandlerAdapter()");
         return new SimpleControllerHandlerAdapter();
     }
-    /**
-     @Bean public DispatcherServlet dispatcherServlet() {
-
-     log.debug("dispatcherServlet()");
-     return new DispatcherServlet();
-     }
-
-
-
-     @Bean public ServletRegistrationBean dispatcherServletRegistration() {
-
-     log.debug("dispatcherServletRegistration()");
-     ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet(), "/ui/*");
-     registration.setName(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_REGISTRATION_BEAN_NAME);
-     return registration;
-     }
-     */
 }

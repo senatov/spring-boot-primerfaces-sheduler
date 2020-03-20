@@ -1,4 +1,4 @@
-package de.senatov.reservationz.user;
+package de.senatov.reservationz.model;
 
 
 
@@ -9,9 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
+import java.util.Set;
 
 
 
@@ -30,5 +32,9 @@ public class User implements Serializable {
     @Column(name = "e_mail")
     @Email
     private String eMail;
+    @Column(name = "password")
+    private String password;
+    @ManyToMany
+    private Set<Role> roles;
 
 }

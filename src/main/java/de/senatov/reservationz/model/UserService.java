@@ -1,4 +1,4 @@
-package de.senatov.reservationz.user;
+package de.senatov.reservationz.model;
 
 
 
@@ -19,7 +19,7 @@ public class UserService implements Serializable {
     @Autowired
     private Logger LOG;
     @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
 
 

@@ -1,4 +1,4 @@
-package de.senatov.reservationz.user;
+package de.senatov.reservationz.model;
 
 
 
