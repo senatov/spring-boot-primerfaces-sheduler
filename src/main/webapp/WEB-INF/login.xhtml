@@ -7,16 +7,6 @@
 
     <ui:define name="title">Login</ui:define>
 
-    <ui:define name="notes">
-        <h5>Configuration to review:</h5>
-        <ul>
-            <li>Spring Security filter and taglib declarations: src/main/webapp/WEB-INF/web.xml</li>
-            <li>Spring Security configuration: src/main/webapp/WEB-INF/spring/security-config.xml</li>
-            <li>Taglib file: src/main/webapp/WEB-INF/springsecurity.taglib.xml</li>
-        </ul>
-        <hr/>
-    </ui:define>
-
     <ui:define name="content">
         <div class="span-10">
             <c:if test="${not empty param.login_error}">
@@ -45,18 +35,6 @@
                     </p>
                 </form>
             </p:panel>
-        </div>
-        <div class="prepend-1 span-12 last">
-            <h5>Username/password pairs:</h5>
-            <ul>
-                <li>joe/joe1</li>
-                <li>pete/pete1</li>
-            </ul>
-            <h5>Roles assigned:</h5>
-            <ul>
-                <li>joe has ROLE_USER and ROLE_APPLE_USER</li>
-                <li>pete has ROLE_USER and ROLE_ANDROID_USER</li>
-            </ul>
         </div>
     </ui:define>
 </ui:composition>
