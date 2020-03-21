@@ -25,21 +25,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserRepository userRepository;
 
 
-
-    public UserDetailsServiceImpl() {
-
-    }
-
-
-
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) {
+    public UserDetails loadUserByUsername(String bUserName) {
 
         Set<GrantedAuthority> grantedAuthorities;
-        User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(bUserName);
         if (user == null) {
-            throw new UsernameNotFoundException(username);
+            throw new UsernameNotFoundException(bUserName);
         }
         grantedAuthorities = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
         return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), grantedAuthorities);

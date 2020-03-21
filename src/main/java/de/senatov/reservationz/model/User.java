@@ -2,8 +2,6 @@ package de.senatov.reservationz.model;
 
 
 
-import lombok.Data;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,9 +20,9 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 @Entity
 @Table(name = "user", schema = "scheduler")
-@Data
 public class User implements Serializable {
 
+    private static final long serialVersionUID = -809071111834277692L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -33,7 +31,7 @@ public class User implements Serializable {
     @Column(name = "last_name")
     private String lastName;
     @Column(unique = true, name = "user_name")
-    private String userName;
+    private String username;
     @Column(unique = true, name = "e_mail")
     @Email
     private String eMail;
@@ -48,7 +46,7 @@ public class User implements Serializable {
 
         firstName = EMPTY;
         lastName = EMPTY;
-        userName = EMPTY;
+        username = EMPTY;
         eMail = EMPTY;
         roles = new HashSet<>();
     }
@@ -71,14 +69,14 @@ public class User implements Serializable {
 
     public String getUserName() {
 
-        return userName;
+        return username;
     }
 
 
 
-    public void setUserName(String userName) {
+    public void setUserName(String pUserName) {
 
-        this.userName = userName;
+        username = pUserName;
     }
 
 
@@ -90,9 +88,9 @@ public class User implements Serializable {
 
 
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String pFirstName) {
 
-        this.firstName = firstName;
+        firstName = pFirstName;
     }
 
 
@@ -104,9 +102,9 @@ public class User implements Serializable {
 
 
 
-    public void setLastName(String lastName) {
+    public void setLastName(String pLastName) {
 
-        this.lastName = lastName;
+        lastName = pLastName;
     }
 
 
@@ -118,9 +116,9 @@ public class User implements Serializable {
 
 
 
-    public void seteMail(String eMail) {
+    public void seteMail(String pEMail) {
 
-        this.eMail = eMail;
+        eMail = pEMail;
     }
 
 
@@ -132,9 +130,9 @@ public class User implements Serializable {
 
 
 
-    public void setPassword(String password) {
+    public void setPassword(String pPassword) {
 
-        this.password = password;
+        password = pPassword;
     }
 
 
@@ -146,9 +144,9 @@ public class User implements Serializable {
 
 
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<Role> pRoles) {
 
-        this.roles = roles;
+        roles = pRoles;
     }
 
 }

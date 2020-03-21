@@ -2,8 +2,6 @@ package de.senatov.reservationz.model;
 
 
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +14,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "role")
-@Data
 public class Role {
 
     @Id
