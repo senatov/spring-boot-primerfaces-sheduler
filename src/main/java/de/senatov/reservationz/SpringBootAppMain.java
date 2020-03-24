@@ -2,6 +2,7 @@ package de.senatov.reservationz;
 
 
 
+import com.sun.faces.config.ConfigureListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class SpringBootAppMain implements CommandLineRunner {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
 
         SpringApplication.run(SpringBootAppMain.class, args);
     }
@@ -48,12 +49,12 @@ public class SpringBootAppMain implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         AtomicInteger atomicInteger = new AtomicInteger(1);
-        Arrays.stream(appContext.getBeanDefinitionNames()) //
+        Arrays.stream(this.appContext.getBeanDefinitionNames()) //
                 .sorted()//
                 .forEach(o ->
                 {
                     String count = valueOf(atomicInteger.getAndDecrement());
-                    LOG.debug(format(FORMAT1, count, o));
+                    this.LOG.debug(format(SpringBootAppMain.FORMAT1, count, o));
                 });
     }
 
@@ -72,10 +73,10 @@ public class SpringBootAppMain implements CommandLineRunner {
     @Bean
     public ServletContextInitializer servletContextInitializer() {
 
-        LOG.debug("servletContextInitializer()");
+        this.LOG.debug("servletContextInitializer()");
         return sc ->
         {
-            sc.addListener(com.sun.faces.config.ConfigureListener.class);
+            sc.addListener(ConfigureListener.class);
             sc.setInitParameter("com.sun.faces.forceLoadConfiguration", TRUE.toString());
             sc.setInitParameter("facelets.DEVELOPMENT", TRUE.toString());
             sc.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");

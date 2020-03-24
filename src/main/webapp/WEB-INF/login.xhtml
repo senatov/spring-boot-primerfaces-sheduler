@@ -35,7 +35,7 @@
 
 -->
 
-<h:body style="align-content: center" styleClass="header">
+<h:body style="horiz-align: center" styleClass="header">
     <h:form>
         <p:growl id="growl"/>
         <h3 style="margin-top:auto; color: darkblue">Please, for room reservation, login here:</h3>
@@ -49,7 +49,8 @@
             <p:outputLabel value="Password:" styleClass="bold"/>
             <p:password id="password" placeholder="aaa" value="#{blockUIView.firstname}" required="true" title="Password:"/>
             <p:message for="password"/>
-            <p:commandButton id="saveBtn" value="Save" icon="pi pi-check" style="margin:0" action="#{blockUIView.save}" update="growl"
+            <p:commandButton id="saveBtn" value="Save" icon="pi pi-check" style="alignment-baseline:center;" action="#{blockUIView.save}"
+                             update="growl"
                              title="login and goto reservation"/>
         </p:panelGrid>
     </h:form>

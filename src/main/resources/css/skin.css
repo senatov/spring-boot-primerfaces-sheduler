@@ -30,11 +30,11 @@
 
 .taskPrioStyle {
     border: none !important;
-    padding: 0px !important;
+    padding: 0 !important;
 }
 
 .fc-event {
-    margin: 1px !important;
+    margin: 1 !important;
 }
 
 .ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
@@ -50,7 +50,7 @@
 }
 
 .fontSize13 * {
-    font-size: 13px !important;
+    font-size: 13 !important;
 }
 
 #fetcherForm .ui-selectonemenu {
@@ -59,13 +59,13 @@
 }
 
 #fetcherForm .ui-selectonemenu-items-wrapper {
-    font-size: 13px !important;
+    font-size: 13 !important;
 }
 
 .ui-datatable thead th {
     border: none !important;
     overflow: hidden;
-    padding: 4px 10px;
+    padding: 4 10px;
     white-space: nowrap;
 }
 
@@ -103,7 +103,7 @@
 
 
 .dummy {
-    font-size: 11px !important;
+    font-size: 11 !important;
 }
 
 
@@ -141,12 +141,12 @@
 
 .no_border_no_padding {
     border: none !important;
-    padding: 0px !important;
+    padding: 0 !important;
 }
 
 .no_border_no_padding td {
     border: none !important;
-    padding: 0px !important;
+    padding: 0 !important;
 }
 
 .align_left_no_border {
@@ -180,7 +180,7 @@
 }
 
 .ui-tabs .ui-tabs-panel {
-    padding: 0em 0em !important;
+    padding: 0 0 !important;
 }
 
 .ygtvcontent {
@@ -220,7 +220,7 @@
 }
 
 .task_open_circle {
-    border: 1px solid #eFbD83;
+    border: 1 solid #eFbD83;
     border-radius: 50%;
     width: 12px;
     height: 12px;
@@ -231,7 +231,7 @@
 }
 
 .task_pending_circle {
-    border: 1px solid #a5d2eF;
+    border: 1 solid #a5d2eF;
     border-radius: 50%;
     width: 12px;
     height: 12px;
@@ -242,7 +242,7 @@
 }
 
 .task_done_circle {
-    border: 1px solid #8CeF72;
+    border: 1 solid #8CeF72;
     border-radius: 50%;
     width: 12px;
     height: 12px;
@@ -256,24 +256,24 @@
     background-color: #FFCD93;
     opacity: 0.7;
     color: black;
-    padding: 0px !important;
-    margin: 0px !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .task_pending_min {
     background-color: #B5E2FF;
     opacity: 0.7;
     color: black;
-    padding: 0px !important;
-    margin: 0px !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .task_done_min {
     background-color: #9CFF82;
     opacity: 0.7;
     color: black;
-    padding: 0px !important;
-    margin: 0px !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 td.align_top {
@@ -352,22 +352,22 @@ td.minw {
 
 .historyLeftHeaderColumn {
     width: 50%;
-    border-bottom: 0px none !important;
-    border-right: 0px none !important;
+    border-bottom: 0 none !important;
+    border-right: 0 none !important;
     text-align: left;
     font-weight: bold;
 }
 
 .historyRightHeaderColumn {
     width: 50%;
-    border-bottom: 0px none !important;
-    border-left: 0px none !important;
+    border-bottom: 0 none !important;
+    border-left: 0 none !important;
     text-align: right;
     font-weight: bold;
 }
 
 .historyNoteColumn {
-    border-top: 0px none !important;
+    border-top: 0 none !important;
     word-break: break-all;
     word-wrap: break-word;
     white-space: normal !important;

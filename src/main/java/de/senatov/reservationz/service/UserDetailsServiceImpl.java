@@ -34,11 +34,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String bUserName) {
 
         Set<GrantedAuthority> grantedAuthorities;
-        User user = userRepository.findByUsername(bUserName);
+        User user = this.userRepository.findByUsername(bUserName);
         if (user == null) {
             throw new UsernameNotFoundException(bUserName);
         }
-        grantedAuthorities = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
+        grantedAuthorities = user.getRoles().stream().map(role -> {return new SimpleGrantedAuthority(role.getName());}).collect(Collectors.toSet());
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 
