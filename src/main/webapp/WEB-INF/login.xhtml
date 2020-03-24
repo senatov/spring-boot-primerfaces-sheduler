@@ -1,26 +1,56 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
->
+      lang="en">
 
+<!--
+
+
+
+    head
+
+-->
 <h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Room Reservation - initial login</title>
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <link rel='icon' href='https://assets.msn.com/statics/icons/ntp-favicon.png' type='image/png' crossorigin='anonymous' sizes='32x32'/>
+        <link type="text/css" rel="stylesheet" href="https://dhx0ny5rxatah.cloudfront.net/lightsail-assets-Prod/styles.f11b16365323f332e738.css"/>
+    </f:facet>
+    <title>Scheduler::Login</title>
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+    <h:outputScript name="jquery/jquery.js" library="primefaces"/>
+    <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+    <ui:insert name="head"/>
+
 </h:head>
+<!--
 
+            body
 
-<h:body style="align-content: center" styleClass="topLine">
-    <h:form prependId="false" styleClass="flexBox" style="all: initial; animation-fill-mode: both">
-        <p:panelGrid columns="1" styleClass="ui-fluid center ui-widget">
-            <p:outputLabel style="animation:linear">Please login:</p:outputLabel>
+-->
+
+<h:body style="align-content: center" styleClass="header">
+    <h:form>
+        <p:growl id="growl"/>
+        <h3 style="margin-top:auto; color: darkblue">Please, for room reservation, login here:</h3>
+        <p:panel id="pnl" header="Login Panel" footer=" " styleClass="panel-body"/>
+        <p:messages id="messages"/>
+        <p:panelGrid columns="3" cellpadding="4" styleClass="ui-widget center">
             <p:outputLabel value="Login failed!" styleClass="ui-widget" rendered="${!empty param['error']}"/>
-            <p:inputText id="username" placeholder="User name"/>
-            <p:password id="password" placeholder="Password"/>
-            <p:commandButton value="Login" ajax="false"/>
+            <p:outputLabel value="Login:" styleClass="bold"/>
+            <p:inputText id="username" placeholder="User123" value="#{blockUIView.firstname}" required="true" title="User's name:"/>
+            <p:message for="username"/>
+            <p:outputLabel value="Password:" styleClass="bold"/>
+            <p:password id="password" placeholder="aaa" value="#{blockUIView.firstname}" required="true" title="Password:"/>
+            <p:message for="password"/>
+            <p:commandButton id="saveBtn" value="Save" icon="pi pi-check" style="margin:0" action="#{blockUIView.save}" update="growl"
+                             title="login and goto reservation"/>
         </p:panelGrid>
     </h:form>
 </h:body>

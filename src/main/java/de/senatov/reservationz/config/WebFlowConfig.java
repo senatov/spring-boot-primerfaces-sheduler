@@ -22,7 +22,7 @@ import org.springframework.webflow.security.SecurityFlowExecutionListener;
 @Configuration
 public class WebFlowConfig extends AbstractFacesFlowConfiguration {
 
-    private Logger LOG;
+    private final Logger LOG;
 
 
 
