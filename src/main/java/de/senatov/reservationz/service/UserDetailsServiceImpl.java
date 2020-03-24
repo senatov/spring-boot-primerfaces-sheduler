@@ -17,12 +17,16 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 
-
+/**
+ * @author Iakov Senatov
+ * @since 03.2020
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+
 
 
     @Override
@@ -35,7 +39,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException(bUserName);
         }
         grantedAuthorities = user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toSet());
-        return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 
 }

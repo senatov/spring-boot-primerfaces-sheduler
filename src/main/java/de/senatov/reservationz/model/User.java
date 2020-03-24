@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -18,25 +19,27 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 
 
+/**
+ * @author Iakov Senatov
+ * @since 03.2020
+ */
 @Entity
 @Table(name = "user", schema = "scheduler")
 public class User implements Serializable {
 
     private static final long serialVersionUID = -809071111834277692L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "first_name")
-    private String firstName;
-    @Column(name = "last_name")
-    private String lastName;
-    @Column(unique = true, name = "user_name")
+    @Column(name = "username")
     private String username;
     @Column(unique = true, name = "e_mail")
     @Email
     private String eMail;
     @Column(name = "password")
     private String password;
+    @Transient
+    private String passwordConfirm;
     @ManyToMany
     private Set<Role> roles;
 
@@ -44,8 +47,7 @@ public class User implements Serializable {
 
     public User() {
 
-        firstName = EMPTY;
-        lastName = EMPTY;
+        password = EMPTY;
         username = EMPTY;
         eMail = EMPTY;
         roles = new HashSet<>();
@@ -67,7 +69,7 @@ public class User implements Serializable {
 
 
 
-    public String getUserName() {
+    public String getUsername() {
 
         return username;
     }
@@ -77,34 +79,6 @@ public class User implements Serializable {
     public void setUserName(String pUserName) {
 
         username = pUserName;
-    }
-
-
-
-    public String getFirstName() {
-
-        return firstName;
-    }
-
-
-
-    public void setFirstName(String pFirstName) {
-
-        firstName = pFirstName;
-    }
-
-
-
-    public String getLastName() {
-
-        return lastName;
-    }
-
-
-
-    public void setLastName(String pLastName) {
-
-        lastName = pLastName;
     }
 
 
@@ -147,6 +121,20 @@ public class User implements Serializable {
     public void setRoles(Set<Role> pRoles) {
 
         roles = pRoles;
+    }
+
+
+
+    public String getPasswordConfirm() {
+
+        return passwordConfirm;
+    }
+
+
+
+    public void setPasswordConfirm(String passwordConfirm) {
+
+        this.passwordConfirm = passwordConfirm;
     }
 
 }

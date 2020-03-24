@@ -5,21 +5,16 @@ package de.senatov.reservationz.service;
 import de.senatov.reservationz.model.User;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Optional;
 
 
-
+/**
+ * @author Iakov Senatov
+ * @since 03.2020
+ */
 public interface UserService extends Serializable {
 
-    List<User> getAllUsers();
+    void save(User user);
 
-    Optional<User> getUser(Long id);
-
-    void addUser(User user);
-
-    void updateUser(User user);
-
-    void deleteUser(User user);
+    User findByUsername(String username);
 
 }

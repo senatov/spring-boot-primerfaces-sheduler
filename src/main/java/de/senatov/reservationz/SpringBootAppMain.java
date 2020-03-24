@@ -23,12 +23,15 @@ import static java.lang.String.format;
 import static java.lang.String.valueOf;
 
 
-
+/**
+ * @author Iakov Senatov
+ * @since 03.2020
+ */
 @SpringBootApplication
 public class SpringBootAppMain implements CommandLineRunner {
 
     public static final String FORMAT1 = "  %s)  [ %s ]  ";
-    private Logger LOG = LoggerFactory.getLogger(SpringBootAppMain.class);
+    private final Logger LOG = LoggerFactory.getLogger(SpringBootAppMain.class);
     @Autowired
     private ApplicationContext appContext;
 

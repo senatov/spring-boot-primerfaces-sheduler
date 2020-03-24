@@ -23,7 +23,10 @@ import java.time.ZoneId;
 import java.util.Date;
 
 
-
+/**
+ * @author Iakov Senatov
+ * @since 03.2020
+ */
 @ManagedBean
 @ViewScoped
 public class ScheduleView implements Serializable {
