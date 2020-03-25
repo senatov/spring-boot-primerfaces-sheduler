@@ -35,24 +35,28 @@
 
 -->
 
-<h:body style="horiz-align: center" styleClass="header">
+<h:body style="horiz-align: center" styleClass="ui-confirm-dialog">
     <h:form>
-        <p:growl id="growl"/>
-        <h3 style="margin-top:auto; color: darkblue">Please, for room reservation, login here:</h3>
-        <p:panel id="pnl" header="Login Panel" footer=" " styleClass="panel-body"/>
-        <p:messages id="messages"/>
-        <p:panelGrid columns="3" cellpadding="4" styleClass="ui-widget center">
-            <p:outputLabel value="Login failed!" styleClass="ui-widget" rendered="${!empty param['error']}"/>
-            <p:outputLabel value="Login:" styleClass="bold"/>
-            <p:inputText id="username" placeholder="User123" value="#{blockUIView.firstname}" required="true" title="User's name:"/>
-            <p:message for="username"/>
-            <p:outputLabel value="Password:" styleClass="bold"/>
-            <p:password id="password" placeholder="aaa" value="#{blockUIView.firstname}" required="true" title="Password:"/>
-            <p:message for="password"/>
-            <p:commandButton id="saveBtn" value="Save" icon="pi pi-check" style="alignment-baseline:center;" action="#{blockUIView.save}"
-                             update="growl"
-                             title="login and goto reservation"/>
-        </p:panelGrid>
+        <p:growl id="growl" sticky="true" showDetail="true" life="3000"/>
+        <p:dialog header="Login" widgetVar="dlg001"
+                  appendTo="@(body)"
+                  resizable="false"
+                  position="center center"
+                  modal="false"
+                  onShow="PF('dlg001').initPosition()">
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputLabel for="username" value="Username:"/>
+                <p:inputText id="username" value="#{userLoginView.username}" required="true" placeholder="user" label="username"/>
+                <h:outputLabel for="password" value="Password:"/>
+                <p:password id="password" value="#{userLoginView.password}" required="true" placeholder="aaa" label="password"/>
+                <f:facet name="footer">
+                    <p:commandButton value="Login" update="growl" style="animation-fill-mode:initial" action="#{userLoginView.login}"
+                                     oncomplete="handleLoginRequest(xhr, status, args)"/>
+                </f:facet>
+            </h:panelGrid>
+        </p:dialog>
     </h:form>
+
+
 </h:body>
 </html>
