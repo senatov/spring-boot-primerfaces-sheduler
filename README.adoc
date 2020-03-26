@@ -9,7 +9,7 @@ copyleft _`Iakov Senatov 02.2020.`_
 |Libs | Ver
 
 |Spring Boot
-|2.2.5
+|2.2.6
 |Primefaces
 
 |7.0.
@@ -20,6 +20,7 @@ copyleft _`Iakov Senatov 02.2020.`_
 |2.5.1.RELEASE
 |JSE
 |14 (now, i has Problem with auth!!!)
+image::src/main/resources/ohuenie.png[]
 
 |===
 
