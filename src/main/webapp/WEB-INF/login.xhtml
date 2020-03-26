@@ -7,11 +7,7 @@
       lang="en">
 
 <!--
-
-
-
     head
-
 -->
 <h:head>
     <f:facet name="first">
@@ -27,36 +23,34 @@
     <h:outputScript name="jquery/jquery.js" library="primefaces"/>
     <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
     <ui:insert name="head"/>
-
 </h:head>
 <!--
-
             body
-
 -->
+<h:body style="horiz-align: center" styleClass="flexBox">
 
-<h:body style="horiz-align: center" styleClass="ui-confirm-dialog">
     <h:form>
         <p:growl id="growl" sticky="true" showDetail="true" life="3000"/>
-        <p:dialog header="Login" widgetVar="dlg001"
-                  appendTo="@(body)"
-                  resizable="false"
-                  position="center center"
-                  modal="false"
-                  onShow="PF('dlg001').initPosition()">
-            <h:panelGrid columns="2" cellpadding="5">
-                <h:outputLabel for="username" value="Username:"/>
-                <p:inputText id="username" value="#{userLoginView.username}" required="true" placeholder="user" label="username"/>
-                <h:outputLabel for="password" value="Password:"/>
-                <p:password id="password" value="#{userLoginView.password}" required="true" placeholder="aaa" label="password"/>
-                <f:facet name="footer">
-                    <p:commandButton value="Login" update="growl" style="animation-fill-mode:initial" action="#{userLoginView.login}"
-                                     oncomplete="handleLoginRequest(xhr, status, args)"/>
-                </f:facet>
-            </h:panelGrid>
-        </p:dialog>
+        <!-- the dialog wan't be in center ! Do u know - why ? -->
+        <div style="align-content: center">
+            <p:dialog header="Login" widgetVar="loginDialog"
+                      position="center center"
+                      resizable="true"
+                      modal="false"
+                      onShow="PF.iinit()">
+                <h:panelGrid columns="2" cellpadding="5" header="Login">
+                    <h:outputLabel for="username" value="Username:"/>
+                    <p:inputText id="username" value="#{userLoginView.username}" required="true" placeholder="user" label="username"/>
+                    <h:outputLabel for="password" value="Password:"/>
+                    <p:password id="password" value="#{userLoginView.password}" required="true" placeholder="aaa" label="password"/>
+                    <f:facet name="footer">
+                        <p:commandButton value="Login" update="growl" style="animation-fill-mode:initial" action="#{userLoginView.login}"
+                                         oncomplete="handleLoginRequest(xhr, status, args)"/>
+                    </f:facet>
+                </h:panelGrid>
+            </p:dialog>
+        </div>
     </h:form>
-
 
 </h:body>
 </html>

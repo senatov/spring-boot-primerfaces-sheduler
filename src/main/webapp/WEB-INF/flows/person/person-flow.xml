@@ -3,6 +3,10 @@
       xmlns="http://www.springframework.org/schema/webflow"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
+    <decision-state id="userOrAdmin">
+        <if test="userAuthenticationProviderService.isAuth(currentUser)" then="list" else="back"/>
+    </decision-state>
+
     <view-state id="list" view="../../list.xhtml">
         <transition on="new" to="create">
         </transition>
