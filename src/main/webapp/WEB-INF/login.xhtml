@@ -29,15 +29,16 @@
 -->
 <h:body style="horiz-align: center" styleClass="flexBox">
 
-    <h:form>
+    <h:form style="animation-fill-mode:both">
         <p:growl id="growl" sticky="true" showDetail="true" life="3000"/>
         <!-- the dialog wan't be in center ! Do u know - why ? -->
-        <div style="align-content: center">
+        <div style="align-content: center; alignment: center; animation:normal;">
             <p:dialog header="Login" widgetVar="loginDialog"
-                      position="center center"
-                      resizable="true"
-                      modal="false"
-                      onShow="PF.iinit()">
+                      position="center,center"
+                      resizable="false"
+                      showEffect="fade"
+                      hideEffect="explode"
+                      modal="false">
                 <h:panelGrid columns="2" cellpadding="5" header="Login">
                     <h:outputLabel for="username" value="Username:"/>
                     <p:inputText id="username" value="#{userLoginView.username}" required="true" placeholder="user" label="username"/>
@@ -51,6 +52,5 @@
             </p:dialog>
         </div>
     </h:form>
-
 </h:body>
 </html>
