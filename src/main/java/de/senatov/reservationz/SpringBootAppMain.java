@@ -49,12 +49,12 @@ public class SpringBootAppMain implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         AtomicInteger atomicInteger = new AtomicInteger(1);
-        Arrays.stream(this.appContext.getBeanDefinitionNames()) //
+        Arrays.stream(appContext.getBeanDefinitionNames()) //
                 .sorted()//
                 .forEach(o ->
                 {
                     String count = valueOf(atomicInteger.getAndDecrement());
-                    this.LOG.debug(format(SpringBootAppMain.FORMAT1, count, o));
+                    LOG.debug(format(FORMAT1, count, o));
                 });
     }
 
@@ -63,7 +63,7 @@ public class SpringBootAppMain implements CommandLineRunner {
     @Bean
     public ServletRegistrationBean<FacesServlet> facesServletRegistraiton() {
 
-        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
+        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new FacesServlet(), "/ui/*");
         servletRegistrationBean.setLoadOnStartup(1);
         return servletRegistrationBean;
     }
@@ -73,12 +73,14 @@ public class SpringBootAppMain implements CommandLineRunner {
     @Bean
     public ServletContextInitializer servletContextInitializer() {
 
-        this.LOG.debug("servletContextInitializer()");
+        LOG.debug("servletContextInitializer()");
         return sc ->
         {
             sc.addListener(ConfigureListener.class);
+            sc.setInitParameter("com.sun.faces.expressionFactory", "org.apache.el.ExpressionFactoryImpl");
             sc.setInitParameter("com.sun.faces.forceLoadConfiguration", TRUE.toString());
             sc.setInitParameter("facelets.DEVELOPMENT", TRUE.toString());
+            sc.setInitParameter("javax.faces.DEFAULT_SUFFIX", ".xhtml");
             sc.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
             sc.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", FALSE.toString());
             sc.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", TRUE.toString());
@@ -86,8 +88,8 @@ public class SpringBootAppMain implements CommandLineRunner {
             sc.setInitParameter("javax.faces.STATE_SAVING_METHOD", "server");
             sc.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", TRUE.toString());
             sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
-            sc.setInitParameter("com.sun.faces.expressionFactory", "org.apache.el.ExpressionFactoryImpl");
             sc.setInitParameter("primefaces.THEME", "bootstrap");
+            sc.setInitParameter("javax.faces.FACELETS_LIBRARIES", "/WEB-INF/springsecurity.taglib.xml");
             sc.setInitParameter("springFlowApplication", "/");
         };
     }

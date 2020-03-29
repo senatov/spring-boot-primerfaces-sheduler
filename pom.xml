@@ -5,7 +5,7 @@
     <groupId>de.senatov</groupId>
     <artifactId>room-reservation</artifactId>
     <version>0.0.4</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>room-reservation</name>
     <description>Example JSF/ PrimeFaces Example using Spring Boot and Maven from:</description>
 
