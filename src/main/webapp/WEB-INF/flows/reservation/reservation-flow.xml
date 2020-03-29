@@ -3,15 +3,17 @@
       xmlns="http://www.springframework.org/schema/webflow"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
+    <view-state id="login" view="../../login.xhtml">
+        <transition on="auth" to="userOrAdmin"/>
+    </view-state>
+
     <decision-state id="userOrAdmin">
         <if test="userAuthenticationProviderService.isAuth(currentUser)" then="scheduler" else="back"/>
     </decision-state>
 
-
     <view-state id="scheduler" view="../../scheduler.xhtml">
         <transition on="new" to="create">
         </transition>
-
         <transition on="info" to="create">
         </transition>
     </view-state>
