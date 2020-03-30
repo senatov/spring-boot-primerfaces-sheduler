@@ -14,7 +14,10 @@ import static java.util.Optional.of;
 import static org.slf4j.LoggerFactory.getLogger;
 
 
-
+/**
+ * @author Iakov Senatov
+ * @since 03.2020
+ */
 @Configuration
 public class LoggingConfiguration {
 

@@ -54,7 +54,7 @@ public class SpringBootAppMain implements CommandLineRunner {
                 .forEach(o ->
                 {
                     String count = valueOf(atomicInteger.getAndDecrement());
-                    LOG.debug(format(FORMAT1, count, o));
+                    LOG.debug(format(SpringBootAppMain.FORMAT1, count, o));
                 });
     }
 
@@ -63,7 +63,7 @@ public class SpringBootAppMain implements CommandLineRunner {
     @Bean
     public ServletRegistrationBean<FacesServlet> facesServletRegistraiton() {
 
-        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new FacesServlet(), "/ui/*");
+        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
         servletRegistrationBean.setLoadOnStartup(1);
         return servletRegistrationBean;
     }
@@ -81,6 +81,7 @@ public class SpringBootAppMain implements CommandLineRunner {
             sc.setInitParameter("com.sun.faces.forceLoadConfiguration", TRUE.toString());
             sc.setInitParameter("facelets.DEVELOPMENT", TRUE.toString());
             sc.setInitParameter("javax.faces.DEFAULT_SUFFIX", ".xhtml");
+            sc.setInitParameter("javax.faces.FACELETS_LIBRARIES", "/WEB-INF/conf/springsecurity.taglib.xml");
             sc.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
             sc.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", FALSE.toString());
             sc.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", TRUE.toString());
@@ -89,8 +90,7 @@ public class SpringBootAppMain implements CommandLineRunner {
             sc.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", TRUE.toString());
             sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
             sc.setInitParameter("primefaces.THEME", "bootstrap");
-            sc.setInitParameter("javax.faces.FACELETS_LIBRARIES", "/WEB-INF/springsecurity.taglib.xml");
-            sc.setInitParameter("springFlowApplication", "/");
+            //sc.setInitParameter("springFlowApplication", "/");
         };
     }
 

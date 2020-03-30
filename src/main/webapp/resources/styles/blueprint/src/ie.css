@@ -36,7 +36,7 @@ body {
 
 /* Fixes incorrect styling of legend in IE6. */
 * html legend {
-    margin: 0px -8px 16px 0;
+    margin: 0 -8px 16px 0;
     padding: 0;
 }
 

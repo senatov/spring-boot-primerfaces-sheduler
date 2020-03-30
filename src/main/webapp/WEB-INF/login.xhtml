@@ -3,14 +3,6 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:c="http://java.sun.com/jsp/jstl/core"
                 template="layouts/standard.xhtml">
-    <ui:define name="notes">
-        <p>
-            Form-based authentication with Spring Security.
-            Spring Security is first enabled in web.xml via DelegatingFilterProxy.
-            It's configuration is located in <strong>security-config.xml</strong>.
-            Flow definitions can further be protected using the secured attribute (see <strong>booking-flow.xml</strong>).
-        </p>
-    </ui:define>
     <ui:define name="content">
         <div class="span-5">
             <p>Valid username/passwords are:</p>
@@ -25,13 +17,13 @@
                     Your login attempt was not successful, try again.
                 </div>
             </c:if>
-            <form name="f" action="/ui/loginProcess" method="post">
+            <form name="f" action="${pageContext.request.contextPath}loginProcess" method="post">
                 <fieldset>
                     <legend>Login Information</legend>
                     <p>
                         User:
                         <br/>
-                        <input type="text" name="username" value="#{username}"/>
+                        <input name="username" value="#{user.username}"/>
                     </p>
                     <p>
                         Password:
@@ -40,7 +32,7 @@
                     </p>
                     <p>
                         <input type="checkbox" name="_spring_security_remember_me"/>
-                        Don't ask for my password for two weeks:
+                        Don't ask me the password for 1 week:
                     </p>
                     <div>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

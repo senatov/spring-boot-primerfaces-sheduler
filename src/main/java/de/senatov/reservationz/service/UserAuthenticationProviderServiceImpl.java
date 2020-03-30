@@ -28,14 +28,14 @@ public class UserAuthenticationProviderServiceImpl implements UserAuthentication
 
     public AuthenticationManager getAuthenticationManager() {
 
-        return this.authenticationManager;
+        return authenticationManager;
     }
 
 
 
-    public void setAuthenticationManager(AuthenticationManager authenticationManager) {
+    public void setAuthenticationManager(AuthenticationManager manager) {
 
-        this.authenticationManager = authenticationManager;
+        authenticationManager = manager;
     }
 
 
@@ -45,7 +45,7 @@ public class UserAuthenticationProviderServiceImpl implements UserAuthentication
 
         try {
             Authentication request = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
-            Authentication result = this.authenticationManager.authenticate(request);
+            Authentication result = authenticationManager.authenticate(request);
             SecurityContextHolder.getContext().setAuthentication(result);
             return true;
         }

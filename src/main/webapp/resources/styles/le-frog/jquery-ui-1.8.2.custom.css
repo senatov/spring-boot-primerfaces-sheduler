@@ -1036,7 +1036,7 @@
 
 .ui-widget-shadow {
     margin: 4px 0 0 4px;
-    padding: 0px;
+    padding: 0;
     background: #aaaaaa url(images/ui-bg_diagonals-small_0_aaaaaa_40x40.png) 50% 50% repeat;
     opacity: .30;
     filter: Alpha(Opacity=30);
