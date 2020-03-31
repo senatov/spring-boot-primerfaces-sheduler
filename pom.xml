@@ -5,14 +5,14 @@
     <groupId>de.senatov</groupId>
     <artifactId>room-reservation</artifactId>
     <version>0.0.4</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <name>room-reservation</name>
-    <description>Example JSF/ PrimeFaces Example using Spring Boot and Maven from:</description>
+    <description>Example: JPA/Hibernate, JDK 14, Spring Boot 2.2.6, Primefaces 7,Spring Security</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.5.RELEASE</version>
+        <version>2.2.6.RELEASE</version>
         <relativePath/>
     </parent>
 
@@ -20,7 +20,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-webflow.version>2.5.1.RELEASE</spring-webflow.version>
-        <spring-boot-admin.version>2.2.2</spring-boot-admin.version>
         <java.version>14</java.version>
     </properties>
 
@@ -33,6 +32,11 @@
     </pluginRepositories>
 
     <repositories>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <name>Sonatype Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
         <repository>
             <id>repo1.maven.org</id>
             <url>https://repo1.maven.org/maven2/</url>
@@ -66,20 +70,26 @@
             <url>http://repository.primefaces.org</url>
         </repository>
     </repositories>
-
     <developers>
         <developer>
             <id>isenatov</id>
-            <name>Iakov Senatov</name>
+            <organizationUrl>https://www.xing.com/profile/Iakov_Senatov/cv</organizationUrl>
             <email>javaentwickler@gmail.com</email>
+            <name>Iakov Senatov</name>
             <roles>
-                <role>developer</role>
+                <role>Developer</role>
             </roles>
         </developer>
     </developers>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>2.2.6.RELEASE</version>
+                <optional>true</optional>
+            </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -133,7 +143,7 @@
             <dependency>
                 <groupId>org.hibernate.validator</groupId>
                 <artifactId>hibernate-validator</artifactId>
-                <version>6.0.18.Final</version>
+                <version>[6.0.18,)</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish</groupId>
@@ -158,7 +168,7 @@
             <dependency>
                 <groupId>javax.enterprise</groupId>
                 <artifactId>cdi-api</artifactId>
-                <version>1.2</version>
+                <version>2.0.SP1</version>
             </dependency>
             <dependency>
                 <groupId>javax.annotation</groupId>
@@ -207,16 +217,9 @@
                 <version>3.26.0-GA</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-devtools</artifactId>
-                <scope>runtime</scope>
-                <optional>true</optional>
-                <version>2.2.5.RELEASE</version>
-            </dependency>
-            <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>${spring-boot-admin.version}</version>
+                <version>2.2.2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -240,6 +243,10 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.sun.el</groupId>
             <artifactId>el-ri</artifactId>
@@ -267,10 +274,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
@@ -450,13 +453,40 @@
 
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.0.0</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                    <prefix>git</prefix>
+                    <verbose>false</verbose>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                    <format>json</format>
+                    <gitDescribe>
+                        <skip>false</skip>
+                        <always>false</always>
+                        <dirty>-dirty</dirty>
+                    </gitDescribe>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>14</source>
-                    <target>14</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
 
@@ -465,6 +495,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <excludeDevtools>false</excludeDevtools>
+                    <addResources>true</addResources>
                 </configuration>
             </plugin>
             <plugin>
@@ -483,6 +514,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <goals>
+                    <goal>integration-test</goal>
+                    <goal>verify</goal>
+                </goals>
                 <configuration>
                     <argLine>--enable-preview</argLine>
                 </configuration>
@@ -523,4 +558,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
