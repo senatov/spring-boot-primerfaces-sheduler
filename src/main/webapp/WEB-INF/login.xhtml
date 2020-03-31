@@ -4,7 +4,8 @@
                 xmlns:c="http://java.sun.com/jsp/jstl/core"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core">
     <ui:define name="notes">
         <!-- notes here -->
     </ui:define>
@@ -27,22 +28,23 @@
             <form name="f" action="${request.contextPath}/spring/loginProcess" method="post"
                   style="width: 400px; border:#b4d100 ;margin-bottom:40px;margin-left: 300px;margin-top: 40px;">
                 <fieldset>
-                    <legend>Login Information</legend>
-                    <p>
-
-                        User:
-                        <br/>
-                        <label>
-                            <input type="text" name="username" value="#{username}"/>
-                        </label>
-                    </p>
-                    <p>
-                        Password:
-                        <br/>
-                        <label>
-                            <input type="password" name="password"/>
-                        </label>
-                    </p>
+                    <p:dialog header="Login" widgetVar="loginDialog"
+                              position="center,center"
+                              resizable="false"
+                              showEffect="fade"
+                              hideEffect="explode"
+                              modal="false">
+                        <h:panelGrid columns="2" cellpadding="5" header="Login">
+                            <h:outputLabel for="username" value="Username:"/>
+                            <p:inputText id="username" value="#{username}" required="true" placeholder="user" label="username"/>
+                            <h:outputLabel for="password" value="Password:"/>
+                            <p:password id="password" value="#{password}" required="true" placeholder="aaa" label="password"/>
+                            <f:facet name="footer">
+                                <p:commandButton value="Login" style="animation-fill-mode:initial" action="#{userLoginView.login}"
+                                                 oncomplete="handleLoginRequest(xhr, status, args)"/>
+                            </f:facet>
+                        </h:panelGrid>
+                    </p:dialog>
                     <p>
                         <label>
                             <input type="checkbox" name="_spring_security_remember_me"/>
