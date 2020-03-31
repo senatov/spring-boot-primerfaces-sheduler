@@ -11,10 +11,10 @@
     <ui:define name="content">
         <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
         <p:panel id="basic" header="Valid username/passwords are:"
-                 style="width: 300px ;border:#b4d100 ;margin-bottom:40px;margin-left: 200px;margin-top: 40px; background: #e1e4d0;alignment: center">
-            <h:panelGrid columns="2" cellpadding="2">
-                <p:column>"user / aaa"</p:column>
-                <p:column>admin/ aaa</p:column>
+                 style="width: 400px ;border:#35414f ;margin-bottom:40px;margin-left: 300px;margin-top: 40px; background: #e1e4d0;alignment: center">
+            <h:panelGrid columns="1" cellpadding="3">
+                <p:column>login: user pwd: aaa</p:column>
+                <p:column>login: admin pwd: aaa</p:column>
             </h:panelGrid>
         </p:panel>
 
@@ -25,10 +25,11 @@
                 </div>
             </c:if>
             <form name="f" action="${request.contextPath}/spring/loginProcess" method="post"
-                  style="width: 300px; border:#b4d100 ;margin-bottom:40px;margin-left: 200px;margin-top: 40px;">
+                  style="width: 400px; border:#b4d100 ;margin-bottom:40px;margin-left: 300px;margin-top: 40px;">
                 <fieldset>
                     <legend>Login Information</legend>
                     <p>
+
                         User:
                         <br/>
                         <label>
