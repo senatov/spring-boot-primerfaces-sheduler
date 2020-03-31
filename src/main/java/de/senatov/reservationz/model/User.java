@@ -2,13 +2,7 @@ package de.senatov.reservationz.model;
 
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -18,6 +12,10 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 
 
+/**
+ * @author Iakov Senatov
+ * @since 03.2020
+ */
 @Entity
 @Table(name = "user", schema = "scheduler")
 public class User implements Serializable {

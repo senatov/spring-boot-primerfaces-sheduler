@@ -14,7 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+/**
+ * @author Iakov Senatov
+ * @since 03.2020
+ */
 @Component
 @ViewScoped
 public class UserView implements Serializable {

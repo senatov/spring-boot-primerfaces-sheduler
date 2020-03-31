@@ -18,7 +18,10 @@ import org.springframework.webflow.mvc.servlet.FlowHandlerMapping;
 import org.springframework.webflow.security.SecurityFlowExecutionListener;
 
 
-
+/**
+ * @author Iakov Senatov
+ * @since 03.2020
+ */
 @Configuration
 public class WebFlowConfig extends AbstractFacesFlowConfiguration {
 
@@ -29,7 +32,7 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     @Autowired
     public WebFlowConfig(Logger logger) {
 
-        this.LOG = logger;
+        LOG = logger;
     }
 
 

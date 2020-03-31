@@ -11,7 +11,10 @@ import org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 
-
+/**
+ * @author Iakov Senatov
+ * @since 03.2020
+ */
 @Configuration
 public class WebMvcConfig {
 
