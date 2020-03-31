@@ -51,7 +51,7 @@ public class SpringBootAppMain implements CommandLineRunner {
                 .forEach(o ->
                 {
                     String count = valueOf(atomicInteger.getAndDecrement());
-                    LOG.debug(format(SpringBootAppMain.FORMAT1, count, o));
+                    LOG.debug(format(FORMAT1, count, o));
                 });
     }
 

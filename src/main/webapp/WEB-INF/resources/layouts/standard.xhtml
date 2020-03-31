@@ -5,30 +5,44 @@
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
 >
+<!--
+								HEADER
+-->
 <f:view contentType="text/html">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<title>Room reservation</title>
 		<link rel="stylesheet" href="${request.contextPath}/app/resources/styles/blueprint/screen.css" type="text/css" media="screen, projection"/>
 		<link rel="stylesheet" href="${request.contextPath}/app/resources/styles/blueprint/print.css" type="text/css" media="print"/>
-		<!--[if lt IE 8]>
-            <link rel="stylesheet" href="${request.servletPath}/styles/blueprint/ie.css" type="text/css" media="screen, projection" />
-        <![endif]-->
 		<ui:insert name="headIncludes"/>
+		<f:facet name="first">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+			<meta name="apple-mobile-web-app-capable" content="yes"/>
+			<link rel='icon' href='https://assets.msn.com/statics/icons/ntp-favicon.png' type='image/png' crossorigin='anonymous' sizes='32x32'/>
+			<link type="text/css" rel="stylesheet" href="https://dhx0ny5rxatah.cloudfront.net/lightsail-assets-Prod/styles.f11b16365323f332e738.css"/>
+		</f:facet>
 	</h:head>
+	<!--
+								BODY
+    -->
 	<h:body>
 		<div class="container" style="align-self: auto">
 			<div>
 				<h1>login page</h1>
 				<h3 class="ui-front">
+					<!-- title -->
 					<ui:insert name="title"/>
 				</h3>
 				<hr/>
 			</div>
 			<div>
+				<!-- notes -->
 				<ui:insert name="notes"/>
 			</div>
 			<div>
+				<!-- content -->
 				<ui:insert name="content"/>
 			</div>
 		</div>
