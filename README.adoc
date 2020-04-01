@@ -9,17 +9,17 @@ copyleft _`Iakov Senatov 02.2020.`_
 |Libs | Ver
 
 |Spring Boot
-|2.2.5
+|2.2.6
 |Primefaces
 
 |7.0.
 |JSF
-|Mojarra 2.3.9
+|Mojarra 2.4.0
 
 |Spring Web Flow
 |2.5.1.RELEASE
 |JSE
-|13
+|14
 
 |===
 
@@ -29,15 +29,14 @@ implementation of Basis Primefaces Scheduler Projects:
 
 3) paths:
 
-
 |===
 |*path are:* | *description* |*remarks*
 
-|http://localhost:18080/ui/person
+|http://localhost:18080/spring/person
 | common programm test (DB connect, Boot, JSB connet)
 | helpful on refactoring and pom version changing
 
-|http://localhost:18080/ui/reservation
+|http://localhost:18080/spring/reservation
 |call _standard_ Schedule example of Primerfaces Schedule (w/o DB-connect)
 | *
 |===
