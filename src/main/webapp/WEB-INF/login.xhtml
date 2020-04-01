@@ -12,8 +12,8 @@
     <ui:define name="content">
         <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
         <p:panel id="basic" header="Valid username/passwords are:"
-                 style="width: 400px ;border:#35414f ;margin-bottom:40px;margin-left: 300px;margin-top: 40px; background: #e1e4d0;alignment: center">
-            <h:panelGrid columns="1" cellpadding="3">
+                 style="width: 400px ;border:#b4d100 ;margin-bottom:40px;margin-left: 40%;margin-top: 20%; background: aliceblue;alignment: center">
+            <h:panelGrid columns="1" cellpadding="3" styleClass="flexBox">
                 <p:column>login: user pwd: aaa</p:column>
                 <p:column>login: admin pwd: aaa</p:column>
             </h:panelGrid>
@@ -25,8 +25,11 @@
                     Your login attempt was not successful, try again.
                 </div>
             </c:if>
-            <form name="f" action="${request.contextPath}/spring/loginProcess" method="post"
-                  style="width: 400px; border:#b4d100 ;margin-bottom:40px;margin-left: 300px;margin-top: 40px;">
+            <!--
+                        Auth. dialog
+            -->
+            <form name="f" action="/spring/loginProcess" method="post"
+                  style="width: 400px; border:#b4d100 ;margin-top:2%;margin-left: 40%;">
                 <fieldset>
                     <p:dialog header="Login" widgetVar="loginDialog"
                               position="center,center"
@@ -39,17 +42,16 @@
                             <p:inputText id="username" value="#{username}" required="true" placeholder="user" label="username"/>
                             <h:outputLabel for="password" value="Password:"/>
                             <p:password id="password" value="#{password}" required="true" placeholder="aaa" label="password"/>
-                            <f:facet name="footer">
-                                <p:commandButton value="Login" style="animation-fill-mode:initial" action="#{userLoginView.login}"
-                                                 oncomplete="handleLoginRequest(xhr, status, args)"/>
-                            </f:facet>
                         </h:panelGrid>
                     </p:dialog>
+                    <!--
+                                check box
+                    -->
                     <p>
                         <label>
                             <input type="checkbox" name="_spring_security_remember_me"/>
                         </label>
-                        Don't ask for my password for two weeks:
+                        Don't ask for my password for 7 days:
                     </p>
                     <div>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -57,6 +59,13 @@
                     <p>
                         <input name="submit" type="submit" value="Login"/>
                     </p>
+                    <!--
+                                login button
+                    -->
+                    <f:facet name="footer">
+                        <p:commandButton value="Login" styleClass="ui-widget" action="#{userLoginView.login}"
+                                         oncomplete="handleLoginRequest(xhr, status, args)"/>
+                    </f:facet>
                 </fieldset>
             </form>
         </div>

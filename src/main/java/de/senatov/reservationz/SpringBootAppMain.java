@@ -3,6 +3,7 @@ package de.senatov.reservationz;
 
 
 import com.sun.faces.config.ConfigureListener;
+import lombok.ToString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import static java.lang.String.valueOf;
 
 
 
+@ToString
 @SpringBootApplication
 public class SpringBootAppMain implements CommandLineRunner {
 
@@ -35,7 +37,7 @@ public class SpringBootAppMain implements CommandLineRunner {
 
 
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
 
         SpringApplication.run(SpringBootAppMain.class, args);
     }
@@ -48,8 +50,7 @@ public class SpringBootAppMain implements CommandLineRunner {
         AtomicInteger atomicInteger = new AtomicInteger(1);
         Arrays.stream(appContext.getBeanDefinitionNames()) //
                 .sorted()//
-                .forEach(o ->
-                {
+                .forEach(o -> {
                     String count = valueOf(atomicInteger.getAndDecrement());
                     LOG.debug(format(FORMAT1, count, o));
                 });

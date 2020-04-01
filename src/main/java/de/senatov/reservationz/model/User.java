@@ -2,13 +2,12 @@ package de.senatov.reservationz.model;
 
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
-
-import static org.apache.commons.lang3.StringUtils.EMPTY;
 
 
 
@@ -16,6 +15,7 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
  * @author Iakov Senatov
  * @since 03.2020
  */
+@Data
 @Entity
 @Table(name = "user", schema = "scheduler")
 public class User implements Serializable {
@@ -37,114 +37,4 @@ public class User implements Serializable {
     private String password;
     @ManyToMany
     private Set<Role> roles;
-
-
-
-    public User() {
-
-        firstName = EMPTY;
-        lastName = EMPTY;
-        username = EMPTY;
-        eMail = EMPTY;
-        roles = new HashSet<>();
-    }
-
-
-
-    public Long getId() {
-
-        return id;
-    }
-
-
-
-    public void setId(Long id) {
-
-        this.id = id;
-    }
-
-
-
-    public String getUserName() {
-
-        return username;
-    }
-
-
-
-    public void setUserName(String pUserName) {
-
-        username = pUserName;
-    }
-
-
-
-    public String getFirstName() {
-
-        return firstName;
-    }
-
-
-
-    public void setFirstName(String pFirstName) {
-
-        firstName = pFirstName;
-    }
-
-
-
-    public String getLastName() {
-
-        return lastName;
-    }
-
-
-
-    public void setLastName(String pLastName) {
-
-        lastName = pLastName;
-    }
-
-
-
-    public String geteMail() {
-
-        return eMail;
-    }
-
-
-
-    public void seteMail(String pEMail) {
-
-        eMail = pEMail;
-    }
-
-
-
-    public String getPassword() {
-
-        return password;
-    }
-
-
-
-    public void setPassword(String pPassword) {
-
-        password = pPassword;
-    }
-
-
-
-    public Set<Role> getRoles() {
-
-        return roles;
-    }
-
-
-
-    public void setRoles(Set<Role> pRoles) {
-
-        roles = pRoles;
-    }
-
 }

@@ -12,12 +12,13 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>PF Scheduler</title>
-        <link rel="stylesheet" href="${request.contextPath}/styles/blueprint/screen.css" type="text/css" media="screen, projection"/>
-        <link rel="stylesheet" href="${request.contextPath}/styles/blueprint/print.css" type="text/css" media="print"/>
+        <link rel="stylesheet" href="../static/css/blueprint/screen.css" type="text/css" media="screen, projection"/>
+        <link rel="stylesheet" href="../static/css/blueprint/print.css" type="text/css" media="print"/>
         <!--[if lt IE 8]>
             <link rel="stylesheet" href="${request.contextPath}/styles/blueprint/ie.css" type="text/css" media="screen, projection" />
         <![endif]-->
-        <link rel="stylesheet" href="${request.contextPath}/styles/le-frog/jquery-ui-1.8.2.custom.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="../static/css/le-frog/jquery-ui-1.8.2.custom.css" type="text/css" media="screen"/>
+        <link rel="shortcut icon" type="image/png" href="../static/images/favicon.png"/>
         <ui:insert name="headIncludes"/>
         <style>
             <!--
@@ -33,20 +34,20 @@
             <div>
                 <h4 class="alt bottom">
                     <c:if test="${not empty currentUser.name}">
-                        <form name="f" action="${request.contextPath}/spring/logout" method="post">
+                        <form name="f" action="/spring/logout" method="post">
                             <div><input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/></div>
                             Welcome, ${currentUser.name}
                             <input name="submit" type="submit" value="Logout"/>
                         </form>
                     </c:if>
                     <c:if test="${empty currentUser.name}">
-                        <a href="${request.contextPath}/spring/login">Login</a>
+                        <a href="/spring/login">Login</a>
                     </c:if>
                 </h4>
             </div>
             <div>
                 <a href="#{request.contextPath}">
-                    <img src="${request.contextPath}/images/header.jpg" height="200" width="950" alt="Spring Travel"/>
+                    <img src="../static/images/header.jpg" height="200" width="950" alt="Spring Travel"/>
                 </a>
             </div>
             <hr class="space"/>
@@ -62,7 +63,7 @@
             <hr class="space"/>
             <div>
                 <a href="https://www.springframework.org">
-                    <img src="${request.contextPath}/images/powered-by-spring.png" alt="Powered by Spring"/>
+                    <img src="../static/images/powered-by-spring.png" alt="Powered by Spring"/>
                 </a>
             </div>
         </div>

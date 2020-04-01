@@ -2,6 +2,7 @@ package de.senatov.reservationz.schedu;
 
 
 
+import lombok.ToString;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
@@ -24,6 +25,7 @@ import java.util.Date;
 
 
 
+@ToString
 @ManagedBean
 @ViewScoped
 public class ScheduleView implements Serializable {

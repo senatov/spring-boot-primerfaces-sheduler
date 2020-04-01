@@ -15,7 +15,7 @@ public class SpringBootWebflowJsfApplicationTests {
 
     @Test
     public void contextLoads() {
-
+        // nothing here
     }
 
 }

@@ -3,7 +3,7 @@
       xmlns="http://www.springframework.org/schema/webflow"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
-    <view-state id="list" view="list.xhtml">
+    <view-state id="list" view="../../list.xhtml">
         <transition on="new" to="create">
         </transition>
 
@@ -11,7 +11,7 @@
         </transition>
     </view-state>
 
-    <view-state id="create" view="create.xhtml">
+    <view-state id="create" view="../../create.xhtml">
         <transition on="save" to="list"/>
     </view-state>
 

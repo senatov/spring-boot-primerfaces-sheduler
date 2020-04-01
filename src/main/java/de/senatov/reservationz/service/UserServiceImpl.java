@@ -4,19 +4,22 @@ package de.senatov.reservationz.service;
 
 import de.senatov.reservationz.auth.repository.UserRepository;
 import de.senatov.reservationz.model.User;
+import lombok.ToString;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 
+@ToString
 @Service
 public class UserServiceImpl implements UserService {
 
+    private static final long serialVersionUID = -406708061066006782L;
     @Autowired
     private final UserRepository userRepository;
     @Autowired
@@ -34,10 +37,7 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
 
         LOG.debug("getAllUsers()");
-        List<User> posts = new ArrayList<>();
-        userRepository.findAll()
-                .forEach(e -> posts.add(e));
-        return posts;
+        return userRepository.findAll().stream().collect(Collectors.toList());
     }
 
 
