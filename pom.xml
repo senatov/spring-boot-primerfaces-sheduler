@@ -157,7 +157,7 @@
             </dependency>
             <dependency>
                 <groupId>org.primefaces.themes</groupId>
-                <artifactId>bootstrap</artifactId>
+                <artifactId>all-themes</artifactId>
                 <version>1.0.10</version>
             </dependency>
             <dependency>
@@ -243,6 +243,10 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>all-themes</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -358,10 +362,6 @@
         <dependency>
             <groupId>org.primefaces.extensions</groupId>
             <artifactId>primefaces-extensions</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.primefaces.themes</groupId>
-            <artifactId>bootstrap</artifactId>
         </dependency>
         <dependency>
             <groupId>org.primefaces</groupId>

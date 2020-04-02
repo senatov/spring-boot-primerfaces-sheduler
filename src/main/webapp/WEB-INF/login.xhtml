@@ -11,13 +11,13 @@
     </ui:define>
     <ui:define name="content">
         <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
-        <p:panel id="basic" header="Valid username/passwords are:"
-                 style="width: 400px ;border:#b4d100 ;margin-bottom:40px;margin-left: 40%;margin-top: 20%; background: aliceblue;alignment: center">
-            <h:panelGrid columns="1" cellpadding="3" styleClass="flexBox">
-                <p:column>login: user pwd: aaa</p:column>
-                <p:column>login: admin pwd: aaa</p:column>
-            </h:panelGrid>
-        </p:panel>
+        <p:fieldset legend="Valid username and passwords:"
+                    style="margin-bottom:20px;width: 400px; border-color:#9cac7c;margin-bottom:40px;margin-left: 40%;margin-top: 20%; alignment: center">
+            <p:panelGrid columns="1" cellpadding="5" style="border: #35414f;alignment: center">
+                <p:outputLabel>user / aaa</p:outputLabel>
+                <p:outputLabel>admin / aaa</p:outputLabel>
+            </p:panelGrid>
+        </p:fieldset>
 
         <div class="span-10 append-2 last">
             <c:if test="${not empty param.login_error}">
