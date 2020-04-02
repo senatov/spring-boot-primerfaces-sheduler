@@ -23,7 +23,7 @@ public class WebConfigurationSupport extends WebMvcConfigurationSupport {
 
         CacheControl cacheControl = CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic();
         registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/styles/", "classpath:/images/", "classpath:/conf/", "classpath:/layouts/")
+                .addResourceLocations("classpath:/styles/", "classpath:/images/", "classpath:/conf/", "classpath:/layouts/", "classpath:/ui/")
                 .setCacheControl(cacheControl);
     }
 

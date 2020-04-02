@@ -87,7 +87,7 @@ public class SpringBootAppMain implements CommandLineRunner {
             sc.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", TRUE.toString());
             sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
             sc.setInitParameter("primefaces.THEME", "nova-light");
-            sc.setInitParameter("springFlowApplication", "/");
+            sc.setInitParameter("springFlowApplication", "/ui");
         };
     }
 

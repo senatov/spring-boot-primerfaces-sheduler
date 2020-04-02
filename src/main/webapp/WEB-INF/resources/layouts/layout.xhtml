@@ -34,14 +34,14 @@
             <div>
                 <h4 class="alt bottom">
                     <c:if test="${not empty currentUser.name}">
-                        <form name="f" action="/spring/logout" method="post">
+                        <form name="f" action="${request.contextPath}/ui/logout" method="post">
                             <div><input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/></div>
                             Welcome, ${currentUser.name}
                             <input name="submit" type="submit" value="Logout"/>
                         </form>
                     </c:if>
                     <c:if test="${empty currentUser.name}">
-                        <a href="/spring/login">Login</a>
+                        <a href="${request.contextPath}/ui/login">Login</a>
                     </c:if>
                 </h4>
             </div>
