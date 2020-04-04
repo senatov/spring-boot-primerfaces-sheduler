@@ -3,6 +3,7 @@ package de.senatov.reservationz;
 
 
 import com.sun.faces.config.ConfigureListener;
+import lombok.Cleanup;
 import lombok.ToString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +24,6 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static java.lang.String.format;
 import static java.lang.String.valueOf;
-
 
 
 @ToString
