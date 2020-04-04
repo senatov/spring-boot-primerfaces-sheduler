@@ -32,13 +32,17 @@ implementation of Basis Primefaces Scheduler Projects:
 |===
 |*path are:* | *description* |*remarks*
 
+|http://localhost:18080/ui/login
+| *Authorisation*
+| first default page.
+
 |http://localhost:18080/ui/person
-| common programm test (DB connect, Spring Boot, JSF)
-| helpful on refactoring and pom version changing
+| add person to list (will be probably deleted later)
+| works after authorisation
 
 |http://localhost:18080/ui/reservation
 |call _standard_ Schedule example of Primerfaces Schedule (w/o DB-connect)
-| *
+| works after authorisation
 |===
 
 Database: isn't significant, use any of them, what u've s. file://application.properties[application.properties]
