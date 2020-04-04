@@ -30,8 +30,8 @@ import java.util.Date;
 @ViewScoped
 public class ScheduleView implements Serializable {
 
-    private static final long serialVersionUID = 2653991725372403680L;
     public static final String MINUTE_DELTA = ", Minute delta:";
+    private static final long serialVersionUID = 2653991725372403680L;
     private ScheduleModel eventModel;
     private ScheduleEvent event = new DefaultScheduleEvent();
     @Autowired

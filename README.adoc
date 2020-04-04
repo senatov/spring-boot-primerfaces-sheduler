@@ -1,9 +1,7 @@
-
 #*spring-primefaces-scheduler*#
 
 
 copyleft _`Iakov Senatov 02.2020.`_
-
 
 |===
 |Libs | Ver
@@ -23,9 +21,9 @@ copyleft _`Iakov Senatov 02.2020.`_
 
 |===
 
+My own implementation of Basis Primefaces Scheduler Projects:
+https://www.codenotfound.com/jsf-primefaces-example-spring-boot-maven.html[jsf2 primefaces spring boot webflow maven]
 
-implementation of Basis Primefaces Scheduler Projects:
- [#spring-primefaces-scheduler#] based  https://www.codenotfound.com/jsf-primefaces-example-spring-boot-maven.html[on this project]
 
 3) paths:
 

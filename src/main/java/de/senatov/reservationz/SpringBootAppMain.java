@@ -26,6 +26,7 @@ import static java.lang.String.format;
 import static java.lang.String.valueOf;
 
 
+
 @ToString
 @SpringBootApplication
 public class SpringBootAppMain implements CommandLineRunner {
@@ -34,7 +35,6 @@ public class SpringBootAppMain implements CommandLineRunner {
     private final Logger LOG = LoggerFactory.getLogger(SpringBootAppMain.class);
     @Autowired
     private ApplicationContext appContext;
-
 
 
     public static void main(String... args) {

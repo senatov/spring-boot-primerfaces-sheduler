@@ -27,13 +27,11 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
 
 
 
-
     @Bean
     public FlowExecutor flowExecutor() {
 
         LOG.debug("flowExecutor() ");
-        return getFlowExecutorBuilder(flowRegistry())
-                .addFlowExecutionListener(new FlowFacesContextLifecycleListener())
+        return getFlowExecutorBuilder(flowRegistry()).addFlowExecutionListener(new FlowFacesContextLifecycleListener())
                 .addFlowExecutionListener(new SecurityFlowExecutionListener())
                 .build();
     }
@@ -44,10 +42,7 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     public FlowDefinitionRegistry flowRegistry() {
 
         LOG.debug("flowRegistry() ");
-        return getFlowDefinitionRegistryBuilder(flowBuilderServices())
-                .setBasePath("/WEB-INF/flows")
-                .addFlowLocationPattern("/**/*-flow.xml")
-                .build();
+        return getFlowDefinitionRegistryBuilder(flowBuilderServices()).setBasePath("/WEB-INF/flows").addFlowLocationPattern("/**/*-flow.xml").build();
     }
 
 
@@ -56,9 +51,7 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     public FlowBuilderServices flowBuilderServices() {
 
         LOG.debug("flowBuilderServices() ");
-        return getFlowBuilderServicesBuilder()
-                .setDevelopmentMode(true)
-                .build();
+        return getFlowBuilderServicesBuilder().setDevelopmentMode(true).build();
     }
 
 }

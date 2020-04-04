@@ -23,10 +23,8 @@ public class LoggingConfiguration {
     public Logger LOG(InjectionPoint ip) {
 
         try {
-            return getLogger(of(ip.getMember()).map(Member::getDeclaringClass)
-                    .orElseThrow(IllegalArgumentException::new));
-        }
-        catch (Exception e) {
+            return getLogger(of(ip.getMember()).map(Member::getDeclaringClass).orElseThrow(IllegalArgumentException::new));
+        } catch (Exception e) {
             System.err.printf("slf4j autowired Exception occured : %s%n", e.getMessage());
             throw e;
         }

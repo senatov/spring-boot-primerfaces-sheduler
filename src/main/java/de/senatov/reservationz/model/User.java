@@ -37,4 +37,5 @@ public class User implements Serializable {
     private String password;
     @ManyToMany
     private Set<Role> roles;
+
 }
