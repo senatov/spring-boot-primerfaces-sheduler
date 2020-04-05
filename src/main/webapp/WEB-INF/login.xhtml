@@ -39,9 +39,9 @@
                               modal="false">
                         <h:panelGrid columns="2" cellpadding="5" header="Login">
                             <h:outputLabel for="username" value="Username:"/>
-                            <p:inputText id="username" value="#{username}" required="true" placeholder="user" label="username"/>
+                            <p:inputText id="username" value="#{user.username}" required="true" placeholder="user" label="username"/>
                             <h:outputLabel for="password" value="Password:"/>
-                            <p:password id="password" value="#{password}" required="true" placeholder="aaa" label="password"/>
+                            <p:password id="password" value="#{user.password}" required="true" placeholder="aaa" label="password"/>
                         </h:panelGrid>
                     </p:dialog>
                     <!--
