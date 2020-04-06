@@ -20,18 +20,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.formLogin()
+        http
+                .formLogin()
                 .loginPage("/ui/login")
                 .loginProcessingUrl("/ui/loginProcess")
-                .defaultSuccessUrl("/ui/main")
-                .failureUrl("/ui/login?login_error=1")
+                .defaultSuccessUrl("/ui/reservation")
+                .failureUrl("/ui/login?login_error=true")
                 .and()
                 .logout()
                 .logoutUrl("/ui/logout")
                 .logoutSuccessUrl("/ui/logoutSuccess")
                 .and()
                 .requestCache()
-                .requestCache(new HttpSessionRequestCache());
+                .requestCache(new HttpSessionRequestCache())
+        ;
     }
 
 
@@ -41,11 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.inMemoryAuthentication()
                 .withUser("admin")
-                .password("aaa")
+                .password("{noop}aaa")
                 .roles("USER", "SUPERVISOR")
                 .and()
                 .withUser("user")
-                .password("aaa")
+                .password("{noop}aaa")
                 .roles("USER", "SUPERVISOR");
     }
 
