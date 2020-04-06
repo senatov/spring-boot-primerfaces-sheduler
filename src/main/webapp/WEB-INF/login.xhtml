@@ -12,14 +12,16 @@
         <!--
         notes here
         -->
-        <p:spacer style="border-color: blue;background-color: darkseagreen" width="100" height="10"/>
-        <sec:authorize access="hasRole('ROLE_USER')">
-            <p:outputLabel value="USER role is on "/>
-        </sec:authorize>
-        <p:spacer style="border-color: blue;background-color: aquamarine" width="100" height="10"/>
-        <sec:authorize access="hasRole('ROLE_ADMIN')">
-            <p:outputLabel value=" ADMIN role is on"/>
-        </sec:authorize>
+        <p:dialog>
+            <sec:authorize access="hasRole('ROLE_USER')">
+                <p:outputLabel value="USER role is on "/>
+            </sec:authorize>
+        </p:dialog>
+        <p:dialog>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <p:outputLabel value=" ADMIN role is on"/>
+            </sec:authorize>
+        </p:dialog>
     </ui:define>
     <!--
     content
@@ -45,7 +47,7 @@
             -->
             <form name="f" action="${request.contextPath}/ui/loginProcess" method="post"
                   style="width: 400px; border:#b4d100 ;margin-top:2%;margin-left: 40%;">
-                <p:fieldset legend="Login" style="border-color: blue">
+                <fieldset title="Login">
                     <p:dialog widgetVar="loginDialog"
                               position="center,center"
                               resizable="false"
@@ -81,7 +83,7 @@
                         <p:commandButton value="Login" styleClass="ui-widget" action="#{userLoginView.login}"
                                          oncomplete="handleLoginRequest(xhr, status, args)"/>
                     </f:facet>
-                </p:fieldset>
+                </fieldset>
             </form>
         </div>
     </ui:define>

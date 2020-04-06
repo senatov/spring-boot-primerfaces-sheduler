@@ -42,10 +42,7 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     public FlowDefinitionRegistry flowRegistry() {
 
         LOG.debug("flowRegistry() ");
-        return getFlowDefinitionRegistryBuilder(flowBuilderServices())
-                .setBasePath("/WEB-INF/flows")
-                .addFlowLocationPattern("/**/*-flow.xml")
-                .build();
+        return getFlowDefinitionRegistryBuilder(flowBuilderServices()).setBasePath("/WEB-INF/flows").addFlowLocationPattern("/**/*-flow.xml").build();
     }
 
 
