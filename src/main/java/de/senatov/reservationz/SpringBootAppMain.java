@@ -77,6 +77,7 @@ public class SpringBootAppMain implements CommandLineRunner {
             sc.setInitParameter("com.sun.faces.expressionFactory", "org.apache.el.ExpressionFactoryImpl");
             sc.setInitParameter("com.sun.faces.forceLoadConfiguration", TRUE.toString());
             sc.setInitParameter("facelets.DEVELOPMENT", TRUE.toString());
+            //sc.setInitParameter("javax.faces.FACELETS_LIBRARIES", "/WEB-INF/springsecurity.taglib.xml");
             sc.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
             sc.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", FALSE.toString());
             sc.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", TRUE.toString());

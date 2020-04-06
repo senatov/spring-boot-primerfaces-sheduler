@@ -12,21 +12,20 @@
         <!--
         notes here
         -->
-        <div class="historyNoteColumn">
-            <h:dataTable>
-                <p:row>
-                    <sec:authorize access="hasRole('ROLE_USER')">
-                        <p:outputLabel value="USER role"/>
-                    </sec:authorize>
-                </p:row>
-                <p:row>
-                    <sec:authorize access="hasRole('ROLE_ADMIN')">
-                        <p:outputLabel value="ADMIN role"/>
-                    </sec:authorize>
-                </p:row>
-            </h:dataTable>
-        </div>
+        <p:dialog>
+            <sec:authorize access="hasRole('ROLE_USER')">
+                <p:outputLabel value="USER role is on "/>
+            </sec:authorize>
+        </p:dialog>
+        <p:dialog>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <p:outputLabel value=" ADMIN role is on"/>
+            </sec:authorize>
+        </p:dialog>
     </ui:define>
+    <!--
+    content
+    -->
     <ui:define name="content">
         <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
         <p:fieldset legend="Valid username and passwords:"
@@ -48,8 +47,8 @@
             -->
             <form name="f" action="${request.contextPath}/ui/loginProcess" method="post"
                   style="width: 400px; border:#b4d100 ;margin-top:2%;margin-left: 40%;">
-                <fieldset>
-                    <p:dialog header="Login" widgetVar="loginDialog"
+                <fieldset title="Login">
+                    <p:dialog widgetVar="loginDialog"
                               position="center,center"
                               resizable="false"
                               showEffect="fade"
