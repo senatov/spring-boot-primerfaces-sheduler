@@ -1,24 +1,30 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                template="resources/layouts/standard.xhtml"
+                template="layouts/standard.xhtml"
                 xmlns:c="http://java.sun.com/jsp/jstl/core"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:sec="http://www.springframework.org/security/tags"
->
+                xmlns:sec="http://www.springframework.org/security/tags">
+
     <ui:define name="notes">
         <!--
         notes here
         -->
-        <div class="authorization-div">
-            <sec:authorize access="hasRole('ROLE_USER')">
-                <p:outputLabel value="You have the USER role"/>
-            </sec:authorize>
-            <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <p:outputLabel value="You have the ADMIN role"/>
-            </sec:authorize>
+        <div class="historyNoteColumn">
+            <h:dataTable>
+                <p:row>
+                    <sec:authorize access="hasRole('ROLE_USER')">
+                        <p:outputLabel value="USER role"/>
+                    </sec:authorize>
+                </p:row>
+                <p:row>
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+                        <p:outputLabel value="ADMIN role"/>
+                    </sec:authorize>
+                </p:row>
+            </h:dataTable>
         </div>
     </ui:define>
     <ui:define name="content">

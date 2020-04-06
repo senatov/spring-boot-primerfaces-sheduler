@@ -15,7 +15,7 @@ a:hover {
 
 input[type=submit] {
     color: #fff;
-    background: #fff url(../images/btn.bg.gif) 0 0 repeat-x;
+    background: #fff url(../../images/btn.bg.gif) 0 0 repeat-x;
     border-style: none;
     margin: 0.4em 0.4em 0.4em 0;
     height: 1.8em;
@@ -23,7 +23,7 @@ input[type=submit] {
 
 input[type=submit]:hover {
     color: yellow;
-    background: #fff url(../images/btn.bg.gif) 0 0 repeat-x;
+    background: #fff url(../../images/btn.bg.gif) 0 0 repeat-x;
     border-style: none;
 }
 
@@ -39,7 +39,7 @@ label {
 
 .summary thead th {
     border-left: 1px solid #414f23;
-    background: #fff url(../images/th.bg.gif) 0 100% repeat-x;
+    background: #fff url(../../images/th.bg.gif) 0 100% repeat-x;
     border-bottom: 1px solid #414f23;
     padding: 6px;
     text-align: left;

@@ -24,7 +24,8 @@ public class LoggingConfiguration {
 
         try {
             return getLogger(of(ip.getMember()).map(Member::getDeclaringClass).orElseThrow(IllegalArgumentException::new));
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.err.printf("slf4j autowired Exception occured : %s%n", e.getMessage());
             throw e;
         }
