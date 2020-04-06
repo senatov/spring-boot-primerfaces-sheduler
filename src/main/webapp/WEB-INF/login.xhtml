@@ -5,9 +5,21 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:f="http://java.sun.com/jsf/core">
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:sec="http://www.springframework.org/security/tags"
+>
     <ui:define name="notes">
-        <!-- notes here -->
+        <!--
+        notes here
+        -->
+        <div class="authorization-div">
+            <sec:authorize access="hasRole('ROLE_USER')">
+                <p:outputLabel value="You have the USER role"/>
+            </sec:authorize>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <p:outputLabel value="You have the ADMIN role"/>
+            </sec:authorize>
+        </div>
     </ui:define>
     <ui:define name="content">
         <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
