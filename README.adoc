@@ -43,10 +43,10 @@ https://www.codenotfound.com/jsf-primefaces-example-spring-boot-maven.html[jsf2 
 | works after authorisation
 |===
 
-Database: isn't significant, use any of them, what u've s. file://application.properties[application.properties]
+**Database: **isn't significant, use any of them, what u've s. file://application.properties[application.properties]
 for the DB connection info and create own!
 It's simple.
 
 mailto://javaentwickler@gmail.com[EMail]
 
-Live Demo: (will be continued)
+*Live Demo:* _(will be continued)_
