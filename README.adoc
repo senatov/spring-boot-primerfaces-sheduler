@@ -49,6 +49,4 @@ It's simple.
 
 mailto://javaentwickler@gmail.com[EMail]
 
-Live Demo will be published under: https://3.126.231.233:9091/demo1[https://3.126.231.233:9091/demo1]...
-But later..
-
+Live Demo: (will be continued)
