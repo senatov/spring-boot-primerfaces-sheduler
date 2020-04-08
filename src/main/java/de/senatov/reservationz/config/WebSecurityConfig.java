@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 
 
+
 @ToString
 @Configuration
 @EnableWebSecurity(debug = true)
@@ -21,11 +22,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/login*").hasRole("USER")
+                .antMatchers("/login**", "/login/javax.faces.resources/**")
+                .hasRole("USER")
+                .anyRequest()
+                .authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/loginProcess")
                 .permitAll()
                 .defaultSuccessUrl("/reservation")
                 .failureUrl("/login?login_error=1")
