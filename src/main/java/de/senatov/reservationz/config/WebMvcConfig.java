@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.faces.mvc.JsfView;
 import org.springframework.faces.webflow.JsfFlowHandlerAdapter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter;
 import org.springframework.web.servlet.mvc.UrlFilenameViewController;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
@@ -23,6 +24,7 @@ import org.springframework.webflow.mvc.servlet.FlowHandlerMapping;
  */
 @ToString
 @Configuration
+@EnableWebMvc
 public class WebMvcConfig {
 
     @Autowired

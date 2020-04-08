@@ -1,4 +1,4 @@
-package de.senatov.reservationz.auth.repository;
+package de.senatov.reservationz.repository;
 
 
 
