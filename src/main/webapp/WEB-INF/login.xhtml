@@ -5,7 +5,6 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:sec="http://www.springframework.org/security/tags">
 
     <ui:define name="notes">
@@ -43,8 +42,8 @@
             <!--
                         Auth. dialog
             -->
-            <form name="f" action="${request.contextPath}/ui/loginProcess" method="post"
-                  style="width: 400px; border:#b4d100 ;margin-top:2%;margin-left: 40%;">
+            <h:form name="f" style="width: 370px; border:#b4d100 ;margin-top:2%;margin-left: 40%;">
+                <p:outputLabel value="Login failed!" rendered="${!empty param['error']}"/>
                 <p:fieldset legend="Login" style="border-color: blue">
                     <p:dialog widgetVar="loginDialog"
                               position="center,center"
@@ -54,35 +53,31 @@
                               modal="false">
                         <h:panelGrid columns="2" cellpadding="5" header="Login">
                             <h:outputLabel for="username" value="Username:"/>
-                            <p:inputText id="username" value="#{user.username}" required="true" placeholder="user" label="username"/>
+                            <p:inputText id="username" value="#{authBean.username}" required="true" placeholder="Username" label="Username"/>
                             <h:outputLabel for="password" value="Password:"/>
-                            <p:password id="password" value="#{user.password}" required="true" placeholder="aaa" label="password"/>
+                            <p:password id="password" value="#{authBean.password}" required="true" placeholder="Password" label="Password"/>
                         </h:panelGrid>
                     </p:dialog>
                     <!--
                                 check box
                     -->
-                    <p>
-                        <label>
-                            <input type="checkbox" name="_spring_security_remember_me"/>
-                        </label>
-                        Don't ask for my password for 7 days:
-                    </p>
+                    <p:selectBooleanCheckbox value="#{authBean.BRememberMe}" itemLabel="Don't ask for my password for 7 days:">
+                        <p:ajax listener="#{authBean.BRememberMe}"/>
+                    </p:selectBooleanCheckbox>
                     <div>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </div>
-                    <p>
-                        <input name="submit" type="submit" value="Login"/>
-                    </p>
-                    <!--
-                                login button
-                    -->
-                    <f:facet name="footer">
-                        <p:commandButton value="Login" styleClass="ui-widget" action="#{userLoginView.login}"
-                                         oncomplete="handleLoginRequest(xhr, status, args)"/>
-                    </f:facet>
+                    <br/>
+                    <br/>
+                    <p:commandButton value="Login to Scheduler"
+                                     id="loginBtn"
+                                     action="#{userLoginView.login}"
+                                     style="animation: linear;horiz-align: center ;margin-right:50px;border-color: cadetblue;text-decoration-color: darkblue;border-image: fill"
+                                     icon="pi pi-users"
+                    />
+                    <br/>
                 </p:fieldset>
-            </form>
+            </h:form>
         </div>
     </ui:define>
 </ui:composition>

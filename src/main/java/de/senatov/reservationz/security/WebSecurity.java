@@ -1,4 +1,4 @@
-package de.senatov.reservationz.config;
+package de.senatov.reservationz.security;
 
 
 
@@ -15,7 +15,7 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 @ToString
 @Configuration
 @EnableWebSecurity(debug = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
