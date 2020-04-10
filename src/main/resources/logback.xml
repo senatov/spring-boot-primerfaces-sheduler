@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--                                                                -->
-<!--                   Iakov Senatov                                -->
+<!--           Iakov Senatov.04.2020                                -->
 <!--                                                                -->
 <configuration>
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
@@ -16,17 +16,17 @@
             <pattern>%d{dd.MM.yyyy HH:mm:ss} [%-5p] [%-15t] [%C{1}.%M (%L)]: %m%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <maxIndex>10</maxIndex>
-            <FileNamePattern>${log4j.path}/app-log.log.%i</FileNamePattern>
+            <maxIndex>3</maxIndex>
+            <FileNamePattern>/tmp/app-log.log.%i</FileNamePattern>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>10MB</MaxFileSize>
+            <MaxFileSize>5MB</MaxFileSize>
         </triggeringPolicy>
     </appender>
-    <logger name="org.springframework.webflow" level="TRACE">
+    <logger name="org.springframework.webflow" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.security" additivity="false" level="ALL">
+    <logger name="org.springframework.security" additivity="false" level="DEBUG">
         <appender-ref ref="app-log"/>
         <appender-ref ref="console"/>
     </logger>
