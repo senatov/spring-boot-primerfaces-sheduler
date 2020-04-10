@@ -26,7 +26,7 @@
     <ui:define name="content">
         <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
         <p:fieldset legend="Valid username and passwords:"
-                    style="width: 370px; border-color:#9cac7c;margin-bottom:40px;margin-left: 40%;margin-top: 20%; alignment: center">
+                    style="width: 340px; border-color:#9cac7c;margin-bottom:40px;margin-left: 40%;margin-top: 20%; alignment: center">
             <p:panelGrid columns="1" cellpadding="5" style="border: #174d87;alignment: center">
                 <p:outputLabel>user / aaa</p:outputLabel>
                 <p:outputLabel>admin / aaa</p:outputLabel>
@@ -52,10 +52,10 @@
                               hideEffect="explode"
                               modal="false">
                         <h:panelGrid columns="2" cellpadding="5" header="Login">
-                            <h:outputLabel for="username" value="Username:"/>
-                            <p:inputText id="username" value="#{authBean.username}" required="true" placeholder="Username" label="Username"/>
-                            <h:outputLabel for="password" value="Password:"/>
-                            <p:password id="password" value="#{authBean.password}" required="true" placeholder="Password" label="Password"/>
+                            <h:outputLabel for="usernameId" value="Username:"/>
+                            <p:inputText id="usernameId" value="#{username}" required="true" placeholder="Username" label="Username"/>
+                            <h:outputLabel for="passwordId" value="Password:"/>
+                            <p:password id="passwordId" value="#{password}" required="true" placeholder="Password" label="Password"/>
                         </h:panelGrid>
                     </p:dialog>
                     <!--
@@ -70,13 +70,13 @@
                     <br/>
                     <br/>
                     <p:commandButton value="Login to Scheduler"
-                                     id="loginBtn"
-                                     action="#{userLoginView.login}"
-                                     style="margin-right:50px;border-color: cadetblue;text-decoration-color: darkblue;border-image: fill"
-                                     icon="pi pi-users"
+                                     id="loginAction"
+                                     type="push"
+                                     action="/login"
+                                     style="margin-right:20px"
+                                     icon="ui-icon-check"
                                      iconPos="left"
-                                     title="Lofin to Applic"
-                                     rendered="asdfgh"
+                                     title="Login to Scheduler"
                     />
                     <br/>
                 </p:fieldset>
