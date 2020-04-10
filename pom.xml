@@ -457,6 +457,7 @@
                         <id>get-the-git-infos</id>
                         <goals>
                             <goal>revision</goal>
+                            <goal>validateRevision</goal>
                         </goals>
                     </execution>
                 </executions>

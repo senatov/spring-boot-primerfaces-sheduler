@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--                                                                -->
+<!--                   Iakov Senatov                                -->
+<!--                                                                -->
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{dd.MM.yyyy HH:mm:ss} %c [%t]%n%-5p %m%n</pattern>
+        </encoder>
+    </appender>
+    <appender name="app-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
+        <append>true</append>
+        <file>${log4j.path}/app-log.log</file>
+        <encoder>
+            <pattern>%d{dd.MM.yyyy HH:mm:ss} [%-5p] [%-15t] [%C{1}.%M (%L)]: %m%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <maxIndex>10</maxIndex>
+            <FileNamePattern>${log4j.path}/app-log.log.%i</FileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+    <logger name="org.springframework.webflow" level="TRACE">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.springframework.security" additivity="false" level="ALL">
+        <appender-ref ref="app-log"/>
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="javax.faces" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+        <appender-ref ref="app-log"/>
+    </logger>
+    <logger name="org.springframework" additivity="false" level="DEBUG">
+        <appender-ref ref="app-log"/>
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="javax.el" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+        <appender-ref ref="app-log"/>
+    </logger>
+    <logger name="com.sun.faces" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+        <appender-ref ref="app-log"/>
+    </logger>
+    <root level="DEBUG">
+        <appender-ref ref="console"/>
+        <appender-ref ref="app-log"/>
+    </root>
+</configuration>

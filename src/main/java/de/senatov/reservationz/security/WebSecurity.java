@@ -22,7 +22,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/login**", "/login/javax.faces.resources/**")
+                .antMatchers("/", "/ui/login**/**")
                 .hasRole("USER")
                 .anyRequest()
                 .authenticated()
@@ -31,7 +31,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .permitAll()
                 .defaultSuccessUrl("/reservation")
-                .failureUrl("/login?login_error=1")
+                .failureUrl("/error")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
