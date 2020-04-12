@@ -11,7 +11,7 @@
     <appender name="app-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--See also http://logback.qos.ch/manual/appenders.html#RollingFileAppender-->
         <append>true</append>
-        <file>${log4j.path}/app-log.log</file>
+        <file>/tmp/_reservation_log/app-log.log</file>
         <encoder>
             <pattern>%d{dd.MM.yyyy HH:mm:ss} [%-5p] [%-15t] [%C{1}.%M (%L)]: %m%n</pattern>
         </encoder>
@@ -46,7 +46,7 @@
         <appender-ref ref="console"/>
         <appender-ref ref="app-log"/>
     </logger>
-    <root level="DEBUG">
+    <root level="WARN">
         <appender-ref ref="console"/>
         <appender-ref ref="app-log"/>
     </root>

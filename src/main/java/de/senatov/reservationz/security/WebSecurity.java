@@ -22,8 +22,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/", "/ui/login**/**")
-                .hasRole("USER")
+                .antMatchers("/login/**", "/ui/**", "/WEB-INF/images/**", "/images/**")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -41,8 +41,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .requestCache(new HttpSessionRequestCache());
 
     }
-
-
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
