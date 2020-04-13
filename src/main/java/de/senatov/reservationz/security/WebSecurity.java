@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 
 
 
@@ -22,10 +21,23 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/login/**", "/ui/**", "/WEB-INF/images/**", "/images/**")
+                .antMatchers("/ui/*", "/ui/resources/**", "/ui/login/**", "/", "/ui/login/javax.faces.resource/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/login.xhtml?error")
+                .and()
+                .sessionManagement()
+                .invalidSessionUrl("/login.xhtml")
+                .sessionFixation()
+                .newSession()
+                .and()
+                .logout()
+                .logoutUrl("/j_spring_security_logout")
+                .invalidateHttpSession(true)
+                .logoutSuccessUrl("/logoutSuccess.xhtml")
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -34,13 +46,12 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .failureUrl("/error")
                 .and()
                 .logout()
+                .permitAll()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/logoutSuccess")
-                .and()
-                .requestCache()
-                .requestCache(new HttpSessionRequestCache());
-
+                .logoutSuccessUrl("/logoutSuccess");
     }
+
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -48,11 +59,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("admin")
                 .password("{noop}aaa")
-                .roles("USER", "SUPERVISOR")
+                .roles("ADMIN")
                 .and()
                 .withUser("user")
                 .password("{noop}aaa")
-                .roles("USER", "SUPERVISOR");
+                .roles("USER");
     }
 
 }

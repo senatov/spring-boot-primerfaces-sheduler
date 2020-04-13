@@ -1,13 +1,12 @@
-#*spring-primefaces-scheduler*#
+= #*spring-primefaces-scheduler*#
 
-
-copyleft _`Iakov Senatov 02.2020.`_
+[green]#*copyleft* _`Iakov Senatov 02.2020.`_#
 
 |===
 |Libs | Ver
 
 |Spring Boot
-|2.2.6
+|[red]*2.2.6*
 |Primefaces
 
 |7.0.
@@ -17,7 +16,7 @@ copyleft _`Iakov Senatov 02.2020.`_
 |Spring Web Flow
 |2.5.1.RELEASE
 |JSE
-|14
+|[red]*14*
 
 |===
 
@@ -25,22 +24,22 @@ My own implementation of Basis Primefaces Scheduler Projects:
 https://www.codenotfound.com/jsf-primefaces-example-spring-boot-maven.html[jsf2 primefaces spring boot webflow maven]
 
 
-3) paths:
+*Paths:*
 
 |===
 |*path are:* | *description* |*remarks*
 
 |http://localhost:18080/ui/login
 | *Authorisation*
-| first default page.
+| [green]#first default page.#
 
 |http://localhost:18080/ui/person
 | add person to list (will be probably deleted later)
-| works after authorisation
+| [green]#works after authorisation#
 
 |http://localhost:18080/ui/reservation
 |call _standard_ Schedule example of Primerfaces Schedule (w/o DB-connect)
-| works after authorisation
+| [green]#works after authorisation#
 |===
 
 **Database: **isn't significant, use any of them, what u've s. file://application.properties[application.properties]
@@ -49,4 +48,4 @@ It's simple.
 
 mailto://javaentwickler@gmail.com[EMail]
 
-*Live Demo:* _(will be continued)_
+*Live Demo:* ~(will be continued)~

@@ -23,26 +23,34 @@
             <MaxFileSize>5MB</MaxFileSize>
         </triggeringPolicy>
     </appender>
-    <logger name="org.springframework.webflow" level="DEBUG">
+
+    <!--
+             LOGGERS
+     -->
+    <logger name="com.sun.faces" level="TRACE">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.security" additivity="false" level="DEBUG">
+    <logger name="org.springframework.webflow" level="WARN">
         <appender-ref ref="app-log"/>
         <appender-ref ref="console"/>
     </logger>
-    <logger name="javax.faces" additivity="false" level="DEBUG">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
-    <logger name="org.springframework" additivity="false" level="DEBUG">
+    <logger name="org.springframework.security" additivity="false" level="WARN">
         <appender-ref ref="app-log"/>
         <appender-ref ref="console"/>
     </logger>
-    <logger name="javax.el" additivity="false" level="DEBUG">
+    <logger name="javax.faces" additivity="false" level="WARN">
         <appender-ref ref="console"/>
         <appender-ref ref="app-log"/>
     </logger>
-    <logger name="com.sun.faces" additivity="false" level="DEBUG">
+    <logger name="org.springframework" additivity="false" level="WARN">
+        <appender-ref ref="app-log"/>
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="javax.el" additivity="false" level="WARN">
+        <appender-ref ref="console"/>
+        <appender-ref ref="app-log"/>
+    </logger>
+    <logger name="com.sun.faces" additivity="false" level="WARN">
         <appender-ref ref="console"/>
         <appender-ref ref="app-log"/>
     </logger>
