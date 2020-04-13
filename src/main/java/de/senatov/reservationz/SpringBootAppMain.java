@@ -61,9 +61,10 @@ public class SpringBootAppMain implements CommandLineRunner {
     @Bean
     public ServletRegistrationBean<FacesServlet> facesServletRegistraiton() {
 
-        ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
-        servletRegistrationBean.setLoadOnStartup(1);
-        return servletRegistrationBean;
+        ServletRegistrationBean servletRegistration = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
+        servletRegistration.setLoadOnStartup(1);
+        servletRegistration.addUrlMappings("/ui*");
+        return servletRegistration;
     }
 
 
