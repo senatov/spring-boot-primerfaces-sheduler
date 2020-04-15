@@ -3,6 +3,7 @@ package de.senatov.reservationz.model;
 
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import java.util.Set;
  * @since 03.2020
  */
 @Data
+@Slf4j
 @Entity
 @Table(name = "role")
 public class Role {

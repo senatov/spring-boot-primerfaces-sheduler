@@ -4,6 +4,7 @@ package de.senatov.reservationz;
 
 import com.sun.faces.config.ConfigureListener;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ import static java.lang.String.valueOf;
 
 
 
+@Slf4j
 @ToString
 @SpringBootApplication
 public class SpringBootAppMain implements CommandLineRunner {

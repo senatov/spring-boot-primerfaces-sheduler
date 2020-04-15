@@ -3,6 +3,7 @@ package de.senatov.reservationz.model;
 
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +22,7 @@ import java.util.Set;
  * @author Iakov Senatov
  * @since 03.2020
  */
+@Slf4j
 @Data
 @Entity
 @Table(name = "user", schema = "scheduler")

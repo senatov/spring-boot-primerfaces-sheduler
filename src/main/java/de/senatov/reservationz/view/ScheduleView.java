@@ -3,6 +3,7 @@ package de.senatov.reservationz.view;
 
 
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
@@ -25,6 +26,7 @@ import java.util.Date;
 
 
 
+@Slf4j
 @ToString
 @ManagedBean
 @ViewScoped

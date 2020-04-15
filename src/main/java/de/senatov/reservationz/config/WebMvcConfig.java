@@ -3,6 +3,7 @@ package de.senatov.reservationz.config;
 
 
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +24,7 @@ import org.springframework.webflow.mvc.servlet.FlowHandlerMapping;
  * @since 03.2020
  */
 @ToString
+@Slf4j
 @Configuration
 @EnableWebMvc
 public class WebMvcConfig {
