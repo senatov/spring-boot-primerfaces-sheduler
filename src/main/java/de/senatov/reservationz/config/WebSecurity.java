@@ -17,55 +17,36 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity(debug = true)
 public class WebSecurity extends WebSecurityConfigurerAdapter {
-
+    
+    /**
+     * default security with default spring login
+     * @param http
+     * @throws Exception
+     */
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-
-        httpSecurity
+    public void configure(HttpSecurity http) throws Exception {
+        log.debug("configure(HttpSecurity)");
+        http
                 .authorizeRequests()
-                .antMatchers("/ui/*", "/ui/resources/**", "/ui/login/**", "/", "/ui/login/javax.faces.resource/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
+                .anyRequest().authenticated()
                 .and()
-                .exceptionHandling()
-                .accessDeniedPage("/login.xhtml?error")
-                .and()
-                .sessionManagement()
-                .invalidSessionUrl("/login.xhtml")
-                .sessionFixation()
-                .newSession()
-                .and()
-                .logout()
-                .logoutUrl("/j_spring_security_logout")
-                .invalidateHttpSession(true)
-                .logoutSuccessUrl("/logoutSuccess.xhtml")
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .defaultSuccessUrl("/reservation")
-                .failureUrl("/error")
-                .and()
-                .logout()
-                .permitAll()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/logoutSuccess");
+                .formLogin();
     }
-
-
-
+    
+    
+    
+    /**
+     * Spring Security 5 requires specifying the password storage format!
+     * @param auth
+     * @throws Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
+        log.debug("configure(AuthenticationManagerBuilder)");
         auth.inMemoryAuthentication()
-                .withUser("admin")
-                .password("{noop}aaa")
-                .roles("ADMIN")
-                .and()
                 .withUser("user")
                 .password("{noop}aaa")
-                .roles("USER");
+                .roles("USER", "ADMIN") ;
     }
-
+    
 }
