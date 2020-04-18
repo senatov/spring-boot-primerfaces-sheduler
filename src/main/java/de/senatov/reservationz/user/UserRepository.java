@@ -1,0 +1,15 @@
+package de.senatov.reservationz.user;
+
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.io.Serializable;
+
+
+
+public interface UserRepository extends JpaRepository<SCUser, Long>, Serializable {
+
+    SCUser findByUsername(String username);
+
+}

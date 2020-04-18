@@ -1,9 +1,7 @@
-package de.senatov.reservationz.view;
+package de.senatov.reservationz.user;
 
 
 
-import de.senatov.reservationz.model.User;
-import de.senatov.reservationz.repository.UserRepository;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,10 +30,10 @@ public class UserService implements Serializable {
 
 
 
-    public List<User> getAllUsers() {
+    public List<SCUser> getAllUsers() {
 
         log.debug("getAllUsers()");
-        List<User> posts = new ArrayList<>();
+        List<SCUser> posts = new ArrayList<>();
         userRepository.findAll()
                 .forEach(e -> posts.add(e));
         return posts;
@@ -43,34 +41,34 @@ public class UserService implements Serializable {
 
 
 
-    public Optional<User> getUser(Long id) {
+    public Optional<SCUser> getUser(Long id) {
 
-        log.debug("getUser()");
+        log.debug("getSCUser()");
         return userRepository.findById(id);
     }
 
 
 
-    public void addUser(User user) {
+    public void addUser(SCUser SCUser) {
 
         log.debug("addUser()");
-        userRepository.save(user);
+        userRepository.save(SCUser);
     }
 
 
 
-    public void updateUser(User user) {
+    public void updateUser(SCUser SCUser) {
 
         log.debug("updateUser()");
-        userRepository.save(user);
+        userRepository.save(SCUser);
     }
 
 
 
-    public void deleteUser(User user) {
+    public void deleteUser(SCUser SCUser) {
 
         log.debug("deleteUser()");
-        userRepository.delete(user);
+        userRepository.delete(SCUser);
     }
 
 }

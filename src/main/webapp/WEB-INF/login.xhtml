@@ -28,7 +28,7 @@
         <p:fieldset legend="Valid username and passwords:"
                     style="width: 340px; border-color:#9cac7c;margin-bottom:40px;margin-left: 40%;margin-top: 20%; alignment: center">
             <p:panelGrid columns="1" cellpadding="5" style="border: #174d87;alignment: center">
-                <p:outputLabel>user / aaa</p:outputLabel>
+                <p:outputLabel>SCUser / aaa</p:outputLabel>
                 <p:outputLabel>admin / aaa</p:outputLabel>
             </p:panelGrid>
         </p:fieldset>
@@ -61,7 +61,7 @@
                     <!--
                                 check box
                     -->
-                    <p:selectBooleanCheckbox value="#{authBean.BRememberMe}" itemLabel="Don't ask for my password for 7 days:">
+                    <p:selectBooleanCheckbox value="#{userView.BRememberMe}" itemLabel="Don't ask for my password for 7 days:">
                         <p:ajax listener="#{authBean.BRememberMe}"/>
                     </p:selectBooleanCheckbox>
                     <div>

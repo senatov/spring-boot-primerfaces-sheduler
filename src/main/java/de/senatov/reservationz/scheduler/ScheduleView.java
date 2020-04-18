@@ -1,4 +1,4 @@
-package de.senatov.reservationz.view;
+package de.senatov.reservationz.scheduler;
 
 
 

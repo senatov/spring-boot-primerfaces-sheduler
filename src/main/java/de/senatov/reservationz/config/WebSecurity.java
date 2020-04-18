@@ -1,4 +1,4 @@
-package de.senatov.reservationz.security;
+package de.senatov.reservationz.config;
 
 
 

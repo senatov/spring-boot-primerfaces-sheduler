@@ -1,4 +1,4 @@
-package de.senatov.reservationz.logging;
+package de.senatov.reservationz.logbean;
 
 
 
@@ -17,7 +17,11 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 @Configuration
 public class LoggingConfiguration {
-
+    
+    public static final String OCCURED_S_N = "slf4j autowired Exception occured : %s%n";
+    
+    
+    
     @Bean
     @Scope("prototype")
     public Logger LOG(InjectionPoint ip) {
@@ -26,7 +30,7 @@ public class LoggingConfiguration {
             return getLogger(of(ip.getMember()).map(Member::getDeclaringClass).orElseThrow(IllegalArgumentException::new));
         }
         catch (Exception e) {
-            System.err.printf("slf4j autowired Exception occured : %s%n", e.getMessage());
+            System.err.printf(OCCURED_S_N, e.getMessage());
             throw e;
         }
     }
