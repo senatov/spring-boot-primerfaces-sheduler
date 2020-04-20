@@ -26,7 +26,6 @@ import java.util.Date;
 
 
 
-@Slf4j
 @ToString
 @ManagedBean
 @ViewScoped

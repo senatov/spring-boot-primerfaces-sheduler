@@ -27,7 +27,6 @@ import static java.lang.String.valueOf;
 
 
 
-@Slf4j
 @ToString
 @SpringBootApplication
 public class SpringBootAppMain implements CommandLineRunner {
