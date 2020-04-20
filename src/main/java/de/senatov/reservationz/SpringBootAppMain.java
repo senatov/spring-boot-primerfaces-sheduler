@@ -65,7 +65,6 @@ public class SpringBootAppMain implements CommandLineRunner {
 
         ServletRegistrationBean servletRegistration = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
         servletRegistration.setLoadOnStartup(1);
-        servletRegistration.addUrlMappings("/ui*");
         return servletRegistration;
     }
 
@@ -88,7 +87,8 @@ public class SpringBootAppMain implements CommandLineRunner {
             sc.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", TRUE.toString());
             sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
             sc.setInitParameter("primefaces.THEME", "redmond");
-            sc.setInitParameter("springFlowApplication", "/ui");
+            sc.setInitParameter("springFlowApplication", "/");
+            sc.setInitParameter("javax.faces.WEBAPP_RESOURCES_DIRECTORY","/WEB-INF/static");
         };
     }
 

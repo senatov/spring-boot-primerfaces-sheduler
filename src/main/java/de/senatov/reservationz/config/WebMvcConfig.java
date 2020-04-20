@@ -24,7 +24,6 @@ import org.springframework.webflow.mvc.servlet.FlowHandlerMapping;
  * @since 03.2020
  */
 @ToString
-@Slf4j
 @Configuration
 @EnableWebMvc
 public class WebMvcConfig {

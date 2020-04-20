@@ -41,7 +41,9 @@ public class UserView implements Serializable {
             scUsers = userService.getAllUsers();
         }
         IntStream.range(0, scUsers.size())
-                .mapToObj(index -> index + ":" + scUsers.get(index))
+                .mapToObj(index -> {
+                    return index + ":" + scUsers.get(index);
+                })
                 .forEach(System.out::println);
         LOG.info("---------------");
     }

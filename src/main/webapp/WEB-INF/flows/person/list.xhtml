@@ -17,7 +17,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, SCUser-scalable=0"/>
         <meta name="apple-mobile-web-app-capable" content="no"/>
-        <link id="favicon" rel="shortcut icon" href="images/favicon.png" type='image/png'/>
+        <link id="favicon" rel="shortcut icon" href="../../images/favicon.png" type='image/png'/>
     </f:facet>
 </h:head>
 
@@ -25,9 +25,9 @@
 <h:body>
     <div class="container">
         <h:form>
-            <p:dataTable value="#{userView.SCUsers}" var="SCUser">
+            <p:dataTable value="#{userView.scUsers}" var="SCUser">
                 <p:column headerText="Name">
-                    <p:outputLabel value="#{SCUser.firstName}"/>
+                    <p:outputLabel value="First name"/>
                 </p:column>
                 <p:column>
                     <p:commandButton action="#{userView.prepareForUpdate(SCUser.id)}"/>

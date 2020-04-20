@@ -3,11 +3,13 @@
 <!--           Iakov Senatov.04.2020                                -->
 <!--                                                                -->
 <configuration>
+
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{HH:mm:ss} %-5p %c{1}:%L - %m%n</pattern>
         </encoder>
     </appender>
+
     <appender name="app-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <append>true</append>
         <file>/tmp/_reservation_log/app-log.log</file>
@@ -24,12 +26,24 @@
     </appender>
 
     <!--
-             LOGGERS
+           COMMON
+     -->
+    <root level="WARN">
+        <appender-ref ref="console"/>
+        <appender-ref ref="app-log"/>
+    </root>
+
+    <!--
+            LOGGERS
      -->
     <logger name="com.sun.faces" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.webflow" level="WARN">
+    <logger name="org.springframework.webflow" level="TRACE">
+        <appender-ref ref="app-log"/>
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.springframework.faces" level="TRACE">
         <appender-ref ref="app-log"/>
         <appender-ref ref="console"/>
     </logger>
@@ -53,8 +67,4 @@
         <appender-ref ref="console"/>
         <appender-ref ref="app-log"/>
     </logger>
-    <root level="WARN">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </root>
 </configuration>

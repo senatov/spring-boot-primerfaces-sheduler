@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 
@@ -33,10 +33,8 @@ public class UserService implements Serializable {
     public List<SCUser> getAllUsers() {
 
         log.debug("getAllUsers()");
-        List<SCUser> posts = new ArrayList<>();
-        userRepository.findAll()
-                .forEach(e -> posts.add(e));
-        return posts;
+        List<SCUser> rPosts = userRepository.findAll().stream().collect(Collectors.toList());
+        return rPosts;
     }
 
 
