@@ -3,7 +3,6 @@ package de.senatov.reservationz.scheduler;
 
 
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;

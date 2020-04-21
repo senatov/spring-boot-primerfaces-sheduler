@@ -33,8 +33,7 @@ public class UserService implements Serializable {
     public List<SCUser> getAllUsers() {
 
         log.debug("getAllUsers()");
-        List<SCUser> rPosts = userRepository.findAll().stream().collect(Collectors.toList());
-        return rPosts;
+        return userRepository.findAll().stream().collect(Collectors.toList());
     }
 
 
