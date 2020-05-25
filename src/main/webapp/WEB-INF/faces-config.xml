@@ -7,12 +7,12 @@
     </application>
     <managed-bean>
         <managed-bean-name>scheduleView</managed-bean-name>
-        <managed-bean-class>de.senatov.reservationz.scheduler.ScheduleView</managed-bean-class>
+        <managed-bean-class>de.senatov.reservatio.scheduler.ScheduleView</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>userView</managed-bean-name>
-        <managed-bean-class>de.senatov.reservationz.user.UserView</managed-bean-class>
+        <managed-bean-class>de.senatov.reservatio.user.UserView</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 </faces-config>

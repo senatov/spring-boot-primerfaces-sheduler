@@ -1,7 +1,8 @@
-package de.senatov.reservationz.config;
+package de.senatov.reservatio.config;
 
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,17 +25,14 @@ import org.springframework.webflow.security.SecurityFlowExecutionListener;
  * @since 03.2020
  */
 @Configuration
+@Slf4j
 public class WebFlowConfig extends AbstractFacesFlowConfiguration {
-
-    @Autowired
-    private Logger LOG;
-
 
 
     @Bean
     public FlowExecutor flowExecutor() {
 
-        LOG.debug("flowExecutor() ");
+        log.debug("flowExecutor() ");
         return getFlowExecutorBuilder(flowRegistry())
                 .addFlowExecutionListener(new FlowFacesContextLifecycleListener())
                 .addFlowExecutionListener(new SecurityFlowExecutionListener())
@@ -46,7 +44,7 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     @Bean
     public FlowDefinitionRegistry flowRegistry() {
 
-        LOG.debug("flowRegistry() ");
+        log.debug("flowRegistry() ");
         return getFlowDefinitionRegistryBuilder(flowBuilderServices())
                 .setBasePath("/WEB-INF/flows")
                 .addFlowLocationPattern("/**/*-flow.xml")
@@ -58,7 +56,7 @@ public class WebFlowConfig extends AbstractFacesFlowConfiguration {
     @Bean
     public FlowBuilderServices flowBuilderServices() {
 
-        LOG.debug("flowBuilderServices() ");
+        log.debug("flowBuilderServices() ");
         return getFlowBuilderServicesBuilder()
                 .setDevelopmentMode(true)
                 .build();

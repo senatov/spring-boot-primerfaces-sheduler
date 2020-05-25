@@ -1,4 +1,4 @@
-package de.senatov.reservationz.logbean;
+package de.senatov.reservatio.logbean;
 
 
 

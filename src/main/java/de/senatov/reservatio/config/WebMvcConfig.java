@@ -1,4 +1,4 @@
-package de.senatov.reservationz.config;
+package de.senatov.reservatio.config;
 
 
 
@@ -30,10 +30,9 @@ import org.springframework.webflow.mvc.servlet.FlowHandlerMapping;
 @ToString
 @Configuration
 @EnableWebMvc
+@Slf4j
 public class WebMvcConfig {
 
-    @Autowired
-    private Logger LOG;
     @Autowired
     private WebFlowConfig webFlowConfig;
 
@@ -42,7 +41,7 @@ public class WebMvcConfig {
     @Bean
     public FlowHandlerMapping flowHandlerMapping() {
 
-        LOG.debug("flowHandlerMapping()");
+        log.debug("flowHandlerMapping()");
         FlowHandlerMapping mapping = new FlowHandlerMapping();
         mapping.setOrder(1);
         mapping.setFlowRegistry(webFlowConfig.flowRegistry());
@@ -55,7 +54,7 @@ public class WebMvcConfig {
     @Bean
     public FlowHandlerAdapter flowHandlerAdapter() {
 
-        LOG.debug("flowHandlerAdapter()");
+        log.debug("flowHandlerAdapter()");
         JsfFlowHandlerAdapter adapter = new JsfFlowHandlerAdapter();
         adapter.setFlowExecutor(webFlowConfig.flowExecutor());
         return adapter;
@@ -66,7 +65,7 @@ public class WebMvcConfig {
     @Bean
     public UrlBasedViewResolver faceletsViewResolver() {
 
-        LOG.debug("UrlBasedViewResolver()");
+        log.debug("UrlBasedViewResolver()");
         UrlBasedViewResolver resolver = new UrlBasedViewResolver();
         resolver.setViewClass(JsfView.class);
         resolver.setPrefix("/WEB-INF/");
@@ -79,7 +78,7 @@ public class WebMvcConfig {
     @Bean
     public SimpleControllerHandlerAdapter simpleControllerHandlerAdapter() {
 
-        LOG.debug("simpleControllerHandlerAdapter()");
+        log.debug("simpleControllerHandlerAdapter()");
         return new SimpleControllerHandlerAdapter();
     }
 

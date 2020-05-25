@@ -1,7 +1,8 @@
-package de.senatov.reservationz.user;
+package de.senatov.reservatio.user;
 
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +15,11 @@ import java.util.stream.Collectors;
 
 
 @Service
+@Slf4j
 public class UserService implements Serializable {
 
     @Autowired
     private final UserRepository userRepository;
-    @Autowired
-    private Logger log;
-
 
 
     public UserService(UserRepository userRepository) {
