@@ -24,59 +24,59 @@ import static java.lang.Boolean.TRUE;
 
 @ToString
 @Slf4j
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 public class SpringBootAppMain implements ServletContextAware {
 
-	public static final String FORMAT1 = "  %s)  [ %s ]  ";
-	@Autowired
-	private ApplicationContext appContext;
+    public static final String FORMAT1 = "  %s)  [ %s ]  ";
+    @Autowired
+    private ApplicationContext appContext;
 
 
 
-	public static void main(String... args) {
+    public static void main(String... args) {
 
-		SpringApplication.run(SpringBootAppMain.class, args);
-	}
-
-
-
-	@Bean
-	public ServletRegistrationBean<FacesServlet> facesServletRegistraiton() {
-
-		ServletRegistrationBean servletRegistration = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
-		servletRegistration.setLoadOnStartup(1);
-		return servletRegistration;
-	}
+        SpringApplication.run(SpringBootAppMain.class, args);
+    }
 
 
 
-	@Override
-	public void setServletContext(ServletContext sc) {
+    @Bean
+    public ServletRegistrationBean<FacesServlet> facesServletRegistraiton() {
 
-		sc.addListener(ConfigureListener.class);
-		sc.setInitParameter("com.sun.faces.expressionFactory", "org.apache.el.ExpressionFactoryImpl");
-		sc.setInitParameter("com.sun.faces.forceLoadConfiguration", TRUE.toString());
-		sc.setInitParameter("facelets.DEVELOPMENT", TRUE.toString());
-		sc.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
-		sc.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", FALSE.toString());
-		sc.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", TRUE.toString());
-		sc.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
-		sc.setInitParameter("javax.faces.STATE_SAVING_METHOD", "server");
-		sc.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", TRUE.toString());
-		sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
-		sc.setInitParameter("primefaces.THEME", "bootstrap");
-		sc.setInitParameter("com.sun.faces.compressJavaScript", FALSE.toString());
-		sc.setInitParameter("Javax.faces.CONFIG_FILES", "/WEB-INF/faces-config.xml");
-	}
+        ServletRegistrationBean servletRegistration = new ServletRegistrationBean(new FacesServlet(), "*.xhtml");
+        servletRegistration.setLoadOnStartup(1);
+        return servletRegistration;
+    }
 
 
 
-	@Bean
-	public ServletRegistrationBean<FacesServlet> servletRegistrationBean() {
+    @Override
+    public void setServletContext(ServletContext sc) {
 
-		ServletRegistrationBean<FacesServlet> bean = new ServletRegistrationBean<>(new FacesServlet(), "*.xhtml");
-		bean.setLoadOnStartup(1);
-		return bean;
-	}
+        sc.addListener(ConfigureListener.class);
+        sc.setInitParameter("com.sun.faces.expressionFactory", "org.apache.el.ExpressionFactoryImpl");
+        sc.setInitParameter("com.sun.faces.forceLoadConfiguration", TRUE.toString());
+        sc.setInitParameter("facelets.DEVELOPMENT", TRUE.toString());
+        sc.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
+        sc.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", FALSE.toString());
+        sc.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", TRUE.toString());
+        sc.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
+        sc.setInitParameter("javax.faces.STATE_SAVING_METHOD", "server");
+        sc.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", TRUE.toString());
+        sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
+        sc.setInitParameter("primefaces.THEME", "bootstrap");
+        sc.setInitParameter("com.sun.faces.compressJavaScript", FALSE.toString());
+        sc.setInitParameter("Javax.faces.CONFIG_FILES", "/WEB-INF/faces-config.xml");
+    }
+
+
+
+    @Bean
+    public ServletRegistrationBean<FacesServlet> servletRegistrationBean() {
+
+        ServletRegistrationBean<FacesServlet> bean = new ServletRegistrationBean<>(new FacesServlet(), "*.xhtml");
+        bean.setLoadOnStartup(1);
+        return bean;
+    }
 
 }

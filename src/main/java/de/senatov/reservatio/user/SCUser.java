@@ -5,12 +5,7 @@ package de.senatov.reservatio.user;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
 
@@ -41,4 +36,5 @@ public class SCUser implements Serializable {
     @Column(unique = true, name = "e_mail")
     @Email
     private String eMail;
+
 }

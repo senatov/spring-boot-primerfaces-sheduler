@@ -11,8 +11,6 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
@@ -32,8 +30,8 @@ import java.util.Date;
 @Slf4j
 public class ScheduleView implements Serializable {
 
-    private static final long serialVersionUID = 2653991725372403680L;
     public static final String MINUTE_DELTA = ", Minute delta:";
+    private static final long serialVersionUID = 2653991725372403680L;
     private ScheduleModel eventModel;
     private ScheduleEvent event = new DefaultScheduleEvent();
 
@@ -135,7 +133,6 @@ public class ScheduleView implements Serializable {
 
     public ScheduleEvent getEvent() {
 
-        log.debug("getEvent()" + event);
         return event;
     }
 
@@ -143,7 +140,6 @@ public class ScheduleView implements Serializable {
 
     public void setEvent(ScheduleEvent event) {
 
-        log.debug("setEvent()" + event);
         this.event = event;
     }
 
@@ -151,7 +147,6 @@ public class ScheduleView implements Serializable {
 
     public void addEvent() {
 
-        log.debug("addEvent()" + event);
         if (event.getId() == null) {
             eventModel.addEvent(event);
         } else {
@@ -164,7 +159,6 @@ public class ScheduleView implements Serializable {
 
     public void onEventSelect(SelectEvent selectEvent) {
 
-        log.debug("onEventSelect()" + selectEvent);
         event = (ScheduleEvent) selectEvent.getObject();
     }
 

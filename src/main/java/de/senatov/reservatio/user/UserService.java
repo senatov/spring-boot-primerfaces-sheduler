@@ -2,12 +2,13 @@ package de.senatov.reservatio.user;
 
 
 
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,10 +17,12 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
+@ToString
 public class UserService implements Serializable {
 
     @Autowired
     private final UserRepository userRepository;
+
 
 
     public UserService(UserRepository userRepository) {
@@ -32,7 +35,7 @@ public class UserService implements Serializable {
     public List<SCUser> getAllUsers() {
 
         log.debug("getAllUsers()");
-        return userRepository.findAll().stream().collect(Collectors.toList());
+        return new ArrayList<>(userRepository.findAll());
     }
 
 
@@ -45,26 +48,26 @@ public class UserService implements Serializable {
 
 
 
-    public void addUser(SCUser SCUser) {
+    public void addUser(SCUser scUser) {
 
         log.debug("addUser()");
-        userRepository.save(SCUser);
+        userRepository.save(scUser);
     }
 
 
 
-    public void updateUser(SCUser SCUser) {
+    public void updateUser(SCUser scUser) {
 
         log.debug("updateUser()");
-        userRepository.save(SCUser);
+        userRepository.save(scUser);
     }
 
 
 
-    public void deleteUser(SCUser SCUser) {
+    public void deleteUser(SCUser scUser) {
 
         log.debug("deleteUser()");
-        userRepository.delete(SCUser);
+        userRepository.delete(scUser);
     }
 
 }

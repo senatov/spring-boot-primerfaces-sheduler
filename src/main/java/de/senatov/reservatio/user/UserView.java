@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static org.apache.commons.lang3.StringUtils.join;
+
 
 
 @Component
@@ -22,61 +24,54 @@ import java.util.stream.IntStream;
 @Slf4j
 public class UserView implements Serializable {
 
-	@Autowired
-	private UserService userService;
-	private List<SCUser> scUsers = new ArrayList<>();
-	private SCUser scUser;
-	private Boolean BRememberMe = Boolean.TRUE;
-	private String userName;
-	private String password;
+    @Autowired
+    private UserService userService;
+    private List<SCUser> scUsers = new ArrayList<>();
+    private SCUser scUser;
+    private Boolean BRememberMe = Boolean.TRUE;
+    private String userName;
+    private String password;
 
 
 
-	@PostConstruct
-	public void init() {
+    @PostConstruct
+    public void init() {
 
-		log.debug("init()");
-		if (userService != null) {
-			scUsers = userService.getAllUsers();
-		}
-		IntStream
-				.range(0, scUsers.size())
-				.mapToObj(index -> index + ":" + scUsers.get(index))
-				.forEach(System.out::println);
-		log.info("---------------");
-	}
-
-
-
-	public String prepareForUpdate(Long id) {
-
-		log.debug("prepareForUpdate()");
-		scUser = userService
-				.getUser(id)
-				.get();
-		log.info("new()");
-		return "new";
-	}
+        log.debug("init()");
+        if (userService != null) {
+            scUsers = userService.getAllUsers();
+        }
+        IntStream.range(0, scUsers.size()).mapToObj(index -> {
+            return join(index, ":", scUsers.get(index));
+        }).forEach(System.out::println);
+        log.info("---------------");
+    }
 
 
 
-	public String savePerson() {
+    public String prepareForUpdate(Long id) {
 
-		log.debug("savePerson()");
-		userService.addUser(scUser);
-		scUsers = userService.getAllUsers();
-		log.info("save");
-		return "save";
-	}
+        scUser = userService.getUser(id).get();
+        return "new";
+    }
 
 
 
-	public String newPerson() {
+    public String savePerson() {
 
-		log.debug("newPerson()");
-		scUser = new SCUser();
-		log.info("new");
-		return "new";
-	}
+        userService.addUser(scUser);
+        scUsers = userService.getAllUsers();
+        return "save";
+    }
+
+
+
+    public String newPerson() {
+
+        log.debug("newPerson()");
+        scUser = new SCUser();
+        log.info("new");
+        return "new";
+    }
 
 }
