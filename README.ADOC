@@ -6,7 +6,7 @@
 |Libs | Ver
 
 |Spring Boot
-|[red]*2.2.6*
+|[red]*2.3*
 |Primefaces
 
 |7.0.
@@ -23,15 +23,13 @@
 My own implementation of Basis Primefaces Scheduler Projects:
 https://www.codenotfound.com/jsf-primefaces-example-spring-boot-maven.html[jsf2 primefaces spring boot webflow maven]
 
+Autorisation: App has NO AUTORISATION anymore! (it is reference implementation)
+DB: file based HSQL DB (so it is my taste, you can set it in mem mode or use another DB)
 
 *Paths:*
 
 |===
 |*path are:* | *description* |*remarks*
-
-|http://localhost:18080/ui/login
-| *Authorisation*
-| [green]#first default page.#
 
 |http://localhost:18080/ui/person
 | add person to list (will be probably deleted later)
