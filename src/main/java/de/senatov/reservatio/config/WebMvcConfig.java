@@ -28,53 +28,53 @@ import org.springframework.webflow.mvc.servlet.FlowHandlerMapping;
 @Slf4j
 public class WebMvcConfig {
 
-    @Autowired
-    private WebFlowConfig webFlowConfig;
+	@Autowired
+	private WebFlowConfig webFlowConfig;
 
 
 
-    @Bean
-    public FlowHandlerMapping flowHandlerMapping() {
+	@Bean
+	public FlowHandlerMapping flowHandlerMapping() {
 
-        log.debug("flowHandlerMapping()");
-        FlowHandlerMapping mapping = new FlowHandlerMapping();
-        mapping.setOrder(1);
-        mapping.setFlowRegistry(webFlowConfig.flowRegistry());
-        mapping.setDefaultHandler(new UrlFilenameViewController());
-        return mapping;
-    }
-
-
-
-    @Bean
-    public FlowHandlerAdapter flowHandlerAdapter() {
-
-        log.debug("flowHandlerAdapter()");
-        JsfFlowHandlerAdapter adapter = new JsfFlowHandlerAdapter();
-        adapter.setFlowExecutor(webFlowConfig.flowExecutor());
-        return adapter;
-    }
+		log.debug("flowHandlerMapping()");
+		FlowHandlerMapping mapping = new FlowHandlerMapping();
+		mapping.setOrder(1);
+		mapping.setFlowRegistry(webFlowConfig.flowRegistry());
+		mapping.setDefaultHandler(new UrlFilenameViewController());
+		return mapping;
+	}
 
 
 
-    @Bean
-    public UrlBasedViewResolver faceletsViewResolver() {
+	@Bean
+	public FlowHandlerAdapter flowHandlerAdapter() {
 
-        log.debug("UrlBasedViewResolver()");
-        UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-        resolver.setViewClass(JsfView.class);
-        resolver.setPrefix("/WEB-INF/");
-        resolver.setSuffix(".xhtml");
-        return resolver;
-    }
+		log.debug("flowHandlerAdapter()");
+		JsfFlowHandlerAdapter adapter = new JsfFlowHandlerAdapter();
+		adapter.setFlowExecutor(webFlowConfig.flowExecutor());
+		return adapter;
+	}
 
 
 
-    @Bean
-    public SimpleControllerHandlerAdapter simpleControllerHandlerAdapter() {
+	@Bean
+	public UrlBasedViewResolver faceletsViewResolver() {
 
-        log.debug("simpleControllerHandlerAdapter()");
-        return new SimpleControllerHandlerAdapter();
-    }
+		log.debug("UrlBasedViewResolver()");
+		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
+		resolver.setViewClass(JsfView.class);
+		resolver.setPrefix("/WEB-INF/");
+		resolver.setSuffix(".xhtml");
+		return resolver;
+	}
+
+
+
+	@Bean
+	public SimpleControllerHandlerAdapter simpleControllerHandlerAdapter() {
+
+		log.debug("simpleControllerHandlerAdapter()");
+		return new SimpleControllerHandlerAdapter();
+	}
 
 }

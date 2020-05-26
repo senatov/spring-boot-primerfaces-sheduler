@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--                                                                -->
-<!--           Iakov Senatov.04.2020                                -->
+<!--           Iakov Senatov.02.2020                                -->
 <!--                                                                -->
 <configuration>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss} %-5p %c{1}:%L - %m%n</pattern>
+            <pattern>%date %level %logger{10} [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -14,7 +14,7 @@
         <append>true</append>
         <file>/tmp/_reservation_log/app-log.log</file>
         <encoder>
-            <pattern>%d{dd.MM.yyyy HH:mm:ss} [%-5p] [%-15t] [%C{1}.%M (%L)]: %m%n</pattern>
+            <pattern>%date %level %logger{10} [%file:%line] %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <maxIndex>3</maxIndex>
@@ -25,25 +25,21 @@
         </triggeringPolicy>
     </appender>
 
-    <!--
-           COMMON
-     -->
+
     <root level="WARN">
         <appender-ref ref="console"/>
         <appender-ref ref="app-log"/>
     </root>
 
-    <!--
-            LOGGERS
-     -->
+
     <logger name="com.sun.faces" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.webflow" level="TRACE">
+    <logger name="org.springframework.webflow" level="WARN">
         <appender-ref ref="app-log"/>
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.faces" level="TRACE">
+    <logger name="org.springframework.faces" level="WARN">
         <appender-ref ref="app-log"/>
         <appender-ref ref="console"/>
     </logger>

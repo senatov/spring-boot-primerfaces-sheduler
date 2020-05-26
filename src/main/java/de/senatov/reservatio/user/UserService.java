@@ -11,7 +11,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 
@@ -20,54 +19,54 @@ import java.util.stream.Collectors;
 @ToString
 public class UserService implements Serializable {
 
-    @Autowired
-    private final UserRepository userRepository;
+	@Autowired
+	private final UserRepository userRepository;
 
 
 
-    public UserService(UserRepository userRepository) {
+	public UserService(UserRepository userRepository) {
 
-        this.userRepository = userRepository;
-    }
-
-
-
-    public List<SCUser> getAllUsers() {
-
-        log.debug("getAllUsers()");
-        return new ArrayList<>(userRepository.findAll());
-    }
+		this.userRepository = userRepository;
+	}
 
 
 
-    public Optional<SCUser> getUser(Long id) {
+	public List<User> getAllUsers() {
 
-        log.debug("getSCUser()");
-        return userRepository.findById(id);
-    }
-
-
-
-    public void addUser(SCUser scUser) {
-
-        log.debug("addUser()");
-        userRepository.save(scUser);
-    }
+		log.debug("getAllUsers()");
+		return new ArrayList<>(userRepository.findAll());
+	}
 
 
 
-    public void updateUser(SCUser scUser) {
+	public Optional<User> getUser(Long id) {
 
-        log.debug("updateUser()");
-        userRepository.save(scUser);
-    }
+		log.debug("getUser()");
+		return userRepository.findById(id);
+	}
 
 
 
-    public void deleteUser(SCUser scUser) {
+	public void addUser(User user) {
 
-        log.debug("deleteUser()");
-        userRepository.delete(scUser);
-    }
+		log.debug("addUser()");
+		userRepository.save(user);
+	}
+
+
+
+	public void updateUser(User user) {
+
+		log.debug("updateUser()");
+		userRepository.save(user);
+	}
+
+
+
+	public void deleteuser(User user) {
+
+		log.debug("deleteUser()");
+		userRepository.delete(user);
+	}
 
 }

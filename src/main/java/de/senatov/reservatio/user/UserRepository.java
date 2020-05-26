@@ -8,8 +8,8 @@ import java.io.Serializable;
 
 
 
-public interface UserRepository extends JpaRepository<SCUser, Long>, Serializable {
+public interface UserRepository extends JpaRepository<User, Long>, Serializable {
 
-    SCUser findByUsername(String username);
+	User findByUsername(String username);
 
 }

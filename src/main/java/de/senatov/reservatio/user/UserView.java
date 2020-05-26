@@ -24,54 +24,55 @@ import static org.apache.commons.lang3.StringUtils.join;
 @Slf4j
 public class UserView implements Serializable {
 
-    @Autowired
-    private UserService userService;
-    private List<SCUser> scUsers = new ArrayList<>();
-    private SCUser scUser;
-    private Boolean BRememberMe = Boolean.TRUE;
-    private String userName;
-    private String password;
+	@Autowired
+	private UserService userService;
+	private List<User> Users = new ArrayList<>();
+	private User User;
+	private Boolean BRememberMe = Boolean.TRUE;
+	private String userName;
+	private String password;
 
 
 
-    @PostConstruct
-    public void init() {
+	@PostConstruct
+	public void init() {
 
-        log.debug("init()");
-        if (userService != null) {
-            scUsers = userService.getAllUsers();
-        }
-        IntStream.range(0, scUsers.size()).mapToObj(index -> {
-            return join(index, ":", scUsers.get(index));
-        }).forEach(System.out::println);
-        log.info("---------------");
-    }
-
-
-
-    public String prepareForUpdate(Long id) {
-
-        scUser = userService.getUser(id).get();
-        return "new";
-    }
+		log.debug("init()");
+		if (userService != null) {
+			Users = userService.getAllUsers();
+		}
+		IntStream
+				.range(0, Users.size())
+				.mapToObj(o -> join(o, ":", Users.get(o)))
+				.forEach(System.out::println);
+	}
 
 
 
-    public String savePerson() {
+	public String prepareForUpdate(Long id) {
 
-        userService.addUser(scUser);
-        scUsers = userService.getAllUsers();
-        return "save";
-    }
+		User = userService
+				.getUser(id)
+				.get();
+		return "new";
+	}
 
 
 
-    public String newPerson() {
+	public String savePerson() {
 
-        log.debug("newPerson()");
-        scUser = new SCUser();
-        log.info("new");
-        return "new";
-    }
+		userService.addUser(User);
+		Users = userService.getAllUsers();
+		return "save";
+	}
+
+
+
+	public String newPerson() {
+
+		User = new User();
+		log.info("new");
+		return "new";
+	}
 
 }

@@ -19,7 +19,7 @@ gradle-app.setting
 .idea/
 # if you remove the above rule, at least ignore the following:
 
-# SCUser-specific stuff:
+# User-specific stuff:
 # .idea/workspace.xml
 # .idea/tasks.xml
 # .idea/dictionaries
