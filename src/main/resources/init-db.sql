@@ -1,1 +1,0 @@
-INSERT INTO SCHEDULE.SC_USER (ID, E_MAIL, FIRST_NAME, LAST_NAME, PASSWORD, USER_NAME) VALUES (1, 'senatov@gamai.de', 'Iakov', 'Senatov', 'aaa', 'senatov');
