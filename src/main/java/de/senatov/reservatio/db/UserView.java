@@ -38,7 +38,7 @@ public class UserView implements Serializable {
 	@PostConstruct
 	public void init() {
 
-		log.debug("init()");
+		log.debug("\n\ninit()");
 		if (userService != null) {
 			Users = userService.getAllUsers();
 		}

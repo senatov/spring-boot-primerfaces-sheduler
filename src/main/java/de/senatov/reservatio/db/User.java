@@ -11,14 +11,10 @@ import java.io.Serializable;
 
 
 
-/**
- * @author Iakov Senatov
- * @since 03.2020
- */
 @Slf4j
 @Data
 @Entity
-@Table(name = "sc_user", schema = "schedule")
+@Table(name = "sc_user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -809071111834277692L;
