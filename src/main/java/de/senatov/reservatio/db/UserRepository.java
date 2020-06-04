@@ -1,4 +1,4 @@
-package de.senatov.reservatio.user;
+package de.senatov.reservatio.db;
 
 
 

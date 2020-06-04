@@ -1,4 +1,4 @@
-package de.senatov.reservatio.user;
+package de.senatov.reservatio.db;
 
 
 
@@ -19,6 +19,7 @@ import java.util.Optional;
 @ToString
 public class UserService implements Serializable {
 
+	private static final long serialVersionUID = 6528756667397161027L;
 	@Autowired
 	private final UserRepository userRepository;
 

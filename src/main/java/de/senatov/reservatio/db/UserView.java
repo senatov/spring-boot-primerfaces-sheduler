@@ -1,4 +1,4 @@
-package de.senatov.reservatio.user;
+package de.senatov.reservatio.db;
 
 
 
@@ -24,6 +24,7 @@ import static org.apache.commons.lang3.StringUtils.join;
 @Slf4j
 public class UserView implements Serializable {
 
+	private static final long serialVersionUID = -4172286508468519350L;
 	@Autowired
 	private UserService userService;
 	private List<User> Users = new ArrayList<>();
@@ -43,7 +44,9 @@ public class UserView implements Serializable {
 		}
 		IntStream
 				.range(0, Users.size())
-				.mapToObj(o -> join(o, ":", Users.get(o)))
+				.mapToObj(o -> {
+					return join(o, ":", Users.get(o));
+				})
 				.forEach(System.out::println);
 	}
 

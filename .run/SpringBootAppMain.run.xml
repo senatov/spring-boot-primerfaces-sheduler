@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
-    <configuration default="false" name="SpringBootAppMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-        <module name="room-reservation"/>
-        <option name="SPRING_BOOT_MAIN_CLASS" value="de.senatov.reservatio.SpringBootAppMain"/>
-        <option name="ALTERNATIVE_JRE_PATH"/>
-        <method v="2">
-            <option name="Make" enabled="true"/>
-            <option name="LaunchBrowser.Before.Run" url="http://localhost:18086/reservation"/>
-        </method>
-    </configuration>
+  <configuration default="false" name="SpringBootAppMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="room-reservation" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="de.senatov.reservatio.SpringBootAppMain" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+      <option name="LaunchBrowser.Before.Run" url="http://localhost:18086/reservation" />
+    </method>
+  </configuration>
 </component>
