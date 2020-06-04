@@ -44,9 +44,7 @@ public class UserView implements Serializable {
 		}
 		IntStream
 				.range(0, Users.size())
-				.mapToObj(o -> {
-					return join(o, ":", Users.get(o));
-				})
+				.mapToObj(o -> join(o, ":", Users.get(o)))
 				.forEach(System.out::println);
 	}
 

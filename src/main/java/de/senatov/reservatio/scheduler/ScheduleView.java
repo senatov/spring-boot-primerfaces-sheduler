@@ -30,9 +30,13 @@ import java.util.Date;
 @Slf4j
 public class ScheduleView implements Serializable {
 
-	public static final String MINUTE_DELTA = ", Minute delta:";
-	public static final String DAY_DELTA = "Day delta:";
+	private static final String MINUTE_DELTA = ", Minute delta:";
+	private static final String DAY_DELTA = "Day delta:";
 	private static final long serialVersionUID = 2653991725372403680L;
+	public static final String AUD1 = "Аудитория 1";
+	public static final String CLO = "Туалет на втором";
+	public static final String AUD4 = "Аудитория 4";
+	public static final String GS1 = "Переговорная 103";
 	private ScheduleModel eventModel;
 	private ScheduleEvent event = new DefaultScheduleEvent();
 
@@ -43,10 +47,10 @@ public class ScheduleView implements Serializable {
 
 		log.debug("init()");
 		eventModel = new DefaultScheduleModel();
-		eventModel.addEvent(new DefaultScheduleEvent("Аудитория 1", previousDay8Pm(), previousDay11Pm()));
-		eventModel.addEvent(new DefaultScheduleEvent("Туалет на втором", today1Pm(), today6Pm()));
-		eventModel.addEvent(new DefaultScheduleEvent("Аудитория 4", nextDay9Am(), nextDay11Am()));
-		eventModel.addEvent(new DefaultScheduleEvent("Переговорная 103", theDayAfter3Pm(), fourDaysLater3pm()));
+		eventModel.addEvent(new DefaultScheduleEvent(AUD1, previousDay8Pm(), previousDay11Pm()));
+		eventModel.addEvent(new DefaultScheduleEvent(CLO, today1Pm(), today6Pm()));
+		eventModel.addEvent(new DefaultScheduleEvent(AUD4, nextDay9Am(), nextDay11Am()));
+		eventModel.addEvent(new DefaultScheduleEvent(GS1, theDayAfter3Pm(), fourDaysLater3pm()));
 	}
 
 
