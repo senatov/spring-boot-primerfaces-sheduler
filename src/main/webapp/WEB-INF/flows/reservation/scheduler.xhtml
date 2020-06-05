@@ -1,74 +1,59 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html
-        xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:p="http://primefaces.org/ui">
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="shortcut icon" href="/images/favicon.png"/>
-    <meta name="description" content="Web-Testapp for Spring Boot 2.3.0, JSF and PrimeFaces. I. Senatov"/>
-    <link rel="apple-touch-icon" href="/images/favicon.png"/>
-    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-    <title>Room Reservation</title>
-</h:head>
-<h:body>
-    <script type="text/javascript">
-        PrimeFaces.locales['tr'] = {
-            closeText: 'kapat',
-            prevText: 'geri',
-            nextText: 'ileri',
-            currentText: 'bugün',
-            monthNames: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
-                'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
-            monthNamesShort: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz',
-                'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
-            dayNames: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
-            dayNamesShort: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
-            dayNamesMin: ['Pz', 'Pt', 'Sa', 'Ça', 'Pe', 'Cu', 'Ct'],
-            weekHeader: 'Hf',
-            firstDay: 1,
-            isRTL: false,
-            showMonthAfterYear: false,
-            yearSuffix: '',
-            month: 'Ay',
-            week: 'Hafta',
-            day: 'Gün',
-            allDayText: 'Tüm Gün'
-        };
-    </script>
-    <h:form>
-        <p:growl id="messages" showDetail="true"/>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+<f:view contentType="text/html">
 
-        <h:panelGrid columnClasses="value">
-            <h3 style="margin-top: 0">Editable Schedule</h3>
-            <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2">
-                <p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
-                <p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
-                <p:ajax event="eventMove" listener="#{scheduleView.onEventMove}" update="messages"/>
-                <p:ajax event="eventResize" listener="#{scheduleView.onEventResize}" update="messages"/>
-            </p:schedule>
-        </h:panelGrid>
 
-        <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
-            <h:panelGrid id="eventDetails" columns="2">
-                <p:outputLabel for="title" value="Titles:"/>
-                <p:inputText id="title" value="#{scheduleView.event.title}" required="true"/>
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" href="/images/favicon.png"/>
+        <meta name="description" content="Web-Testapp for Spring Boot 2.3.0, JSF and PrimeFaces. I. Senatov"/>
+        <link rel="apple-touch-icon" href="/images/favicon.png"/>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <title>Room Reservation</title>
+    </h:head>
 
-                <p:outputLabel for="from" value="From:"/>
-                <p:calendar id="from" value="#{scheduleView.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+    <h:body>
+        <div class="top-toolbar">
+            <p:staticMessage severity="info" summary="Demo:" detail="Editable room reservation demo"/>
+        </div>
 
-                <p:outputLabel for="to" value="To:"/>
-                <p:calendar id="to" value="#{scheduleView.event.endDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
-
-                <p:outputLabel for="allDay" value="All Day:"/>
-                <h:selectBooleanCheckbox id="allDay" value="#{scheduleView.event.allDay}"/>
-
-                <p:commandButton type="reset" value="Reset"/>
-                <p:commandButton id="addButton" value="Save" action="#{scheduleView.addEvent}"
-                                 oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
+        <h:form>
+            <p:growl id="messages" showDetail="true"/>
+            <h:panelGrid columnClasses="value">
+                <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2">
+                    <p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
+                    <p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}" update="eventDetails"
+                            oncomplete="PF('eventDialog').show();"/>
+                    <p:ajax event="eventMove" listener="#{scheduleView.onEventMove}" update="messages"/>
+                    <p:ajax event="eventResize" listener="#{scheduleView.onEventResize}" update="messages"/>
+                </p:schedule>
             </h:panelGrid>
-        </p:dialog>
-    </h:form>
-</h:body>
+
+            <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+                <h:panelGrid id="eventDetails" columns="2">
+                    <p:outputLabel for="title" value="Titles:"/>
+                    <p:inputText id="title" value="#{scheduleView.event.title}" required="true"/>
+
+                    <p:outputLabel for="from" value="From:"/>
+                    <p:calendar id="from" value="#{scheduleView.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+
+                    <p:outputLabel for="to" value="To:"/>
+                    <p:calendar id="to" value="#{scheduleView.event.endDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+
+                    <p:outputLabel for="allDay" value="All Day:"/>
+                    <h:selectBooleanCheckbox id="allDay" value="#{scheduleView.event.allDay}"/>
+
+                    <p:commandButton type="reset" value="Reset"/>
+                    <p:commandButton id="addButton" value="Save" action="#{scheduleView.addEvent}"
+                                     oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
+                </h:panelGrid>
+            </p:dialog>
+        </h:form>
+    </h:body>
+</f:view>
 </html>

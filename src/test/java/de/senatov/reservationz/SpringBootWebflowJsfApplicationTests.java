@@ -1,4 +1,4 @@
-package de.senatov.reservatio;
+package de.senatov.reservationz;
 
 
 
@@ -13,9 +13,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SpringBootWebflowJsfApplicationTests {
 
-	@Test
-	public void contextLoads() {
-		// nothing here
-	}
+    @Test
+    public void contextLoads() {
+
+    }
 
 }

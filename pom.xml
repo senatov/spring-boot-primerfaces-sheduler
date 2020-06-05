@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.senatov</groupId>
     <artifactId>room-reservation</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <packaging>war</packaging>
     <name>room-reservation</name>
     <description>Example: JPA/Hibernate, JDK 14, Spring Boot 2.2.6, Primefaces 7,Spring Security</description>
@@ -160,7 +160,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>2.3.0.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -213,7 +212,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>25.1-jre</version>
+            <version>28.0-jre</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -278,7 +277,6 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>2.3.0.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>jakarta.persistence</groupId>
@@ -365,7 +363,7 @@
                             <url>${project.url}</url>
                             <Build-Jdk>${java.version} (${java.vendor} ${java.vm.version}</Build-Jdk>
                             <Build-Timestamp>${maven.build.timestamp}</Build-Timestamp>
-                            <Build-Revision>${git.commit.id.describe-short}</Build-Revision>
+                            <Build-Revision>${git.commit.id}</Build-Revision>
                             <Build-OS>${os.name} ${os.arch} ${os.version}</Build-OS>
                         </manifestEntries>
                     </archive>

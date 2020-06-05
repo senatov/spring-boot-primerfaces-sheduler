@@ -25,12 +25,10 @@
         </triggeringPolicy>
     </appender>
 
-
     <root level="DEBUG">
         <appender-ref ref="console"/>
         <appender-ref ref="app-log"/>
     </root>
-
 
     <logger name="com.sun.faces" level="DEBUG">
         <appender-ref ref="console"/>

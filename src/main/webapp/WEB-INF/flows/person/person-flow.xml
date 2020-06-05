@@ -6,6 +6,7 @@
     <view-state id="list" view="list.xhtml">
         <transition on="new" to="create">
         </transition>
+
         <transition on="info" to="create">
         </transition>
     </view-state>
@@ -15,5 +16,4 @@
     </view-state>
 
     <end-state id="back"/>
-
 </flow>

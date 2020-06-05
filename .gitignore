@@ -144,7 +144,6 @@ buildNumber.properties
 /stacktrace.log
 /test/reports
 /logs
-*.log
 
 # project release file
 /*.war
@@ -159,6 +158,3 @@ buildNumber.properties
 
 # "temporary" build files
 /target
-
-!.idea/
-/.idea/

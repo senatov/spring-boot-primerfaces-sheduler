@@ -2,14 +2,12 @@ package de.senatov.reservatio.db;
 
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.io.Serializable;
-
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 
-public interface UserRepository extends JpaRepository<User, Long>, Serializable {
 
-	User findByUsername(String username);
+@Repository
+public interface UserRepository extends CrudRepository<User, Long> {
 
 }

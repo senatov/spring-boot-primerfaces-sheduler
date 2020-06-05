@@ -18,68 +18,59 @@ import org.springframework.webflow.security.SecurityFlowExecutionListener;
 
 
 
-/**
- * @author Iakov Senatov
- * @since 03.2020
- */
 @Configuration
 @Slf4j
 public class WebFlowConfig extends AbstractFacesFlowConfiguration {
 
-	@Bean
-	public FlowExecutor flowExecutor() {
+    @Bean
+    public FlowExecutor flowExecutor() {
 
-		log.debug("flowExecutor() ");
-		return getFlowExecutorBuilder(flowRegistry())
-				.addFlowExecutionListener(new FlowFacesContextLifecycleListener())
-				.addFlowExecutionListener(new SecurityFlowExecutionListener())
-				.build();
-	}
-
-
-
-	@Bean
-	public FlowDefinitionRegistry flowRegistry() {
-
-		log.debug("flowRegistry() ");
-		return getFlowDefinitionRegistryBuilder(flowBuilderServices())
-				.setBasePath("/WEB-INF/flows")
-				.addFlowLocationPattern("/**/*-flow.xml")
-				.build();
-	}
+        log.debug("flowExecutor()");
+        return getFlowExecutorBuilder(flowRegistry()).addFlowExecutionListener(new FlowFacesContextLifecycleListener())
+                .addFlowExecutionListener(new SecurityFlowExecutionListener())
+                .build();
+    }
 
 
 
-	@Bean
-	public FlowBuilderServices flowBuilderServices() {
+    @Bean
+    public FlowDefinitionRegistry flowRegistry() {
 
-		log.debug("flowBuilderServices() ");
-		return getFlowBuilderServicesBuilder()
-				.setDevelopmentMode(true)
-				.build();
-	}
+        log.debug("flowRegistry()");
+        return getFlowDefinitionRegistryBuilder(flowBuilderServices()).setBasePath("/WEB-INF/flows").addFlowLocationPattern("/**/*-flow.xml").build();
+    }
 
 
 
-	@Bean
-	public FlowHandlerMapping flowHandlerMapping() {
+    @Bean
+    public FlowBuilderServices flowBuilderServices() {
 
-		FlowHandlerMapping mapping = new FlowHandlerMapping();
-		mapping.setOrder(1);
-		mapping.setFlowRegistry(flowRegistry());
-		/* If no flow matches, map the path to a view, e.g. "/intro" maps to a view named "intro" */
-		mapping.setDefaultHandler(new UrlFilenameViewController());
-		return mapping;
-	}
+        log.debug("flowBuilderServices()");
+        return getFlowBuilderServicesBuilder().setDevelopmentMode(true).build();
+    }
 
 
 
-	@Bean
-	public FlowHandlerAdapter flowHandlerAdapter() {
+    @Bean
+    public FlowHandlerMapping flowHandlerMapping() {
 
-		JsfFlowHandlerAdapter adapter = new JsfFlowHandlerAdapter();
-		adapter.setFlowExecutor(flowExecutor());
-		return adapter;
-	}
+        log.debug("flowHandlerMapping()");
+        FlowHandlerMapping mapping = new FlowHandlerMapping();
+        mapping.setOrder(1);
+        mapping.setFlowRegistry(flowRegistry());
+        mapping.setDefaultHandler(new UrlFilenameViewController());
+        return mapping;
+    }
+
+
+
+    @Bean
+    public FlowHandlerAdapter flowHandlerAdapter() {
+
+        log.debug("flowHandlerAdapter()");
+        JsfFlowHandlerAdapter adapter = new JsfFlowHandlerAdapter();
+        adapter.setFlowExecutor(flowExecutor());
+        return adapter;
+    }
 
 }
