@@ -19,94 +19,96 @@ import java.util.List;
 @Slf4j
 public class UserView implements Serializable {
 
-    @Autowired
-    private UserService userService;
-    private List<User> users = new ArrayList<>();
-    private User user;
+	@Autowired
+	private UserService userService;
+	private List<User> users = new ArrayList<>();
+	private User user;
 
 
 
-    @PostConstruct
-    public void init() {
+	@PostConstruct
+	public void init() {
 
-        log.debug("init()");
-        user = new User();
-        if (userService != null) {
-            users = userService.getAllUsers();
-        }
-    }
-
-
-
-    public String prepareForUpdate(Long id) {
-
-        log.debug("prepareForUpdate()");
-        user = userService.getUser(id).get();
-        return "new";
-    }
+		log.debug("init()");
+		user = new User();
+		if (userService != null) {
+			users = userService.getAllUsers();
+		}
+	}
 
 
 
-    public String savePerson() {
+	public String prepareForUpdate(Long id) {
 
-        log.debug("savePerson()");
-        userService.addUser(user);
-        users = new ArrayList<>();
-        users = userService.getAllUsers();
-        System.out.println("save");
-        return "save";
-    }
-
-
-
-    public String newPerson() {
-
-        log.debug("newPerson()");
-        user = new User();
-        System.out.println("new");
-        return "new";
-    }
+		log.debug("prepareForUpdate()");
+		user = userService
+				.getUser(id)
+				.get();
+		return "new";
+	}
 
 
 
-    public List<User> getUsers() {
+	public String savePerson() {
 
-        return users;
-    }
-
-
-
-    public void setUsers(List<User> users) {
-
-        this.users = users;
-    }
+		log.debug("savePerson()");
+		userService.addUser(user);
+		users = new ArrayList<>();
+		users = userService.getAllUsers();
+		System.out.println("save");
+		return "save";
+	}
 
 
 
-    public User getUser() {
+	public String newPerson() {
 
-        return user;
-    }
-
-
-
-    public void setUser(User user) {
-
-        this.user = user;
-    }
+		log.debug("newPerson()");
+		user = new User();
+		System.out.println("new");
+		return "new";
+	}
 
 
 
-    public UserService getUserService() {
+	public List<User> getUsers() {
 
-        return userService;
-    }
+		return users;
+	}
 
 
 
-    public void setUserService(UserService userService) {
+	public void setUsers(List<User> users) {
 
-        this.userService = userService;
-    }
+		this.users = users;
+	}
+
+
+
+	public User getUser() {
+
+		return user;
+	}
+
+
+
+	public void setUser(User user) {
+
+		this.user = user;
+	}
+
+
+
+	public UserService getUserService() {
+
+		return userService;
+	}
+
+
+
+	public void setUserService(UserService userService) {
+
+		this.userService = userService;
+	}
 
 }

@@ -1,21 +1,23 @@
 image::src/main/webapp/images/android-chrome-192x192.png[]
 tags: [Spring Boot 2.3.0, JSF 2.4, Primerfaces 7.0, Spring Web Flow 2.5.1, JDK14]
 
-project: [#spring-primefaces-scheduler#]
+[#_pet_project_spring_primefaces_scheduler]
+*pet project:* [#spring-primefaces-scheduler#]
 
 1) implementation of Basis Primefaces Scheduler.
 
 2) Components: Spring Boot 2.3.0, JSF 2.4, Primerfaces 7.0, Spring Web Flow 2.5.1, JSE14
 
-3) paths:
+3) URLs:
+
 |===
 |*path are* | *description* |*remarks*
 
-|http://localhost:8080//ui/person
+|http://localhost:8080/ui/person
 | common programm test (DB connect, Boot, JSB connet)
 | helpful on refactoring and pom version changing
 
-|http://localhost:8080/ui/reservation
+|http://localhost:8080/ui//reservation
 |call _standard_ Schedule example of Primerfaces Schedule (w/o DB-connect)
 | *
 |===
@@ -23,8 +25,4 @@ project: [#spring-primefaces-scheduler#]
 Database: not significant, use any of them, what u've s. file://application.properties[application.properties]
 for the info!
 mailto://javaentwickler@gmail.com[EMail]
-
-
-
-
 

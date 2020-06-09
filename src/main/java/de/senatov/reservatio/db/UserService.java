@@ -17,56 +17,58 @@ import java.util.Optional;
 @Slf4j
 public class UserService implements Serializable {
 
-    @Autowired
-    private UserRepository userRepository;
+	@Autowired
+	private UserRepository userRepository;
 
 
 
-    public UserService(UserRepository userRepository) {
+	public UserService(UserRepository userRepository) {
 
-        this.userRepository = userRepository;
-    }
-
-
-
-    public List<User> getAllUsers() {
-
-        log.debug("getAllUsers()");
-        List<User> posts = new ArrayList<>();
-        userRepository.findAll().forEach(e -> posts.add(e));
-        return posts;
-    }
+		this.userRepository = userRepository;
+	}
 
 
 
-    public Optional<User> getUser(Long id) {
+	public List<User> getAllUsers() {
 
-        log.debug("getUser()");
-        return userRepository.findById(id);
-    }
-
-
-
-    public void addUser(User user) {
-
-        log.debug("addUser()");
-        userRepository.save(user);
-    }
+		log.debug("getAllUsers()");
+		List<User> posts = new ArrayList<>();
+		userRepository
+				.findAll()
+				.forEach(e -> posts.add(e));
+		return posts;
+	}
 
 
 
-    public void updateUser(User user) {
+	public Optional<User> getUser(Long id) {
 
-        log.debug("updateUser()");
-        userRepository.save(user);
-    }
+		log.debug("getUser()");
+		return userRepository.findById(id);
+	}
 
 
 
-    public void deleteUser(User user) {
+	public void addUser(User user) {
 
-        log.debug("deleteUser()");
-        userRepository.delete(user);
-    }
+		log.debug("addUser()");
+		userRepository.save(user);
+	}
+
+
+
+	public void updateUser(User user) {
+
+		log.debug("updateUser()");
+		userRepository.save(user);
+	}
+
+
+
+	public void deleteUser(User user) {
+
+		log.debug("deleteUser()");
+		userRepository.delete(user);
+	}
 
 }
