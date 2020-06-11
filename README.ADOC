@@ -1,15 +1,15 @@
-image::src/main/webapp/images/android-chrome-192x192.png[]
+
+image::doc/Anmerkung 2020-06-11 115746.png[]
+
 tags: [Spring Boot 2.3.0, JSF 2.4, Primerfaces 7.0, Spring Web Flow 2.5.1, JDK14]
+
 
 [#_pet_project_spring_primefaces_scheduler]
 *pet project:* [#spring-primefaces-scheduler#]
 
 1) implementation of Basis Primefaces Scheduler.
-
-2) Components: Spring Boot 2.3.0, JSF 2.4, Primerfaces 7.0, [.line-through]#Spring Web Flow 2.5.1#, JSE14
-
+2) Components: Spring Boot 2.3.0, JSF 2.4, Primerfaces 7.0,  JSE14
 3) URLs:
-
 |===
 |*path are* | *description* |*remarks*
 
