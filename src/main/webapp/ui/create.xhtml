@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+>
+<f:view contentType="text/html">
+
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" href="/images/favicon.png"/>
+        <meta name="description" content="Web-Testapp for Spring Boot 2.3.0, JSF and PrimeFaces. I. Senatov"/>
+        <link rel="apple-touch-icon" href="/images/favicon.png"/>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <title>Create person</title>
+    </h:head>
+
+    <h:body>
+        <div class="container">
+            <h1>Create new person</h1>
+            <h:form>
+                <div class="form-group">
+                    <p:outputLabel for="firstName" value="First name"/>
+                    <p:outputLabel value="#{viewScope.selectedPhone}"/>
+                    <p:inputText value="#{userView.user.firstName}" placeholder="Peter" id="firstName"
+                    />
+                </div>
+                <div class="form-group">
+                    <p:outputLabel for="lastName" value="Last name"/>
+                    <p:inputText value="#{userView.user.lastName}" placeholder="Müller" id="lastName"/>
+                </div>
+                <div class="form-group">
+                    <p:outputLabel for="firstName" value="eMail"/>
+                    <p:outputLabel value="#{viewScope.eMail}"/>
+                    <p:inputText value="#{userView.user.eMail}" placeholder="aaa@bbb.cc" id="eMail"
+                    />
+                </div>
+                <!--<p:commandButton action="save" value="Save" ajax="true"/>-->
+                <p:commandButton action="#{userView.savePerson}" value="Save" ajax="false"/>
+            </h:form>
+            <p:messages showDetail="true"/>
+        </div>
+    </h:body>
+</f:view>
+</html>
