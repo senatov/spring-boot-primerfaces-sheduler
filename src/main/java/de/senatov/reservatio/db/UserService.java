@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +36,9 @@ public class UserService implements Serializable {
 		List<User> posts = new ArrayList<>();
 		userRepository
 				.findAll()
-				.forEach(e -> posts.add(e));
+				.forEach((User o) -> {
+					posts.add(o);
+				});
 		return posts;
 	}
 

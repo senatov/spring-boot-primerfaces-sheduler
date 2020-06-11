@@ -3,6 +3,7 @@ package de.senatov.reservatio.db;
 
 
 import lombok.Data;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.io.Serializable;
 
 
 @Slf4j
+@ToString
 @Data
 @Entity
 @Table(name = "sc_user")
