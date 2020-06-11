@@ -6,18 +6,22 @@ tags: [Spring Boot 2.3.0, JSF 2.4, Primerfaces 7.0, Spring Web Flow 2.5.1, JDK14
 
 1) implementation of Basis Primefaces Scheduler.
 
-2) Components: Spring Boot 2.3.0, JSF 2.4, Primerfaces 7.0, Spring Web Flow 2.5.1, JSE14
+2) Components: Spring Boot 2.3.0, JSF 2.4, Primerfaces 7.0, [.line-through]#Spring Web Flow 2.5.1#, JSE14
 
 3) URLs:
 
 |===
 |*path are* | *description* |*remarks*
 
-|http://localhost:8080/ui/person
+|http://localhost:8080/ui/person.xhtml
 | common programm test (DB connect, Boot, JSB connet)
 | helpful on refactoring and pom version changing
 
-|http://localhost:8080/ui//reservation
+|http://localhost:8080/ui/list.xhtml
+|call user's list
+| *
+
+|http://localhost:8080/ui/reservation.xhtml
 |call _standard_ Schedule example of Primerfaces Schedule (w/o DB-connect)
 | *
 |===
