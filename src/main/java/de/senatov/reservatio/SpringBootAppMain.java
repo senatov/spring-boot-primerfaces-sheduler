@@ -6,8 +6,6 @@ import com.google.common.collect.ImmutableMap;
 import com.sun.faces.config.ConfigureListener;
 import de.senatov.reservatio.view.ViewScope;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.SpringApplication;
@@ -33,7 +31,7 @@ public class SpringBootAppMain implements ServletContextAware {
 
 
 
-	public static void main(String[] args) {
+	public static void main(String... args) {
 
 		SpringApplication.run(SpringBootAppMain.class, args);
 	}

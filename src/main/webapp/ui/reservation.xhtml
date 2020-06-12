@@ -1,24 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui"
->
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://bootsfaces.net/ui ">
+
+
 <f:view contentType="text/html">
 
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="shortcut icon" href="/images/favicon.png"/>
-        <meta name="description" content="Web-Testapp for Spring Boot 2.3.0, JSF and PrimeFaces. I. Senatov"/>
-        <link rel="apple-touch-icon" href="/images/favicon.png"/>
+        <link rel="shortcut icon" href="/images/favicon.ico"/>
+        <meta name="description" content="Web-Testapp for Spring Boot 2.3.0, JSF 2.4 and PrimeFaces 7.0. I. Senatov"/>
+        <link rel="apple-touch-icon" href="/images/apple-touch-icon.png"/>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <title>Room Reservation</title>
     </h:head>
 
     <h:body>
-        <div class="top-toolbar">
+        <div class="top-toolbar" style="background-color: coral; animation: infinite">
             <p:staticMessage severity="info" summary="Demo:" detail="Editable room reservation demo"/>
         </div>
 

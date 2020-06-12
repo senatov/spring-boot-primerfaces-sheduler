@@ -51,7 +51,7 @@ public class ScheduleView implements Serializable {
 		log.debug("getRandomDate()");
 		Calendar date = Calendar.getInstance();
 		date.setTime(base);
-		date.add(Calendar.DATE, ((int) (Math.random() * 30)) + 1);    //set random day of month
+		date.add(Calendar.DATE, ((int) (Math.random() * 30D)) + 1);    //set random day of month
 		return date.getTime();
 	}
 
