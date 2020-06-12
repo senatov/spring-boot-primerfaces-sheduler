@@ -25,13 +25,13 @@
     </h:head>
 
     <h:body>
-        <div class="top-toolbar" style="background-color: coral; animation: infinite">
-            <p:staticMessage severity="info" summary="Demo:" detail="Editable room reservation demo"/>
+        <div class="top-toolbar" style="background-color: coral">
+            <p:staticMessage severity="info" summary="Pet - App:" detail="Editable room reservation demo"/>
         </div>
 
         <h:form>
             <p:growl id="messages" showDetail="true"/>
-            <h:panelGrid columnClasses="value">
+            <h:panelGrid columnClasses="value" style="background-color: lightgoldenrodyellow;border-color: darkblue;size:auto">
                 <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2">
                     <p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
                     <p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}" update="eventDetails"
