@@ -180,7 +180,7 @@ public class ScheduleView implements Serializable {
 
 	public ScheduleEvent getEvent() {
 
-		log.debug("getEvent()" + event);
+		log.debug("getEvent()" + event.toString());
 		return event;
 	}
 
@@ -188,7 +188,7 @@ public class ScheduleView implements Serializable {
 
 	public void setEvent(ScheduleEvent event) {
 
-		log.debug("setEvent()" + event);
+		log.debug("setEvent()" + event.toString());
 		this.event = event;
 	}
 
@@ -196,7 +196,7 @@ public class ScheduleView implements Serializable {
 
 	public void addEvent() {
 
-		log.debug("addEvent()" + event);
+		log.debug("addEvent()" + event.toString());
 		if (event.getId() == null) {
 			eventModel.addEvent(event);
 		}
@@ -210,7 +210,7 @@ public class ScheduleView implements Serializable {
 
 	public void onEventSelect(SelectEvent selectEvent) {
 
-		log.debug("onEventSelect()" + selectEvent);
+		log.debug("onEventSelect()" + selectEvent.toString());
 		event = (ScheduleEvent) selectEvent.getObject();
 	}
 

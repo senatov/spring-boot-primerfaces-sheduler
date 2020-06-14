@@ -18,7 +18,7 @@ import java.util.Optional;
 public class UserService implements Serializable {
 
 	@Autowired
-	private final UserRepository userRepository;
+	private UserRepository userRepository;
 
 
 
