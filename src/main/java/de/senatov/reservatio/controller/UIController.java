@@ -11,46 +11,34 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class UIController {
 
-	@GetMapping("/{firstValue}")
-	public String requestWithError(
-			@PathVariable("firstValue")
-					String firstValue) {
+    @GetMapping("/{firstValue}")
+    public String requestWithError(@PathVariable("firstValue") String firstValue) {
 
-		return firstValue;
-	}
+        return "ui/reservation.xhtml";
+    }
+
+
 
     @GetMapping("/{firstValue}/{secondValue}")
-    public String requestWithError(
-            @PathVariable("firstValue")
-                    String firstValue,
-            @PathVariable("secondValue")
-                    String secondValue) {
+    public String requestWithError(@PathVariable("firstValue") String firstValue, @PathVariable("secondValue") String secondValue) {
 
-        return firstValue + " - " + secondValue;
+        return "ui/reservation.xhtml";
     }
 
 
 
     @GetMapping("/{firstValue}/{secondValue:.+}")
-    public String requestWithRegex(
-            @PathVariable("firstValue")
-                    String firstValue,
-            @PathVariable("secondValue")
-                    String secondValue) {
+    public String requestWithRegex(@PathVariable("firstValue") String firstValue, @PathVariable("secondValue") String secondValue) {
 
-        return firstValue + " - " + secondValue;
+        return "ui/reservation.xhtml";
     }
 
 
 
     @GetMapping("/{firstValue}/{secondValue}/")
-    public String requestWithSlash(
-            @PathVariable("firstValue")
-                    String firstValue,
-            @PathVariable("secondValue")
-                    String secondValue) {
+    public String requestWithSlash(@PathVariable("firstValue") String firstValue, @PathVariable("secondValue") String secondValue) {
 
-        return firstValue + " - " + secondValue;
+        return "ui/reservation.xhtml";
     }
 
 }
