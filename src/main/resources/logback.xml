@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--                                                                -->
-<!--           Iakov Senatov.02.2020                                -->
+<!--           Iakov Senatov.06.2020                                -->
 <!--                                                                -->
 <configuration>
 
@@ -21,44 +21,46 @@
             <FileNamePattern>/tmp/app-log.log.%i</FileNamePattern>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>5MB</MaxFileSize>
+            <MaxFileSize>3MB</MaxFileSize>
         </triggeringPolicy>
     </appender>
-
-    <root level="WARN">
+    <!--
+           COMMON
+     -->
+    <root level="DEBUG">
         <appender-ref ref="console"/>
         <appender-ref ref="app-log"/>
     </root>
+    <!--
+            LOGGERS
+     -->
+    <logger name="org.springframework.web.servlet.resource" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="com.sun.faces" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.springframework.webflow" additivity="false" level="DEBUG">
+        <appender-ref ref="app-log"/>
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.springframework.faces" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.springframework.security" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="javax.faces" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="javax.el" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="com.sun.faces" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.hibernate" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
 
-    <logger name="com.sun.faces" level="WARN">
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="org.springframework.webflow" level="WARN">
-        <appender-ref ref="app-log"/>
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="org.springframework.faces" level="WARN">
-        <appender-ref ref="app-log"/>
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="org.springframework.security" additivity="false" level="WARN">
-        <appender-ref ref="app-log"/>
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="javax.faces" additivity="false" level="WARN">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
-    <logger name="org.springframework" additivity="false" level="WARN">
-        <appender-ref ref="app-log"/>
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="javax.el" additivity="false" level="WARN">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
-    <logger name="com.sun.faces" additivity="false" level="WARN">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
 </configuration>

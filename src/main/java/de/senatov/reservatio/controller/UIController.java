@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 
-@Controller
+//@Controller
 public class UIController {
 
+/**
     @GetMapping("/")
     public String requestWithError(@PathVariable("firstValue") String firstValue) {
 
@@ -48,5 +49,5 @@ public class UIController {
 
         return "/ui/reservation";
     }
-
+*/
 }
