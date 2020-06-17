@@ -14,7 +14,7 @@ tags: [Spring Boot 2.3.0, JSF 2.4, Primerfaces 7.0, Spring Web Flow 2.5.1, JDK14
 |*path are* | *description* |*remarks*
 
 |http://localhost:8080/ui/person.xhtml
-| common programm test (DB connect, Boot, JSB connet)
+| common programm test (DB connect, Boot, JSF connection)
 | helpful on refactoring and pom version changing
 
 |http://localhost:8080/ui/list.xhtml

@@ -34,10 +34,10 @@
     <!--
             LOGGERS
      -->
-    <logger name="org.springframework.web.servlet.resource" additivity="false" level="DEBUG">
+    <logger name="com.sun.faces" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="com.sun.faces" additivity="false" level="DEBUG">
+    <logger name="org.springframework.web.servlet" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
     <logger name="org.springframework.webflow" additivity="false" level="DEBUG">
@@ -47,7 +47,7 @@
     <logger name="org.springframework.faces" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.security" additivity="false" level="DEBUG">
+    <logger name="org.springframework.security" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
     <logger name="javax.faces" additivity="false" level="DEBUG">
@@ -56,11 +56,7 @@
     <logger name="javax.el" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="com.sun.faces" additivity="false" level="DEBUG">
-        <appender-ref ref="console"/>
-    </logger>
     <logger name="org.hibernate" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-
 </configuration>
