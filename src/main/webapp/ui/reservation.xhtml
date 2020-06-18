@@ -1,66 +1,56 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:pe="http://primefaces.org/ui/extensions"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://bootsfaces.net/ui ">
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/layouts/standard.xhtml">
 
+    <ui:define name="notes">
+        <p>
+            Call and fill Scheduler Control from Primefaces. Under construction yet.
+        </p>
+    </ui:define>
 
-<f:view contentType="text/html">
+    <ui:define name="content">
 
+        <div class="container">
+            <div class="top-toolbar" style="background-color: coral">
+                <p:staticMessage severity="info" summary="Pet - App:" detail="Editable room reservation demo"/>
+            </div>
 
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="shortcut icon" href="/images/icons/favicon.ico"/>
-        <meta name="description" content="Web-Testapp for Spring Boot 2.3.0, JSF 2.4 and PrimeFaces 7.0. I. Senatov"/>
-        <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png"/>
-        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-        <title>Room Reservation</title>
-    </h:head>
-
-    <h:body>
-        <div class="top-toolbar" style="background-color: coral">
-            <p:staticMessage severity="info" summary="Pet - App:" detail="Editable room reservation demo"/>
-        </div>
-
-        <h:form>
-            <p:growl id="messages" showDetail="true"/>
-            <h:panelGrid columnClasses="value" style="background-color: lightgoldenrodyellow;border-color: darkblue;size:auto">
-                <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2">
-                    <p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
-                    <p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}" update="eventDetails"
-                            oncomplete="PF('eventDialog').show();"/>
-                    <p:ajax event="eventMove" listener="#{scheduleView.onEventMove}" update="messages"/>
-                    <p:ajax event="eventResize" listener="#{scheduleView.onEventResize}" update="messages"/>
-                </p:schedule>
-            </h:panelGrid>
-
-            <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
-                <h:panelGrid id="eventDetails" columns="2">
-                    <p:outputLabel for="title" value="Titles:"/>
-                    <p:inputText id="title" value="#{scheduleView.event.title}" required="true"/>
-
-                    <p:outputLabel for="from" value="From:"/>
-                    <p:calendar id="from" value="#{scheduleView.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
-
-                    <p:outputLabel for="to" value="To:"/>
-                    <p:calendar id="to" value="#{scheduleView.event.endDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
-
-                    <p:outputLabel for="allDay" value="All Day:"/>
-                    <h:selectBooleanCheckbox id="allDay" value="#{scheduleView.event.allDay}"/>
-
-                    <p:commandButton type="reset" value="Reset"/>
-                    <p:commandButton id="addButton" value="Save" action="#{scheduleView.addEvent}"
-                                     oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
+            <h:form>
+                <p:growl id="messages" showDetail="true"/>
+                <h:panelGrid columnClasses="value" style="background-color: lightgoldenrodyellow;border-color: darkblue;size:auto">
+                    <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2">
+                        <p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
+                        <p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}" update="eventDetails"
+                                oncomplete="PF('eventDialog').show();"/>
+                        <p:ajax event="eventMove" listener="#{scheduleView.onEventMove}" update="messages"/>
+                        <p:ajax event="eventResize" listener="#{scheduleView.onEventResize}" update="messages"/>
+                    </p:schedule>
                 </h:panelGrid>
-            </p:dialog>
-        </h:form>
-    </h:body>
-</f:view>
-</html>
+
+                <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+                    <h:panelGrid id="eventDetails" columns="2">
+                        <p:outputLabel for="title" value="Titles:"/>
+                        <p:inputText id="title" value="#{scheduleView.event.title}" required="true"/>
+
+                        <p:outputLabel for="from" value="From:"/>
+                        <p:calendar id="from" value="#{scheduleView.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+
+                        <p:outputLabel for="to" value="To:"/>
+                        <p:calendar id="to" value="#{scheduleView.event.endDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+
+                        <p:outputLabel for="allDay" value="All Day:"/>
+                        <h:selectBooleanCheckbox id="allDay" value="#{scheduleView.event.allDay}"/>
+
+                        <p:commandButton type="reset" value="Reset"/>
+                        <p:commandButton id="addButton" value="Save" action="#{scheduleView.addEvent}"
+                                         oncomplete="PF('myschedule').update();PF('eventDialog').hide();"/>
+                    </h:panelGrid>
+                </p:dialog>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+

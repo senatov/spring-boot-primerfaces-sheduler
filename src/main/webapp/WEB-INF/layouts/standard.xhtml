@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+>
+
+
+<f:view contentType="text/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="shortcut icon" href="/images/icons/favicon.ico"/>
+        <meta name="description" content="Scheduler Pet App: Spring Boot 2.3.0, JSF 2.4 and PrimeFaces 7.0.  I. Senatov"/>
+        <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png"/>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+        <ui:insert name="headIncludes"/>
+    </h:head>
+
+
+
+    <h:body>
+        <p:panelGrid columns="2" style="border: #491795">
+            <h:outputText value="contextPath:"/>
+            <h:outputText value="${request.contextPath}"/>
+            <h:outputText value="RealPath:"/>
+            <h:outputText value="${request.getRealPath('/')}"/>
+        </p:panelGrid>
+
+        <p:separator styleClass="append-6"/>
+        <div class="container">
+            <div>
+                <code>-----Menü will be here ------------</code>
+            </div>
+            <div>
+                <code>-----System Area will be here ------------</code>
+            </div>
+            <hr class="space"/>
+            <div>
+                <div id="local" class="span-4 colborder">
+                    <h3>Comments:</h3>
+                    <ui:insert name="notes"/>
+                </div>
+                <div class="span-19 last">
+                    <ui:insert name="content"/>
+                </div>
+            </div>
+            <hr class="space"/>
+        </div>
+    </h:body>
+
+    
+</f:view>
+</html>
