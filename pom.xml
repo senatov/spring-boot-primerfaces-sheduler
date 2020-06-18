@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>de.senatov</groupId>
-    <artifactId>spring-boot-primerfaces-sheduler</artifactId>
-    <version>0.0.7</version>
-    <packaging>war</packaging>
-    <name>room-reservation</name>
-    <description>Example: JPA/Hibernate, JDK 14, Spring Boot 2.2.6, Primefaces 7,Spring Security</description>
-
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
         <version>2.3.0.RELEASE</version>
         <relativePath/>
     </parent>
-
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>de.senatov</groupId>
+    <artifactId>spring-boot-primerfaces-sheduler</artifactId>
+    <packaging>war</packaging>
+    <name>room-reservation</name>
+    <version>0.0.7</version>
+    <description>Example: JPA/Hibernate, JDK 14, Spring Boot 2.2.6, Primefaces 7,Spring Security</description>
     <developers>
         <developer>
             <id>senatov</id>
@@ -29,23 +27,100 @@
             </roles>
         </developer>
     </developers>
-    <properties>
-        <java.version>14</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>sonatype-snapshots</id>
-            <name>Sonatype Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>spring.io.plugins-snapshot</id>
-            <name>spring.io.plugins-snapshot</name>
-            <url>https://repo.spring.io/plugins-snapshot</url>
-        </pluginRepository>
-    </pluginRepositories>
-
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.2</version>
+                <executions>
+                    <execution>
+                        <id>analyze</id>
+                        <goals>
+                            <goal>analyze-only</goal>
+                        </goals>
+                        <configuration>
+                            <failOnWarning>false</failOnWarning>
+                            <ignoreNonCompile>true</ignoreNonCompile>
+                            <outputXML>true</outputXML>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>--enable-preview</arg>
+                    </compilerArgs>
+                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                    <parameters>true</parameters>
+                    <source>14</source>
+                    <target>14</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <configuration>
+                    <argLine>--enable-preview</argLine>
+                    <includes>
+                        <include>**/*Test.java</include>
+                        <include>**/*test.java</include>
+                    </includes>
+                    <junitArtifactName>junit:junit</junitArtifactName>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.3</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                        <manifestEntries>
+                            <Build-Jdk>${java.version} (${java.vendor} ${java.vm.version}</Build-Jdk>
+                            <Build-OS>${os.name} ${os.arch} ${os.version} ${oauth2-oidc-sdk.version}</Build-OS>
+                            <Build-Revision>${git.commit.id}</Build-Revision>
+                            <Build-Timestamp>${maven.build.timestamp}</Build-Timestamp>
+                            <Built-At>${maven.build.timestamp}</Built-At>
+                            <Implementation-Build>${project.build}</Implementation-Build>
+                            <mode>development</mode>
+                            <url>${project.url}</url>
+                            <version>${project.version}</version>
+                        </manifestEntries>
+                    </archive>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.0.0</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <dateFormat>yyyyMMdd-HHmmss</dateFormat>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <repositories>
         <repository>
             <id>JBoss-Repo</id>
@@ -85,7 +160,18 @@
             <url>https://repo.spring.io/snapshot</url>
         </repository>
     </repositories>
-
+    <pluginRepositories>
+        <pluginRepository>
+            <id>sonatype-snapshots</id>
+            <name>Sonatype Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring.io.plugins-snapshot</id>
+            <name>spring.io.plugins-snapshot</name>
+            <url>https://repo.spring.io/plugins-snapshot</url>
+        </pluginRepository>
+    </pluginRepositories>
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -276,99 +362,8 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M3</version>
-                <configuration>
-                    <argLine>--enable-preview</argLine>
-                    <includes>
-                        <include>**/*Test.java</include>
-                        <include>**/*test.java</include>
-                    </includes>
-                    <junitArtifactName>junit:junit</junitArtifactName>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.2</version>
-                <executions>
-                    <execution>
-                        <id>analyze</id>
-                        <goals>
-                            <goal>analyze-only</goal>
-                        </goals>
-                        <configuration>
-                            <failOnWarning>false</failOnWarning>
-                            <ignoreNonCompile>true</ignoreNonCompile>
-                            <outputXML>true</outputXML>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <version>4.0.0</version>
-                <executions>
-                    <execution>
-                        <id>get-the-git-infos</id>
-                        <goals>
-                            <goal>revision</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <dateFormat>yyyyMMdd-HHmmss</dateFormat>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.3</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            <classpathPrefix>lib/</classpathPrefix>
-                        </manifest>
-                        <manifestEntries>
-                            <Built-At>${maven.build.timestamp}</Built-At>
-                            <Implementation-Build>${project.build}</Implementation-Build>
-                            <version>${project.version}</version>
-                            <mode>development</mode>
-                            <url>${project.url}</url>
-                            <Build-Jdk>${java.version} (${java.vendor} ${java.vm.version}</Build-Jdk>
-                            <Build-Timestamp>${maven.build.timestamp}</Build-Timestamp>
-                            <Build-Revision>${git.commit.id}</Build-Revision>
-                            <Build-OS>${os.name} ${os.arch} ${os.version} ${oauth2-oidc-sdk.version}</Build-OS>
-                        </manifestEntries>
-                    </archive>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>14</source>
-                    <target>14</target>
-                    <compilerArgs>
-                        <arg>--enable-preview</arg>
-                    </compilerArgs>
-                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                    <parameters>true</parameters>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <properties>
+        <java.version>14</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 </project>

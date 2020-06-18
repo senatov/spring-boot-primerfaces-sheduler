@@ -65,8 +65,10 @@ public class SpringBootAppMain implements ServletContextAware {
 
 		sc.addListener(ConfigureListener.class);
 		sc.setInitParameter("com.sun.faces.compressJavaScript", FALSE.toString());
+		sc.setInitParameter("com.sun.faces.enableClientStateDebugging", TRUE.toString());
 		sc.setInitParameter("com.sun.faces.expressionFactory", "org.apache.el.ExpressionFactoryImpl");
 		sc.setInitParameter("com.sun.faces.forceLoadConfiguration", TRUE.toString());
+		sc.setInitParameter("com.sun.faces.sendPoweredByHeader", TRUE.toString());
 		sc.setInitParameter("facelets.DEVELOPMENT", TRUE.toString());
 		sc.setInitParameter("Javax.faces.CONFIG_FILES", "/WEB-INF/faces-config.xml");
 		sc.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
@@ -76,7 +78,7 @@ public class SpringBootAppMain implements ServletContextAware {
 		sc.setInitParameter("javax.faces.STATE_SAVING_METHOD", "server");
 		sc.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", TRUE.toString());
 		sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
-		sc.setInitParameter("primefaces.THEME", "bootstrap");
+		sc.setInitParameter("primefaces.THEME", "redmond");
 
 	}
 

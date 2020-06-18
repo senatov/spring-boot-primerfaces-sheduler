@@ -34,8 +34,8 @@ public class MenuView {
         firstSubmenu.setLabel("Dynamic Submenu");
 
         DefaultMenuItem item = new DefaultMenuItem();
-        item.setValue("FB");
-        item.setUrl("https://www.facebook.com/iakov.senatov");
+        item.setValue("Github Repository");
+        item.setUrl("https://github.com/senatov/spring-boot-primerfaces-sheduler");
         item.setIcon("pi pi-home");
         firstSubmenu.getElements().add(item);
 
