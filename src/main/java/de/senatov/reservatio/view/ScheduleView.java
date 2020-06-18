@@ -1,4 +1,4 @@
-package de.senatov.reservatio.schedu;
+package de.senatov.reservatio.view;
 
 
 
@@ -19,7 +19,6 @@ import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
-//import org.
 
 
 
