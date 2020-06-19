@@ -21,85 +21,94 @@ import javax.faces.context.FacesContext;
 @Slf4j
 public class MenuView {
 
-    private MenuModel model;
+	private MenuModel model;
 
 
 
-    @PostConstruct
-    public void init() {
+	@PostConstruct
+	public void init() {
 
-        model = new DefaultMenuModel();
-        //First submenu
-        DefaultSubMenu firstSubmenu = new DefaultSubMenu();
-        firstSubmenu.setLabel("Dynamic Submenu");
-
-        DefaultMenuItem item = new DefaultMenuItem();
-        item.setValue("Github Repository");
-        item.setUrl("https://github.com/senatov/spring-boot-primerfaces-sheduler");
-        item.setIcon("pi pi-home");
-        firstSubmenu.getElements().add(item);
-
-        model.getElements().add(firstSubmenu);
-        //Second submenu
-        DefaultSubMenu secondSubmenu = new DefaultSubMenu();
-        secondSubmenu.setLabel("Dynamic Actions");
-
-        item = new DefaultMenuItem();
-        item.setValue("Save");
-        item.setIcon("pi pi-save");
-        item.setCommand("#{menuView.save}");
-        item.setUpdate("messages");
-        secondSubmenu.getElements().add(item);
-
-        item = new DefaultMenuItem();
-        item.setValue("Delete");
-        item.setIcon("pi pi-times");
-        item.setCommand("#{menuView.delete}");
-        item.setAjax(false);
-        secondSubmenu.getElements().add(item);
-
-        item = new DefaultMenuItem();
-        item.setValue("Redirect");
-        item.setIcon("pi pi-search");
-        item.setCommand("#{menuView.redirect}");
-        secondSubmenu.getElements().add(item);
-        model.getElements().add(secondSubmenu);
-    }
-
-
-
-    public MenuModel getModel() {
-
-        return model;
-    }
-
-
-
-    public void save() {
-
-        addMessage("Success", "Data saved");
-    }
+		model = new DefaultMenuModel();
+		//First submenu
+		DefaultSubMenu firstSubmenu = new DefaultSubMenu();
+		firstSubmenu.setLabel("Dynamic Submenu");
+		DefaultMenuItem item = new DefaultMenuItem();
+		item.setValue("Github Repository");
+		item.setUrl("https://github.com/senatov/spring-boot-primerfaces-sheduler");
+		item.setIcon("pi pi-home");
+		firstSubmenu
+				.getElements()
+				.add(item);
+		model
+				.getElements()
+				.add(firstSubmenu);
+		//Second submenu
+		DefaultSubMenu secondSubmenu = new DefaultSubMenu();
+		secondSubmenu.setLabel("Dynamic Actions");
+		item = new DefaultMenuItem();
+		item.setValue("Save");
+		item.setIcon("pi pi-save");
+		item.setCommand("#{menuView.save}");
+		item.setUpdate("messages");
+		secondSubmenu
+				.getElements()
+				.add(item);
+		item = new DefaultMenuItem();
+		item.setValue("Delete");
+		item.setIcon("pi pi-times");
+		item.setCommand("#{menuView.delete}");
+		item.setAjax(false);
+		secondSubmenu
+				.getElements()
+				.add(item);
+		item = new DefaultMenuItem();
+		item.setValue("Redirect");
+		item.setIcon("pi pi-search");
+		item.setCommand("#{menuView.redirect}");
+		secondSubmenu
+				.getElements()
+				.add(item);
+		model
+				.getElements()
+				.add(secondSubmenu);
+	}
 
 
 
-    public void update() {
+	public MenuModel getModel() {
 
-        addMessage("Success", "Data updated");
-    }
-
-
-
-    public void delete() {
-
-        addMessage("Success", "Data deleted");
-    }
+		return model;
+	}
 
 
 
-    public void addMessage(String summary, String detail) {
+	public void save() {
 
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
+		addMessage("Success", "Data saved");
+	}
+
+
+
+	public void update() {
+
+		addMessage("Success", "Data updated");
+	}
+
+
+
+	public void delete() {
+
+		addMessage("Success", "Data deleted");
+	}
+
+
+
+	public void addMessage(String summary, String detail) {
+
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+		FacesContext
+				.getCurrentInstance()
+				.addMessage(null, message);
+	}
 
 }

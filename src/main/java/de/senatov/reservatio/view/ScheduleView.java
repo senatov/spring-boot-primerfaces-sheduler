@@ -2,6 +2,8 @@ package de.senatov.reservatio.view;
 
 
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
@@ -17,14 +19,19 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
+
+import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 
 
 
 @ManagedBean
 @ViewScoped
 @Slf4j
+@Getter
+@Setter
 public class ScheduleView implements Serializable {
 
 	private ScheduleModel eventModel;
@@ -37,142 +44,102 @@ public class ScheduleView implements Serializable {
 
 		log.debug("init()");
 		eventModel = new DefaultScheduleModel();
-		eventModel.addEvent(new DefaultScheduleEvent("Аудитория 1", previousDay8Pm(), previousDay11Pm()));
-		eventModel.addEvent(new DefaultScheduleEvent("Туалет на втором", today1Pm(), today6Pm()));
-		eventModel.addEvent(new DefaultScheduleEvent("Аудитория 4", nextDay9Am(), nextDay11Am()));
-		eventModel.addEvent(new DefaultScheduleEvent("Переговорная 103", theDayAfter3Pm(), fourDaysLater3pm()));
+		eventModel.addEvent(DefaultScheduleEvent.builder()
+		                                        .title("Room 123")
+		                                        .startDate(previousDay8Pm())
+		                                        .endDate(previousDay11Pm())
+		                                        .url("https://github.com/primefaces/primefaces/pull/5338")
+		                                        .build());
+		eventModel.addEvent(DefaultScheduleEvent.builder()
+		                                        .title("WXC Lab 2")
+		                                        .startDate(today1Pm())
+		                                        .endDate(today6Pm())
+		                                        .description("some description of meeting")
+		                                        .build());
+		eventModel.addEvent(DefaultScheduleEvent.builder()
+		                                        .title("Kantine")
+		                                        .startDate(nextDay9Am())
+		                                        .endDate(nextDay11Am())
+		                                        .description("some description 123")
+		                                        .build());
+		eventModel.addEvent(DefaultScheduleEvent.builder()
+		                                        .title("Meeting Room 34")
+		                                        .startDate(theDayAfter3Pm())
+		                                        .endDate(fourDaysLater3pm())
+		                                        .description("some description XYZ")
+		                                        .build());
 	}
 
 
 
-	public Date getRandomDate(Date base) {
+	private LocalDateTime previousDay8Pm() {
 
-		log.debug("getRandomDate()");
-		Calendar date = Calendar.getInstance();
-		date.setTime(base);
-		date.add(Calendar.DATE, ((int) (Math.random() * 30D)) + 1);    //set random day of month
-		return date.getTime();
+		return LocalDateTime.now()
+		                    .minusDays(1)
+		                    .withHour(8);
 	}
 
 
 
-	public Date getInitialDate() {
+	private LocalDateTime previousDay11Pm() {
 
-		log.debug("getInitialDate()");
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(calendar.get(Calendar.YEAR), Calendar.FEBRUARY, calendar.get(Calendar.DATE), 0, 0, 0);
-		return calendar.getTime();
+		return LocalDateTime.now()
+		                    .minusDays(1)
+		                    .withHour(11)
+		                    .withMinute(35);
 	}
 
 
 
-	public ScheduleModel getEventModel() {
+	private LocalDateTime today1Pm() {
 
-		return eventModel;
+		return LocalDateTime.now()
+		                    .withHour(13);
 	}
 
 
 
-	private Calendar today() {
+	private LocalDateTime theDayAfter3Pm() {
 
-		log.debug("today()");
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 0, 0, 0);
-		return calendar;
+		return LocalDateTime.now()
+		                    .withHour(13);
 	}
 
 
 
-	private Date previousDay8Pm() {
+	private LocalDateTime today6Pm() {
 
-		log.debug("previousDay8Pm()");
-		Calendar t = (Calendar) today().clone();
-		t.set(Calendar.AM_PM, Calendar.PM);
-		t.set(Calendar.DATE, t.get(Calendar.DATE) - 1);
-		t.set(Calendar.HOUR, 8);
-		return t.getTime();
+		return LocalDateTime.now()
+		                    .withHour(18);
 	}
 
 
 
-	private Date previousDay11Pm() {
+	private LocalDateTime nextDay9Am() {
 
-		log.debug("previousDay11Pm()");
-		Calendar t = (Calendar) today().clone();
-		t.set(Calendar.AM_PM, Calendar.PM);
-		t.set(Calendar.DATE, t.get(Calendar.DATE) - 1);
-		t.set(Calendar.HOUR, 11);
-		return t.getTime();
+		return LocalDateTime.now()
+		                    .plusDays(1)
+		                    .withHour(9)
+		                    .withMinute(15);
 	}
 
 
 
-	private Date today1Pm() {
+	private LocalDateTime nextDay11Am() {
 
-		log.debug("today1Pm()");
-		Calendar t = (Calendar) today().clone();
-		t.set(Calendar.AM_PM, Calendar.PM);
-		t.set(Calendar.HOUR, 1);
-		return t.getTime();
+		return LocalDateTime.now()
+		                    .plusDays(1)
+		                    .withHour(11)
+		                    .withMinute(30);
 	}
 
 
 
-	private Date theDayAfter3Pm() {
+	private LocalDateTime fourDaysLater3pm() {
 
-		log.debug("theDayAfter3Pm()");
-		Calendar t = (Calendar) today().clone();
-		t.set(Calendar.DATE, t.get(Calendar.DATE) + 2);
-		t.set(Calendar.AM_PM, Calendar.PM);
-		t.set(Calendar.HOUR, 3);
-		return t.getTime();
-	}
-
-
-
-	private Date today6Pm() {
-
-		log.debug("today6Pm()");
-		Calendar t = (Calendar) today().clone();
-		t.set(Calendar.AM_PM, Calendar.PM);
-		t.set(Calendar.HOUR, 6);
-		return t.getTime();
-	}
-
-
-
-	private Date nextDay9Am() {
-
-		log.debug("nextDay9Am()");
-		Calendar t = (Calendar) today().clone();
-		t.set(Calendar.AM_PM, Calendar.AM);
-		t.set(Calendar.DATE, t.get(Calendar.DATE) + 1);
-		t.set(Calendar.HOUR, 9);
-		return t.getTime();
-	}
-
-
-
-	private Date nextDay11Am() {
-
-		log.debug("nextDay11Am()");
-		Calendar t = (Calendar) today().clone();
-		t.set(Calendar.AM_PM, Calendar.AM);
-		t.set(Calendar.DATE, t.get(Calendar.DATE) + 1);
-		t.set(Calendar.HOUR, 11);
-		return t.getTime();
-	}
-
-
-
-	private Date fourDaysLater3pm() {
-
-		log.debug("fourDaysLater3pm()");
-		Calendar t = (Calendar) today().clone();
-		t.set(Calendar.AM_PM, Calendar.PM);
-		t.set(Calendar.DATE, t.get(Calendar.DATE) + 4);
-		t.set(Calendar.HOUR, 3);
-		return t.getTime();
+		return LocalDateTime.now()
+		                    .plusDays(4)
+		                    .withHour(15);
 	}
 
 
@@ -217,16 +184,15 @@ public class ScheduleView implements Serializable {
 
 	public void onDateSelect(SelectEvent selectEvent) {
 
-		log.debug("onDateSelect()");
-		event = new DefaultScheduleEvent("", (Date) selectEvent.getObject(), (Date) selectEvent.getObject());
+		event = new DefaultScheduleEvent("", (LocalDateTime) selectEvent.getObject(), (LocalDateTime) selectEvent.getObject());
 	}
 
 
 
 	public void onEventMove(ScheduleEntryMoveEvent event) {
 
-		log.debug("onEventMove()");
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event moved", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+		String strMsg = String.format("Day delta: %s,  Minute delta: %s", event.getDayDelta(), event.getMinuteDelta());
+		FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event moved", strMsg);
 		addMessage(message);
 	}
 
@@ -234,8 +200,8 @@ public class ScheduleView implements Serializable {
 
 	public void onEventResize(ScheduleEntryResizeEvent event) {
 
-		log.debug("onEventResize()");
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
+		String strMsg = String.format("Day delta: %s,  Minute delta: %s", event.getDayDeltaEnd(), event.getMinuteDeltaEnd());
+		FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event resized", strMsg);
 		addMessage(message);
 	}
 
@@ -243,10 +209,8 @@ public class ScheduleView implements Serializable {
 
 	private void addMessage(FacesMessage message) {
 
-		log.debug("addMessage()");
-		FacesContext
-				.getCurrentInstance()
-				.addMessage(null, message);
+		FacesContext.getCurrentInstance()
+		            .addMessage(null, message);
 	}
 
 }

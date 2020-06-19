@@ -1,4 +1,3 @@
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
@@ -22,7 +21,8 @@
                 <p:growl id="messages" showDetail="true"/>
                 <h:panelGrid columnClasses="value" style="background-color: lightgoldenrodyellow;border-color: darkblue;size:auto">
                     <p:schedule id="schedule" value="#{scheduleView.eventModel}" widgetVar="myschedule" timeZone="GMT+2">
-                        <p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();"/>
+                        <p:ajax event="dateSelect" listener="#{scheduleView.onDateSelect}" update="eventDetails"
+                                oncomplete="PF('eventDialog').show();"/>
                         <p:ajax event="eventSelect" listener="#{scheduleView.onEventSelect}" update="eventDetails"
                                 oncomplete="PF('eventDialog').show();"/>
                         <p:ajax event="eventMove" listener="#{scheduleView.onEventMove}" update="messages"/>

@@ -13,7 +13,7 @@
     <packaging>war</packaging>
     <name>room-reservation</name>
     <version>0.0.7</version>
-    <description>Example: JPA/Hibernate, JDK 14, Spring Boot 2.2.6, Primefaces 7,Spring Security</description>
+    <description>Example: JPA/Hibernate, JDK 14, Spring Boot 2.2.6, Primefaces 8,Spring Security</description>
     <developers>
         <developer>
             <id>senatov</id>
@@ -139,6 +139,7 @@
             <id>prime-repo</id>
             <name>PrimeFaces Maven Repository</name>
             <url>http://repository.primefaces.org</url>
+            <layout>default</layout>
         </repository>
         <repository>
             <id>repo1.maven.org</id>
@@ -240,19 +241,14 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.primefaces.extensions</groupId>
-            <artifactId>primefaces-extensions</artifactId>
-            <version>7.0.3</version>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>8.0</version>
         </dependency>
         <dependency>
             <groupId>org.primefaces.themes</groupId>
             <artifactId>all-themes</artifactId>
             <version>1.0.10</version>
-        </dependency>
-        <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <version>7.0</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
