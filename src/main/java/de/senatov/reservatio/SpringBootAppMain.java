@@ -5,6 +5,7 @@ package de.senatov.reservatio;
 import com.google.common.collect.ImmutableMap;
 import com.sun.faces.config.ConfigureListener;
 import de.senatov.reservatio.view.ViewScope;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
@@ -25,6 +26,7 @@ import static java.lang.Boolean.TRUE;
 
 @SpringBootApplication
 @Slf4j
+@ToString
 public class SpringBootAppMain implements ServletContextAware {
 
 	@Autowired
@@ -79,7 +81,7 @@ public class SpringBootAppMain implements ServletContextAware {
 		sc.setInitParameter("javax.faces.STATE_SAVING_METHOD", "server");
 		sc.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", TRUE.toString());
 		sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
-		sc.setInitParameter("primefaces.THEME", "glass-x");
+		sc.setInitParameter("primefaces.THEME", "redmond");
 
 	}
 

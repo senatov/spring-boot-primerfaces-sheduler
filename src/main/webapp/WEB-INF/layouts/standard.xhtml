@@ -15,17 +15,17 @@
     <h:head>
         <f:facet name="first">
             <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-            <link rel="apple-touch-icon" style="size: 192px 192px" href="/images/icons/apple-touch-icon.png" />
+            <link rel="apple-touch-icon" style="size: 192px 192px" href="/images/icons/apple-touch-icon.png"/>
             <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon"/>
-            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type" />
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
             <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
-            <meta name="mobile-web-app-capable" content="yes" />
+            <meta name="mobile-web-app-capable" content="yes"/>
             <meta http-equiv="Pragma" content="nocache"/>
-            <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+            <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
             <meta name="description" content="Scheduler Pet App: Spring Boot 2.3.0, JSF 2.4 and PrimeFaces 8.0.  I. Senatov"/>
             <meta name="robots" content="follow,index"/>
-            <meta name="theme-color" content="#ffffff" />
-            <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=1,viewport-fit=cover" />
+            <meta name="theme-color" content="#ffffff"/>
+            <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=1,viewport-fit=cover"/>
         </f:facet>
     </h:head>
 
@@ -38,63 +38,38 @@
             <h:outputText value="${request.getRealPath('/')}"/>
         </p:panelGrid>
 
-        <p:separator styleClass="append-6"/>
+        <hr class="space"/>
+
         <div class="container">
-            <div>
-                <h:form>
-                    <p:growl id="messages"/>
-                    <p:menubar style="align-self: auto">
-                        <p:submenu label="File" icon="pi pi-file">
-                            <p:submenu label="New" icon="pi pi-briefcase">
-                                <p:menuitem value="Project" url="#"/>
-                                <p:menuitem value="Other" url="#"/>
-                            </p:submenu>
-                            <p:menuitem value="Open" url="#"/>
-                            <p:separator/>
-                            <p:menuitem value="Quit" url="#"/>
-                        </p:submenu>
-
-                        <p:submenu label="Edit" icon="pi pi-pencil">
-                            <p:menuitem value="Undo" url="#" icon="pi pi-angle-double-left"/>
-                            <p:menuitem value="Redo" url="#" icon="pi pi-angle-double-right"/>
-                        </p:submenu>
-
-                        <p:submenu label="Info to Project" icon="pi pi-question">
-                            <p:menuitem value="Contents" url="https://github.com/senatov/spring-boot-primerfaces-sheduler"/>
-                        </p:submenu>
-
-                        <p:submenu label="Actions" icon="pi pi-cog">
-                            <p:submenu label="Ajax" icon="pi pi-refresh">
-                                <p:menuitem value="Save" action="#{menuView.save}" icon="pi pi-save" update="messages"/>
-                                <p:menuitem value="Update" action="#{menuView.update}" icon="pi pi-refresh" update="messages"/>
-                            </p:submenu>
-                            <p:submenu label="Non-Ajax" icon="pi pi-clone">
-                                <p:menuitem value="Delete" action="#{menuView.delete}" icon="pi pi-times" update="messages" ajax="false"/>
-                            </p:submenu>
-                        </p:submenu>
-
-                        <p:menuitem value="Quit" url="http://www.primefaces.org" icon="pi-power-off"/>
-                        <f:facet name="options">
-                            <p:inputText style="margin:1px 10px 1px 1px;" placeholder="Search"/>
-                            <p:commandButton type="button" value="Logout" icon="pi pi-sign-out"/>
-                        </f:facet>
-                    </p:menubar>
-                </h:form>
-            </div>
-            <div>
-                <code>-----System Area will be here ------------</code>
-            </div>
             <hr class="space"/>
             <div>
                 <div id="local" class="span-4 colborder">
                     <h3>Comments:</h3>
                     <ui:insert name="notes"/>
                 </div>
+
+                <div>
+                    <h:form>
+                        <p:growl id="messages"/>
+                    </h:form>
+                    <p:tabMenu activeIndex="#{param.i}" style="background: ghostwhite;font-family: 'Bookman Old Style'">
+                        <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list">
+                            <f:param name="list" value="0"/>
+                        </p:menuitem>
+                        <p:menuitem value="Create" outcome="/ui/create.xhtml" icon="pi pi-user-plus">
+                            <f:param name="create" value="1"/>
+                        </p:menuitem>
+                        <p:menuitem value="Reservation" outcome="/ui/reservation.xhtml" icon="pi pi-search-plus">
+                            <f:param name="reservation" value="2"/>
+                        </p:menuitem>
+                    </p:tabMenu>
+                </div>
+
                 <div class="span-19 last">
                     <ui:insert name="content"/>
                 </div>
             </div>
-            <hr class="space"/>
+
         </div>
     </h:body>
 

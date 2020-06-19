@@ -2,6 +2,7 @@ package de.senatov.reservatio.db;
 
 
 
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import java.util.List;
 @Component
 @ViewScoped
 @Slf4j
+@ToString
 public class UserView implements Serializable {
 
 	@Autowired
