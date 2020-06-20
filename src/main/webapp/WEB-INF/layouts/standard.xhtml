@@ -37,22 +37,12 @@
             <h:outputText value="RealPath:"/>
             <h:outputText value="${request.getRealPath('/')}"/>
         </p:panelGrid>
-
         <hr class="space"/>
-
         <div class="container">
-            <hr class="space"/>
             <div>
-                <div id="local" class="span-4 colborder">
-                    <h3>Comments:</h3>
-                    <ui:insert name="notes"/>
-                </div>
-
-                <div>
-                    <h:form>
-                        <p:growl id="messages"/>
-                    </h:form>
-                    <p:tabMenu activeIndex="#{param.i}" style="background: ghostwhite;font-family: 'Bookman Old Style'">
+                <h:form >
+                    <p:growl id="messages"/>
+                    <p:tabMenu activeIndex="#{param.i}">
                         <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list">
                             <f:param name="list" value="0"/>
                         </p:menuitem>
@@ -63,15 +53,25 @@
                             <f:param name="reservation" value="2"/>
                         </p:menuitem>
                     </p:tabMenu>
+                </h:form>
+            </div>
+            <div>
+                <code>-----System Area will be here ------------</code>
+            </div>
+            <hr class="space"/>
+            <div>
+                <div id="local" class="span-4 colborder">
+                    <h3>Comments:</h3>
+                    <ui:insert name="notes"/>
                 </div>
-
                 <div class="span-19 last">
                     <ui:insert name="content"/>
                 </div>
             </div>
-
+            <hr class="space"/>
         </div>
     </h:body>
+
 
 
 </f:view>
