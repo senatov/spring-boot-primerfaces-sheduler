@@ -6,6 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:composite="http://java.sun.com/jsf/composite"
 >
 
 
@@ -13,19 +14,24 @@
 
 
     <h:head>
+
         <f:facet name="first">
             <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-            <link rel="apple-touch-icon" style="size: 192px 192px" href="/images/icons/apple-touch-icon.png"/>
-            <link rel="shortcut icon" href="/images/icons/favicon.ico" type="image/x-icon"/>
+            <link rel="stylesheet" href="https://static-exp1.licdn.com/sc/h/br/2v0vq8x2mw1d8dlyix299v2l3"/>
+            <link rel="stylesheet" href="https://static-exp1.licdn.com/sc/h/br/70xpis8x654u34m4ffa3cvtz9"/>
+            <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png"/>
+            <link rel="apple-touch-icon-precomposed" href="/images/icons/apple-touch-icon.png"/>
+            <link rel="shortcut icon" id="favicon-ico" href="/images/icons/favicon.ico" type="image/x-icon"/>
             <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
             <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
             <meta name="mobile-web-app-capable" content="yes"/>
             <meta http-equiv="Pragma" content="nocache"/>
             <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
-            <meta name="description" content="Scheduler Pet App: Spring Boot 2.3.1, JSF 2.4 and PrimeFaces 8.0.  I. Senatov"/>
+            <meta name="description" content="Scheduler Pet App: Spring Boot 2.3.1, 2.3.5 (v. 2.4 not compartible to Primefaces!) and PrimeFaces 8.0.  I. Senatov"/>
             <meta name="robots" content="follow,index"/>
             <meta name="theme-color" content="#ffffff"/>
             <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=1,viewport-fit=cover"/>
+
         </f:facet>
     </h:head>
 
@@ -40,9 +46,9 @@
         <hr class="space"/>
         <div class="container">
             <div>
-                <h:form >
+                <h:form>
                     <p:growl id="messages"/>
-                    <p:tabMenu activeIndex="#{param.i}">
+                    <p:tabMenu activeIndex="#{param.i}" id="tabmenu1">
                         <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list">
                             <f:param name="list" value="0"/>
                         </p:menuitem>
@@ -54,9 +60,6 @@
                         </p:menuitem>
                     </p:tabMenu>
                 </h:form>
-            </div>
-            <div>
-                <code>-----System Area will be here ------------</code>
             </div>
             <hr class="space"/>
             <div>
@@ -71,7 +74,6 @@
             <hr class="space"/>
         </div>
     </h:body>
-
 
 
 </f:view>

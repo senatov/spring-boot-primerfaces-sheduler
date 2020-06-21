@@ -35,9 +35,8 @@ public class UserService implements Serializable {
 
 		log.debug("getAllUsers()");
 		List<User> posts = new ArrayList<>();
-		userRepository
-				.findAll()
-				.forEach(posts::add);
+		userRepository.findAll()
+		              .forEach(posts::add);
 		return posts;
 	}
 

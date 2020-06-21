@@ -43,9 +43,8 @@ public class UserView implements Serializable {
 	public String prepareForUpdate(Long id) {
 
 		log.debug("prepareForUpdate()");
-		user = userService
-				.getUser(id)
-				.get();
+		user = userService.getUser(id)
+		                  .get();
 		return "new";
 	}
 

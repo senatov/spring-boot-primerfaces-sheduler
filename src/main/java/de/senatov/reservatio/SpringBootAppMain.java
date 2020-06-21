@@ -45,9 +45,8 @@ public class SpringBootAppMain implements ServletContextAware {
 	public static CustomScopeConfigurer viewScope() {
 
 		CustomScopeConfigurer configurer = new CustomScopeConfigurer();
-		configurer.setScopes(new ImmutableMap.Builder<String, Object>()
-				.put("view", new ViewScope())
-				.build());
+		configurer.setScopes(new ImmutableMap.Builder<String, Object>().put("view", new ViewScope())
+		                                                               .build());
 		return configurer;
 	}
 
