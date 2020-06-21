@@ -3,6 +3,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:composite="http://java.sun.com/jsf/composite"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
                 template="/WEB-INF/layouts/standard.xhtml">
 
     <ui:define name="notes">
@@ -30,8 +31,7 @@
                     <p:outputLabel value="#{viewScope.eMail}"/>
                     <p:inputText value="#{userView.user.EMail}" placeholder="aaa@bbb.cc" id="eMail"/>
                 </div>
-                <!--<p:commandButton action="save" value="Save" ajax="true"/>-->
-                <p:commandButton action="#{userView.savePerson}" value="Save" ajax="false"/>
+                <p:commandButton action="#{userView.savePerson}" value="Save" ajax="true"/>
             </h:form>
             <p:messages showDetail="true"/>
         </div>
