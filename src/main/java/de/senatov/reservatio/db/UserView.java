@@ -2,7 +2,7 @@ package de.senatov.reservatio.db;
 
 
 
-import lombok.ToString;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,9 +18,10 @@ import java.util.List;
 @Component
 @ViewScoped
 @Slf4j
-@ToString
+@Data
 public class UserView implements Serializable {
 
+	private static final long serialVersionUID = 3849109028806396639L;
 	@Autowired
 	private UserService userService;
 	private List<User> users = new ArrayList<>();
@@ -68,48 +69,6 @@ public class UserView implements Serializable {
 		user = new User();
 		System.out.println("new");
 		return "new";
-	}
-
-
-
-	public List<User> getUsers() {
-
-		return users;
-	}
-
-
-
-	public void setUsers(List<User> users) {
-
-		this.users = users;
-	}
-
-
-
-	public User getUser() {
-
-		return user;
-	}
-
-
-
-	public void setUser(User user) {
-
-		this.user = user;
-	}
-
-
-
-	public UserService getUserService() {
-
-		return userService;
-	}
-
-
-
-	public void setUserService(UserService userService) {
-
-		this.userService = userService;
 	}
 
 }

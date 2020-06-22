@@ -3,6 +3,8 @@ package de.senatov.reservatio.db;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,6 +17,8 @@ import java.io.Serializable;
 @Slf4j
 @ToString
 @Data
+@Getter
+@Setter
 @Entity
 @Table(name = "sc_user")
 public class User implements Serializable {
