@@ -45,15 +45,14 @@
             <div>
                 <h:form>
                     <p:growl id="messages"/>
-                    <p:tabMenu activeIndex="#{param.i}"/>
                     <p:tabMenu activeIndex="#{param.i}" id="tabmenu1">
-                        <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list">
+                        <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list" style="background: blueviolet">
                             <f:param name="list" value="0"/>
                         </p:menuitem>
-                        <p:menuitem value="Create" outcome="/ui/create.xhtml" icon="pi pi-user-plus">
+                        <p:menuitem value="Create" outcome="/ui/create.xhtml" icon="pi pi-user-plus" style="background: azure">
                             <f:param name="create" value="1"/>
                         </p:menuitem>
-                        <p:menuitem value="Reservation" outcome="/ui/reservation.xhtml" icon="pi pi-search-plus">
+                        <p:menuitem value="Reservation" outcome="/ui/reservation.xhtml" icon="pi pi-search-plus" style="background: gold">
                             <f:param name="reservation" value="2"/>
                         </p:menuitem>
                     </p:tabMenu>
