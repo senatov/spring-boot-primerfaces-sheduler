@@ -3,23 +3,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:composite="http://java.sun.com/jsf/composite"
       xmlns:pe="http://primefaces.org/ui/extensions"
 >
 
-
-
 <f:view contentType="text/html">
-
 
     <h:head>
 
         <f:facet name="first">
             <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-            <link rel="stylesheet" href="https://static-exp1.licdn.com/sc/h/br/2v0vq8x2mw1d8dlyix299v2l3"/>
-            <link rel="stylesheet" href="https://static-exp1.licdn.com/sc/h/br/70xpis8x654u34m4ffa3cvtz9"/>
             <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png"/>
             <link rel="apple-touch-icon-precomposed" href="/images/icons/apple-touch-icon.png"/>
             <link rel="shortcut icon" id="favicon-ico" href="/images/icons/favicon.ico" type="image/x-icon"/>
@@ -36,7 +33,6 @@
         </f:facet>
     </h:head>
 
-
     <h:body>
         <p:panelGrid columns="2" style="border: #491795;font-family: Calibri;font: condensed">
             <h:outputText value="contextPath:"/>
@@ -49,18 +45,22 @@
             <div>
                 <h:form>
                     <p:growl id="messages"/>
+                    <p:tabMenu activeIndex="#{param.i}"/>
                     <p:tabMenu activeIndex="#{param.i}" id="tabmenu1">
-                        <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list" style="background: blueviolet">
+                        <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list">
                             <f:param name="list" value="0"/>
                         </p:menuitem>
-                        <p:menuitem value="Create" outcome="/ui/create.xhtml" icon="pi pi-user-plus" style="background: azure">
+                        <p:menuitem value="Create" outcome="/ui/create.xhtml" icon="pi pi-user-plus">
                             <f:param name="create" value="1"/>
                         </p:menuitem>
-                        <p:menuitem value="Reservation" outcome="/ui/reservation.xhtml" icon="pi pi-search-plus" style="background: gold">
+                        <p:menuitem value="Reservation" outcome="/ui/reservation.xhtml" icon="pi pi-search-plus">
                             <f:param name="reservation" value="2"/>
                         </p:menuitem>
                     </p:tabMenu>
                 </h:form>
+            </div>
+            <div>
+                <code>-----System Area-A45563</code>
             </div>
             <hr class="space"/>
             <div>
@@ -77,5 +77,7 @@
     </h:body>
 
 
+
 </f:view>
 </html>
+
