@@ -82,11 +82,11 @@ public class UserView implements Serializable {
 
 	List<String> getIds() {
 
-		List<String> ret = users.stream()
-		                        .map(user -> user.getId()
-		                                         .toString())
-		                        .collect(Collectors.toList());
-		return ret;
+		return users.stream()
+		            .map(user -> user.getId()
+		                             .toString())
+		            .collect(Collectors.toList());
+
 	}
 
 
