@@ -3,14 +3,22 @@
         xmlns:h="http://java.sun.com/jsf/html"
         xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://java.sun.com/jsf/core"
         template="/WEB-INF/layouts/standard.xhtml"
 >
 
     <ui:define name="notes">
         <h2>Person's List:</h2>
         <p>
-            <p:dataTable for="userstable_id" var="users" id="userstable_id" value="#{userView.users}" tableStyle="solid-color: blueviolet">
-                <p:column headerText="Id" sortBy="#{users.id}">
+            <p:dataTable for="userstable_id"
+                         var="users"
+                         id="userstable_id"
+                         value="#{userView.users}"
+                         tableStyle="solid-color: blueviolet"
+                         dynamic="true"
+                         paginator="false"
+            >
+                <p:column headerText="Id" sortBy="#{users.id}" style="color: #FFFFFF;font-weight: bold;">
                     <h:outputText value="#{users.id}"/>
                 </p:column>
 
@@ -35,6 +43,7 @@
 
     <ui:define name="content">
         <div class="container">
+            <f:view contentType="text/html">
             <h:form styleClass="ui-widget">
                 <div class="form-group">
                     <p:outputLabel for="firstName" value="First name  "/>
@@ -55,15 +64,16 @@
                     <p:inputText value="#{userView.user.EMail}" placeholder="senatov@gmail.com" id="eMail"/>
                 </div>
                 <hr class="space"/>
-                <p:commandButton id="updatebutton"
+
+                <p:commandButton id="save_person_btn_id"
                                  action="#{userView.savePerson}"
                                  value="Save"
-                                 update="userstable_id"
                                  title="#{userView.hint}"
                                  style="background-color: antiquewhite;margin-right:10px;"
                                  icon="pi pi-save"
                 />
             </h:form>
+            </f:view>
             <p:messages showDetail="true"/>
         </div>
     </ui:define>

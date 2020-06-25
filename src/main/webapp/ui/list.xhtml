@@ -3,6 +3,7 @@
         xmlns:h="http://java.sun.com/jsf/html"
         xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://java.sun.com/jsf/core"
         template="/WEB-INF/layouts/standard.xhtml"
 >
     <ui:define name="notes">
@@ -17,6 +18,7 @@
             <div class="top-toolbar" style="background-color: coral">
                 <p:staticMessage severity="info" summary="Pet - App:" detail="Editable room reservation demo"/>
             </div>
+            <f:view contentType="text/html">
             <h:form>
                 <p:dataTable value="#{userView.users}" var="user">
                     <p:column headerText="Name">
@@ -28,6 +30,7 @@
                 </p:dataTable>
                 <p:commandButton id="aasd" action="#{userView.newPerson}" value="Save" ajax="false"/>
             </h:form>
+            </f:view>
         </div>
     </ui:define>
 </ui:composition>

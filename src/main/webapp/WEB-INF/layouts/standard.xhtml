@@ -8,10 +8,8 @@
       xmlns:p="http://primefaces.org/ui"
 >
 
-<f:view contentType="text/html">
 
     <h:head>
-
         <f:facet name="first">
             <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
             <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png"/>
@@ -21,13 +19,14 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta http-equiv="Pragma" content="nocache"/>
             <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
-            <meta name="description" content="Scheduler Pet App: Spring Boot 2.3.1, 2.3.5 (v. 2.4 not compartible to Primefaces!) and PrimeFaces 8.0.  I. Senatov"/>
+            <meta name="description" content="Scheduler Pet App: Spring Boot 2.3.1, 2.3.9 (v. 2.4 not compartible to Primefaces!) and PrimeFaces 8.0.  I. Senatov"/>
             <meta name="mobile-web-app-capable" content="yes"/>
             <meta name="robots" content="follow,index"/>
             <meta name="theme-color" content="#ffffff"/>
             <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=1,viewport-fit=cover"/>
         </f:facet>
     </h:head>
+
 
     <h:body>
         <p:panelGrid columns="2" stylestyle="font-size:12p;">
@@ -39,6 +38,7 @@
         <hr class="space"/>
         <div class="container">
             <div>
+                <f:view contentType="text/html">
                 <h:form>
                     <p:growl id="messages"/>
                     <p:tabMenu activeIndex="#{param.i}" id="tabmenu1">
@@ -60,6 +60,7 @@
                         </p:menuitem>
                     </p:tabMenu>
                 </h:form>
+                </f:view>
             </div>
             <hr class="space"/>
             <div>
@@ -74,8 +75,5 @@
             <hr class="space"/>
         </div>
     </h:body>
-
-
-</f:view>
 </html>
 

@@ -4,10 +4,13 @@ package de.senatov.reservatio.db;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.primefaces.PrimeFaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -62,7 +65,10 @@ public class UserView implements Serializable {
 		userService.addUser(user);
 		users = new ArrayList<>();
 		users = userService.getAllUsers();
+		addMessage("Save person");
+		PrimeFaces.current().ajax().update("userstable_id");
 		return "save";
+
 	}
 
 
@@ -122,5 +128,11 @@ public class UserView implements Serializable {
 		            .collect(Collectors.toList());
 
 	}
+
+	public void addMessage(String summary) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
+
 
 }
