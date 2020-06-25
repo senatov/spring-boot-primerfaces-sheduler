@@ -16,18 +16,14 @@
 
     <ui:define name="content">
         <div class="container">
-            <f:view contentType="text/html">
             <h:form styleClass="ui-widget">
 
                 <h2>Person's List:</h2>
                 <p>
-                    <p:dataTable for="userstable_id"
-                                 id="userstable_id"
+                    <p:dataTable id="userstable_id"
                                  var="users"
                                  value="#{userView.users}"
                                  tableStyle="solid-color: blueviolet"
-                                 dynamic="true"
-                                 paginator="false"
                     >
                         <p:column headerText="Id" sortBy="#{users.id}" style="color: #FFFFFF;font-weight: bold;">
                             <h:outputText value="#{users.id}"/>
@@ -82,7 +78,6 @@
                     <f:ajax render="userstable_id"/>
                 </p:commandButton>
             </h:form>
-            </f:view>
             <p:messages showDetail="true"/>
         </div>
     </ui:define>
