@@ -4,7 +4,6 @@ package de.senatov.reservatio.db;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.primefaces.PrimeFaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -66,7 +65,6 @@ public class UserView implements Serializable {
 		users = new ArrayList<>();
 		users = userService.getAllUsers();
 		addMessage("Save person");
-		PrimeFaces.current().ajax().update("userstable_id");
 		return "save";
 
 	}

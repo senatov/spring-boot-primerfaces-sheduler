@@ -8,36 +8,9 @@
 >
 
     <ui:define name="notes">
-        <h2>Person's List:</h2>
         <p>
-            <p:dataTable for="userstable_id"
-                         var="users"
-                         id="userstable_id"
-                         value="#{userView.users}"
-                         tableStyle="solid-color: blueviolet"
-                         dynamic="true"
-                         paginator="false"
-            >
-                <p:column headerText="Id" sortBy="#{users.id}" style="color: #FFFFFF;font-weight: bold;">
-                    <h:outputText value="#{users.id}"/>
-                </p:column>
 
-                <p:column headerText="First name" sortBy="#{users.firstName}">
-                    <h:outputText value="#{users.firstName}"/>
-                </p:column>
 
-                <p:column headerText="Last name" sortBy="#{users.lastName}">
-                    <h:outputText value="#{users.lastName}"/>
-                </p:column>
-
-                <p:column headerText="User's name" sortBy="#{users.userName}">
-                    <h:outputText value="#{users.userName}"/>
-                </p:column>
-
-                <p:column headerText="eMail" sortBy="#{users.EMail}">
-                    <h:outputText value="#{users.EMail}"/>
-                </p:column>
-            </p:dataTable>
         </p>
     </ui:define>
 
@@ -45,6 +18,41 @@
         <div class="container">
             <f:view contentType="text/html">
             <h:form styleClass="ui-widget">
+
+                <h2>Person's List:</h2>
+                <p>
+                    <p:dataTable for="userstable_id"
+                                 id="userstable_id"
+                                 var="users"
+                                 value="#{userView.users}"
+                                 tableStyle="solid-color: blueviolet"
+                                 dynamic="true"
+                                 paginator="false"
+                    >
+                        <p:column headerText="Id" sortBy="#{users.id}" style="color: #FFFFFF;font-weight: bold;">
+                            <h:outputText value="#{users.id}"/>
+                        </p:column>
+
+                        <p:column headerText="First name" sortBy="#{users.firstName}">
+                            <h:outputText value="#{users.firstName}"/>
+                        </p:column>
+
+                        <p:column headerText="Last name" sortBy="#{users.lastName}">
+                            <h:outputText value="#{users.lastName}"/>
+                        </p:column>
+
+                        <p:column headerText="User's name" sortBy="#{users.userName}">
+                            <h:outputText value="#{users.userName}"/>
+                        </p:column>
+
+                        <p:column headerText="eMail" sortBy="#{users.EMail}">
+                            <h:outputText value="#{users.EMail}"/>
+                        </p:column>
+                    </p:dataTable>
+                </p>
+
+                <p:separator styleClass="append-6"/>
+
                 <div class="form-group">
                     <p:outputLabel for="firstName" value="First name  "/>
                     <p:outputLabel value="#{viewScope.selectedPhone}"/>
@@ -70,8 +78,9 @@
                                  value="Save"
                                  title="#{userView.hint}"
                                  style="background-color: antiquewhite;margin-right:10px;"
-                                 icon="pi pi-save"
-                />
+                                 icon="pi pi-save">
+                    <f:ajax render="userstable_id"/>
+                </p:commandButton>
             </h:form>
             </f:view>
             <p:messages showDetail="true"/>
