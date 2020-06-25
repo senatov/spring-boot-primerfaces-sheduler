@@ -2,6 +2,7 @@ package de.senatov.reservatio.view;
 
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.config.Scope;
 
@@ -13,6 +14,7 @@ import java.util.Map;
 /**
  * The JSF view scope ported to spring *
  */
+@Slf4j
 public class ViewScope implements Scope {
 
 	@Override
@@ -43,6 +45,7 @@ public class ViewScope implements Scope {
 
 	@Override
 	public void registerDestructionCallback(String arg0, Runnable arg1) {
+		log.debug("registerDestructionCallback");
 
 	}
 

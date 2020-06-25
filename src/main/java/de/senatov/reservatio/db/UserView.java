@@ -15,7 +15,6 @@ import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 
@@ -77,57 +76,6 @@ public class UserView implements Serializable {
 		user = new User();
 		return "new";
 	}
-
-
-
-	List<String> getIds() {
-
-		return users.stream()
-		            .map(user -> user.getId()
-		                             .toString())
-		            .collect(Collectors.toList());
-
-	}
-
-
-
-	List<String> getFirstNames() {
-
-		return users.stream()
-		            .map(User::getFirstName)
-		            .collect(Collectors.toList());
-
-	}
-
-
-
-	List<String> getLastNames() {
-
-		return users.stream()
-		            .map(User::getLastName)
-		            .collect(Collectors.toList());
-	}
-
-
-
-	List<String> getUserNames() {
-
-		return users.stream()
-		            .map(User::getUserName)
-		            .collect(Collectors.toList());
-
-	}
-
-
-
-	List<String> getEmails() {
-
-		return users.stream()
-		            .map(User::getEMail)
-		            .collect(Collectors.toList());
-
-	}
-
 
 
 	public void addMessage(String summary) {
