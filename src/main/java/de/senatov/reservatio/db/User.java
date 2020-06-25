@@ -3,8 +3,6 @@ package de.senatov.reservatio.db;
 
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,8 +15,6 @@ import java.io.Serializable;
 @Slf4j
 @ToString
 @Data
-@Getter
-@Setter
 @Entity
 @Table(name = "sc_user")
 public class User implements Serializable {
@@ -28,11 +24,11 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name = "first_name")
-	private String firstname;
+	private String firstName;
 	@Column(name = "last_name")
-	private String lastname;
+	private String lastName;
 	@Column(name = "user_name")
-	private String username;
+	private String userName;
 	@Column(unique = true, name = "e_mail")
 	@Email
 	private String eMail;

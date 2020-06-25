@@ -35,6 +35,7 @@ import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 public class ScheduleView implements Serializable {
 
 	public static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
+	private static final long serialVersionUID = -2637195560425203881L;
 	private ScheduleModel eventModel;
 	private ScheduleEvent event = new DefaultScheduleEvent();
 
@@ -65,7 +66,7 @@ public class ScheduleView implements Serializable {
 		                                        .build());
 		eventModel.addEvent(DefaultScheduleEvent.builder()
 		                                        .title("Meeting Room 34")
-		                                        .startDate(theDayAfter3Pm())
+		                                        .startDate(in2DaysAfter10Pm())
 		                                        .endDate(fourDaysLater3pm())
 		                                        .description("some description XYZ")
 		                                        .build());
@@ -100,10 +101,10 @@ public class ScheduleView implements Serializable {
 
 
 
-	private LocalDateTime theDayAfter3Pm() {
+	private LocalDateTime in2DaysAfter10Pm() {
 
-		return LocalDateTime.now()
-		                    .withHour(13);
+		return LocalDateTime.now().plusDays(2)
+		                    .withHour(10);
 	}
 
 
@@ -138,8 +139,7 @@ public class ScheduleView implements Serializable {
 
 	private LocalDateTime fourDaysLater3pm() {
 
-		return LocalDateTime.now()
-		                    .plusDays(4)
+		return LocalDateTime.now().plusDays(2)
 		                    .withHour(15);
 	}
 
