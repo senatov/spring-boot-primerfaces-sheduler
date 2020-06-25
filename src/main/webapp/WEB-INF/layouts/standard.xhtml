@@ -22,7 +22,8 @@
             <meta name="mobile-web-app-capable" content="yes"/>
             <meta http-equiv="Pragma" content="nocache"/>
             <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
-            <meta name="description" content="Scheduler Pet App: Spring Boot 2.3.1, 2.3.5 (v. 2.4 not compartible to Primefaces!) and PrimeFaces 8.0.  I. Senatov"/>
+            <meta name="description"
+                  content="Scheduler Pet App: Spring Boot 2.3.1, 2.3.5 (v. 2.4 not compartible to Primefaces!) and PrimeFaces 8.0.  I. Senatov"/>
             <meta name="robots" content="follow,index"/>
             <meta name="theme-color" content="#ffffff"/>
             <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=1,viewport-fit=cover"/>
@@ -43,13 +44,20 @@
                 <h:form>
                     <p:growl id="messages"/>
                     <p:tabMenu activeIndex="#{param.i}" id="tabmenu1">
-                        <p:menuitem value="Reservation" outcome="/ui/reservation.xhtml" icon="pi pi-search-plus" style="background: gold;font-size:14px">
+                        <p:menuitem value="Reservation"
+                                    outcome="/ui/reservation.xhtml"
+                                    icon="pi pi-search-plus"
+                                    style="background:palegoldenrod;font-weight:lighter; font-size: 16px !important">
                             <f:param name="reservation" value="1"/>
                         </p:menuitem>
-                        <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list" style="background: blueviolet;font-size:14px">
+                        <p:menuitem value="List" outcome="/ui/list.xhtml"
+                                    icon="pi pi-list"
+                                    style="background: honeydew;font-weight:lighter; font-size: 16px !important">
                             <f:param name="list" value="2"/>
                         </p:menuitem>
-                        <p:menuitem value="Create" outcome="/ui/create.xhtml" icon="pi pi-user-plus" style="background: azure;font-size:14px">
+                        <p:menuitem value="Create" outcome="/ui/create.xhtml"
+                                    icon="pi pi-user-plus"
+                                    style="background: lemonchiffon;font-weight:lighter; font-size: 16px !important">
                             <f:param name="create" value="3"/>
                         </p:menuitem>
                     </p:tabMenu>
@@ -71,7 +79,6 @@
             <hr class="space"/>
         </div>
     </h:body>
-
 
 
 </f:view>
