@@ -9,12 +9,15 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 
+@Named("userView")
 @Component
 @ViewScoped
 @Slf4j
@@ -22,6 +25,7 @@ import java.util.List;
 public class UserView implements Serializable {
 
 	private static final long serialVersionUID = 3849109028806396639L;
+	private String hint = "Save new system user in DB";
 	@Autowired
 	private UserService userService;
 	private List<User> users = new ArrayList<>();
@@ -54,10 +58,10 @@ public class UserView implements Serializable {
 	public String savePerson() {
 
 		log.debug("savePerson()");
+		user.setId(null);
 		userService.addUser(user);
 		users = new ArrayList<>();
 		users = userService.getAllUsers();
-		System.out.println("save");
 		return "save";
 	}
 
@@ -67,8 +71,56 @@ public class UserView implements Serializable {
 
 		log.debug("newPerson()");
 		user = new User();
-		System.out.println("new");
 		return "new";
+	}
+
+
+
+	List<Long> getIds() {
+
+		return users.stream()
+		            .map(User::getId)
+		            .collect(Collectors.toList());
+
+	}
+
+
+
+	List<String> getFirstNames() {
+
+		return users.stream()
+		            .map(User::getFirstName)
+		            .collect(Collectors.toList());
+
+	}
+
+
+
+	List<String> getLastNames() {
+
+		return users.stream()
+		            .map(User::getLastName)
+		            .collect(Collectors.toList());
+	}
+
+
+
+	List<String> getUserNames() {
+
+		return users.stream()
+		            .map(User::getUserName)
+		            .collect(Collectors.toList());
+
+	}
+
+
+
+	List<String> getEmails() {
+
+		return users.stream()
+		            .map(User::getEMail)
+		            .collect(Collectors.toList());
+
 	}
 
 }

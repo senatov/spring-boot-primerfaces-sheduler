@@ -19,6 +19,7 @@ import java.util.Optional;
 @ToString
 public class UserService implements Serializable {
 
+	private static final long serialVersionUID = 2480837124037856177L;
 	@Autowired
 	private UserRepository userRepository;
 
@@ -34,10 +35,10 @@ public class UserService implements Serializable {
 	public List<User> getAllUsers() {
 
 		log.debug("getAllUsers()");
-		List<User> posts = new ArrayList<>();
+		List<User> users = new ArrayList<>();
 		userRepository.findAll()
-		              .forEach(posts::add);
-		return posts;
+		              .forEach(users::add);
+		return users;
 	}
 
 
