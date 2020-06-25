@@ -80,12 +80,13 @@ public class UserView implements Serializable {
 
 
 
-	List<Long> getIds() {
+	List<String> getIds() {
 
-		return users.stream()
-		            .map(User::getId)
-		            .collect(Collectors.toList());
-
+		List<String> ret = users.stream()
+		                        .map(user -> user.getId()
+		                                         .toString())
+		                        .collect(Collectors.toList());
+		return ret;
 	}
 
 
@@ -127,10 +128,13 @@ public class UserView implements Serializable {
 
 	}
 
-	public void addMessage(String summary) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
-		FacesContext.getCurrentInstance().addMessage(null, message);
-	}
 
+
+	public void addMessage(String summary) {
+
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
+		FacesContext.getCurrentInstance()
+		            .addMessage(null, message);
+	}
 
 }
