@@ -37,7 +37,7 @@
         <hr class="space"/>
         <div class="container">
             <div>
-                <h:form>
+                <h:form id="tabmenu_form_1">
                     <p:growl id="messages"/>
                     <p:tabMenu activeIndex="#{param.i}" id="tabmenu1">
                         <p:menuitem value="Reservation"
@@ -62,7 +62,6 @@
             <hr class="space"/>
             <div>
                 <div id="local" class="span-4 colborder">
-                    <h3>Comments:</h3>
                     <ui:insert name="notes"/>
                 </div>
                 <div class="span-19 last">

@@ -6,25 +6,26 @@ import de.senatov.reservatio.db.User;
 import de.senatov.reservatio.db.UserService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.primefaces.context.PrimeFacesContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 
 @Named("userView")
 @Component
 @ViewScoped
-@Slf4j
 @Data
+@Slf4j
 public class UserView implements Serializable {
 
 	private static final long serialVersionUID = 3849109028806396639L;
@@ -80,11 +81,61 @@ public class UserView implements Serializable {
 	}
 
 
+
+	List<Long> getIds() {
+
+		return users.stream()
+		            .map(User::getId)
+		            .collect(Collectors.toList());
+
+	}
+
+
+
+	List<String> getFirstNames() {
+
+		return users.stream()
+		            .map(User::getFirstName)
+		            .collect(Collectors.toList());
+
+	}
+
+
+
+	List<String> getLastNames() {
+
+		return users.stream()
+		            .map(User::getLastName)
+		            .collect(Collectors.toList());
+	}
+
+
+
+	List<String> getUserNames() {
+
+		return users.stream()
+		            .map(User::getUserName)
+		            .collect(Collectors.toList());
+
+	}
+
+
+
+	List<String> getEmails() {
+
+		return users.stream()
+		            .map(User::getEMail)
+		            .collect(Collectors.toList());
+
+	}
+
+
+
 	public void addMessage(String summary) {
 
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
-		FacesContext.getCurrentInstance()
-		            .addMessage(null, message);
+		PrimeFacesContext.getCurrentInstance()
+		                 .addMessage(null, message);
 	}
 
 }
