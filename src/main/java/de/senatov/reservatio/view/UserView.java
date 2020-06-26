@@ -1,7 +1,9 @@
-package de.senatov.reservatio.db;
+package de.senatov.reservatio.view;
 
 
 
+import de.senatov.reservatio.db.User;
+import de.senatov.reservatio.db.UserService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
