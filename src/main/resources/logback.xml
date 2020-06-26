@@ -37,26 +37,29 @@
     <logger name="com.sun.faces" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.web.servlet" additivity="false" level="DEBUG">
+    <logger name="javax.el" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.webflow" additivity="false" level="DEBUG">
+    <logger name="org.primefaces" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.springframework.web.servlet" additivity="false" level="WARN">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.springframework.webflow" additivity="false" level="WARN">
         <appender-ref ref="app-log"/>
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.faces" additivity="false" level="DEBUG">
+    <logger name="org.springframework.faces" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
     <logger name="org.springframework.security" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="javax.faces" additivity="false" level="DEBUG">
+    <logger name="org.hibernate" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="javax.el" additivity="false" level="DEBUG">
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="org.hibernate" additivity="false" level="DEBUG">
+    <logger name="com.zaxxer.hikari.pool" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
 </configuration>
