@@ -12,7 +12,7 @@
     <artifactId>spring-boot-primerfaces-sheduler</artifactId>
     <packaging>war</packaging>
     <name>room-reservation</name>
-    <version>0.0.7</version>
+    <version>0.0.8</version>
     <description>Example: JPA/Hibernate, JDK 14, Spring Boot 2.2.6, Primefaces 8,Spring Security</description>
     <developers>
         <developer>
