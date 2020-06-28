@@ -2,9 +2,7 @@ package de.senatov.reservatio;
 
 
 
-import com.google.common.collect.ImmutableMap;
 import com.sun.faces.config.ConfigureListener;
-import de.senatov.reservatio.view.ViewScope;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +43,6 @@ public class SpringBootAppMain implements ServletContextAware {
 	public static CustomScopeConfigurer viewScope() {
 
 		CustomScopeConfigurer configurer = new CustomScopeConfigurer();
-		configurer.setScopes(new ImmutableMap.Builder<String, Object>().put("view", new ViewScope())
-		                                                               .build());
 		return configurer;
 	}
 
