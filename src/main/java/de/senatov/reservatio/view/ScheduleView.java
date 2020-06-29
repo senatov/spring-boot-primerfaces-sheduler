@@ -103,7 +103,8 @@ public class ScheduleView implements Serializable {
 
 	private LocalDateTime in2DaysAfter10Pm() {
 
-		return LocalDateTime.now().plusDays(2)
+		return LocalDateTime.now()
+		                    .plusDays(2)
 		                    .withHour(10);
 	}
 
@@ -139,7 +140,8 @@ public class ScheduleView implements Serializable {
 
 	private LocalDateTime fourDaysLater3pm() {
 
-		return LocalDateTime.now().plusDays(2)
+		return LocalDateTime.now()
+		                    .plusDays(2)
 		                    .withHour(15);
 	}
 
@@ -147,7 +149,7 @@ public class ScheduleView implements Serializable {
 
 	public ScheduleEvent getEvent() {
 
-		log.debug("getEvent()" + event);
+		log.debug("getEvent() = {}", event);
 		return event;
 	}
 
@@ -155,7 +157,7 @@ public class ScheduleView implements Serializable {
 
 	public void setEvent(ScheduleEvent event) {
 
-		log.debug("setEvent()" + event);
+		log.debug("getEvent() = {}", event);
 		this.event = event;
 	}
 
@@ -163,7 +165,7 @@ public class ScheduleView implements Serializable {
 
 	public void addEvent() {
 
-		log.debug("addEvent()" + event);
+		log.debug("getEvent() = {}", event);
 		if (event.getId() == null) {
 			eventModel.addEvent(event);
 		}
@@ -177,7 +179,7 @@ public class ScheduleView implements Serializable {
 
 	public void onEventSelect(SelectEvent selectEvent) {
 
-		log.debug("onEventSelect()" + selectEvent);
+		log.debug("onEventSelect() = {}", selectEvent);
 		event = (ScheduleEvent) selectEvent.getObject();
 	}
 

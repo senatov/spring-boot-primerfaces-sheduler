@@ -20,10 +20,12 @@ import java.util.Optional;
 public class UserService implements Serializable {
 
 	private static final long serialVersionUID = 2480837124037856177L;
-	@Autowired
+
 	private UserRepository userRepository;
 
 
+
+	@Autowired
 	public UserService(UserRepository userRepository) {
 
 		this.userRepository = userRepository;

@@ -5,12 +5,10 @@ package de.senatov.reservatio;
 import com.sun.faces.config.ConfigureListener;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.ServletContextAware;
 
@@ -27,11 +25,6 @@ import static java.lang.Boolean.TRUE;
 @ToString
 public class SpringBootAppMain implements ServletContextAware {
 
-	@Autowired
-	private ApplicationContext appContext;
-
-
-
 	public static void main(String... args) {
 
 		SpringApplication.run(SpringBootAppMain.class, args);
@@ -42,8 +35,7 @@ public class SpringBootAppMain implements ServletContextAware {
 	@Bean
 	public static CustomScopeConfigurer viewScope() {
 
-		CustomScopeConfigurer configurer = new CustomScopeConfigurer();
-		return configurer;
+		return new CustomScopeConfigurer();
 	}
 
 
