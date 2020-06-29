@@ -11,19 +11,19 @@
     </ui:define>
 
     <ui:define name="content">
-
+        <div class="top-toolbar" style="background-color: coral">
+            <p:staticMessage severity="info" summary="Pet - App:" detail="Remove Tab: Editable room reservation demo"/>
+        </div>
         <div class="container">
-            <div class="top-toolbar" style="background-color: coral">
-                <p:staticMessage severity="info" summary="Pet - App:" detail="Editable room reservation demo"/>
-            </div>
+
             <f:view contentType="text/html">
-            <h:form>
-                <p:dataTable value="#{userView.users}" var="user">
-                    <p:column headerText="Name">
-                        <p:outputLabel value="#{user.firstName}"/>
-                    </p:column>
-                    <p:column>
-                        <p:commandButton action="#{userView.prepareForUpdate(user.id)}"/>
+                <h:form>
+                    <p:dataTable value="#{userView.users}" var="user">
+                        <p:column headerText="Name">
+                            <p:outputLabel value="#{user.firstName}"/>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton action="#{userView.prepareForUpdate(user.id)}"/>
                     </p:column>
                 </p:dataTable>
                 <p:commandButton id="command_button_id" action="#{userView.newPerson}" value="Save" ajax="false"/>

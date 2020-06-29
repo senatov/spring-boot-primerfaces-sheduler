@@ -7,16 +7,13 @@
         template="/WEB-INF/layouts/standard.xhtml">
     <f:view contentType="application/xhtml"/>
     <ui:define name="notes">
-        <p>
-            Call and fill Scheduler Control from Primefaces. Under construction yet.
-        </p>
+        <div class="top-toolbar" style="background-color: coral">
+            <p:staticMessage severity="info" summary="Pet - App:" detail="Reservation Tab: Editable room reservation demo"/>
+        </div>
     </ui:define>
 
     <ui:define name="content">
         <div class="container">
-            <div class="top-toolbar" style="background-color: coral">
-                <p:staticMessage severity="info" summary="Pet - App:" detail="Editable room reservation demo"/>
-            </div>
             <f:view contentType="text/html">
             <h:form>
                 <p:growl id="messages" showDetail="true"/>
