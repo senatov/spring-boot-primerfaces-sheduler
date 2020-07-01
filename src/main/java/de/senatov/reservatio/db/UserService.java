@@ -33,45 +33,45 @@ public class UserService implements Serializable {
 
 
 
-	public List<User> getAllUsers() {
+	public List<UserEntity> getAllUsers() {
 
 		log.debug("getAllUsers()");
-		List<User> users = new ArrayList<>();
+		List<UserEntity> userEntities = new ArrayList<>();
 		userRepository.findAll()
-		              .forEach(users::add);
-		return users;
+		              .forEach(userEntities::add);
+		return userEntities;
 	}
 
 
 
-	public Optional<User> getUser(Long id) {
+	public Optional<UserEntity> getUser(Long id) {
 
-		log.debug("getUser()");
+		log.debug("getUserEntity()");
 		return userRepository.findById(id);
 	}
 
 
 
-	public void addUser(User user) {
+	public void addUser(UserEntity userEntity) {
 
 		log.debug("addUser()");
-		userRepository.save(user);
+		userRepository.save(userEntity);
 	}
 
 
 
-	public void updateUser(User user) {
+	public void updateUser(UserEntity userEntity) {
 
 		log.debug("updateUser()");
-		userRepository.save(user);
+		userRepository.save(userEntity);
 	}
 
 
 
-	public void deleteUser(User user) {
+	public void deleteUser(UserEntity userEntity) {
 
 		log.debug("deleteUser()");
-		userRepository.delete(user);
+		userRepository.delete(userEntity);
 	}
 
 }

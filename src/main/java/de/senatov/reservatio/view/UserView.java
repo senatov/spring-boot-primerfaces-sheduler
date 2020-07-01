@@ -2,7 +2,7 @@ package de.senatov.reservatio.view;
 
 
 
-import de.senatov.reservatio.db.User;
+import de.senatov.reservatio.db.UserEntity;
 import de.senatov.reservatio.db.UserService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -29,11 +29,11 @@ import java.util.stream.Collectors;
 public class UserView implements Serializable {
 
 	private static final long serialVersionUID = 3849109028806396639L;
-	private String hint = "Save new system user in DB";
+	private String hint = "Save new system userEntity in DB";
 	@Autowired
 	private UserService userService;
-	private List<User> users = new ArrayList<>();
-	private User user;
+	private List<UserEntity> userEntities = new ArrayList<>();
+	private UserEntity userEntity;
 
 
 
@@ -41,9 +41,9 @@ public class UserView implements Serializable {
 	public void init() {
 
 		log.debug("init()");
-		user = new User();
+		userEntity = new UserEntity();
 		if (userService != null) {
-			users = userService.getAllUsers();
+			userEntities = userService.getAllUsers();
 		}
 	}
 
@@ -52,8 +52,8 @@ public class UserView implements Serializable {
 	public String prepareForUpdate(Long id) {
 
 		log.debug("prepareForUpdate()");
-		user = userService.getUser(id)
-		                  .get();
+		userEntity = userService.getUser(id)
+		                        .get();
 		return "new";
 	}
 
@@ -62,10 +62,10 @@ public class UserView implements Serializable {
 	public String savePerson() {
 
 		log.debug("savePerson()");
-		user.setId(null);
-		userService.addUser(user);
-		users = new ArrayList<>();
-		users = userService.getAllUsers();
+		userEntity.setId(null);
+		userService.addUser(userEntity);
+		userEntities = new ArrayList<>();
+		userEntities = userService.getAllUsers();
 		addMessage("Save person");
 		return "save";
 
@@ -76,7 +76,7 @@ public class UserView implements Serializable {
 	public String newPerson() {
 
 		log.debug("newPerson()");
-		user = new User();
+		userEntity = new UserEntity();
 		return "new";
 	}
 
@@ -84,9 +84,9 @@ public class UserView implements Serializable {
 
 	List<Long> getIds() {
 
-		return users.stream()
-		            .map(User::getId)
-		            .collect(Collectors.toList());
+		return userEntities.stream()
+		                   .map(UserEntity::getId)
+		                   .collect(Collectors.toList());
 
 	}
 
@@ -94,9 +94,9 @@ public class UserView implements Serializable {
 
 	List<String> getFirstNames() {
 
-		return users.stream()
-		            .map(User::getFirstName)
-		            .collect(Collectors.toList());
+		return userEntities.stream()
+		                   .map(UserEntity::getFirstName)
+		                   .collect(Collectors.toList());
 
 	}
 
@@ -104,18 +104,18 @@ public class UserView implements Serializable {
 
 	List<String> getLastNames() {
 
-		return users.stream()
-		            .map(User::getLastName)
-		            .collect(Collectors.toList());
+		return userEntities.stream()
+		                   .map(UserEntity::getLastName)
+		                   .collect(Collectors.toList());
 	}
 
 
 
 	List<String> getUserNames() {
 
-		return users.stream()
-		            .map(User::getUserName)
-		            .collect(Collectors.toList());
+		return userEntities.stream()
+		                   .map(UserEntity::getUserName)
+		                   .collect(Collectors.toList());
 
 	}
 
@@ -123,9 +123,9 @@ public class UserView implements Serializable {
 
 	List<String> getEmails() {
 
-		return users.stream()
-		            .map(User::getEMail)
-		            .collect(Collectors.toList());
+		return userEntities.stream()
+		                   .map(UserEntity::getEMail)
+		                   .collect(Collectors.toList());
 
 	}
 

@@ -49,6 +49,11 @@ public class ScheduleView implements Serializable {
 		eventModel.addEvent(DefaultScheduleEvent.builder()
 		                                        .title("Room 123")
 		                                        .startDate(previousDay8Pm())
+		                                        .description("ABC: r123")
+		                                        .groupId("Group-1")
+		                                        .id("ID:XYZ")
+		                                        .editable(Boolean.TRUE)
+		                                        .styleClass("Style")
 		                                        .endDate(previousDay11Pm())
 		                                        .url("https://github.com/primefaces/primefaces/pull/5338")
 		                                        .build());

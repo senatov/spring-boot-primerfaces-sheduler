@@ -18,16 +18,16 @@
 
             <f:view contentType="text/html">
                 <h:form>
-                    <p:dataTable value="#{userView.users}" var="user">
+                    <p:dataTable value="#{userView.userEntities}" var="userEntity">
                         <p:column headerText="Name">
-                            <p:outputLabel value="#{user.firstName}"/>
+                            <p:outputLabel value="#{userEntity.firstName}"/>
                         </p:column>
                         <p:column>
-                            <p:commandButton action="#{userView.prepareForUpdate(user.id)}"/>
-                    </p:column>
-                </p:dataTable>
-                <p:commandButton id="command_button_id" action="#{userView.newPerson}" value="Save" ajax="false"/>
-            </h:form>
+                            <p:commandButton action="#{userView.prepareForUpdate(userEntity.id)}"/>
+                        </p:column>
+                    </p:dataTable>
+                    <p:commandButton id="command_button_id" action="#{userView.newPerson}" value="Save" ajax="false"/>
+                </h:form>
             </f:view>
         </div>
     </ui:define>

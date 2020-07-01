@@ -18,38 +18,38 @@
                 <p:panel id="table_panel_id" header="Users in DB" style="margin-bottom:10px;background:honeydew">
 
                     <p:dataTable id="userstable_id"
-                                 var="users"
-                                 value="#{userView.users}"
+                                 var="userEntities"
+                                 value="#{userView.userEntities}"
                                  tableStyle="solid-color: blueviolet"
                     >
-                        <p:column headerText="#Id" sortBy="#{users.id}">
-                            <h:outputText value="#{users.id}"/>
+                        <p:column headerText="#Id" sortBy="#{userEntities.id}">
+                            <h:outputText value="#{userEntities.id}"/>
                         </p:column>
 
-                        <p:column headerText="First name" sortBy="#{users.firstName}">
-                            <h:outputText value="#{users.firstName}"/>
+                        <p:column headerText="First name" sortBy="#{userEntities.firstName}">
+                            <h:outputText value="#{userEntities.firstName}"/>
                         </p:column>
 
-                        <p:column headerText="Last name" sortBy="#{users.lastName}">
-                            <h:outputText value="#{users.lastName}"/>
+                        <p:column headerText="Last name" sortBy="#{userEntities.lastName}">
+                            <h:outputText value="#{userEntities.lastName}"/>
                         </p:column>
 
-                        <p:column headerText="User's name" sortBy="#{users.userName}">
-                            <h:outputText value="#{users.userName}"/>
+                        <p:column headerText="User's name" sortBy="#{userEntities.userName}">
+                            <h:outputText value="#{userEntities.userName}"/>
                         </p:column>
 
-                        <p:column headerText="eMail" sortBy="#{users.EMail}">
-                            <h:outputText value="#{users.EMail}"/>
+                        <p:column headerText="eMail" sortBy="#{userEntities.EMail}">
+                            <h:outputText value="#{userEntities.EMail}"/>
                         </p:column>
                     </p:dataTable>
                 </p:panel>
 
                 <br/>
                 <br/>
-                <p:panel id="panel" header="Insert new system user" style="margin-bottom:10px;background: lightgoldenrodyellow">
+                <p:panel id="panel" header="Insert new system userEntity" style="margin-bottom:10px;background: lightgoldenrodyellow">
                     <div class="form-group" style="padding-top: 10px">
                         <p:outputLabel for="firstName" value="First name:"/>
-                        <p:inputText value="#{userView.user.firstName}"
+                        <p:inputText value="#{userView.userEntity.firstName}"
                                      placeholder="first name..."
                                      id="firstName"
                                      required="true"
@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group" style="padding-top: 10px">
                         <p:outputLabel for="@next" value="Last name:"/>
-                        <p:inputText value="#{userView.user.lastName}"
+                        <p:inputText value="#{userView.userEntity.lastName}"
                                      placeholder="last name...."
                                      id="lastName"
                                      required="true"
@@ -65,7 +65,7 @@
                     </div>
                     <div class="form-group" style="padding-top: 10px">
                         <p:outputLabel for="@next" value="User's name:" style="padding-right: 10px"/>
-                        <p:inputText value="#{userView.user.userName}"
+                        <p:inputText value="#{userView.userEntity.userName}"
                                      placeholder="waldo..."
                                      id="userName"
                                      required="true"
@@ -73,7 +73,7 @@
                     </div>
                     <div class="form-group" style="padding-top: 10px">
                         <p:outputLabel for="@next" value="eMail:" style="padding-right: 10px"/>
-                        <p:inputText value="#{userView.user.EMail}"
+                        <p:inputText value="#{userView.userEntity.EMail}"
                                      placeholder="waldo123@outlook.com"
                                      id="eMail"
                                      required="true"

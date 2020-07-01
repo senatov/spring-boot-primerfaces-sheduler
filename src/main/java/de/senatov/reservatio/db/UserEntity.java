@@ -16,18 +16,20 @@ import java.io.Serializable;
 @ToString
 @Data
 @Entity
-@Table(name = "sc_user")
-public class User implements Serializable {
+@Table(name = "SC_USER")
+@SecondaryTable(name = "SC_SCHEDULE", schema = "sched")
+public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = -809071111834277692L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 	@Column(name = "first_name")
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
-	@Column(name = "user_name")
+	@Column(name = "user_name", table = "SC_SCHEDULE")
 	private String userName;
 	@Column(unique = true, name = "e_mail")
 	@Email
