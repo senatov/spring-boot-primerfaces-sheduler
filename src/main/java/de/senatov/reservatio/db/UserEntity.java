@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = "SC_USER")
-@SecondaryTable(name = "SC_SCHEDULE", schema = "sched")
+@SecondaryTable(name = "SC_SCHEDULE")
 public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = -809071111834277692L;

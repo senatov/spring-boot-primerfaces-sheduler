@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @ToString
 @Data
 @Entity
-@Table(name = "SC_SCHEDULE", schema = "sched")
+@Table(name = "SC_SCHEDULE")
 public class ScheduleEntity implements Serializable {
 
 	private static final long serialVersionUID = 4411986672561000356L;
