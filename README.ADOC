@@ -1,6 +1,6 @@
-``_The Project builds under Oracle JDK 14.0.1 General-Availability Release_ ``
+#The Project builds under Oracle JDK 14.0.1 General-Availability Release#
 
-`Database is now under Docker https://hub.docker.com/repository/docker/senatov/postgres[repo]`
+`Database is now in Docker https://hub.docker.com/repository/docker/senatov/postgres[repo]`
 
 image::doc/Anmerkung 2020-06-11 115746.png[]
 
@@ -9,8 +9,11 @@ tags: [Spring Boot 2.3.1, JSF 2.4 (v. 2.4 not compartible to Primefaces!), Prime
 [#_pet_project_spring_primefaces_scheduler]
 *pet project:* [#spring-primefaces-scheduler#]
 
-1) implementation of Basis Primefaces Scheduler.
-2) Components: Spring Boot 2.3.1, JSF 2.4, Primerfaces 8.0, JSE14 3) URLs:
+- implementation of Basis Primefaces Scheduler.
+
+- Components: Spring Boot 2.3.1, JSF 2.4, Primerfaces 8.0, JSE14
+
+- URLs:
 
 |===
 |*path are* | *description* |*remarks*
