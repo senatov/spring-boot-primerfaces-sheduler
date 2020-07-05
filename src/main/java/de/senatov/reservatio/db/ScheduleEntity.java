@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @ToString
 @Data
 @Entity
-@Table(name = "SC_SCHEDULE")
+@Table(name = "SC_SCHEDULE", schema = "SCHEDULE_DB")
 public class ScheduleEntity implements Serializable {
 
 	private static final long serialVersionUID = 4411986672561000356L;
@@ -25,8 +25,6 @@ public class ScheduleEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
-	@Column(name = "user_name")
-	private String userName;
 	@Column(name = "start_date", updatable = true, nullable = false)
 	private LocalDateTime startDate;
 	@Column(name = "end_date", updatable = true, nullable = false)
