@@ -62,7 +62,6 @@ public class UserView implements Serializable {
 	public String savePerson() {
 
 		log.debug("savePerson()");
-		userEntity.setId(null);
 		userService.addUser(userEntity);
 		userEntities = new ArrayList<>();
 		userEntities = userService.getAllUsers();

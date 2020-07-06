@@ -4,6 +4,7 @@ package de.senatov.reservatio.test;
 
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import javax.sql.DataSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-
+@Ignore
 @Slf4j
 @ToString
 @ExtendWith(SpringExtension.class)

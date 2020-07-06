@@ -26,12 +26,11 @@ import java.time.LocalDateTime;
 public class ScheduleEntity implements Serializable {
 
 	private static final long serialVersionUID = 4411986672561000356L;
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id", updatable = false, nullable = false)
+	@Id
 	private Long id;
 	@ManyToOne
-	@JoinColumn(foreignKey = @ForeignKey(name = "user_id"))
+	@JoinColumn(foreignKey = @ForeignKey(name = "id"))
 	private UserEntity userName;
 	@Column(name = "start_date", updatable = true, nullable = false)
 	private LocalDateTime startDate;
