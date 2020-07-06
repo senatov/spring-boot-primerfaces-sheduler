@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.checkerframework.common.aliasing.qual.Unique;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -32,9 +31,9 @@ public class ScheduleEntity implements Serializable {
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name = "id"))
 	private UserEntity userName;
-	@Column(name = "start_date", updatable = true, nullable = false)
+	@Column(name = "start_date", nullable = false)
 	private LocalDateTime startDate;
-	@Column(name = "end_date", updatable = true, nullable = false)
+	@Column(name = "end_date", nullable = false)
 	private LocalDateTime endDate;
 	@Column(name = "title")
 	String title;
