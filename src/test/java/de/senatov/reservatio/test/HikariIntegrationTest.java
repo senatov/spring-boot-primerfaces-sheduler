@@ -18,7 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
-@Disabled
 @Slf4j
 @ToString
 @ExtendWith(SpringExtension.class)

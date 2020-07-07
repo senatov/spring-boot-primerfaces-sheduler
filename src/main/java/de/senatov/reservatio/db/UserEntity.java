@@ -21,7 +21,7 @@ import java.io.Serializable;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "SC_USER" ,  schema = "SCHEDULE_DB")
+@Table(name = "SC_USER", schema = "SCHEDULE_DB")
 public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = -809071111834277692L;
@@ -38,4 +38,5 @@ public class UserEntity implements Serializable {
 	@Column(unique = true, name = "e_mail")
 	@Email
 	private String eMail;
+
 }
