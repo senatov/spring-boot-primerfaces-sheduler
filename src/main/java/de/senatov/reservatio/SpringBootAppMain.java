@@ -5,18 +5,30 @@ package de.senatov.reservatio;
 import com.sun.faces.config.ConfigureListener;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.PropertiesPropertySource;
 import org.springframework.web.context.ServletContextAware;
 
 import javax.faces.webapp.FacesServlet;
 import javax.servlet.ServletContext;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Properties;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
+import static org.apache.commons.lang3.StringUtils.*;
 
 
 
@@ -24,6 +36,12 @@ import static java.lang.Boolean.TRUE;
 @Slf4j
 @ToString
 public class SpringBootAppMain implements ServletContextAware {
+
+	public static final String APP_PROPS_KEY = "applicationConfig: [classpath:/application.properties]";
+	@Autowired
+	ConfigurableEnvironment env;
+
+
 
 	public static void main(String... args) {
 
@@ -53,6 +71,7 @@ public class SpringBootAppMain implements ServletContextAware {
 	@Override
 	public void setServletContext(ServletContext sc) {
 
+		setDBPasswordFromLocalPlace();
 		sc.addListener(ConfigureListener.class);
 		sc.setInitParameter("com.sun.faces.compressJavaScript", FALSE.toString());
 		sc.setInitParameter("com.sun.faces.enableClientStateDebugging", TRUE.toString());
@@ -70,6 +89,44 @@ public class SpringBootAppMain implements ServletContextAware {
 		sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
 		sc.setInitParameter("primefaces.THEME", "redmond");
 
+	}
+
+
+
+	private void setDBPasswordFromLocalPlace() {
+
+		Properties properties = new Properties();
+		Map<String, Object> unmodifiableMap = (Map<String, Object>) env.getPropertySources()
+		                                                               .get(APP_PROPS_KEY)
+		                                                               .getSource();
+		for (String key : unmodifiableMap.keySet()) {
+			String strValue = unmodifiableMap.get(key).toString();
+			if ( containsAny(strValue, "true", "false", "TRUE", "FALSE")){
+				properties.put(key, Boolean.valueOf(strValue));
+			}
+			properties.put(key, strValue);
+		}
+		properties.replace("spring.datasource.password", readDBPasswordFromHomePC());
+		PropertiesPropertySource propertySource = new PropertiesPropertySource(APP_PROPS_KEY, properties);
+		env.getPropertySources()
+		   .replace(APP_PROPS_KEY, propertySource);
+	}
+
+
+
+	private String readDBPasswordFromHomePC() {
+
+		final Properties props = new Properties();
+		try {
+			File file;
+			FileReader fileReader = new FileReader(new File("c:/Development/db-password.properties"));
+			props.load(fileReader);
+			return props.getProperty("spring.datasource.password");
+		}
+		catch (IOException e) {
+			log.error("cannot read db password: {}", e);
+			return "cannot read path";
+		}
 	}
 
 }
