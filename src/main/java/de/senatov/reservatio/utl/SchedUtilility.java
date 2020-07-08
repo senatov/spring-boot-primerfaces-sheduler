@@ -60,7 +60,7 @@ public class SchedUtilility {
 			String key = entry.getKey();
 			String strValue = entry.getValue()
 			                       .toString();
-			if ("true".equals(strValue.toLowerCase()) || "false".equals(strValue.toLowerCase())) {
+			if (isStrBool(strValue)) {
 				// it is important - just "true" / "false" as simple strings, don't works anymore here.
 				properties.put(key, Boolean.valueOf(strValue));
 			}
@@ -72,6 +72,18 @@ public class SchedUtilility {
 		PropertiesPropertySource propertySource = new PropertiesPropertySource(APP_PROPS_KEY, properties);
 		env.getPropertySources()
 		   .replace(APP_PROPS_KEY, propertySource);
+	}
+
+
+
+	/**
+	 * is String value 'true' or 'false' and could be convert to Boolean
+	 * @param strValue
+	 * @return
+	 */
+	private boolean isStrBool(String strValue) {
+
+		return "true".equals(strValue.toLowerCase()) || "false".equals(strValue.toLowerCase());
 	}
 
 
