@@ -25,6 +25,7 @@ public class SchedUtilility {
 
 	public static final String DATASOURCE_PASSWORD = "spring.datasource.password";
 	private static final String APP_PROPS_KEY = "applicationConfig: [classpath:/application.properties]";
+	public static final String DB_PASSWORD_PROPERTIES = "c:/Development/db-password.properties";
 	@Autowired
 	ConfigurableEnvironment env;
 
@@ -36,7 +37,7 @@ public class SchedUtilility {
 		Properties props = new Properties();
 		try {
 			File file;
-			FileReader fileReader = new FileReader(new File("c:/Development/db-password.properties"));
+			FileReader fileReader = new FileReader(new File(DB_PASSWORD_PROPERTIES));
 			props.load(fileReader);
 			result = props.getProperty(DATASOURCE_PASSWORD);
 		}
