@@ -50,6 +50,9 @@
         <appender-ref ref="app-log"/>
         <appender-ref ref="console"/>
     </logger>
+    <logger name=" org.springframework.boot" additivity="false" level="TRACE">
+        <appender-ref ref="console"/>
+    </logger>
     <logger name="org.springframework.faces" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
