@@ -16,7 +16,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 
 
-@Disabled
 @Slf4j
 @ToString
 @ExtendWith(SpringExtension.class)
