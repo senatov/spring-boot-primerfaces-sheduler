@@ -28,7 +28,7 @@ import static java.lang.Boolean.TRUE;
 public class SpringBootAppMain implements ServletContextAware {
 
 	@Autowired
-	SchedUtilility utl;
+	private SchedUtilility utl;
 
 
 
@@ -60,7 +60,6 @@ public class SpringBootAppMain implements ServletContextAware {
 	@Override
 	public void setServletContext(ServletContext sc) {
 
-		utl.setDBPasswordFromLocalPlace();
 		sc.addListener(ConfigureListener.class);
 		sc.setInitParameter("com.sun.faces.compressJavaScript", FALSE.toString());
 		sc.setInitParameter("com.sun.faces.enableClientStateDebugging", TRUE.toString());

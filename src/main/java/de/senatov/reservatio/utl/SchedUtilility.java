@@ -4,10 +4,13 @@ package de.senatov.reservatio.utl;
 
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.PropertiesPropertySource;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileReader;
@@ -18,10 +21,10 @@ import java.util.Properties;
 
 
 
-@Configuration
+@Component
 @Slf4j
 @ToString
-public class SchedUtilility {
+public class SchedUtilility implements InitializingBean {
 
 	public static final String DATASOURCE_PASSWORD = "spring.datasource.password";
 	private static final String APP_PROPS_KEY = "applicationConfig: [classpath:/application.properties]";
@@ -29,7 +32,12 @@ public class SchedUtilility {
 	@Autowired
 	ConfigurableEnvironment env;
 
-
+	@Override
+	public void afterPropertiesSet()
+	{
+		// get DB-Password from external (local) place
+		setDBPasswordFromLocalPlace();
+	}
 
 	private static String readDBPasswordFromHomePC() {
 
