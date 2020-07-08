@@ -5,7 +5,6 @@ package de.senatov.reservatio;
 import com.sun.faces.config.ConfigureListener;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.SpringApplication;
@@ -21,14 +20,12 @@ import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collections;
 import java.util.Map;
 import java.util.Properties;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static org.apache.commons.lang3.StringUtils.*;
+import static org.apache.commons.lang3.StringUtils.containsAny;
 
 
 
@@ -93,6 +90,28 @@ public class SpringBootAppMain implements ServletContextAware {
 
 
 
+	private static String readDBPasswordFromHomePC() {
+
+		String result;
+		Properties props = new Properties();
+		try {
+			File file;
+			FileReader fileReader = new FileReader(new File("c:/Development/db-password.properties"));
+			props.load(fileReader);
+			result = props.getProperty("spring.datasource.password");
+		}
+		catch (IOException e) {
+			log.error("cannot read db password: {}", e.getMessage());
+			result = "cannot read path";
+		}
+		return result;
+	}
+
+
+
+	/**
+	 * add/replace already saved in environment secret DB-Password to real one from project-external source.
+	 */
 	private void setDBPasswordFromLocalPlace() {
 
 		Properties properties = new Properties();
@@ -100,8 +119,10 @@ public class SpringBootAppMain implements ServletContextAware {
 		                                                               .get(APP_PROPS_KEY)
 		                                                               .getSource();
 		for (String key : unmodifiableMap.keySet()) {
-			String strValue = unmodifiableMap.get(key).toString();
-			if ( containsAny(strValue, "true", "false", "TRUE", "FALSE")){
+			String strValue = unmodifiableMap.get(key)
+			                                 .toString();
+			if (containsAny(strValue, "true", "false", "TRUE", "FALSE")) {
+				// it is important - just "true" / "false" as simple strings, don't works anymore here.
 				properties.put(key, Boolean.valueOf(strValue));
 			}
 			properties.put(key, strValue);
@@ -110,23 +131,6 @@ public class SpringBootAppMain implements ServletContextAware {
 		PropertiesPropertySource propertySource = new PropertiesPropertySource(APP_PROPS_KEY, properties);
 		env.getPropertySources()
 		   .replace(APP_PROPS_KEY, propertySource);
-	}
-
-
-
-	private String readDBPasswordFromHomePC() {
-
-		final Properties props = new Properties();
-		try {
-			File file;
-			FileReader fileReader = new FileReader(new File("c:/Development/db-password.properties"));
-			props.load(fileReader);
-			return props.getProperty("spring.datasource.password");
-		}
-		catch (IOException e) {
-			log.error("cannot read db password: {}", e);
-			return "cannot read path";
-		}
 	}
 
 }
