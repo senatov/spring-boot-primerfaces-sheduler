@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 
@@ -24,25 +25,27 @@ import java.util.Properties;
 @ToString
 public class SchedUtilility implements InitializingBean {
 
-	public static final String DATASOURCE_PASSWORD = "spring.datasource.password";
+	private static final String DATASOURCE_PASSWORD = "spring.datasource.password";
 	private static final String APP_PROPS_KEY = "applicationConfig: [classpath:/application.properties]";
-	public static final String DB_PASSWORD_PROPERTIES = "c:/Development/db-password.properties";
+	private static final String DB_PASSWORD_PROPERTIES = "c:/Development/db-password.properties";
 	@Autowired
 	ConfigurableEnvironment env;
 
+
+
 	@Override
-	public void afterPropertiesSet()
-	{
+	public void afterPropertiesSet() {
 		// get DB-Password from external (local) place
 		setDBPasswordFromLocalPlace();
 	}
+
+
 
 	private static String readDBPasswordFromHomePC() {
 
 		String result;
 		Properties props = new Properties();
 		try {
-			File file;
 			FileReader fileReader = new FileReader(new File(DB_PASSWORD_PROPERTIES));
 			props.load(fileReader);
 			result = props.getProperty(DATASOURCE_PASSWORD);
@@ -59,7 +62,7 @@ public class SchedUtilility implements InitializingBean {
 	/**
 	 * add/replace already saved in environment secret DB-Password to real one from project-external source.
 	 */
-	public void setDBPasswordFromLocalPlace() {
+	private void setDBPasswordFromLocalPlace() {
 
 		Properties properties = new Properties();
 		Map<String, Object> unmodifiableMap = getMapSource();
@@ -85,12 +88,13 @@ public class SchedUtilility implements InitializingBean {
 
 	/**
 	 * is String value 'true' or 'false' and could be convert to Boolean
+	 *
 	 * @param strValue
 	 * @return
 	 */
-	private boolean isStrBool(String strValue) {
+	private static boolean isStrBool(String strValue) {
 
-		return "true".equals(strValue.toLowerCase()) || "false".equals(strValue.toLowerCase());
+		return "true".equals(strValue.toLowerCase(Locale.ENGLISH)) || "false".equals(strValue.toLowerCase(Locale.ENGLISH));
 	}
 
 
