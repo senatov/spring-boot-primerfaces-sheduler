@@ -2,6 +2,8 @@ package de.senatov.reservatio.utl;
 
 
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
@@ -20,9 +22,12 @@ import java.util.Properties;
 
 
 
+
 @Component
 @Slf4j
 @ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class SchedUtilility implements InitializingBean {
 
 	private static final String DATASOURCE_PASSWORD = "spring.datasource.password";
