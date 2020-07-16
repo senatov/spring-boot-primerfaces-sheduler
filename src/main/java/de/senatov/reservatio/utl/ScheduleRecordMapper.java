@@ -4,6 +4,7 @@ package de.senatov.reservatio.utl;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.primefaces.model.ScheduleEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -59,6 +60,20 @@ public class ScheduleRecordMapper {
 		isEditable = (Boolean) map.get("is_editable");
 		style = String.valueOf(map.get("style_class"));
 		url = String.valueOf(map.get("url"));
+	}
+
+
+
+	public void saveEvent(ScheduleEvent event) {
+
+		log.debug("saveEvent {}", event);
+	}
+
+
+
+	public void updateEvent(ScheduleEvent event) {
+
+		log.debug("updateEvent {}", event);
 	}
 
 }

@@ -59,7 +59,7 @@ public class ScheduleView implements Serializable {
 			                                        .id(mapper.getId())
 			                                        .editable(mapper.getIsEditable())
 			                                        .styleClass(mapper.getStyle())
-			                                        .url(mapper.getUrl())
+			                                        //.url(mapper.getUrl())
 			                                        .build());
 			log.debug("added {}", mapper);
 		}
@@ -95,9 +95,11 @@ public class ScheduleView implements Serializable {
 		log.debug("getEvent() = {}", event);
 		if (event.getId() == null) {
 			eventModel.addEvent(event);
+			mapper.saveEvent(event);
 		}
 		else {
 			eventModel.updateEvent(event);
+			mapper.updateEvent(event);
 		}
 		event = new DefaultScheduleEvent();
 	}
