@@ -21,7 +21,7 @@ public class UserService implements Serializable {
 
 	private static final long serialVersionUID = 2480837124037856177L;
 
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 
 
 

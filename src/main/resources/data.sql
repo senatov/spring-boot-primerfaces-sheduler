@@ -31,6 +31,34 @@ INSERT INTO schedule_db.sc_schedule (description, start_date, end_date, group_id
 VALUES ('Meeting Room 34-descr', current_timestamp + interval '2 hour', current_timestamp + interval '4 hour 30 minutes', 'gr4', true, '5',
         '2', 'Meeting Room 34-title', 'url1', null);
 
-update schedule_db.sc_schedule set user_name_id=( select u.id from schedule_db.sc_user u where user_name like '%senatov%') where title like ('%room123%');
-update schedule_db.sc_schedule set user_name_id=( select u.id from schedule_db.sc_user u where user_name like '%ronny%') where title like ('%Kantine%');
-update schedule_db.sc_schedule set user_name_id=( select u.id from schedule_db.sc_user u where user_name like '%bush%') where title like ('%Meet%') OR title like ('%WXC Lab%');
+update schedule_db.sc_schedule
+set user_name_id=(select u.id from schedule_db.sc_user u where user_name like '%senatov%')
+where title like ('%room123%');
+update schedule_db.sc_schedule
+set user_name_id=(select u.id from schedule_db.sc_user u where user_name like '%ronny%')
+where title like ('%Kantine%');
+update schedule_db.sc_schedule
+set user_name_id=(select u.id from schedule_db.sc_user u where user_name like '%bush%')
+where title like ('%Meet%')
+   OR title like ('%WXC Lab%');
+
+create view schedule_db.schedule_user as
+select s.schedule_id,
+       u.id,
+       u.e_mail,
+       u.first_name,
+       u.last_name,
+       u.user_name,
+       s.description,
+       s.end_date,
+       s.group_id,
+       s.is_editable,
+       s.schedule_id,
+       s.start_date,
+       s.style_class,
+       s.title,
+       s.url
+FROM schedule_db.sc_schedule s,
+     schedule_db.sc_user u
+where s.user_name_id = u.id
+ORDER BY s.schedule_id;

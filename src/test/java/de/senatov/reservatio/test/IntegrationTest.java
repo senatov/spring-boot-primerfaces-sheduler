@@ -4,6 +4,8 @@ package de.senatov.reservatio.test;
 
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +17,13 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 
 
+@Disabled
 @Slf4j
 @ToString
 @ExtendWith(SpringExtension.class)
 @AutoConfigureWebTestClient
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@DisplayName("Integration Test")
 public class IntegrationTest {
 
 	@Autowired
@@ -28,6 +32,7 @@ public class IntegrationTest {
 
 
 	@Test
+	@DisplayName("Test Reservation")
 	public void testReservation() {
 
 		log.debug("Begin Test");
@@ -42,6 +47,7 @@ public class IntegrationTest {
 
 
 	@Test
+	@DisplayName("Test Create")
 	public void testCreate() {
 
 		log.debug("Part II");
@@ -55,6 +61,7 @@ public class IntegrationTest {
 
 
 	@Test
+	@DisplayName("Test List")
 	public void testList() {
 
 		log.debug("Part III");
