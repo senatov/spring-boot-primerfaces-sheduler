@@ -3,9 +3,6 @@ package de.senatov.reservatio.view;
 
 
 import de.senatov.reservatio.utl.ScheduleRecordMapper;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
@@ -33,9 +30,6 @@ import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 @ManagedBean
 @ViewScoped
 @Slf4j
-@Getter
-@Setter
-@ToString
 public class ScheduleView implements Serializable {
 
 	public static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
@@ -69,6 +63,13 @@ public class ScheduleView implements Serializable {
 			                                        .build());
 			log.debug("added {}", mapper);
 		}
+	}
+
+
+
+	public ScheduleModel getEventModel() {
+
+		return eventModel;
 	}
 
 
