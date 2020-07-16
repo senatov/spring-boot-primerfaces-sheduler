@@ -14,7 +14,8 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
@@ -28,7 +29,7 @@ import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 
 
 
-@Component
+@Configuration
 @ManagedBean
 @ViewScoped
 @Slf4j
@@ -43,26 +44,30 @@ public class ScheduleView implements Serializable {
 	private ScheduleModel eventModel;
 	private ScheduleEvent event = new DefaultScheduleEvent();
 
+	@Autowired
+	ScheduleRecordMapper mapper;
+
 
 
 	@PostConstruct
 	public void init() {
 
 		eventModel = new DefaultScheduleModel();
-		ScheduleRecordMapper sheduleMaps = new ScheduleRecordMapper();
-		for (Object value : sheduleMaps.getSheduleMaps()) {
-			sheduleMaps.extractVal(value);
+		mapper.init();
+		for (Object value : mapper.getSheduleMaps()) {
+			mapper.extractVal(value);
 			eventModel.addEvent(DefaultScheduleEvent.builder()
-			                                        .title(sheduleMaps.getTitle())
-			                                        .startDate(sheduleMaps.getStartDate())
-			                                        .endDate(sheduleMaps.getEndDate())
-			                                        .description(sheduleMaps.getDescription())
-			                                        .groupId(sheduleMaps.getGroupId())
-			                                        .id(sheduleMaps.getId())
-			                                        .editable(sheduleMaps.getIsEditable())
-			                                        .styleClass(sheduleMaps.getStyle())
-			                                        .url(sheduleMaps.getUrl())
+			                                        .title(mapper.getTitle())
+			                                        .startDate(mapper.getStartDate())
+			                                        .endDate(mapper.getEndDate())
+			                                        .description(mapper.getDescription())
+			                                        .groupId(mapper.getGroupId())
+			                                        .id(mapper.getId())
+			                                        .editable(mapper.getIsEditable())
+			                                        .styleClass(mapper.getStyle())
+			                                        .url(mapper.getUrl())
 			                                        .build());
+			log.debug("added {}", mapper);
 		}
 	}
 
