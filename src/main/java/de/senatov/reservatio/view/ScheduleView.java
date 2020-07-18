@@ -35,7 +35,7 @@ public class ScheduleView implements Serializable {
 	public static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
 	private static final long serialVersionUID = -2637195560425203881L;
 
-	private ScheduleModel eventModel;
+	private final ScheduleModel eventModel = new DefaultScheduleModel();
 	private ScheduleEvent event = new DefaultScheduleEvent();
 
 	@Autowired
@@ -44,9 +44,8 @@ public class ScheduleView implements Serializable {
 
 
 	@PostConstruct
-	public void init() {
+	public void init() throws Exception {
 
-		eventModel = new DefaultScheduleModel();
 		mapper.init();
 		for (Object value : mapper.getSheduleMaps()) {
 			mapper.extractVal(value);
@@ -59,7 +58,7 @@ public class ScheduleView implements Serializable {
 			                                        .id(mapper.getId())
 			                                        .editable(mapper.getIsEditable())
 			                                        .styleClass(mapper.getStyle())
-			                                        //.url(mapper.getUrl())
+			                                        .url(mapper.getUrl())
 			                                        .build());
 			log.debug("added {}", mapper);
 		}

@@ -36,7 +36,7 @@ public class UserService implements Serializable {
 	public List<UserEntity> getAllUsers() {
 
 		log.debug("getAllUsers()");
-		List<UserEntity> userEntities = new ArrayList<>();
+		List<UserEntity> userEntities = new ArrayList<>(4);
 		userRepository.findAll()
 		              .forEach(userEntities::add);
 		return userEntities;

@@ -9,7 +9,12 @@ import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.checkerframework.common.aliasing.qual.Unique;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
 
