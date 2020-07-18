@@ -3,6 +3,7 @@ package de.senatov.reservatio.view;
 
 
 import de.senatov.reservatio.db.ScheduleService;
+import de.senatov.reservatio.db.UserEntity;
 import de.senatov.reservatio.utl.ScheduleRecordMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
@@ -37,11 +38,11 @@ public class ScheduleView implements Serializable {
 	private static final long serialVersionUID = -2637195560425203881L;
 
 	private final ScheduleModel eventModel = new DefaultScheduleModel();
-	private ScheduleEvent event = new DefaultScheduleEvent();
-
 	@Autowired
 	ScheduleRecordMapper mapper;
-
+	private ScheduleEvent event = new DefaultScheduleEvent();
+	@Autowired
+	private UserEntity userEntity;
 	@Autowired
 	private ScheduleService scheduleService;
 
@@ -64,7 +65,6 @@ public class ScheduleView implements Serializable {
 			                                        .styleClass(mapper.getStyle())
 			                                        //.url(mapper.getUrl())  - Don't use it! This parameter already uised by PrimeFaces Schedule Controller's Event Editor.
 			                                        .build());
-			log.debug("added {}", mapper);
 		}
 	}
 
@@ -99,11 +99,11 @@ public class ScheduleView implements Serializable {
 		log.debug("addEvent() = {}", event);
 		if (event.getId() == null) {
 			eventModel.addEvent(event);
-			scheduleService.saveSchedule(mapper.mapEvent(event));
+			scheduleService.saveSchedule(mapper.mapEvent(event, userEntity));
 		}
 		else {
 			eventModel.updateEvent(event);
-			scheduleService.updateSchedule(mapper.mapEvent(event));
+			scheduleService.updateSchedule(mapper.mapEvent(event, userEntity));
 		}
 		event = new DefaultScheduleEvent();
 	}

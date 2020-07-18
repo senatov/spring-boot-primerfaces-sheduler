@@ -2,6 +2,8 @@ package de.senatov.reservatio.utl;
 
 
 
+import de.senatov.reservatio.db.ScheduleEntity;
+import de.senatov.reservatio.db.UserEntity;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.model.ScheduleEvent;
@@ -72,9 +74,21 @@ public class ScheduleRecordMapper {
 
 
 
-	public void saveEvent(ScheduleEvent event) {
+	public ScheduleEntity mapEvent(ScheduleEvent event, UserEntity userEntity) {
 
-		log.debug("saveEvent {}", event);
+		ScheduleEntity ret = new ScheduleEntity();
+		ret.setDescription(event.getDescription());
+		ret.setEndDate(event.getEndDate());
+		ret.setGroupId(event.getGroupId());
+		ret.setId(1L);
+		ret.setIsEditable(Boolean.TRUE);
+		ret.setStartDate(event.getStartDate());
+		ret.setScheduleId(event.getId());
+		ret.setStyleClass(event.getStyleClass());
+		ret.setTitle(event.getTitle());
+		ret.setUrl(event.getUrl());
+		ret.setUserName(userEntity);
+		return ret;
 	}
 
 }
