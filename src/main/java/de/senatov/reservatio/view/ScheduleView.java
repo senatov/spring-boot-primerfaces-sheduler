@@ -2,6 +2,7 @@ package de.senatov.reservatio.view;
 
 
 
+import de.senatov.reservatio.db.ScheduleService;
 import de.senatov.reservatio.utl.ScheduleRecordMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
@@ -32,7 +33,7 @@ import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 @Slf4j
 public class ScheduleView implements Serializable {
 
-	public static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
+	private static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
 	private static final long serialVersionUID = -2637195560425203881L;
 
 	private final ScheduleModel eventModel = new DefaultScheduleModel();
@@ -40,6 +41,9 @@ public class ScheduleView implements Serializable {
 
 	@Autowired
 	ScheduleRecordMapper mapper;
+
+	@Autowired
+	private ScheduleService scheduleService;
 
 
 
@@ -58,7 +62,7 @@ public class ScheduleView implements Serializable {
 			                                        .id(mapper.getId())
 			                                        .editable(mapper.getIsEditable())
 			                                        .styleClass(mapper.getStyle())
-			                                        .url(mapper.getUrl())
+			                                        //.url(mapper.getUrl())  - Don't use it! This parameter already uised by PrimeFaces Schedule Controller's Event Editor.
 			                                        .build());
 			log.debug("added {}", mapper);
 		}
@@ -68,6 +72,7 @@ public class ScheduleView implements Serializable {
 
 	public ScheduleModel getEventModel() {
 
+		log.debug("getEventModel() = {}", eventModel);
 		return eventModel;
 	}
 
@@ -83,7 +88,7 @@ public class ScheduleView implements Serializable {
 
 	public void setEvent(ScheduleEvent event) {
 
-		log.debug("getEvent() = {}", event);
+		log.debug("setEvent() = {}", event);
 		this.event = event;
 	}
 
@@ -91,14 +96,14 @@ public class ScheduleView implements Serializable {
 
 	public void addEvent() {
 
-		log.debug("getEvent() = {}", event);
+		log.debug("addEvent() = {}", event);
 		if (event.getId() == null) {
 			eventModel.addEvent(event);
-			mapper.saveEvent(event);
+			scheduleService.saveSchedule(mapper.mapEvent(event));
 		}
 		else {
 			eventModel.updateEvent(event);
-			mapper.updateEvent(event);
+			scheduleService.updateSchedule(mapper.mapEvent(event));
 		}
 		event = new DefaultScheduleEvent();
 	}
