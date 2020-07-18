@@ -1,6 +1,6 @@
 #The Project builds under Oracle JDK 14.0.1 General-Availability Release#
 
-`Database is works under Docker https://hub.docker.com/repository/docker/senatov/postgres[repo]`
+`Database now working under Docker https://hub.docker.com/repository/docker/senatov/postgres[repo], not local`
 
 image::doc/Anmerkung 2020-06-11 115746.png[]
 
