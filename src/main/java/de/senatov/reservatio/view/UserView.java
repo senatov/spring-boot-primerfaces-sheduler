@@ -32,7 +32,7 @@ public class UserView implements Serializable {
 	private String hint = "Save new system userEntity in DB";
 	@Autowired
 	private UserService userService;
-	private List<UserEntity> userEntities = new ArrayList<>();
+	private List<UserEntity> userEntities = new ArrayList<>(8);
 	private UserEntity userEntity;
 
 
@@ -63,7 +63,7 @@ public class UserView implements Serializable {
 
 		log.debug("savePerson()");
 		userService.addUser(userEntity);
-		userEntities = new ArrayList<>();
+		userEntities = new ArrayList<>(8);
 		userEntities = userService.getAllUsers();
 		addMessage("Save person");
 		return "save";

@@ -22,7 +22,6 @@ import java.util.Properties;
 
 
 
-
 @Component
 @Slf4j
 @ToString
@@ -35,14 +34,6 @@ public class SchedUtilility implements InitializingBean {
 	private static final String DB_PASSWORD_PROPERTIES = "c:/Development/db-password.properties";
 	@Autowired
 	ConfigurableEnvironment env;
-
-
-
-	@Override
-	public void afterPropertiesSet() {
-		// get DB-Password from external (local) place
-		setDBPasswordFromLocalPlace();
-	}
 
 
 
@@ -60,6 +51,27 @@ public class SchedUtilility implements InitializingBean {
 			result = "cannot read path";
 		}
 		return result;
+	}
+
+
+
+	/**
+	 * is String value 'true' or 'false' and could be convert to Boolean
+	 *
+	 * @param strValue
+	 * @return
+	 */
+	private static boolean isStrBool(String strValue) {
+
+		return "true".equals(strValue.toLowerCase(Locale.ENGLISH)) || "false".equals(strValue.toLowerCase(Locale.ENGLISH));
+	}
+
+
+
+	@Override
+	public void afterPropertiesSet() {
+		// get DB-Password from external (local) place
+		setDBPasswordFromLocalPlace();
 	}
 
 
@@ -91,22 +103,9 @@ public class SchedUtilility implements InitializingBean {
 
 
 
-	/**
-	 * is String value 'true' or 'false' and could be convert to Boolean
-	 *
-	 * @param strValue
-	 * @return
-	 */
-	private static boolean isStrBool(String strValue) {
-
-		return "true".equals(strValue.toLowerCase(Locale.ENGLISH)) || "false".equals(strValue.toLowerCase(Locale.ENGLISH));
-	}
-
-
-
 	private Map<String, Object> getMapSource() {
 
-		Map<String, Object> ret = new HashMap<>();
+		Map<String, Object> ret = new HashMap<>(8);
 		try {
 			ret = (Map<String, Object>) env.getPropertySources()
 			                               .get(APP_PROPS_KEY)

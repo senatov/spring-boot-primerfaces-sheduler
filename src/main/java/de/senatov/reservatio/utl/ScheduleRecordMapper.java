@@ -4,6 +4,7 @@ package de.senatov.reservatio.utl;
 
 import de.senatov.reservatio.db.ScheduleEntity;
 import de.senatov.reservatio.db.UserEntity;
+import de.senatov.reservatio.db.UserService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.model.ScheduleEvent;
@@ -30,9 +31,12 @@ public class ScheduleRecordMapper {
 
 	public static final String DATE_S_ERR_MSG = " Wrong Event'%s': end Date before start Date! \nstartDate = %s\n startDate = %s";
 	private static String SELECT_ALL_FROM_VIEW = "select s.schedule_id, u.id, u.e_mail, u.first_name, u.last_name, u.user_name, s.description, s.end_date, s.group_id, s.is_editable, s.schedule_id, s.start_date, s.style_class, s.title, s.url FROM schedule_db.sc_schedule s,   schedule_db.sc_user u where s.user_name_id = u.id ORDER BY s.schedule_id";
+
+	@Autowired
+	UserService userService;
+
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
 	private LinkedCaseInsensitiveMap map;
 	private String title;
 	private LocalDateTime startDate;
@@ -55,9 +59,9 @@ public class ScheduleRecordMapper {
 
 
 
-	public void extractVal(Object sheduleMaps) throws Exception {
+	public void extractVal(Object object) throws Exception {
 
-		map = (LinkedCaseInsensitiveMap) sheduleMaps;
+		map = (LinkedCaseInsensitiveMap) object;
 		description = valueOf(map.get("description"));
 		title = valueOf(map.get("title"));
 		startDate = ((Timestamp) map.get("start_date")).toLocalDateTime();
@@ -74,7 +78,7 @@ public class ScheduleRecordMapper {
 
 
 
-	public ScheduleEntity mapEvent(ScheduleEvent event, UserEntity userEntity) {
+	public ScheduleEntity mapEvent(ScheduleEvent event) {
 
 		ScheduleEntity ret = new ScheduleEntity();
 		ret.setDescription(event.getDescription());
@@ -87,8 +91,17 @@ public class ScheduleRecordMapper {
 		ret.setStyleClass(event.getStyleClass());
 		ret.setTitle(event.getTitle());
 		ret.setUrl(event.getUrl());
-		ret.setUserName(userEntity);
+		ret.setUserName(getCurrentUser(event));
 		return ret;
+	}
+
+
+
+	private UserEntity getCurrentUser(ScheduleEvent event) {
+
+		Long userId = (Long) map.get("id");
+		return userService.getUser(userId)
+		                  .get();
 	}
 
 }

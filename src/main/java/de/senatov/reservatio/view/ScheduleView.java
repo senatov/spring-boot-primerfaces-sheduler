@@ -2,9 +2,10 @@ package de.senatov.reservatio.view;
 
 
 
+import de.senatov.reservatio.db.ScheduleEntity;
 import de.senatov.reservatio.db.ScheduleService;
-import de.senatov.reservatio.db.UserEntity;
 import de.senatov.reservatio.utl.ScheduleRecordMapper;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
@@ -31,6 +32,7 @@ import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 @Configuration
 @ManagedBean
 @ViewScoped
+@ToString
 @Slf4j
 public class ScheduleView implements Serializable {
 
@@ -41,8 +43,7 @@ public class ScheduleView implements Serializable {
 	@Autowired
 	ScheduleRecordMapper mapper;
 	private ScheduleEvent event = new DefaultScheduleEvent();
-	@Autowired
-	private UserEntity userEntity;
+
 	@Autowired
 	private ScheduleService scheduleService;
 
@@ -99,11 +100,13 @@ public class ScheduleView implements Serializable {
 		log.debug("addEvent() = {}", event);
 		if (event.getId() == null) {
 			eventModel.addEvent(event);
-			scheduleService.saveSchedule(mapper.mapEvent(event, userEntity));
+			ScheduleEntity schedule = mapper.mapEvent(event);
+			scheduleService.updateSchedule(schedule);
 		}
 		else {
 			eventModel.updateEvent(event);
-			scheduleService.updateSchedule(mapper.mapEvent(event, userEntity));
+			ScheduleEntity schedule = mapper.mapEvent(event);
+			scheduleService.updateSchedule(schedule);
 		}
 		event = new DefaultScheduleEvent();
 	}
