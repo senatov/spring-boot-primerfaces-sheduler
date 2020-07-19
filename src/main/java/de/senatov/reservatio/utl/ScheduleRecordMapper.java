@@ -60,7 +60,7 @@ public class ScheduleRecordMapper {
 
 
 
-	public void extractVal(Object object) throws Exception {
+	public void extractVal(Object object) {
 
 		map = (LinkedCaseInsensitiveMap) object;
 		description = valueOf(map.get("description"));
@@ -92,7 +92,7 @@ public class ScheduleRecordMapper {
 		ret.setStyleClass(event.getStyleClass());
 		ret.setTitle(event.getTitle());
 		ret.setUrl(event.getUrl());
-		ret.setUserName(getCurrentUser(event));
+		ret.setUserName(getCurrentUser());
 		return ret;
 	}
 
@@ -100,7 +100,7 @@ public class ScheduleRecordMapper {
 
 	private String getDescription(ScheduleEvent event) {
 
-		String ret = null;
+		String ret;
 		if (isBlank(event.getDescription())) {
 			ret = event.getTitle();
 		}
@@ -112,7 +112,7 @@ public class ScheduleRecordMapper {
 
 
 
-	private UserEntity getCurrentUser(ScheduleEvent event) {
+	private UserEntity getCurrentUser() {
 
 		Long userId = (Long) map.get("id");
 		return userService.getUser(userId)

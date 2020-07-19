@@ -130,7 +130,7 @@ public class UserView implements Serializable {
 
 
 
-	public void addMessage(String summary) {
+	private void addMessage(String summary) {
 
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
 		PrimeFacesContext.getCurrentInstance()
