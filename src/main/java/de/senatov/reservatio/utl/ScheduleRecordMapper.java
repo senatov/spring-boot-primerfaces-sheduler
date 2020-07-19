@@ -21,6 +21,7 @@ import java.util.Map;
 
 import static java.lang.String.format;
 import static java.lang.String.valueOf;
+import static org.apache.commons.lang3.StringUtils.isBlank;
 
 
 
@@ -81,10 +82,10 @@ public class ScheduleRecordMapper {
 	public ScheduleEntity mapEvent(ScheduleEvent event) {
 
 		ScheduleEntity ret = new ScheduleEntity();
-		ret.setDescription(event.getDescription());
+		ret.setDescription(getDescription(event));
 		ret.setEndDate(event.getEndDate());
 		ret.setGroupId(event.getGroupId());
-		ret.setId(1L);
+		ret.setId((Long) map.get("id"));
 		ret.setIsEditable(Boolean.TRUE);
 		ret.setStartDate(event.getStartDate());
 		ret.setScheduleId(event.getId());
@@ -92,6 +93,20 @@ public class ScheduleRecordMapper {
 		ret.setTitle(event.getTitle());
 		ret.setUrl(event.getUrl());
 		ret.setUserName(getCurrentUser(event));
+		return ret;
+	}
+
+
+
+	private String getDescription(ScheduleEvent event) {
+
+		String ret = null;
+		if (isBlank(event.getDescription())) {
+			ret = event.getTitle();
+		}
+		else {
+			ret = event.getDescription();
+		}
 		return ret;
 	}
 
