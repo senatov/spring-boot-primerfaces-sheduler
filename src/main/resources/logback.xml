@@ -12,13 +12,13 @@
 
     <appender name="app-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <append>true</append>
-        <file>/var/log/spring-boot-primefaces.log</file>
+        <file>/tmp/log/spring-boot-pf-sheduler.log</file>
         <encoder>
             <pattern>%date %level %logger{10} [%file:%line] %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <maxIndex>5</maxIndex>
-            <FileNamePattern>/var/log/spring-boot-primefaces.log.%i</FileNamePattern>
+            <FileNamePattern>/tmp/log/spring-boot-pf-sheduler.log.%i</FileNamePattern>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <MaxFileSize>6MB</MaxFileSize>
