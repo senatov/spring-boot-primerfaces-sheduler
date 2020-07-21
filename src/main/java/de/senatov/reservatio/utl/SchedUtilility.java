@@ -31,7 +31,7 @@ public class SchedUtilility implements InitializingBean {
 
 	private static final String DATASOURCE_PASSWORD = "spring.datasource.password";
 	private static final String APP_PROPS_KEY = "applicationConfig: [classpath:/application.properties]";
-	private static final String DB_PASSWORD_PROPERTIES = "c:/Development/db-password.properties";
+	private static final String DB_PASSWORD_PROPERTIES = "c:/Development/jee/db-password.properties";
 	@Autowired
 	ConfigurableEnvironment env;
 
@@ -47,8 +47,9 @@ public class SchedUtilility implements InitializingBean {
 			result = props.getProperty(DATASOURCE_PASSWORD);
 		}
 		catch (IOException e) {
-			log.error("cannot read db password: {}", e.getMessage());
-			result = "cannot read path";
+			//cannot find the pwd from outer file. Try use default. So-o, it's only demo, and not real security solution!
+			log.error("cannot read db password: {}. Use Default", e.getMessage());
+			result = "root";
 		}
 		return result;
 	}
