@@ -29,13 +29,14 @@
 
 
 <h:body>
-    <p:panelGrid columns="2" stylestyle="font-size:12p;">
-        <h:outputText value="contextPath:"/>
-        <h:outputText value="${request.contextPath}"/>
-        <h:outputText value="RealPath:"/>
-        <h:outputText value="${request.getRealPath('/')}"/>
+
+    <p:panelGrid columns="2">
+        <h:outputText value="contextPath:" style="color: blueviolet; font-size: 10px"/>
+        <h:outputText value="${request.contextPath}" style="color: blue; font-size: 10px"/>
+        <h:outputText value="RealPath:" style="color: blueviolet; font-size: 10px"/>
+        <h:outputText value="${request.getRealPath('/')}" style="color: blue; font-size: 10px"/>
     </p:panelGrid>
-    <hr class="space"/>
+    <p:separator/>
     <div class="container">
         <div>
             <h:form id="tabmenu_form_1">
@@ -60,7 +61,7 @@
                 </p:tabMenu>
             </h:form>
         </div>
-        <hr class="space"/>
+        <p:separator/>
         <div>
             <div id="local" class="span-4 colborder">
                 <ui:insert name="notes"/>
@@ -69,7 +70,7 @@
                 <ui:insert name="content"/>
             </div>
         </div>
-        <hr class="space"/>
+        <p:separator/>
     </div>
 </h:body>
 </html>
