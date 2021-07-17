@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--                                                                -->
-<!--           Iakov Senatov.06.2020                                -->
+<!--           Iakov Senatov.06.2021                                -->
 <!--                                                                -->
 <configuration>
 
@@ -9,65 +9,10 @@
             <pattern>%date %level %logger{10} [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
-
-    <appender name="app-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <append>true</append>
-        <file>/tmp/log/spring-boot-pf-sheduler.log</file>
-        <encoder>
-            <pattern>%date %level %logger{10} [%file:%line] %msg%n</pattern>
-        </encoder>
-        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <maxIndex>5</maxIndex>
-            <FileNamePattern>/tmp/log/spring-boot-pf-sheduler.log.%i</FileNamePattern>
-        </rollingPolicy>
-        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>6MB</MaxFileSize>
-        </triggeringPolicy>
-    </appender>
     <!--
            COMMON
      -->
     <root level="DEBUG">
         <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
     </root>
-    <!--
-            LOGGERS
-     -->
-    <logger name="com.sun.faces" additivity="false" level="DEBUG">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
-    <logger name="javax.el" additivity="false" level="DEBUG">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
-    <logger name="org.primefaces" additivity="false" level="DEBUG">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
-    <logger name="org.springframework.web.servlet" additivity="false" level="WARN">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
-    <logger name=" org.springframework.boot" additivity="false" level="TRACE">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
-    <logger name="org.springframework.faces" additivity="false" level="WARN">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
-    <logger name="org.springframework.security" additivity="false" level="WARN">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
-    <logger name="org.hibernate" additivity="false" level="DEBUG">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
-    <logger name="com.zaxxer.hikari.pool" additivity="false" level="WARN">
-        <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
-    </logger>
 </configuration>

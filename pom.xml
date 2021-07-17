@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-         xmlns="http://maven.apache.org/POM/4.0.0">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>de.senatov</groupId>
+    <artifactId>spring-boot-primerfaces-sheduler</artifactId>
+    <packaging>war</packaging>
+    <name>room-reservation</name>
+    <version>0.0.12</version>
+    <description>Example: JPA/Hibernate, Docker + Postgres, Spring-Boot 2.5.2, JSF2 Mojarra, PrimeFaces 10.0, Spring Security - NO</description>
+
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.1.RELEASE</version>
+        <version>2.5.2</version>
+        <relativePath/>
     </parent>
-    <groupId>de.senatov</groupId>
-    <artifactId>spring-boot-primerfaces-sheduler</artifactId>
-    <version>0.0.9</version>
-    <packaging>war</packaging>
-    <name>room-reservation</name>
-    <description>JPA/Hibernate, JDK 14, Spring Boot 2.2.6, Primefaces 8,Spring Security</description>
+
+
     <developers>
         <developer>
             <id>senatov</id>
@@ -26,35 +31,102 @@
             </roles>
         </developer>
     </developers>
+
+
     <properties>
-        <java.version>14</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.compiler.release>16</java.compiler.release>
+        <downloadSources>true</downloadSources>
+        <downloadJavadocs>true</downloadJavadocs>
     </properties>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>sonatype-snapshots</id>
+            <name>Sonatype Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <url>https://repo.spring.io/milestone</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <repositories>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <name>Sonatype Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>repo1.maven.org</id>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>jitpack</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>prime-repo</id>
+            <name>PrimeFaces Maven Repository</name>
+            <url>https://repository.primefaces.org/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>JBoss-Repo</id>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>jvnet-nexus-snapshots</id>
+            <name>jvnet-nexus-snapshots</name>
+            <url>https://maven.java.net/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
+
+
     <dependencies>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>29.0-jre</version>
+            <version>[28.0-jre, 34.0)</version>
         </dependency>
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
+            <version>[1.3.5, 1.4)</version>
         </dependency>
         <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
+            <version>[2.2.3, 2.3)</version>
         </dependency>
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
+            <version>(2.0.2,2.1]</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
+            <version>[3.10, 4.0)</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
@@ -71,36 +143,30 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-annotations-api</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.faces</artifactId>
-            <version>2.4.0</version>
+            <version>[2.4, 2.5)</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>1.0.2</version>
+            <version>[1.0.2, 2.0)</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
+            <version>[5.4.18.Final, 5.5)</version>
         </dependency>
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>8.0</version>
+            <version>10.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.primefaces.extensions</groupId>
-            <artifactId>primefaces-extensions</artifactId>
-            <version>8.0.2</version>
+            <artifactId>primefaces-extensions-parent</artifactId>
+            <version>10.0.2</version>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.primefaces.themes</groupId>
@@ -110,11 +176,22 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>compile</scope>
+            <version>[1.18, 1.32)</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+            <version>[1.7, 1.9)</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>[1.7, 1.9)</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
         </dependency>
         <dependency>
             <groupId>org.checkerframework</groupId>
@@ -127,8 +204,8 @@
             <version>1</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -168,15 +245,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
             <exclusions>
                 <exclusion>
-                    <artifactId>spring-security-core</artifactId>
                     <groupId>org.springframework.security</groupId>
+                    <artifactId>spring-security-core</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -195,15 +268,12 @@
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
+            <version>[5.8.0-M1, 5.8)</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -236,94 +306,42 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.sonatype.sisu</groupId>
-            <artifactId>sisu-inject-bean</artifactId>
-            <version>2.6.0</version>
+            <groupId>com.guicedee.services</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>1.1.1.9-jre16</version>
         </dependency>
     </dependencies>
-    <repositories>
-        <repository>
-            <id>JBoss-Repo</id>
-            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
-        </repository>
-        <repository>
-            <id>jitpack</id>
-            <url>https://jitpack.io</url>
-        </repository>
-        <repository>
-            <id>jvnet-nexus-snapshots</id>
-            <name>jvnet-nexus-snapshots</name>
-            <url>https://maven.java.net/content/repositories/snapshots/</url>
-        </repository>
-        <repository>
-            <id>prime-repo</id>
-            <name>PrimeFaces Maven Repository</name>
-            <url>http://repository.primefaces.org</url>
-        </repository>
-        <repository>
-            <id>repo1.maven.org</id>
-            <url>https://repo1.maven.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>sonatype-snapshots</id>
-            <name>Sonatype Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </repository>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-        <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>sonatype-snapshots</id>
-            <name>Sonatype Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>spring.io.plugins-snapshot</id>
-            <name>spring.io.plugins-snapshot</name>
-            <url>https://repo.spring.io/plugins-snapshot</url>
-        </pluginRepository>
-    </pluginRepositories>
+
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.2</version>
                 <executions>
                     <execution>
                         <id>analyze</id>
                         <goals>
                             <goal>analyze-only</goal>
+                            <goal>resolve</goal>
                         </goals>
                         <configuration>
                             <failOnWarning>false</failOnWarning>
                             <ignoreNonCompile>true</ignoreNonCompile>
                             <outputXML>true</outputXML>
+                            <classifier>javadoc</classifier>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerArgs>
-                        <arg>--enable-preview</arg>
-                    </compilerArgs>
-                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                    <parameters>true</parameters>
-                    <source>14</source>
-                    <target>14</target>
-                </configuration>
+                <version>3.8.1</version>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
                 <configuration>
                     <argLine>--enable-preview</argLine>
                     <includes>
@@ -334,6 +352,7 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
@@ -365,6 +384,7 @@
             <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.0.0</version>
                 <executions>
                     <execution>
                         <id>get-the-git-infos</id>

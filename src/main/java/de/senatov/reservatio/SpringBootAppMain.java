@@ -3,10 +3,8 @@ package de.senatov.reservatio;
 
 
 import com.sun.faces.config.ConfigureListener;
-import de.senatov.reservatio.utl.SchedUtilility;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,10 +24,6 @@ import static java.lang.Boolean.TRUE;
 @Slf4j
 @ToString
 public class SpringBootAppMain implements ServletContextAware {
-
-	@Autowired
-	private SchedUtilility utl;
-
 
 
 	public static void main(String... args) {
