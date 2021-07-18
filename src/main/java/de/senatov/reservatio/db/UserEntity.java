@@ -2,11 +2,7 @@ package de.senatov.reservatio.db;
 
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 import org.checkerframework.common.aliasing.qual.Unique;
 
 import javax.persistence.Column;
@@ -20,13 +16,9 @@ import java.io.Serializable;
 
 
 
-@Slf4j
-@ToString
 @Data
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "SC_USER", schema = "SCHEDULE_DB")
+@Table(catalog = "schedule_db", schema = "public", name = "SC_USER")
 public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = -809071111834277692L;

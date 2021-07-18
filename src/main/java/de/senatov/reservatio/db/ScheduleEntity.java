@@ -2,11 +2,7 @@ package de.senatov.reservatio.db;
 
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.Column;
@@ -23,13 +19,9 @@ import java.time.LocalDateTime;
 
 
 
-@Slf4j
-@ToString
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "SC_SCHEDULE", schema = "SCHEDULE_DB")
+@Table(catalog = "schedule_db", schema = "public", name = "SC_SCHEDULE")
 public class ScheduleEntity implements Serializable {
 
 	private static final long serialVersionUID = 4411986672561000356L;
