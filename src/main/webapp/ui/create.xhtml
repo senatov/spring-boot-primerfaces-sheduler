@@ -17,9 +17,7 @@
 
     <ui:define name="content">
         <div class="container" style="padding-left: 24px;padding-right: 24px">
-            <h:form id="tableform_id"
-                    styleClass="ui-widget"
-            >
+            <h:form id="tableform_id" styleClass="ui-widget">
                 <p:panel id="table_panel_id"
                          header="Users in DB"
                          style="margin-bottom:10px"
@@ -29,8 +27,12 @@
                                  var="userEntities"
                                  value="#{userView.userEntities}"
                     >
-                        <p:column headerText="#Id" sortBy="#{userEntities.id}">
-                            <h:outputText value="#{userEntities.id}"/>
+                        <p:column id="col_0"
+                                  headerText="#Id"
+                                  sortBy="#{userEntities.id}"
+                        >
+                            <h:outputText value="#{userEntities.id}"
+                            />
                         </p:column>
 
                         <p:column id="col_1"
