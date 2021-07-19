@@ -35,30 +35,4 @@ public class IntegrationTest {
                 .isOk();
     }
 
-
-    @Test
-    @DisplayName("Test Create")
-    public void testCreate() {
-
-        log.debug("Part 2.");
-        webClient.get()
-                .uri("/ui/create.xhtml")
-                .exchange()
-                .expectStatus()
-                .isOk();
-    }
-
-
-    @Test
-    @DisplayName("Test List")
-    public void testList() {
-
-        log.debug("Part 3.");
-        webClient.get()
-                .uri("/ui/list.xhtml")
-                .exchange()
-                .expectStatus()
-                .isOk();
-    }
-
 }
