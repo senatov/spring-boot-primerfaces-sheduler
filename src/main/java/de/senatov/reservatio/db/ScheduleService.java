@@ -31,8 +31,9 @@ public class ScheduleService implements Serializable {
     public List<ScheduleEntity> getAllSchedules() {
 
         log.debug("getAllSchedules()");
-        List<ScheduleEntity> ScheduleEntities = new ArrayList<>(0xFF);
-        scheduleRepository.findAll().forEach(ScheduleEntities::add);
+        List<ScheduleEntity> ScheduleEntities = new ArrayList<>(4);
+        scheduleRepository.findAll()
+                .forEach(ScheduleEntities::add);
         return ScheduleEntities;
     }
 

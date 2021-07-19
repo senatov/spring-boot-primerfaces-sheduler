@@ -36,10 +36,12 @@ public class ScheduleView implements Serializable {
 
     private static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
     private static final long serialVersionUID = -2637195560425203881L;
+
     private final ScheduleModel eventModel = new DefaultScheduleModel();
     @Autowired
     ScheduleRecordMapper mapper;
     private ScheduleEvent event = new DefaultScheduleEvent();
+
     @Autowired
     private ScheduleService scheduleService;
 
