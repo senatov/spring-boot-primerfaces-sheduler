@@ -12,10 +12,13 @@
 
     <ui:define name="content">
         <div class="top-toolbar" style="background-color: coral">
-            <p:staticMessage severity="info" summary="Pet - App:" detail="Remove Tab: Editable room reservation demo"/>
+            <p:staticMessage
+                    severity="info"
+                    summary="Pet - App:"
+                    detail="Remove Tab: Editable room reservation demo"
+            />
         </div>
         <div class="container">
-
             <f:view contentType="text/html">
                 <h:form>
                     <p:dataTable value="#{userView.userEntities}" var="userEntity">
@@ -26,7 +29,11 @@
                             <p:commandButton action="#{userView.prepareForUpdate(userEntity.id)}"/>
                         </p:column>
                     </p:dataTable>
-                    <p:commandButton id="command_button_id" action="#{userView.newPerson}" value="Save" ajax="false"/>
+                    <p:commandButton id="command_button_id"
+                                     action="#{userView.newPerson}"
+                                     value="Save"
+                                     ajax="false"
+                    />
                 </h:form>
             </f:view>
         </div>

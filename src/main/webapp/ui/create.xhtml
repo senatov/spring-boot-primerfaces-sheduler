@@ -7,38 +7,57 @@
 >
 
     <ui:define name="notes">
-        <div class="top-toolbar" style="background-color: coral">
-            <p:staticMessage severity="info" summary="Pet - App:" detail="Create Tab: Editable room reservation demo"/>
+        <div class="top-toolbar">
+            <p:staticMessage severity="info"
+                             summary="Pet - App:"
+                             detail="Create Tab: Editable room reservation demo"
+            />
         </div>
     </ui:define>
 
     <ui:define name="content">
         <div class="container" style="padding-left: 24px;padding-right: 24px">
-            <h:form id="tableform_id" styleClass="ui-widget">
-                <p:panel id="table_panel_id" header="Users in DB" style="margin-bottom:10px;background:honeydew">
+            <h:form id="tableform_id"
+                    styleClass="ui-widget"
+            >
+                <p:panel id="table_panel_id"
+                         header="Users in DB"
+                         style="margin-bottom:10px"
+                >
 
                     <p:dataTable id="userstable_id"
                                  var="userEntities"
                                  value="#{userView.userEntities}"
-                                 tableStyle="solid-color: blueviolet"
                     >
                         <p:column headerText="#Id" sortBy="#{userEntities.id}">
                             <h:outputText value="#{userEntities.id}"/>
                         </p:column>
 
-                        <p:column headerText="First name" sortBy="#{userEntities.firstName}">
+                        <p:column id="col_1"
+                                  headerText="First name"
+                                  sortBy="#{userEntities.firstName}"
+                        >
                             <h:outputText value="#{userEntities.firstName}"/>
                         </p:column>
 
-                        <p:column headerText="Last name" sortBy="#{userEntities.lastName}">
+                        <p:column id="col_2"
+                                  headerText="Last name"
+                                  sortBy="#{userEntities.lastName}"
+                        >
                             <h:outputText value="#{userEntities.lastName}"/>
                         </p:column>
 
-                        <p:column headerText="User's name" sortBy="#{userEntities.userName}">
+                        <p:column id="col_3"
+                                  headerText="User's name"
+                                  sortBy="#{userEntities.userName}"
+                        >
                             <h:outputText value="#{userEntities.userName}"/>
                         </p:column>
 
-                        <p:column headerText="eMail" sortBy="#{userEntities.EMail}">
+                        <p:column id="col_4"
+                                  headerText="eMail"
+                                  sortBy="#{userEntities.EMail}"
+                        >
                             <h:outputText value="#{userEntities.EMail}"/>
                         </p:column>
                     </p:dataTable>
@@ -46,8 +65,14 @@
 
                 <br/>
                 <br/>
-                <p:panel id="panel" header="Insert new user:" style="margin-bottom:10px;background: lightgoldenrodyellow">
-                    <div class="form-group" style="padding-top: 10px">
+                <p:panel id="panel"
+                         header="Insert new user:"
+                         style="margin-bottom:10px"
+                >
+                    <div id="div_01Gh"
+                         class="form-group"
+                         style="padding-top: 10px"
+                    >
                         <p:outputLabel for="firstName" value="First name:"/>
                         <p:inputText value="#{userView.userEntity.firstName}"
                                      placeholder="first name..."
@@ -83,8 +108,6 @@
                 <br/>
                 <br/>
                 <br/>
-
-
                 <p:commandButton id="save_person_btn_id"
                                  action="#{userView.savePerson}"
                                  value="Save"
