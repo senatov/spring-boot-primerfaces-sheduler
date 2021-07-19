@@ -24,7 +24,7 @@ import java.io.Serializable;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(schema = "schedule_db", name = "SC_USER")
+@Table(name = "SC_USER")
 public class UserEntity implements Serializable {
 
     private static final long serialVersionUID = -809071111834277692L;

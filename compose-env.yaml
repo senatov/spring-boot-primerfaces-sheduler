@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   db_schedule_db:
     image: postgres:latest
@@ -8,4 +8,4 @@ services:
     environment:
       POSTGRES_PASSWORD: admin
       POSTGRES_USER: admin
-      POSTGRES_DB: schedule_db
+      POSTGRES_DB: is

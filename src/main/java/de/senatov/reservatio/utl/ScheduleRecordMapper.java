@@ -29,7 +29,26 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 public class ScheduleRecordMapper {
 
     public static final String DATE_S_ERR_MSG = " Wrong Event'%s': end Date before start Date! \nstartDate = %s\n startDate = %s";
-    private static String SELECT_ALL_FROM_VIEW = "select s.schedule_id, u.id, u.e_mail, u.first_name, u.last_name, u.user_name, s.description, s.end_date, s.group_id, s.is_editable, s.schedule_id, s.start_date, s.style_class, s.title, s.url FROM schedule_db.sc_schedule s,   schedule_db.sc_user u where s.user_name_id = u.id ORDER BY s.schedule_id";
+
+    private static String SELECT_ALL_FROM_VIEW = """
+            select s.schedule_id,
+            u.id,
+            u.e_mail,
+            u.first_name,
+            u.last_name,
+            u.user_name,
+            s.description,
+            s.end_date,
+            s.group_id,
+            s.is_editable,
+            s.schedule_id,
+            s.start_date,
+            s.style_class,
+            s.title,
+            s.url
+            FROM sc_schedule s, sc_user u
+            where s.user_name_id = u.id ORDER BY s.schedule_id
+            """;
 
     @Autowired
     UserService userService;
