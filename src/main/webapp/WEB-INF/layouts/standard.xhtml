@@ -15,46 +15,65 @@
         <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
         <meta http-equiv="Pragma" content="nocache"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
-        <meta name="description" content="Scheduler Pet App: Spring Boot 2.3.1, JSF 2.4 and PrimeFaces 8.0.  I. Senatov"/>
+        <meta name="description"
+              content="Scheduler Pet App: Spring Boot 2.3.1, JSF 2.4 and PrimeFaces 8.0.  I. Senatov"/>
         <meta name="mobile-web-app-capable" content="yes"/>
         <meta name="robots" content="follow,index"/>
         <meta name="theme-color" content="#ffffff"/>
-        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,userEntity-scalable=1,viewport-fit=cover"/>
+        <meta name="viewport"
+              content="width=device-width,initial-scale=1,maximum-scale=1,userEntity-scalable=1,viewport-fit=cover"/>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"/>
-        <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"/>
-        <link rel="shortcut icon" id="favicon-ico" href="${pageContext.request.contextPath}/images/icons/favicon.ico" type="image/x-icon"/>
+        <link rel="apple-touch-icon-precomposed"
+              href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"/>
+        <link rel="shortcut icon" id="favicon-ico" href="${pageContext.request.contextPath}/images/icons/favicon.ico"
+              type="image/x-icon"/>
     </f:facet>
 </h:head>
 
 
 <h:body>
-    <p:panelGrid columns="2">
-        <h:outputText value="contextPath:" style="color: blueviolet; font-size: 10px"/>
-        <h:outputText value="${request.contextPath}" style="color: blue; font-size: 10px"/>
-        <h:outputText value="RealPath:" style="color: blueviolet; font-size: 10px"/>
-        <h:outputText value="${request.getRealPath('/')}" style="color: blue; font-size: 10px"/>
+    <p:panelGrid id="pg_12dc"
+                 columns="2"
+    >
+        <h:outputText value="contextPath:"/>
+        <h:outputText value="${request.contextPath}"/>
+        <h:outputText value="RealPath:"/>
+        <h:outputText value="${request.getRealPath('/')}"/>
     </p:panelGrid>
     <p:separator/>
-    <div class="container">
+    <div id="dv_01Mf"
+         class="container"
+    >
         <div>
             <h:form id="tabmenu_form_1">
                 <p:growl id="messages"/>
-                <p:tabMenu activeIndex="#{param.i}" id="tabmenu1" styleClass="ui-widget">
-                    <p:menuitem value="Reservation"
+                <p:tabMenu id="tabmenu1"
+                           activeIndex="#{param.i}"
+                           styleClass="ui-widget"
+                >
+                    <p:menuitem id="mi_2hN"
+                                value="Reservation"
                                 outcome="/ui/reservation.xhtml"
                                 icon="pi pi-search-plus"
-                                style="background:palegoldenrod;font-weight:lighter;font-size: 16px !important">
+                                style="background:palegoldenrod;font-weight:lighter;font-size: 16px !important"
+                    >
                         <f:param name="reservation" value="1"/>
                     </p:menuitem>
-                    <p:menuitem value="List" outcome="/ui/list.xhtml"
+                    <p:menuitem id="mi_3jD"
+                                value="List"
+                                outcome="/ui/list.xhtml"
                                 icon="pi pi-list"
-                                style="background: honeydew;font-weight:lighter; font-size: 16px !important">
+                                style="background: honeydew;font-weight:lighter; font-size: 16px !important"
+                    >
                         <f:param name="list" value="2"/>
                     </p:menuitem>
-                    <p:menuitem value="Create" outcome="/ui/create.xhtml"
+                    <p:menuitem id="mi_4jA"
+                                value="Create"
+                                outcome="/ui/create.xhtml"
                                 icon="pi pi-userEntity-plus"
-                                style="background: lemonchiffon;font-weight:lighter; font-size: 16px !important">
+                                style="background: lemonchiffon;font-weight:lighter; font-size: 16px !important"
+                    >
                         <f:param name="create" value="3"/>
                     </p:menuitem>
                 </p:tabMenu>
@@ -62,10 +81,14 @@
         </div>
         <p:separator/>
         <div>
-            <div id="local" class="span-4 colborder">
+            <div id="local"
+                 class="span-4 colborder"
+            >
                 <ui:insert name="notes"/>
             </div>
-            <div class="span-19 last">
+            <div id="dv_03gK"
+                 class="span-19 last"
+            >
                 <ui:insert name="content"/>
             </div>
         </div>
