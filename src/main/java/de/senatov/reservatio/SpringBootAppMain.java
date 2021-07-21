@@ -24,8 +24,8 @@ import static java.lang.Boolean.TRUE;
 public class SpringBootAppMain implements ServletContextAware {
 
 
-    public static void main(String... args) {
-
+    public static void main(String... args) throws Exception {
+        log.info("main() " + System.getProperties());
         SpringApplication.run(SpringBootAppMain.class, args);
     }
 
@@ -48,7 +48,6 @@ public class SpringBootAppMain implements ServletContextAware {
 
     @Override
     public void setServletContext(ServletContext sc) {
-
         sc.addListener(ConfigureListener.class);
         sc.setInitParameter("com.sun.faces.compressJavaScript", FALSE.toString());
         sc.setInitParameter("com.sun.faces.enableClientStateDebugging", TRUE.toString());

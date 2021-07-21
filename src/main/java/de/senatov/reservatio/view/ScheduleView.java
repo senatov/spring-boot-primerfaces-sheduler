@@ -28,15 +28,13 @@ import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 
 
 @Configuration
+@Slf4j
 @ManagedBean
 @ViewScoped
 @ToString
-@Slf4j
 public class ScheduleView implements Serializable {
-
-    private static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
     private static final long serialVersionUID = -2637195560425203881L;
-
+    private static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
     private final ScheduleModel eventModel = new DefaultScheduleModel();
     @Autowired
     ScheduleRecordMapper mapper;
@@ -118,6 +116,7 @@ public class ScheduleView implements Serializable {
                 .startDate((LocalDateTime) selectEvent.getObject())
                 .endDate((LocalDateTime) selectEvent.getObject())
                 .build();
+        log.debug("Event() = {}", event);
     }
 
 
@@ -126,6 +125,7 @@ public class ScheduleView implements Serializable {
         String strMsg = String.format(S_MINUTE_DELTA_S, event.getDayDelta(), event.getMinuteDelta());
         FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event moved", strMsg);
         addMessage(message);
+        log.debug("message() = {}", message);
     }
 
 
@@ -134,13 +134,13 @@ public class ScheduleView implements Serializable {
         String strMsg = String.format(S_MINUTE_DELTA_S, event.getDayDeltaEnd(), event.getMinuteDeltaEnd());
         FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event resized", strMsg);
         addMessage(message);
+        log.debug("message() = {}", message);
     }
 
 
     private void addMessage(FacesMessage message) {
 
-        FacesContext.getCurrentInstance()
-                .addMessage(null, message);
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
 }

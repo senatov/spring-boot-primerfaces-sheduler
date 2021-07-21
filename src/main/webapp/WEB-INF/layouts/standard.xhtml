@@ -45,7 +45,7 @@
     <div id="dv_01Mf"
          class="container"
     >
-        <div>
+        <div id="dv'_41fG">
             <h:form id="tabmenu_form_1">
                 <p:growl id="messages"/>
                 <p:tabMenu id="tabmenu1"
@@ -56,7 +56,6 @@
                                 value="Reservation"
                                 outcome="/ui/reservation.xhtml"
                                 icon="pi pi-search-plus"
-                                style="background:palegoldenrod;font-weight:lighter;font-size: 16px !important"
                     >
                         <f:param name="reservation" value="1"/>
                     </p:menuitem>
@@ -64,7 +63,6 @@
                                 value="List"
                                 outcome="/ui/list.xhtml"
                                 icon="pi pi-list"
-                                style="background: honeydew;font-weight:lighter; font-size: 16px !important"
                     >
                         <f:param name="list" value="2"/>
                     </p:menuitem>
@@ -72,27 +70,17 @@
                                 value="Create"
                                 outcome="/ui/create.xhtml"
                                 icon="pi pi-userEntity-plus"
-                                style="background: lemonchiffon;font-weight:lighter; font-size: 16px !important"
                     >
                         <f:param name="create" value="3"/>
                     </p:menuitem>
                 </p:tabMenu>
             </h:form>
         </div>
-        <p:separator/>
         <div>
-            <div id="local"
-                 class="span-4 colborder"
-            >
-                <ui:insert name="notes"/>
-            </div>
-            <div id="dv_03gK"
-                 class="span-19 last"
-            >
+            <div id="dv_03gK">
                 <ui:insert name="content"/>
             </div>
         </div>
-        <p:separator/>
     </div>
 </h:body>
 </html>

@@ -17,92 +17,88 @@
                              severity="info"
                              summary="Pet - App:"
                              detail="Reservation Tab: Editable room reservation demo"
+                             styleClass="small"
             />
         </div>
     </ui:define>
 
     <ui:define name="content">
-        <div id="div_02Df" class="container">
-            <f:view contentType="text/html">
-                <h:form id="form_05hQ">
-                    <p:growl id="messages" showDetail="true"/>
-                    <h:panelGrid id="pg_34Gd"
-                                 columnClasses="value"
+        <f:view contentType="text/html">
+            <h:form id="form_05hQ">
+                <p:growl id="messages" showDetail="true"/>
+
+                <p:schedule id="schedule"
+                            value="#{scheduleView.eventModel}"
+                            widgetVar="scheduler_001"
+                            timeZone="GMT+2"
+                >
+                    <p:ajax event="dateSelect"
+                            listener="#{scheduleView.onDateSelect}"
+                            update="eventDetails"
+                            oncomplete="PF('eventDialog').show();"
+                    />
+                    <p:ajax event="eventSelect"
+                            listener="#{scheduleView.onEventSelect}"
+                            update="eventDetails"
+                            oncomplete="PF('eventDialog').show();"
+                    />
+                    <p:ajax event="eventMove"
+                            listener="#{scheduleView.onEventMove}"
+                            update="messages"
+                    />
+                    <p:ajax event="eventResize"
+                            listener="#{scheduleView.onEventResize}"
+                            update="messages"
+                    />
+                </p:schedule>
+
+                <p:dialog id="dlg_04mX"
+                          widgetVar="eventDialog"
+                          header="Event Details"
+                          showEffect="clip"
+                          hideEffect="clip"
+                >
+                    <h:panelGrid id="eventDetails"
+                                 columns="2"
                     >
-                        <p:schedule id="schedule"
-                                    value="#{scheduleView.eventModel}"
-                                    widgetVar="myschedule"
+                        <p:outputLabel for="title" value="Titles:"/>
+                        <p:inputText id="title"
+                                     value="#{scheduleView.event.title}"
+                                     required="true"
+                        />
+
+                        <p:outputLabel for="from" value="From:"/>
+                        <p:calendar id="from"
+                                    value="#{scheduleView.event.startDate}"
                                     timeZone="GMT+2"
-                        >
-                            <p:ajax event="dateSelect"
-                                    listener="#{scheduleView.onDateSelect}"
-                                    update="eventDetails"
-                                    oncomplete="PF('eventDialog').show();"
-                            />
-                            <p:ajax event="eventSelect"
-                                    listener="#{scheduleView.onEventSelect}"
-                                    update="eventDetails"
-                                    oncomplete="PF('eventDialog').show();"
-                            />
-                            <p:ajax event="eventMove"
-                                    listener="#{scheduleView.onEventMove}"
-                                    update="messages"
-                            />
-                            <p:ajax event="eventResize"
-                                    listener="#{scheduleView.onEventResize}"
-                                    update="messages"
-                            />
-                        </p:schedule>
+                                    pattern="dd.MM.yyyy HH:mm"
+                        />
+
+                        <p:outputLabel for="to" value="To:"/>
+                        <p:calendar id="to"
+                                    value="#{scheduleView.event.endDate}"
+                                    timeZone="GMT+2"
+                                    pattern="dd.MM.yyyy HH:mm"/>
+                        <p:outputLabel for="allDay" value="All Day:"/>
+                        <h:selectBooleanCheckbox id="allDay" value="#{scheduleView.event.allDay}"/>
+
+                        <p:commandButton id="btn_reset_11"
+                                         type="reset"
+                                         value="Reset"
+                                         icon="pi pi-reset"
+                                         styleClass="rounded-button ui-button-raised ui-button-flat"
+
+                        />
+                        <p:commandButton id="addButton"
+                                         value="Save"
+                                         action="#{scheduleView.addEvent}"
+                                         oncomplete="PF('scheduler_001').update();PF('eventDialog').hide();"
+                                         icon="pi pi-save"
+                                         styleClass="rounded-button ui-button-success ui-button-flat"
+                        />
                     </h:panelGrid>
-
-                    <p:dialog id="dlg_04mX"
-                              widgetVar="eventDialog"
-                              header="Event Details"
-                              showEffect="clip"
-                              hideEffect="clip"
-                    >
-                        <h:panelGrid id="eventDetails"
-                                     columns="2"
-                        >
-                            <p:outputLabel for="title" value="Titles:"/>
-                            <p:inputText id="title"
-                                         value="#{scheduleView.event.title}"
-                                         required="true"
-                            />
-
-                            <p:outputLabel for="from" value="From:"/>
-                            <p:calendar id="from"
-                                        value="#{scheduleView.event.startDate}"
-                                        timeZone="GMT+2"
-                                        pattern="dd/MM/yyyy HH:mm"
-                            />
-
-                            <p:outputLabel for="to" value="To:"/>
-                            <p:calendar id="to"
-                                        value="#{scheduleView.event.endDate}"
-                                        timeZone="GMT+2"
-                                        pattern="dd/MM/yyyy HH:mm"/>
-                            <p:outputLabel for="allDay" value="All Day:"/>
-                            <h:selectBooleanCheckbox id="allDay" value="#{scheduleView.event.allDay}"/>
-
-                            <p:commandButton id="btn_reset_11"
-                                             type="reset"
-                                             value="Reset"
-                                             icon="pi pi-reset"
-                                             styleClass="rounded-button ui-button-raised ui-button-flat"
-
-                            />
-                            <p:commandButton id="addButton"
-                                             value="Save"
-                                             action="#{scheduleView.addEvent}"
-                                             oncomplete="PF('myschedule').update();PF('eventDialog').hide();"
-                                             icon="pi pi-save"
-                                             styleClass="rounded-button ui-button-success ui-button-flat"
-                            />
-                        </h:panelGrid>
-                    </p:dialog>
-                </h:form>
-            </f:view>
-        </div>
+                </p:dialog>
+            </h:form>
+        </f:view>
     </ui:define>
 </ui:composition>
