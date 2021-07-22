@@ -29,7 +29,7 @@
 
                 <p:schedule id="schedule"
                             value="#{scheduleView.eventModel}"
-                            widgetVar="scheduler_001"
+                            widgetVar="myschedule"
                             timeZone="GMT+2"
                 >
                     <p:ajax event="dateSelect"
@@ -92,7 +92,7 @@
                         <p:commandButton id="addButton"
                                          value="Save"
                                          action="#{scheduleView.addEvent}"
-                                         oncomplete="PF('scheduler_001').update();PF('eventDialog').hide();"
+                                         oncomplete="PF('myschedule').update();PF('eventDialog').hide();"
                                          icon="pi pi-save"
                                          styleClass="rounded-button ui-button-success ui-button-flat"
                         />

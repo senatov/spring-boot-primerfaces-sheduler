@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.faces.mvc.JsfView;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 
@@ -24,13 +23,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         resolver.setPrefix("/WEB-INF/ui/");
         resolver.setSuffix(".xhtml");
         return resolver;
-    }
-
-
-    @Bean
-    public SimpleControllerHandlerAdapter simpleControllerHandlerAdapter() {
-
-        return new SimpleControllerHandlerAdapter();
     }
 
 

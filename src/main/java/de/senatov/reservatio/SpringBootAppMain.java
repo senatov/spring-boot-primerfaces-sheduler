@@ -24,8 +24,7 @@ import static java.lang.Boolean.TRUE;
 public class SpringBootAppMain implements ServletContextAware {
 
 
-    public static void main(String... args) throws Exception {
-        log.info("main() " + System.getProperties());
+    public static void main(String... args) {
         SpringApplication.run(SpringBootAppMain.class, args);
     }
 

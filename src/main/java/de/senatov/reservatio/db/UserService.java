@@ -33,8 +33,7 @@ public class UserService implements Serializable {
 
         log.debug("getAllUsers()");
         List<UserEntity> userEntities = new ArrayList<>(4);
-        userRepository.findAll()
-                .forEach(userEntities::add);
+        userRepository.findAll().forEach(userEntities::add);
         return userEntities;
     }
 
