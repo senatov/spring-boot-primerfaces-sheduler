@@ -26,7 +26,6 @@
         <f:view contentType="text/html">
             <h:form id="form_05hQ">
                 <p:growl id="messages" showDetail="true"/>
-
                 <p:schedule id="schedule"
                             value="#{scheduleView.eventModel}"
                             widgetVar="myschedule"
@@ -60,22 +59,18 @@
                           resizable="true"
 
                 >
-                    <h:panelGrid id="eventDetails"
-                                 columns="2"
-                    >
+                    <h:panelGrid id="eventDetails" columns="2">
                         <p:outputLabel for="title" value="Titles:"/>
                         <p:inputText id="title"
                                      value="#{scheduleView.event.title}"
                                      required="true"
                         />
-
                         <p:outputLabel for="from" value="From:"/>
                         <p:calendar id="from"
                                     value="#{scheduleView.event.startDate}"
                                     timeZone="GMT+2"
                                     pattern="dd.MM.yyyy HH:mm"
                         />
-
                         <p:outputLabel for="to" value="To:"/>
                         <p:calendar id="to"
                                     value="#{scheduleView.event.endDate}"
