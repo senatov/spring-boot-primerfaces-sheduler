@@ -57,27 +57,43 @@
                           showEffect="clip"
                           hideEffect="clip"
                           resizable="true"
-
+                          styleClass="ui-dialog-title"
                 >
                     <h:panelGrid id="eventDetails" columns="2">
-                        <p:outputLabel for="title" value="Titles:"/>
-                        <p:inputText id="title"
-                                     value="#{scheduleView.event.title}"
-                                     required="true"
+                        <p:outputLabel id="ol_01dS"
+                                       for="title"
+                                       value="Titles:"
                         />
-                        <p:outputLabel for="from" value="From:"/>
+                        <p:inputText id="title"
+                                     value="#{scheduleView.currentTitle}"
+                                     required="true"
+                                     placeholder="Event name"
+                        />
+                        <p:outputLabel id="ol_02Fx"
+                                       for="from"
+                                       value="From:"
+                        />
                         <p:calendar id="from"
                                     value="#{scheduleView.event.startDate}"
                                     timeZone="GMT+2"
                                     pattern="dd.MM.yyyy HH:mm"
                         />
-                        <p:outputLabel for="to" value="To:"/>
+                        <p:outputLabel id="ol_03vf"
+                                       for="to"
+                                       value="To:"
+                        />
                         <p:calendar id="to"
                                     value="#{scheduleView.event.endDate}"
                                     timeZone="GMT+2"
-                                    pattern="dd.MM.yyyy HH:mm"/>
-                        <p:outputLabel for="allDay" value="Full Day:"/>
-                        <h:selectBooleanCheckbox id="allDay" value="#{scheduleView.event.allDay}"/>
+                                    pattern="dd.MM.yyyy HH:mm"
+                        />
+                        <p:outputLabel id="ol_04MY"
+                                       for="allDay"
+                                       value="Full Day:"
+                        />
+                        <p:selectBooleanCheckbox id="allDay"
+                                                 value="#{scheduleView.event.allDay}"
+                        />
                         <p:commandButton id="reset"
                                          type="reset"
                                          value="Reset"

@@ -43,4 +43,7 @@
     <logger name="com.zaxxer.hikari.pool" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
+    <logger name="de.senatov.reservatio" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
 </configuration>

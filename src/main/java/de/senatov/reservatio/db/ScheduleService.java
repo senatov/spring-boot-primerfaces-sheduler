@@ -30,7 +30,7 @@ public class ScheduleService implements Serializable {
 
     public List<ScheduleEntity> getAllSchedules() {
 
-        log.debug("getAllSchedules()");
+        log.info("getAllSchedules()");
         List<ScheduleEntity> ScheduleEntities = new ArrayList<>(4);
         scheduleRepository.findAll().forEach(ScheduleEntities::add);
         return ScheduleEntities;
@@ -39,28 +39,28 @@ public class ScheduleService implements Serializable {
 
     public Optional<ScheduleEntity> getSchedule(Long id) {
 
-        log.debug("getScheduleEntity()");
+        log.info("getScheduleEntity()");
         return scheduleRepository.findById(id);
     }
 
 
     public void addSchedule(ScheduleEntity ScheduleEntity) {
 
-        log.debug("addSchedule()");
+        log.info("addSchedule()");
         scheduleRepository.save(ScheduleEntity);
     }
 
 
     public void updateSchedule(ScheduleEntity ScheduleEntity) {
 
-        log.debug("updateSchedule()");
+        log.info("updateSchedule()");
         scheduleRepository.save(ScheduleEntity);
     }
 
 
     public void deleteSchedule(ScheduleEntity ScheduleEntity) {
 
-        log.debug("deleteSchedule()");
+        log.info("deleteSchedule()");
         scheduleRepository.delete(ScheduleEntity);
     }
 

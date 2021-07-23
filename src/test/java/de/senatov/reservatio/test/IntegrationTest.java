@@ -26,7 +26,7 @@ public class IntegrationTest {
     @DisplayName("Test Reservation")
     public void testReservation() {
 
-        log.debug("Part 1.");
+        log.info("Part 1.");
         webClient.get()
                 .uri("/ui/reservation.xhtml")
                 .exchange()

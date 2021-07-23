@@ -37,7 +37,7 @@ public class UserView implements Serializable {
     @PostConstruct
     public void init() {
 
-        log.debug("init()");
+        log.info("init()");
         userEntity = new UserEntity();
         if (userService != null) {
             userEntities = userService.getAllUsers();
@@ -47,7 +47,7 @@ public class UserView implements Serializable {
 
     public String prepareForUpdate(Long id) {
 
-        log.debug("prepareForUpdate()");
+        log.info("prepareForUpdate()");
         userEntity = userService.getUser(id)
                 .get();
         return "new";
@@ -56,7 +56,7 @@ public class UserView implements Serializable {
 
     public String savePerson() {
 
-        log.debug("savePerson()");
+        log.info("savePerson()");
         userService.addUser(userEntity);
         userEntities = new ArrayList<>(8);
         userEntities = userService.getAllUsers();
@@ -68,7 +68,7 @@ public class UserView implements Serializable {
 
     public String newPerson() {
 
-        log.debug("newPerson()");
+        log.info("newPerson()");
         userEntity = new UserEntity();
         return "new";
     }

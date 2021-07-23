@@ -35,10 +35,12 @@ import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 public class ScheduleView implements Serializable {
     private static final long serialVersionUID = -2637195560425203881L;
     private static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
+
     private final ScheduleModel eventModel = new DefaultScheduleModel();
-    @Autowired
-    ScheduleRecordMapper mapper;
     private ScheduleEvent event = new DefaultScheduleEvent();
+
+    @Autowired
+    private ScheduleRecordMapper mapper;
 
     @Autowired
     private ScheduleService scheduleService;
@@ -67,28 +69,28 @@ public class ScheduleView implements Serializable {
 
     public ScheduleModel getEventModel() {
 
-        log.debug("getEventModel() = {}", eventModel);
+        log.info("getEventModel() = {}", eventModel);
         return eventModel;
     }
 
 
     public ScheduleEvent getEvent() {
 
-        log.debug("getEvent() = {}", event);
+        log.info("getEvent() = {}", event);
         return event;
     }
 
 
     public void setEvent(ScheduleEvent event) {
 
-        log.debug("setEvent() = {}", event);
+        log.info("setEvent() = {}", event);
         this.event = event;
     }
 
 
     public void addEvent() {
 
-        log.debug("addEvent() = {}", event);
+        log.info("addEvent() = {}", event);
         if (event.getId() == null) {
             eventModel.addEvent(event);
             ScheduleEntity schedule = mapper.mapEvent(event);
@@ -104,7 +106,7 @@ public class ScheduleView implements Serializable {
 
     public void onEventSelect(SelectEvent selectEvent) {
 
-        log.debug("onEventSelect() = {}", selectEvent);
+        log.info("onEventSelect() = {}", selectEvent);
         event = (ScheduleEvent) selectEvent.getObject();
     }
 
@@ -116,7 +118,7 @@ public class ScheduleView implements Serializable {
                 .startDate((LocalDateTime) selectEvent.getObject())
                 .endDate((LocalDateTime) selectEvent.getObject())
                 .build();
-        log.debug("Event() = {}", event);
+        log.info("Event() = {}", event);
     }
 
 
@@ -125,7 +127,7 @@ public class ScheduleView implements Serializable {
         String strMsg = String.format(S_MINUTE_DELTA_S, event.getDayDelta(), event.getMinuteDelta());
         FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event moved", strMsg);
         addMessage(message);
-        log.debug("message() = {}", message);
+        log.info("message() = {}", message);
     }
 
 
@@ -134,7 +136,11 @@ public class ScheduleView implements Serializable {
         String strMsg = String.format(S_MINUTE_DELTA_S, event.getDayDeltaEnd(), event.getMinuteDeltaEnd());
         FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event resized", strMsg);
         addMessage(message);
-        log.debug("message() = {}", message);
+        log.info("message() = {}", message);
+    }
+
+    public Object getCurrentTitle() {
+        return event.getTitle();
     }
 
 
