@@ -1,14 +1,49 @@
-<configuration debug="true">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--           Iakov Senatov.07.2021                                -->
+<configuration>
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- encoders are  by default assigned the type
-             ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%date %level %logger{10} [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
-
-    <root level="debug">
-        <appender-ref ref="STDOUT"/>
+    <!--
+           COMMON
+     -->
+    <root level="DEBUG">
+        <appender-ref ref="console"/>
     </root>
+    <!--
+            LOGGERS
+     -->
+    <logger name="com.sun.faces" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="javax.el" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.primefaces" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.springframework.web.servlet" additivity="false" level="WARN">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name=" org.springframework.boot" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.springframework.faces" additivity="false" level="WARN">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.springframework.security" additivity="false" level="WARN">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.hibernate" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="com.zaxxer.hikari.pool" additivity="false" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="de.senatov.reservatio" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
 </configuration>

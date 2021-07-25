@@ -11,12 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-
+@DisplayName("Integration Test")
 @Slf4j
 @ExtendWith(SpringExtension.class)
 @AutoConfigureWebTestClient
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@DisplayName("Integration Test")
 public class IntegrationTest {
 
     @Autowired
@@ -27,7 +26,7 @@ public class IntegrationTest {
     @DisplayName("Test Reservation")
     public void testReservation() {
 
-        log.debug("Part 1.");
+        log.info("Part 1.");
         webClient.get()
                 .uri("/ui/reservation.xhtml")
                 .exchange()

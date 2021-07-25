@@ -7,11 +7,9 @@
         template="/WEB-INF/layouts/standard.xhtml"
 >
     <ui:define name="notes">
-
     </ui:define>
-
     <ui:define name="content">
-        <div class="top-toolbar" style="background-color: coral">
+        <div class="top-toolbar">
             <p:staticMessage
                     severity="info"
                     summary="Pet - App:"
@@ -26,13 +24,19 @@
                             <p:outputLabel value="#{userEntity.firstName}"/>
                         </p:column>
                         <p:column>
-                            <p:commandButton action="#{userView.prepareForUpdate(userEntity.id)}"/>
+                            <p:commandButton id="btn_pre_34f"
+                                             action="#{userView.prepareForUpdate(userEntity.id)}"
+                                             icon="pi pi-save"
+                                             styleClass="rounded-button ui-button-success ui-button-flat"
+                            />
                         </p:column>
                     </p:dataTable>
                     <p:commandButton id="command_button_id"
                                      action="#{userView.newPerson}"
                                      value="Save"
                                      ajax="false"
+                                     icon="pi pi-save"
+                                     styleClass="rounded-button ui-button-success ui-button-flat"
                     />
                 </h:form>
             </f:view>
