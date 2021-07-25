@@ -1,12 +1,13 @@
 package de.senatov.reservatio.utl;
 
 
+
 import de.senatov.reservatio.db.ScheduleEntity;
 import de.senatov.reservatio.db.UserEntity;
 import de.senatov.reservatio.db.UserService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.primefaces.model.ScheduleEvent;
+import org.primefaces.model.DefaultScheduleEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -96,7 +97,7 @@ public class ScheduleRecordMapper {
     }
 
 
-    public ScheduleEntity mapEvent(ScheduleEvent event) {
+    public ScheduleEntity mapEvent(DefaultScheduleEvent event) {
 
         ScheduleEntity ret = new ScheduleEntity();
         ret.setDescription(getDescription(event));
@@ -114,7 +115,7 @@ public class ScheduleRecordMapper {
     }
 
 
-    private String getDescription(ScheduleEvent event) {
+    private String getDescription(DefaultScheduleEvent event) {
 
         String ret;
         if (isBlank(event.getDescription())) {

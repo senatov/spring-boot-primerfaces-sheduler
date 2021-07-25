@@ -65,10 +65,11 @@
                                        value="Titles:"
                         />
                         <p:inputText id="title"
-                                     value="#{scheduleView.currentTitle}"
+                                     value="#{scheduleView.event.title}"
                                      required="true"
-                                     placeholder="Event name"
-                        />
+                                     placeholder="Event name">
+                            <f:ajax/>
+                        </p:inputText>
                         <p:outputLabel id="ol_02Fx"
                                        for="from"
                                        value="From:"
@@ -98,7 +99,7 @@
                                          type="reset"
                                          value="Reset"
                                          icon="pi pi-reset"
-                                         styleClass="rounded-button ui-button-raised ui-button-flat"
+                                         styleClass="rounded-button ui-button-secondary ui-button-flat"
                                          onclick="PF('eventDialog').hide()"
                         />
                         <p:commandButton id="addButton"
