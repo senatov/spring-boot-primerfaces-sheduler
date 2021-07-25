@@ -1,7 +1,6 @@
 package de.senatov.reservatio.view;
 
 
-
 import de.senatov.reservatio.db.ScheduleEntity;
 import de.senatov.reservatio.db.ScheduleService;
 import de.senatov.reservatio.utl.ScheduleRecordMapper;
@@ -133,6 +132,7 @@ public class ScheduleView implements Serializable {
 	}
 
 
+
 	public void onEventResize(ScheduleEntryResizeEvent event) {
 
 		String strMsg = String.format(S_MINUTE_DELTA_S, event.getDayDeltaEnd(), event.getMinuteDeltaEnd());
@@ -141,9 +141,9 @@ public class ScheduleView implements Serializable {
 		log.info("message() = {}", message);
 	}
 
+
 	private void addMessage(FacesMessage message) {
 
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
-
 }

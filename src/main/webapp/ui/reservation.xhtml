@@ -67,6 +67,7 @@
                         <p:inputText id="title"
                                      value="#{scheduleView.event.title}"
                                      required="true"
+                                     styleClass="ui-inputtext"
                                      placeholder="Event name">
                             <f:ajax/>
                         </p:inputText>
@@ -95,12 +96,14 @@
                         <p:selectBooleanCheckbox id="allDay"
                                                  value="#{scheduleView.event.allDay}"
                         />
+                    </h:panelGrid>
+                    <h:panelGrid id="pgr_03hL" columns="3">
                         <p:commandButton id="reset"
                                          type="reset"
                                          value="Reset"
-                                         icon="pi pi-reset"
+                                         oncomplete="PF('eventDialog').hide()"
+                                         icon="pi pi-ban"
                                          styleClass="rounded-button ui-button-secondary ui-button-flat"
-                                         onclick="PF('eventDialog').hide()"
                         />
                         <p:commandButton id="addButton"
                                          value="Save"
@@ -108,6 +111,13 @@
                                          oncomplete="PF('myschedule').update();PF('eventDialog').hide();"
                                          icon="pi pi-save"
                                          styleClass="rounded-button ui-button-success ui-button-flat"
+                        />
+                        <p:commandButton id="deleteButton"
+                                         value="Delete"
+                                         action="#{scheduleView.deleteEvent}"
+                                         oncomplete="PF('myschedule').delete();PF('eventDialog').hide();"
+                                         icon="pi pi-minus"
+                                         styleClass="rounded-button ui-button-warning ui-button-flat"
                         />
                     </h:panelGrid>
                 </p:dialog>

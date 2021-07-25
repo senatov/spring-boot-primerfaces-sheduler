@@ -16,7 +16,7 @@
         <meta http-equiv="Pragma" content="nocache"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="#f7ffef"/>
         <meta name="description"
-              content="Scheduler Pet App: Spring Boot 2.3.1, JSF 2.4 and PrimeFaces 8.0.  I. Senatov"/>
+              content="Scheduler Pet App: Spring Boot 2.5.3, JSF 2.4 and PrimeFaces 10.0.0.  I. Senatov"/>
         <meta name="mobile-web-app-capable" content="yes"/>
         <meta name="robots" content="follow,index"/>
         <meta name="theme-color" content="#f7ffef"/>
@@ -35,20 +35,27 @@
 </h:head>
 
 
-<h:body>
+<h:body title="schedule">
     <p:panelGrid id="pg_12dc"
                  columns="2"
+                 styleClass="active"
     >
-        <h:outputText value="contextPath:"/>
-        <h:outputText value="${request.contextPath}"/>
-        <h:outputText value="RealPath:"/>
-        <h:outputText value="${request.getRealPath('/')}"/>
+        <h:outputText id="ot_02fs"
+                      for="ot_2Fg"
+                      styleClass="ui-icon-star"
+                      value="RealPath:"
+        />
+        <h:outputText id="ot_2Fg"
+                      styleClass="ui-icon-tag"
+                      value="${request.getRealPath('/')}"
+        />
     </p:panelGrid>
-    <p:separator/>
+
+
     <div id="dv_01Mf"
          class="container"
     >
-        <div id="dv'_41fG">
+        <div id="dv_41fG">
             <h:form id="tabmenu_form_1">
                 <p:growl id="messages"/>
                 <p:tabMenu id="tabmenu1"
