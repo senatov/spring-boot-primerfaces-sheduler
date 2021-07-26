@@ -50,43 +50,25 @@
                       value="${request.getRealPath('/')}"
         />
     </p:panelGrid>
-
-
-    <div id="dv_01Mf"
-         class="container"
-    >
-        <div id="dv_41fG">
-            <h:form id="tabmenu_form_1">
-                <p:growl id="messages"/>
+    <div id="dv_01Mf" class="container">
+        <h:form>
+            <div id="dv_41fG" class="card">
                 <p:tabMenu id="tabmenu1"
                            activeIndex="#{param.i}"
-                           styleClass="ui-widget"
                 >
-                    <p:menuitem id="mi_2hN"
-                                value="Reservation"
-                                outcome="/ui/reservation.xhtml"
-                                icon="pi pi-search-plus"
-                    >
-                        <f:param name="reservation" value="1"/>
+                    <p:menuitem value="Reservation" outcome="/ui/reservation.xhtml" icon="pi pi-calendar">
+                        <f:param name="i" value="0"/>
                     </p:menuitem>
-                    <p:menuitem id="mi_3jD"
-                                value="List"
-                                outcome="/ui/list.xhtml"
-                                icon="pi pi-list"
-                    >
-                        <f:param name="list" value="2"/>
+                    <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list">
+                        <f:param name="i" value="1"/>
                     </p:menuitem>
-                    <p:menuitem id="mi_4jA"
-                                value="Create"
-                                outcome="/ui/create.xhtml"
-                                icon="pi pi-userEntity-plus"
-                    >
-                        <f:param name="create" value="3"/>
+                    <p:menuitem value="Create" outcome="/ui/create.xhtml" icon="pi pi-user">
+                        <f:param name="i" value="2"/>
                     </p:menuitem>
                 </p:tabMenu>
-            </h:form>
-        </div>
-        <div>
+            </div>
+        </h:form>
+        <div class="card">
             <div id="dv_03gK">
                 <ui:insert name="content"/>
             </div>

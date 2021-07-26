@@ -4,13 +4,13 @@
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%date %level %logger{10} [%file:%line] %msg%n</pattern>
+            <pattern>%date %level %logger{15} [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
     <!--
            COMMON
      -->
-    <root level="DEBUG">
+    <root level="ERROR">
         <appender-ref ref="console"/>
     </root>
     <!--
@@ -25,25 +25,16 @@
     <logger name="org.primefaces" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.web.servlet" additivity="false" level="WARN">
+    <logger name="org.springframework" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name=" org.springframework.boot" additivity="false" level="DEBUG">
+    <logger name="org.hibernate" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.faces" additivity="false" level="WARN">
+    <logger name="com.zaxxer.hikari.pool" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.security" additivity="false" level="WARN">
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="org.hibernate" additivity="false" level="DEBUG">
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="com.zaxxer.hikari.pool" additivity="false" level="DEBUG">
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="de.senatov.reservatio" level="DEBUG">
+    <logger name="de.senatov.reservatio"  additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
 </configuration>
