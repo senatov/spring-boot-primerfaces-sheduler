@@ -76,8 +76,6 @@ public class ScheduleView implements Serializable {
 
 
 	public DefaultScheduleEvent getEvent() {
-
-		log.info("getEvent() = {}", event);
 		return event;
 	}
 
