@@ -1,12 +1,9 @@
 package de.senatov.reservatio;
 
 
-
 import com.sun.faces.config.ConfigureListener;
-import de.senatov.reservatio.utl.SchedUtilility;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,22 +18,15 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
 
-
 @SpringBootApplication
 @Slf4j
 @ToString
 public class SpringBootAppMain implements ServletContextAware {
 
-	@Autowired
-	private SchedUtilility utl;
-
-
 
 	public static void main(String... args) {
-
 		SpringApplication.run(SpringBootAppMain.class, args);
 	}
-
 
 
 	@Bean
@@ -44,7 +34,6 @@ public class SpringBootAppMain implements ServletContextAware {
 
 		return new CustomScopeConfigurer();
 	}
-
 
 
 	@Bean
@@ -56,10 +45,8 @@ public class SpringBootAppMain implements ServletContextAware {
 	}
 
 
-
 	@Override
 	public void setServletContext(ServletContext sc) {
-
 		sc.addListener(ConfigureListener.class);
 		sc.setInitParameter("com.sun.faces.compressJavaScript", FALSE.toString());
 		sc.setInitParameter("com.sun.faces.enableClientStateDebugging", TRUE.toString());
@@ -73,9 +60,7 @@ public class SpringBootAppMain implements ServletContextAware {
 		sc.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", TRUE.toString());
 		sc.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
 		sc.setInitParameter("javax.faces.STATE_SAVING_METHOD", "server");
-		sc.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", TRUE.toString());
-		sc.setInitParameter("primefaces.FONT_AWESOME", TRUE.toString());
-		sc.setInitParameter("primefaces.THEME", "redmond");
+		sc.setInitParameter("primefaces.THEME", "saga");
 
 	}
 

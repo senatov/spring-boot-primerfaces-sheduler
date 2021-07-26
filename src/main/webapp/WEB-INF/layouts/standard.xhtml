@@ -14,63 +14,65 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
         <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
         <meta http-equiv="Pragma" content="nocache"/>
-        <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
-        <meta name="description" content="Scheduler Pet App: Spring Boot 2.3.1, JSF 2.4 and PrimeFaces 8.0.  I. Senatov"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="#f7ffef"/>
+        <meta name="description"
+              content="Scheduler Pet App: Spring Boot 2.5.3, JSF 2.4 and PrimeFaces 10.0.0.  I. Senatov"/>
         <meta name="mobile-web-app-capable" content="yes"/>
         <meta name="robots" content="follow,index"/>
-        <meta name="theme-color" content="#ffffff"/>
-        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,userEntity-scalable=1,viewport-fit=cover"/>
+        <meta name="theme-color" content="#f7ffef"/>
+        <meta name="viewport"
+              content="width=device-width,initial-scale=1,maximum-scale=1,userEntity-scalable=1,viewport-fit=cover"/>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-        <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"/>
-        <link rel="apple-touch-icon-precomposed" href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"/>
-        <link rel="shortcut icon" id="favicon-ico" href="${pageContext.request.contextPath}/images/icons/favicon.ico" type="image/x-icon"/>
+        <link rel="apple-touch-icon"
+              href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"
+        />
+        <link rel="apple-touch-icon-precomposed"
+              href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"/>
+        <link rel="shortcut icon" id="favicon-ico"
+              href="${pageContext.request.contextPath}/images/icons/favicon.ico"
+              type="image/x-icon"/>
     </f:facet>
 </h:head>
 
 
-<h:body>
-    <p:panelGrid columns="2" stylestyle="font-size:12p;">
-        <h:outputText value="contextPath:"/>
-        <h:outputText value="${request.contextPath}"/>
-        <h:outputText value="RealPath:"/>
-        <h:outputText value="${request.getRealPath('/')}"/>
+<h:body title="schedule">
+    <p:panelGrid id="pg_12dc"
+                 columns="2"
+                 styleClass="active"
+    >
+        <h:outputText id="ot_02fs"
+                      for="ot_2Fg"
+                      styleClass="ui-icon-star"
+                      value="RealPath:"
+        />
+        <h:outputText id="ot_2Fg"
+                      styleClass="ui-icon-tag"
+                      value="${request.getRealPath('/')}"
+        />
     </p:panelGrid>
-    <hr class="space"/>
-    <div class="container">
-        <div>
-            <h:form id="tabmenu_form_1">
-                <p:growl id="messages"/>
-                <p:tabMenu activeIndex="#{param.i}" id="tabmenu1" styleClass="ui-widget">
-                    <p:menuitem value="Reservation"
-                                outcome="/ui/reservation.xhtml"
-                                icon="pi pi-search-plus"
-                                style="background:palegoldenrod;font-weight:lighter;font-size: 16px !important">
-                        <f:param name="reservation" value="1"/>
+    <div id="dv_01Mf" class="container">
+        <h:form>
+            <div id="dv_41fG" class="card">
+                <p:tabMenu id="tabmenu1"
+                           activeIndex="#{param.i}"
+                >
+                    <p:menuitem value="Reservation" outcome="/ui/reservation.xhtml" icon="pi pi-calendar">
+                        <f:param name="i" value="0"/>
                     </p:menuitem>
-                    <p:menuitem value="List" outcome="/ui/list.xhtml"
-                                icon="pi pi-list"
-                                style="background: honeydew;font-weight:lighter; font-size: 16px !important">
-                        <f:param name="list" value="2"/>
+                    <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list">
+                        <f:param name="i" value="1"/>
                     </p:menuitem>
-                    <p:menuitem value="Create" outcome="/ui/create.xhtml"
-                                icon="pi pi-userEntity-plus"
-                                style="background: lemonchiffon;font-weight:lighter; font-size: 16px !important">
-                        <f:param name="create" value="3"/>
+                    <p:menuitem value="Create" outcome="/ui/create.xhtml" icon="pi pi-user">
+                        <f:param name="i" value="2"/>
                     </p:menuitem>
                 </p:tabMenu>
-            </h:form>
-        </div>
-        <hr class="space"/>
-        <div>
-            <div id="local" class="span-4 colborder">
-                <ui:insert name="notes"/>
             </div>
-            <div class="span-19 last">
+        </h:form>
+        <div class="card">
+            <div id="dv_03gK">
                 <ui:insert name="content"/>
             </div>
         </div>
-        <hr class="space"/>
     </div>
 </h:body>
 </html>
-

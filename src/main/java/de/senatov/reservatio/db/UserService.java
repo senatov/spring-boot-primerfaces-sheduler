@@ -1,7 +1,6 @@
 package de.senatov.reservatio.db;
 
 
-
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 
 
 @Service
@@ -24,7 +22,6 @@ public class UserService implements Serializable {
 	private final UserRepository userRepository;
 
 
-
 	@Autowired
 	public UserService(UserRepository userRepository) {
 
@@ -32,16 +29,13 @@ public class UserService implements Serializable {
 	}
 
 
-
 	public List<UserEntity> getAllUsers() {
 
 		log.debug("getAllUsers()");
 		List<UserEntity> userEntities = new ArrayList<>(4);
-		userRepository.findAll()
-		              .forEach(userEntities::add);
+		userRepository.findAll().forEach(userEntities::add);
 		return userEntities;
 	}
-
 
 
 	public Optional<UserEntity> getUser(Long id) {
@@ -51,7 +45,6 @@ public class UserService implements Serializable {
 	}
 
 
-
 	public void addUser(UserEntity userEntity) {
 
 		log.debug("addUser()");
@@ -59,13 +52,11 @@ public class UserService implements Serializable {
 	}
 
 
-
 	public void updateUser(UserEntity userEntity) {
 
 		log.debug("updateUser()");
 		userRepository.save(userEntity);
 	}
-
 
 
 	public void deleteUser(UserEntity userEntity) {

@@ -1,7 +1,6 @@
 package de.senatov.reservatio.view;
 
 
-
 import de.senatov.reservatio.db.UserEntity;
 import de.senatov.reservatio.db.UserService;
 import lombok.Data;
@@ -20,7 +19,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-
 @Named("userView")
 @Component
 @ViewScoped
@@ -32,9 +30,8 @@ public class UserView implements Serializable {
 	private String hint = "Save new system userEntity in DB";
 	@Autowired
 	private UserService userService;
-	private List<UserEntity> userEntities = new ArrayList<>();
+	private List<UserEntity> userEntities = new ArrayList<>(8);
 	private UserEntity userEntity;
-
 
 
 	@PostConstruct
@@ -48,28 +45,25 @@ public class UserView implements Serializable {
 	}
 
 
-
 	public String prepareForUpdate(Long id) {
 
 		log.debug("prepareForUpdate()");
 		userEntity = userService.getUser(id)
-		                        .get();
+				.get();
 		return "new";
 	}
-
 
 
 	public String savePerson() {
 
 		log.debug("savePerson()");
 		userService.addUser(userEntity);
-		userEntities = new ArrayList<>();
+		userEntities = new ArrayList<>(8);
 		userEntities = userService.getAllUsers();
 		addMessage("Save person");
 		return "save";
 
 	}
-
 
 
 	public String newPerson() {
@@ -80,61 +74,55 @@ public class UserView implements Serializable {
 	}
 
 
-
 	List<Long> getIds() {
 
 		return userEntities.stream()
-		                   .map(UserEntity::getId)
-		                   .collect(Collectors.toList());
+				.map(UserEntity::getId)
+				.collect(Collectors.toList());
 
 	}
-
 
 
 	List<String> getFirstNames() {
 
 		return userEntities.stream()
-		                   .map(UserEntity::getFirstName)
-		                   .collect(Collectors.toList());
+				.map(UserEntity::getFirstName)
+				.collect(Collectors.toList());
 
 	}
-
 
 
 	List<String> getLastNames() {
 
 		return userEntities.stream()
-		                   .map(UserEntity::getLastName)
-		                   .collect(Collectors.toList());
+				.map(UserEntity::getLastName)
+				.collect(Collectors.toList());
 	}
-
 
 
 	List<String> getUserNames() {
 
 		return userEntities.stream()
-		                   .map(UserEntity::getUserName)
-		                   .collect(Collectors.toList());
+				.map(UserEntity::getUserName)
+				.collect(Collectors.toList());
 
 	}
-
 
 
 	List<String> getEmails() {
 
 		return userEntities.stream()
-		                   .map(UserEntity::getEMail)
-		                   .collect(Collectors.toList());
+				.map(UserEntity::getEMail)
+				.collect(Collectors.toList());
 
 	}
 
 
-
-	public void addMessage(String summary) {
+	private void addMessage(String summary) {
 
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
 		PrimeFacesContext.getCurrentInstance()
-		                 .addMessage(null, message);
+				.addMessage(null, message);
 	}
 
 }

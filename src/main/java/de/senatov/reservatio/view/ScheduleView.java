@@ -1,15 +1,15 @@
 package de.senatov.reservatio.view;
 
 
-
+import de.senatov.reservatio.db.ScheduleService;
 import de.senatov.reservatio.utl.ScheduleRecordMapper;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
-import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -27,20 +27,23 @@ import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 
 
 @Configuration
+@Slf4j
 @ManagedBean
 @ViewScoped
-@Slf4j
+@ToString
 public class ScheduleView implements Serializable {
 
-	public static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
 	private static final long serialVersionUID = -2637195560425203881L;
+	private static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
 
 	private final ScheduleModel eventModel = new DefaultScheduleModel();
-	private ScheduleEvent event = new DefaultScheduleEvent();
+	private DefaultScheduleEvent event = new DefaultScheduleEvent();
 
 	@Autowired
-	ScheduleRecordMapper mapper;
+	private ScheduleRecordMapper mapper;
 
+	@Autowired
+	private ScheduleService scheduleService;
 
 
 	@PostConstruct
@@ -50,40 +53,35 @@ public class ScheduleView implements Serializable {
 		for (Object value : mapper.getSheduleMaps()) {
 			mapper.extractVal(value);
 			eventModel.addEvent(DefaultScheduleEvent.builder()
-			                                        .title(mapper.getTitle())
-			                                        .startDate(mapper.getStartDate())
-			                                        .endDate(mapper.getEndDate())
-			                                        .description(mapper.getDescription())
-			                                        .groupId(mapper.getGroupId())
-			                                        .id(mapper.getId())
-			                                        .editable(mapper.getIsEditable())
-			                                        .styleClass(mapper.getStyle())
-			                                        .url(mapper.getUrl())
-			                                        .build());
-			log.debug("added {}", mapper);
+					.title(mapper.getTitle())
+					.startDate(mapper.getStartDate())
+					.endDate(mapper.getEndDate())
+					.description(mapper.getDescription())
+					.groupId(mapper.getGroupId())
+					.id(mapper.getId())
+					.editable(mapper.getIsEditable())
+					.styleClass(mapper.getStyle())
+					//.url(mapper.getUrl())  - Don't use it! This parameter already uised by PrimeFaces Schedule Controller's Event Editor.
+					.build());
 		}
 	}
 
 
-
 	public ScheduleModel getEventModel() {
 
+		log.debug("getEventModel() = {}", eventModel);
 		return eventModel;
 	}
 
 
-
-	public ScheduleEvent getEvent() {
-
-		log.debug("getEvent() = {}", event);
+	public DefaultScheduleEvent getEvent() {
 		return event;
 	}
 
 
+	public void setEvent(DefaultScheduleEvent event) {
 
-	public void setEvent(ScheduleEvent event) {
-
-		log.debug("getEvent() = {}", event);
+		log.debug("setEvent() = {}", event);
 		this.event = event;
 	}
 
@@ -104,24 +102,22 @@ public class ScheduleView implements Serializable {
 	}
 
 
-
 	public void onEventSelect(SelectEvent selectEvent) {
 
 		log.debug("onEventSelect() = {}", selectEvent);
-		event = (ScheduleEvent) selectEvent.getObject();
+		event = (DefaultScheduleEvent) selectEvent.getObject();
 	}
-
 
 
 	public void onDateSelect(SelectEvent selectEvent) {
 
 		event = DefaultScheduleEvent.builder()
-		                            .title("")
-		                            .startDate((LocalDateTime) selectEvent.getObject())
-		                            .endDate((LocalDateTime) selectEvent.getObject())
-		                            .build();
+				.title("")
+				.startDate((LocalDateTime) selectEvent.getObject())
+				.endDate((LocalDateTime) selectEvent.getObject())
+				.build();
+		log.debug("Event() = {}", event);
 	}
-
 
 
 	public void onEventMove(ScheduleEntryMoveEvent event) {
@@ -129,6 +125,7 @@ public class ScheduleView implements Serializable {
 		String strMsg = String.format(S_MINUTE_DELTA_S, event.getDayDelta(), event.getMinuteDelta());
 		FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event moved", strMsg);
 		addMessage(message);
+		log.debug("message() = {}", message);
 	}
 
 
@@ -138,15 +135,12 @@ public class ScheduleView implements Serializable {
 		String strMsg = String.format(S_MINUTE_DELTA_S, event.getDayDeltaEnd(), event.getMinuteDeltaEnd());
 		FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event resized", strMsg);
 		addMessage(message);
+		log.debug("message() = {}", message);
 	}
-
 
 
 	private void addMessage(FacesMessage message) {
 
-		FacesContext.getCurrentInstance()
-		            .addMessage(null, message);
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
-
 }
-

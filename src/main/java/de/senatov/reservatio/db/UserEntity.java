@@ -1,7 +1,6 @@
 package de.senatov.reservatio.db;
 
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,14 +18,13 @@ import javax.validation.constraints.Email;
 import java.io.Serializable;
 
 
-
 @Slf4j
 @ToString
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "SC_USER", schema = "SCHEDULE_DB")
+@Table(name = "SC_USER")
 public class UserEntity implements Serializable {
 
 	private static final long serialVersionUID = -809071111834277692L;

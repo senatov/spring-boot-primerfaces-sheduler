@@ -1,7 +1,6 @@
 package de.senatov.reservatio.db;
 
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,24 +21,16 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
-
 @Slf4j
 @ToString
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "SC_SCHEDULE", schema = "SCHEDULE_DB")
+@Table(name = "SC_SCHEDULE")
 public class ScheduleEntity implements Serializable {
 
 	private static final long serialVersionUID = 4411986672561000356L;
-
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Id
-	private Long id;
-	@ManyToOne
-	@JoinColumn(foreignKey = @ForeignKey(name = "username_fk"))
-	private UserEntity userName;
 	@Column(name = "title")
 	String title;
 	@Column(name = "description")
@@ -55,6 +46,12 @@ public class ScheduleEntity implements Serializable {
 	String styleClass;
 	@Column(name = "url")
 	String url;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	private Long id;
+	@ManyToOne
+	@JoinColumn(foreignKey = @ForeignKey(name = "username_fk"))
+	private UserEntity userName;
 	@Column(name = "start_date", nullable = false)
 	private LocalDateTime startDate;
 	@Column(name = "end_date", nullable = false)

@@ -1,29 +1,33 @@
-#The Project builds under Oracle JDK 14.0.1 General-Availability Release#
-
-`Database now working under Docker https://hub.docker.com/repository/docker/senatov/postgres[repo], not local`
-
-image::doc/Anmerkung 2020-06-11 115746.png[]
-
-tags: [Spring Boot 2.3.1, JSF 2.4 (v. 2.4 not compartible to Primefaces!), Primerfaces 8.0, Spring WebMVC, JDK14]
-
 [#_pet_project_spring_primefaces_scheduler]
 *pet project:* [#spring-primefaces-scheduler#]
 
+`The Project builds under Oracle JDK 14.0.1 General-Availability Release`
+
+tags: [Spring Boot 2.3.1, JSF 2.4 (v. 2.4 not compartible to Primefaces!), Primerfaces 8.0, Spring WebMVC, JDK14]
+
+
 - implementation of Basis Primefaces Scheduler.
-
 - Components: Spring Boot 2.3.1, JSF 2.4, Primerfaces 8.0, JSE14
-
 - URLs:
 
 |===
 |*path are* | *description* |*remarks*
 
-|http://localhost:8080/ui/person.xhtml
+|http://localhost:18087/ui/reservation.xhtml
 | common programm test (DB connect, Boot, JSF connection)
-| helpful on refactoring and pom version changing
+| is helpful on refactoring and pom version changing
 |===
 
-Database: not significant, use any of them, what u've s. file://application.properties[application.properties]
-for the info!
+*Database*: Database now working under Docker https://hub.docker.com/repository/docker/senatov/postgres[repo], not local
+file://application.properties[application.properties] for more info.
+
 mailto://javaentwickler@gmail.com[EMail]
+
+image::doc/reservation.png[]
+
+
+image::doc/list.png[]
+
+
+image::doc/cewate.png[]
 

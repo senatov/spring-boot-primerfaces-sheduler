@@ -1,35 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--                                                                -->
-<!--           Iakov Senatov.06.2020                                -->
-<!--                                                                -->
+<!--           Iakov Senatov.07.2021                                -->
 <configuration>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%date %level %logger{10} [%file:%line] %msg%n</pattern>
+            <pattern>%date %level %logger{15} [%file:%line] %msg%n</pattern>
         </encoder>
-    </appender>
-
-    <appender name="app-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <append>true</append>
-        <file>/tmp/_reservation_log/app-log.log</file>
-        <encoder>
-            <pattern>%date %level %logger{10} [%file:%line] %msg%n</pattern>
-        </encoder>
-        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <maxIndex>3</maxIndex>
-            <FileNamePattern>/tmp/app-log.log.%i</FileNamePattern>
-        </rollingPolicy>
-        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>3MB</MaxFileSize>
-        </triggeringPolicy>
     </appender>
     <!--
            COMMON
      -->
-    <root level="DEBUG">
+    <root level="ERROR">
         <appender-ref ref="console"/>
-        <appender-ref ref="app-log"/>
     </root>
     <!--
             LOGGERS
@@ -43,26 +25,16 @@
     <logger name="org.primefaces" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.web.servlet" additivity="false" level="WARN">
+    <logger name="org.springframework" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.webflow" additivity="false" level="WARN">
-        <appender-ref ref="app-log"/>
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name=" org.springframework.boot" additivity="false" level="TRACE">
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="org.springframework.faces" additivity="false" level="WARN">
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="org.springframework.security" additivity="false" level="WARN">
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="org.hibernate" additivity="false" level="DEBUG">
+    <logger name="org.hibernate" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
     <logger name="com.zaxxer.hikari.pool" additivity="false" level="WARN">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="de.senatov.reservatio"  additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
 </configuration>
