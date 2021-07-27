@@ -3,11 +3,11 @@
 
 `The Project builds under Oracle JDK 14.0.1 General-Availability Release`
 
-tags: [Spring Boot 2.3.1, JSF 2.4 (v. 2.4 not compartible to Primefaces!), Primerfaces 8.0, Spring WebMVC, JDK14]
+tags: [JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6, JSF2 Mojarra, PrimeFaces 10.0, Spring Security-NO]
 
 
 - implementation of Basis Primefaces Scheduler.
-- Components: Spring Boot 2.3.1, JSF 2.4, Primerfaces 8.0, JSE14
+- Components: JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6, JSF2 Mojarra, PrimeFaces 10.0, Spring Security-NO
 - URLs:
 
 |===
@@ -30,4 +30,3 @@ image::doc/list.png[]
 
 
 image::doc/cewate.png[]
-

@@ -12,7 +12,7 @@
 
 
     <description>
-        JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6, JSF2 Mojarra, PrimeFaces 10.0, Spring Security -NO
+        JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6, JSF2 Mojarra, PrimeFaces 10.0, Spring Security-NO
     </description>
 
     <parent>
