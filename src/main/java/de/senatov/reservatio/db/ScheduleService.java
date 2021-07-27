@@ -3,7 +3,6 @@ package de.senatov.reservatio.db;
 
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -17,11 +16,8 @@ import java.util.Optional;
 @ToString
 public class ScheduleService implements Serializable {
 
-    private static final long serialVersionUID = 3113025681276026951L;
     private final ScheduleRepository scheduleRepository;
 
-
-    @Autowired
     public ScheduleService(ScheduleRepository scheduleRepository) {
 
         this.scheduleRepository = scheduleRepository;
@@ -31,7 +27,7 @@ public class ScheduleService implements Serializable {
     public List<ScheduleEntity> getAllSchedules() {
 
         log.debug("getAllSchedules()");
-        List<ScheduleEntity> ScheduleEntities = new ArrayList<>(4);
+        List<ScheduleEntity> ScheduleEntities = new ArrayList<>(0xF);
         scheduleRepository.findAll().forEach(ScheduleEntities::add);
         return ScheduleEntities;
     }
@@ -39,7 +35,7 @@ public class ScheduleService implements Serializable {
 
     public Optional<ScheduleEntity> getSchedule(Long id) {
 
-        log.debug("getScheduleEntity()");
+        log.debug("getScheduleEntity({})", id);
         return scheduleRepository.findById(id);
     }
 

@@ -6,8 +6,6 @@ import de.senatov.reservatio.db.ScheduleService;
 import de.senatov.reservatio.utl.ScheduleRecordMapper;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.primefaces.event.ScheduleEntryMoveEvent;
-import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
@@ -24,6 +22,7 @@ import javax.faces.view.ViewScoped;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import static java.lang.String.format;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 
 
@@ -51,7 +50,7 @@ public class ScheduleView implements Serializable {
 
         mapper.init();
         for (Object value : mapper.getSheduleMaps()) {
-            mapper.extractVal(value);
+            mapper.extractValue(value);
             eventModel.addEvent(DefaultScheduleEvent.builder()
                     .title(mapper.getTitle())
                     .startDate(mapper.getStartDate())
@@ -93,12 +92,11 @@ public class ScheduleView implements Serializable {
         DefaultScheduleEvent event = new DefaultScheduleEvent();
         if (event.getId() == null) {
             eventModel.addEvent(event);
-            ScheduleEntity schedule = mapper.mapEvent(event);
-            scheduleService.updateSchedule(schedule);
+            ScheduleEntity scheduleEntity = mapper.mapEvent(event);
+            scheduleService.updateSchedule(scheduleEntity);
         } else {
             eventModel.updateEvent(event);
-            ScheduleEntity schedule = mapper.mapEvent(event);
-            scheduleService.updateSchedule(schedule);
+            scheduleService.updateSchedule(mapper.mapEvent(event));
         }
         event = new DefaultScheduleEvent();
     }
@@ -121,26 +119,23 @@ public class ScheduleView implements Serializable {
     }
 
 
-    public void onEventMove(ScheduleEntryMoveEvent event) {
+    public void onEventMove(ScheduleEvent event) {
 
-        String strMsg = String.format(S_MINUTE_DELTA_S, event.getDayDelta(), event.getMinuteDelta());
+        String strMsg = format("....plz, write here something--MOVE..");
         FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event moved", strMsg);
-        addMessage(message);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        eventModel.updateEvent(event);
+        scheduleService.updateSchedule(mapper.mapEvent(event));
     }
 
 
-    public void onEventResize(ScheduleEntryResizeEvent event) {
+    public void onEventResize(ScheduleEvent event) {
 
-        String strMsg = String.format(S_MINUTE_DELTA_S, event.getDayDeltaEnd(), event.getMinuteDeltaEnd());
+        String strMsg = format("....plz, write here something--RESIZE..");
         FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event resized", strMsg);
-        addMessage(message);
-    }
-
-
-    private void addMessage(FacesMessage message) {
-
-        FacesContext.getCurrentInstance()
-                .addMessage(null, message);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        eventModel.updateEvent(event);
+        scheduleService.updateSchedule(mapper.mapEvent(event));
     }
 
 }
