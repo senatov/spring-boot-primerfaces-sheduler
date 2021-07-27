@@ -137,13 +137,4 @@ public class ScheduleRecordMapper {
 
 		log.debug("saveEvent {}", event);
 	}
-
-
-
-	public void updateEvent(ScheduleEvent event) {
-
-		log.debug("updateEvent {}", event);
-	}
-
-
 }
