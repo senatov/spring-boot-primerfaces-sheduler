@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.Optional;
 @ToString
 public class UserService implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 2480837124037856177L;
 
 	private final UserRepository userRepository;
@@ -33,7 +35,7 @@ public class UserService implements Serializable {
 
 		log.debug("getAllUsers()");
 		List<UserEntity> userEntities = new ArrayList<>(4);
-		userRepository.findAll().forEach(userEntities::add);
+		userEntities.addAll(userRepository.findAll());
 		return userEntities;
 	}
 

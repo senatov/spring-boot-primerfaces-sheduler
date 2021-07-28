@@ -28,8 +28,8 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 @Slf4j
 public class ScheduleRecordMapper {
 
-    public static final String DATE_S_ERR_MSG = """ 
-            Wrong Event'%s': end Date before start Date! 
+    public static final String DATE_S_ERR_MSG = """
+            Wrong Event'%s': end Date before start Date!
             startDate = %s
             startDate = %s""";
 
@@ -74,7 +74,7 @@ public class ScheduleRecordMapper {
 
     public void init() {
 
-        sheduleMaps = jdbcTemplate.queryForList(SELECT_ALL_FROM_VIEW);
+        sheduleMaps = jdbcTemplate.queryForList(ScheduleRecordMapper.SELECT_ALL_FROM_VIEW);
     }
 
 

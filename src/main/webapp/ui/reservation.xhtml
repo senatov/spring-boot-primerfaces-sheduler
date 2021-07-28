@@ -7,21 +7,6 @@
         template="/WEB-INF/layouts/standard.xhtml">
 
     <f:view contentType="application/xhtml"/>
-
-
-    <ui:define name="notes">
-        <div id="div_03dC"
-             class="top-toolbar"
-        >
-            <p:staticMessage id="sm_02Db"
-                             severity="info"
-                             summary="Pet - App:"
-                             detail="Reservation Tab: Editable room reservation demo"
-                             styleClass="small"
-            />
-        </div>
-    </ui:define>
-
     <ui:define name="content">
         <f:view contentType="text/html">
             <h:form id="form_05hQ">
@@ -50,7 +35,6 @@
                             update="messages"
                     />
                 </p:schedule>
-
                 <p:dialog id="dlg_04mX"
                           widgetVar="eventDialog"
                           header="Event Details"
@@ -114,7 +98,6 @@
                         />
                         <p:commandButton id="deleteButton"
                                          value="Delete"
-                                         action="#{scheduleView.deleteEvent}"
                                          oncomplete="PF('myschedule').delete();PF('eventDialog').hide();"
                                          icon="pi pi-minus"
                                          styleClass="rounded-button ui-button-warning ui-button-flat"

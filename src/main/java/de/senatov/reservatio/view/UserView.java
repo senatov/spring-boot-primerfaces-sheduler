@@ -13,6 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class UserView implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 3849109028806396639L;
 	private String hint = "Save new system userEntity in DB";
 	@Autowired

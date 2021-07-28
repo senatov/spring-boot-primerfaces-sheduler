@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import java.io.Serial;
 import java.io.Serializable;
 
 
@@ -27,6 +28,7 @@ import java.io.Serializable;
 @Table(name = "SC_USER")
 public class UserEntity implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = -809071111834277692L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
