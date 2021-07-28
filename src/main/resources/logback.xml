@@ -10,31 +10,28 @@
     <!--
            COMMON
      -->
-    <root level="ERROR">
+    <root level="DEBUG">
         <appender-ref ref="console"/>
     </root>
     <!--
             LOGGERS
      -->
-    <logger name="com.sun.faces" additivity="false" level="DEBUG">
+    <logger name="org.springframework.test" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="javax.el" additivity="false" level="DEBUG">
+    <logger name="org.hibernate.engine" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.primefaces" additivity="false" level="DEBUG">
+    <logger name="org.hibernate.type" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework" additivity="false" level="WARN">
+    <logger name="org.hibernate.internal" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.hibernate" additivity="false" level="WARN">
+    <logger name="org.springframework.beans.factory" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="com.zaxxer.hikari.pool" additivity="false" level="WARN">
-        <appender-ref ref="console"/>
-    </logger>
-    <logger name="de.senatov.reservatio"  additivity="false" level="DEBUG">
+    <logger name="io.netty" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>
 </configuration>

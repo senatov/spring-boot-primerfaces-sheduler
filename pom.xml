@@ -49,6 +49,7 @@
     </properties>
 
     <repositories>
+
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -120,6 +121,11 @@
     </pluginRepositories>
 
     <dependencies>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>[7.0.1.Final, 8)</version>
+        </dependency>
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>

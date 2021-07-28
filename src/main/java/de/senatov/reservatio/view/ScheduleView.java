@@ -85,6 +85,8 @@ public class ScheduleView implements Serializable {
 	}
 
 
+	
+
 	public void setEvent(ScheduleEvent event) {
 
 		log.debug("setEvent() = {}", event);
