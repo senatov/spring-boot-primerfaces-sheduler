@@ -78,25 +78,25 @@ public class ScheduleView implements Serializable {
 	}
 
 
-	public ScheduleEvent getEvent() {
+	public ScheduleEvent getScEvent () {
 
-		log.debug("getEvent() = {}", event);
+		log.debug("getScEvent() = {}", event);
 		return event;
 	}
 
 
 	
 
-	public void setEvent(ScheduleEvent event) {
+	public void setShEvent (ScheduleEvent event) {
 
-		log.debug("setEvent() = {}", event);
+		log.debug("setShEvent() = {}", event);
 		this.event = event;
 	}
 
 
-	public void addEvent() {
+	public void addShEvent () {
 
-		log.debug("addEvent() = {}", event);
+		log.debug("addShEvent() = {}", event);
 		//FixMe: WTF?
 		DefaultScheduleEvent event = new DefaultScheduleEvent();
 		if (event.getId() == null) {
@@ -111,9 +111,9 @@ public class ScheduleView implements Serializable {
 	}
 
 
-	public void onEventSelect(SelectEvent selectEvent) {
+	public void onShEventSelect (SelectEvent selectEvent) {
 
-		log.debug("onEventSelect() = {}", selectEvent);
+		log.debug("onShEventSelect() = {}", selectEvent);
 		event = (ScheduleEvent) selectEvent.getObject();
 	}
 
@@ -129,16 +129,16 @@ public class ScheduleView implements Serializable {
 
 
 
-	public void onEventMove(ScheduleEntryMoveEvent event) {
+	public void onShEventMove (ScheduleEntryMoveEvent event) {
 
-		log.debug("onEventMove()");
+		log.debug("onShEventMove()");
 		FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event moved", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
 		addMessage(message);
 	}
 
 
-	public void onEventResize(ScheduleEntryResizeEvent event) {
-		log.debug("onEventResize()");
+	public void onShEventResize (ScheduleEntryResizeEvent event) {
+		log.debug("onShEventResize()");
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized","Day delta:" + event.getDayDeltaEnd() + ", Minute delta:" + event.getMinuteDeltaEnd());
 		addMessage(message);
 	}

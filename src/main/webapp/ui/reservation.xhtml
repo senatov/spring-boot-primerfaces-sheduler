@@ -6,105 +6,118 @@
         xmlns:p="http://primefaces.org/ui"
         template="/WEB-INF/layouts/standard.xhtml">
 
-    <f:view contentType="application/xhtml"/>
+
     <ui:define name="content">
         <f:view contentType="text/html">
-            <h:form id="form_05hQ">
-                <p:growl id="messages" showDetail="true"/>
-                <p:schedule id="schedule"
-                            value="#{scheduleView.eventModel}"
-                            widgetVar="myschedule"
-                            timeZone="GMT+2"
-                >
-                    <p:ajax event="dateSelect"
-                            listener="#{scheduleView.onDateSelect}"
-                            update="eventDetails"
-                            oncomplete="PF('eventDialog').show();"
-                    />
-                    <p:ajax event="eventSelect"
-                            listener="#{scheduleView.onEventSelect}"
-                            update="eventDetails"
-                            oncomplete="PF('eventDialog').show();"
-                    />
-                    <p:ajax event="eventMove"
-                            listener="#{scheduleView.onEventMove}"
-                            update="messages"
-                    />
-                    <p:ajax event="eventResize"
-                            listener="#{scheduleView.onEventResize}"
-                            update="messages"
-                    />
-                </p:schedule>
-                <p:dialog id="dlg_04mX"
-                          widgetVar="eventDialog"
-                          header="Event Details"
-                          showEffect="clip"
-                          hideEffect="clip"
-                          resizable="true"
-                          styleClass="ui-dialog-title"
-                >
-                    <h:panelGrid id="eventDetails" columns="2">
-                        <p:outputLabel id="ol_01dS"
-                                       for="title"
-                                       value="Titles:"
+            <div class="container" style="padding-left: 24px;padding-right: 24px">
+                <h:form id="form_05hQ">
+                    <p:growl id="messages" showDetail="true"/>
+                    <p:schedule id="schedule"
+                                value="#{scheduleView.eventModel}"
+                                widgetVar="myschedule"
+                                styleClass=""
+                    >
+                        <p:ajax event="dateSelect"
+                                listener="#{scheduleView.onDateSelect}"
+                                update="eventDetails"
+                                oncomplete="PF('eventDialog').show();"
                         />
-                        <p:inputText id="title"
-                                     value="#{scheduleView.event.title}"
-                                     required="true"
-                                     styleClass="ui-inputtext"
-                                     placeholder="Event name">
-                            <f:ajax/>
-                        </p:inputText>
-                        <p:outputLabel id="ol_02Fx"
-                                       for="from"
-                                       value="From:"
+                        <p:ajax event="eventSelect"
+                                listener="#{scheduleView.onShEventSelect}"
+                                update="eventDetails"
+                                oncomplete="PF('eventDialog').show();"
                         />
-                        <p:calendar id="from"
-                                    value="#{scheduleView.event.startDate}"
-                                    timeZone="GMT+2"
-                                    pattern="dd.MM.yyyy HH:mm"
+                        <p:ajax event="eventMove"
+                                listener="#{scheduleView.onShEventMove}"
+                                update="messages"
                         />
-                        <p:outputLabel id="ol_03vf"
-                                       for="to"
-                                       value="To:"
+                        <p:ajax event="eventResize"
+                                listener="#{scheduleView.onShEventResize}"
+                                update="messages"
                         />
-                        <p:calendar id="to"
-                                    value="#{scheduleView.event.endDate}"
-                                    timeZone="GMT+2"
-                                    pattern="dd.MM.yyyy HH:mm"
-                        />
-                        <p:outputLabel id="ol_04MY"
-                                       for="allDay"
-                                       value="Full Day:"
-                        />
-                        <p:selectBooleanCheckbox id="allDay"
-                                                 value="#{scheduleView.event.allDay}"
-                        />
-                    </h:panelGrid>
-                    <h:panelGrid id="pgr_03hL" columns="3">
-                        <p:commandButton id="reset"
-                                         type="reset"
-                                         value="Reset"
-                                         oncomplete="PF('eventDialog').hide()"
-                                         icon="pi pi-ban"
-                                         styleClass="rounded-button ui-button-secondary ui-button-flat"
-                        />
-                        <p:commandButton id="addButton"
-                                         value="Save"
-                                         action="#{scheduleView.addEvent}"
-                                         oncomplete="PF('myschedule').update();PF('eventDialog').hide();"
-                                         icon="pi pi-save"
-                                         styleClass="rounded-button ui-button-success ui-button-flat"
-                        />
-                        <p:commandButton id="deleteButton"
-                                         value="Delete"
-                                         oncomplete="PF('myschedule').delete();PF('eventDialog').hide();"
-                                         icon="pi pi-minus"
-                                         styleClass="rounded-button ui-button-warning ui-button-flat"
-                        />
-                    </h:panelGrid>
-                </p:dialog>
-            </h:form>
+                    </p:schedule>
+                    <p:dialog id="dlg_04mX"
+                              widgetVar="eventDialog"
+                              header="Event Details"
+                              showEffect="clip"
+                              hideEffect="clip"
+                              style="border-radius:4px;background-color: beige"
+                              styleClass="ui-dialog-content"
+                    >
+                        <h:panelGrid id="eventDetails" columns="2">
+                            <p:outputLabel id="ol_01dS"
+                                           for="title"
+                                           value="Titles:"
+                            />
+                            <p:inputText id="title"
+                                         value="#{scheduleView.scEvent.title}"
+                                         required="true"
+                                         styleClass="ui-inputtext"
+                                         placeholder="Event name">
+                                <f:ajax/>
+                            </p:inputText>
+                            <p:outputLabel id="ol_02Fx"
+                                           for="from"
+                                           value="From:"
+                            />
+                            <p:datePicker id="from"
+                                          value="#{scheduleView.scEvent.startDate}"
+                                          pattern="dd.MM.yyyy HH:mm"
+                                          timeInput="true"
+                                          stepMinute="15"
+                                          showTime="true"
+                                          monthNavigator="true"
+                                          appendTo="@(body)"
+                                          style="border-radius:4px;background-color: beige"
+                            />
+                            <p:outputLabel id="ol_03vf"
+                                           for="to"
+                                           value="To:"
+                            />
+                            <p:datePicker id="to"
+                                          value="#{scheduleView.scEvent.endDate}"
+                                          pattern="dd.MM.yyyy HH:mm"
+                                          timeInput="true"
+                                          stepMinute="15"
+                                          monthNavigator="true"
+                                          showTime="true"
+                                          appendTo="@(body)"
+                                          style="border-radius:4px;background-color: beige"
+                            />
+                            <p:outputLabel id="ol_04MY"
+                                           for="allDay"
+                                           value="Full Day:"
+                            />
+                            <p:selectBooleanCheckbox id="allDay"
+                                                     value="#{scheduleView.scEvent.allDay}"
+                            />
+                        </h:panelGrid>
+
+                        <div class="p-d-flex p-jc-between p-mt-3">
+                            <p:commandButton id="reset"
+                                             icon="pi pi-ban"
+                                             type="reset"
+                                             value="Reset"
+                                             onclick="PF('eventDialog').hide()"
+                                             styleClass="rounded-button ui-button-secondary ui-button-flat"
+                            />
+                            <p:commandButton id="addButton"
+                                             icon="pi pi-save"
+                                             value="Save"
+                                             action="#{scheduleView.addShEvent}"
+                                             oncomplete="PF('myschedule').update();PF('eventDialog').hide();"
+                                             styleClass="rounded-button ui-button-success ui-button-flat"
+                            />
+                            <p:commandButton id="deleteButton"
+                                             icon="pi pi-minus"
+                                             value="Delete"
+                                             oncomplete="PF('myschedule').delete();PF('eventDialog').hide();"
+                                             styleClass="rounded-button ui-button-warning ui-button-flat"
+                            />
+                        </div>
+                    </p:dialog>
+                </h:form>
+            </div>
         </f:view>
     </ui:define>
 </ui:composition>

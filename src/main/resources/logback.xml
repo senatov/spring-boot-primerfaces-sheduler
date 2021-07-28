@@ -10,7 +10,7 @@
     <!--
            COMMON
      -->
-    <root level="DEBUG">
+    <root level="DEBUG" additivity="false">
         <appender-ref ref="console"/>
     </root>
     <!--
