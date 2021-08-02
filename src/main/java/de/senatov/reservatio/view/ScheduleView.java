@@ -134,12 +134,15 @@ public class ScheduleView implements Serializable {
 		log.debug("onShEventMove()");
 		FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event moved", "Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
 		addMessage(message);
+		Long scheduleId = Long.valueOf(event.getScheduleEvent().getId());
+		ScheduleEntity sheduleMaps = scheduleService.getSchedule(scheduleId).get();
+		scheduleService.updateSchedule(sheduleMaps);
 	}
 
 
 	public void onShEventResize (ScheduleEntryResizeEvent event) {
 		log.debug("onShEventResize()");
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Event resized","Day delta:" + event.getDayDeltaEnd() + ", Minute delta:" + event.getMinuteDeltaEnd());
+		FacesMessage message = new FacesMessage(SEVERITY_INFO, "Event resized","Day delta:" + event.getDayDeltaEnd() + ", Minute delta:" + event.getMinuteDeltaEnd());
 		addMessage(message);
 	}
 

@@ -8,7 +8,9 @@
 
     <ui:define name="notes">
         <div class="top-toolbar">
-            <p:staticMessage severity="info" summary="Pet - App:" detail="Create Tab: Editable room reservation demo"
+            <p:staticMessage
+                    severity="info"
+                    summary="Pet - App:" detail="Create Tab: Editable room reservation demo"
             />
         </div>
     </ui:define>
@@ -23,6 +25,8 @@
                     <p:dataTable id="userstable_id"
                                  var="userEntities"
                                  value="#{userView.userEntities}"
+                                 showGridlines="true"
+                                 style="margin-right: .5rem"
                     >
                         <p:column id="col_0"
                                   headerText="#Id"
@@ -60,8 +64,6 @@
                         </p:column>
                     </p:dataTable>
                 </p:panel>
-
-                <br/>
                 <br/>
                 <p:panel id="panel"
                          header="Insert new user:"
@@ -71,40 +73,56 @@
                          class="form-group"
                          style="padding-top: 10px"
                     >
-                        <p:outputLabel for="firstName" value="First name:"/>
-                        <p:inputText value="#{userView.userEntity.firstName}"
+                        <p:outputLabel id="ot_03jL"
+                                       for="@next"
+                                       value="First name:"
+                        />
+                        <p:inputText id="firstName"
+                                     value="#{userView.userEntity.firstName}"
                                      placeholder="first name..."
-                                     id="firstName"
+                                     autocomplete="true"
                                      required="true"
                         />
                     </div>
                     <div class="form-group" style="padding-top: 10px">
-                        <p:outputLabel for="@next" value="Last name:"/>
-                        <p:inputText value="#{userView.userEntity.lastName}"
+                        <p:outputLabel id="ot_04jL"
+                                       for="@next"
+                                       value="Last name:"
+                        />
+                        <p:inputText id="lastName"
+                                     value="#{userView.userEntity.lastName}"
                                      placeholder="last name...."
-                                     id="lastName"
+                                     autocomplete="true"
                                      required="true"
                         />
                     </div>
-                    <div class="form-group" style="padding-top: 10px">
-                        <p:outputLabel for="@next" value="User's name:" style="padding-right: 10px"/>
-                        <p:inputText value="#{userView.userEntity.userName}"
+                    <div Id="dv_02hs"
+                         class="form-group"
+                         style="padding-top: 10px"
+                    >
+                        <p:outputLabel id="ot_05jL"
+                                       for="@next"
+                                       value="User's name:"
+                                       style="padding-right: 10px"
+                        />
+                        <p:inputText id="userName"
+                                     value="#{userView.userEntity.userName}"
                                      placeholder="waldo..."
-                                     id="userName"
+                                     autocomplete="true"
                                      required="true"
                         />
                     </div>
                     <div class="form-group" style="padding-top: 10px">
-                        <p:outputLabel for="@next" value="eMail:" style="padding-right: 10px"/>
-                        <p:inputText value="#{userView.userEntity.EMail}"
+                        <p:outputLabel id="ol_07jm"
+                                       for="@next" value="eMail:"
+                                       style="padding-right: 10px"/>
+                        <p:inputText id="eMail"
+                                     value="#{userView.userEntity.EMail}"
                                      placeholder="waldo123@outlook.com"
-                                     id="eMail"
                                      required="true"
                         />
                     </div>
                 </p:panel>
-                <br/>
-                <br/>
                 <br/>
                 <p:commandButton id="save_person_btn_id"
                                  action="#{userView.savePerson}"
