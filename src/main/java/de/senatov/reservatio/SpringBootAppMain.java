@@ -2,7 +2,6 @@ package de.senatov.reservatio;
 
 
 import com.sun.faces.config.ConfigureListener;
-import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.SpringApplication;
@@ -20,7 +19,6 @@ import static java.lang.Boolean.TRUE;
 
 @SpringBootApplication
 @Slf4j
-@ToString
 public class SpringBootAppMain implements ServletContextAware {
 
 

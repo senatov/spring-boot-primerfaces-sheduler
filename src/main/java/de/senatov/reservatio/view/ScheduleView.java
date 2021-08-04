@@ -5,7 +5,6 @@ package de.senatov.reservatio.view;
 import de.senatov.reservatio.db.ScheduleEntity;
 import de.senatov.reservatio.db.ScheduleService;
 import de.senatov.reservatio.utl.ScheduleRecordMapper;
-import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
@@ -33,7 +32,6 @@ import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 @Configuration
 @ManagedBean
 @ViewScoped
-@ToString
 @Slf4j
 public class ScheduleView implements Serializable {
 

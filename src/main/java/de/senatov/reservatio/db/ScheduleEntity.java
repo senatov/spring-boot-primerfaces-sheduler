@@ -4,7 +4,6 @@ package de.senatov.reservatio.db;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -23,7 +22,6 @@ import java.time.LocalDateTime;
 
 
 @Slf4j
-@ToString
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
