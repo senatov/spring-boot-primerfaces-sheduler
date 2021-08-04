@@ -31,6 +31,7 @@ public class VersionController {
 		return readFromInputStream(inputStream);
 	}
 
+
 	private String readFromInputStream(InputStream inputStream) throws IOException {
 
 		StringBuilder resultStringBuilder = new StringBuilder();

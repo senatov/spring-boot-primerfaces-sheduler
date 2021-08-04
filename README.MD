@@ -13,7 +13,8 @@ Tags:
 ***
 - implementation of Basis Primefaces Scheduler.
 - Components: JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6, <br> JSF2 Mojarra, PrimeFaces 10.0, Spring Security-NO
-- URLs:
+- URLs: [http://localhost:18087/ui/reservation.xhtml](http://localhost:18087/ui/reservation.xhtml)
+- GITH Info from Rest WS: [http://localhost:18087/version](http://localhost:18087/version)
 ***
 **[Start Link](http://localhost:18087/ui/reservation.xhtml)**.
 
