@@ -20,7 +20,8 @@
         <meta name="mobile-web-app-capable" content="yes"/>
         <meta name="robots" content="follow,index"/>
         <meta name="theme-color" content="#f7ffef"/>
-        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,userEntity-scalable=1,viewport-fit=cover"/>
+        <meta name="viewport"
+              content="width=device-width,initial-scale=1,maximum-scale=1,userEntity-scalable=1,viewport-fit=cover"/>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
         <link rel="apple-touch-icon"
               href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"
@@ -35,33 +36,24 @@
 
 
 <h:body title="schedule">
-    <p:panelGrid id="pg_12dc"
-                 columns="2"
-                 styleClass="active"
-    >
-        <h:outputText id="ot_02fs"
-                      for="ot_2Fg"
-                      styleClass="ui-icon-star"
-                      value="RealPath:"
-        />
-        <h:outputText id="ot_2Fg"
-                      styleClass="ui-icon-tag"
-                      value="${request.getRealPath('/')}"
-        />
-    </p:panelGrid>
+    <p:card id="pg_12dc" columns="2" style="border-radius: 6px; background-color: #eaefea; border-color: cadetblue">
+        <h:outputText id="ot_02fs" style="font-size: smaller;" for="ot_2Fg" value="RealPath: "/>
+        <h:outputText id="ot_2Fg" style="font-size: smaller" value="${request.getRealPath('/')}"/>
+    </p:card>
     <div id="dv_01Mf" class="container">
         <h:form>
             <div id="dv_41fG" class="card">
-                <p:tabMenu id="tabmenu1"
-                           activeIndex="#{param.i}"
-                >
-                    <p:menuitem value="Reservation" outcome="/ui/reservation.xhtml" icon="pi pi-calendar">
+                <p:tabMenu id="tabmenu1" activeIndex="#{param.i}">
+                    <p:menuitem value="Reservation" outcome="/ui/reservation.xhtml" icon="pi pi-calendar"
+                                style="border-radius:4px; background-color: lightgray; border-color: gray; color: #2c4c73">
                         <f:param name="i" value="0"/>
                     </p:menuitem>
-                    <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list">
+                    <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list"
+                                style="border-radius:4px; background-color: lightgray; border-color: gray; color: #4e8f7d">
                         <f:param name="i" value="1"/>
                     </p:menuitem>
-                    <p:menuitem value="Create" outcome="/ui/create.xhtml" icon="pi pi-user">
+                    <p:menuitem value="Create" outcome="/ui/create.xhtml" icon="pi pi-user"
+                                style="border-radius:4px; background-color: lightgray; border-color: gray; color: #5f1a65">
                         <f:param name="i" value="2"/>
                     </p:menuitem>
                 </p:tabMenu>
