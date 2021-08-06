@@ -8,8 +8,7 @@ VALUES ('george.wn@gamai.de', 'georgiw', 'bush', 'bush');
 INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url,
                          user_name_id)
 VALUES ('room123-descr', current_timestamp - interval '43 hour', current_timestamp - interval '40 hour', 'gr1', true,
-        '1',
-        '2', 'room123-title', 'url1', null);
+        '1', '2', 'room123-title', 'url1', null);
 
 INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url,
                          user_name_id)
@@ -20,7 +19,7 @@ VALUES ('WXC Lab 1-descr', current_timestamp - interval '77 hour 45 minutes',
 INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url,
                          user_name_id)
 VALUES ('WXC Lab 2-descr', current_timestamp - interval '64 hour 5 minutes',
-        current_timestamp - interval '62 hour 20 minutes', 'gr3', true, '3',
+        current_timestamp - interval '22 hour 20 minutes', 'gr3', true, '3',
         '2', 'WXC Lab 2-title', 'url3', null);
 
 INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url,
@@ -32,13 +31,13 @@ VALUES ('room345-descr', current_timestamp - interval '12 hour', current_timesta
 INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url,
                          user_name_id)
 VALUES ('Kantine-descr', current_timestamp + interval '18 hour 35 minutes',
-        current_timestamp + interval '19 hour 12 minutes', 'gr4', true, '5',
+        current_timestamp + interval '12 hour 12 minutes', 'gr4', true, '5',
         '2', 'Kantine-title', 'url5', null);
 
 INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url,
                          user_name_id)
 VALUES ('Meeting Room 34-descr', current_timestamp + interval '32 hour',
-        current_timestamp + interval '34 hour 30 minutes', 'gr4', true, '5',
+        current_timestamp + interval '14 hour 30 minutes', 'gr4', true, '6',
         '2', 'Meeting Room 34-title', 'url6', null);
 
 update sc_schedule

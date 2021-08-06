@@ -25,8 +25,7 @@ public class VersionRestController {
 	public String versionInformation() throws Exception {
 
 		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-		String json = ow.writeValueAsString(getProperties());
-		return json;
+		return ow.writeValueAsString(getProperties());
 	}
 
 

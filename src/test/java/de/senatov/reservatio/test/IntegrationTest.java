@@ -23,7 +23,7 @@ public class IntegrationTest {
 
 
     @Test
-    @DisplayName(value = "Test Reservation")
+    @DisplayName("Test Reservation")
     public void testReservation() {
 
         log.debug("Part 1.");

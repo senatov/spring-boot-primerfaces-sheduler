@@ -1,10 +1,12 @@
 package de.senatov.reservatio.db;
 
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.checkerframework.common.aliasing.qual.Unique;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.Column;
@@ -16,9 +18,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+
 
 
 @Slf4j
@@ -26,7 +30,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "SC_SCHEDULE")
+@Table(name = "sc_schedule")
 public class ScheduleEntity implements Serializable {
 
 	@Serial
@@ -38,6 +42,8 @@ public class ScheduleEntity implements Serializable {
 	@Column(name = "group_id")
 	String groupId;
 	@Column(name = "schedule_id")
+	@Unique
+	@NotNull
 	String scheduleId;
 	@Column(name = "is_editable")
 	@ColumnDefault("TRUE")

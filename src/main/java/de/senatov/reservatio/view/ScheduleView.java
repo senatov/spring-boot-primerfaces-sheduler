@@ -60,7 +60,7 @@ public class ScheduleView implements Serializable {
 					.endDate(mapper.getEndDate())
 					.description(mapper.getDescription())
 					.groupId(mapper.getGroupId())
-					.id(mapper.getId())
+					.id(mapper.getSchedule_id())
 					.editable(mapper.getIsEditable())
 					.styleClass(mapper.getStyle())
 					//.url(mapper.getUrl())  - Don't use it! This parameter already uised by PrimeFaces Schedule Controller's Event Editor.

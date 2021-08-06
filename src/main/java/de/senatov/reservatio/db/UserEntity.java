@@ -23,7 +23,7 @@ import java.io.Serializable;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "SC_USER")
+@Table(name = "sc_user")
 public class UserEntity implements Serializable {
 
     @Serial
