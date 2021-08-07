@@ -1,10 +1,12 @@
 package de.senatov.reservatio.db;
 
 
+
 import org.springframework.stereotype.Controller;
 
 import java.io.Serial;
 import java.io.Serializable;
+
 
 
 @Controller("scheduleController")

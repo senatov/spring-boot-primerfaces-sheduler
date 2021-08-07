@@ -51,6 +51,7 @@ public class ScheduleService implements Serializable {
 
 
 	public void updateSchedule(ScheduleEntity scheduleEntity) {
+
 		log.debug("updateSchedule()");
 		scheduleRepository.delete(scheduleEntity);
 		scheduleEntity = scheduleRepository.saveAndFlush(scheduleEntity);

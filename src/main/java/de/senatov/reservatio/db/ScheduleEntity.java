@@ -42,9 +42,7 @@ public class ScheduleEntity implements Serializable {
 	@Column(name = "group_id")
 	String groupId;
 	@Column(name = "schedule_id")
-	@Unique
-	@NotNull
-	String scheduleId;
+	@Unique @NotNull String scheduleId;
 	@Column(name = "is_editable")
 	@ColumnDefault("TRUE")
 	Boolean isEditable;

@@ -43,15 +43,27 @@
     <div id="dv_01Mf" class="container">
         <h:form>
             <div id="dv_41fG" class="card" style="margin-bottom: 20px; margin-top: 20px; border-radius: 6px">
-                <p:tabMenu id="tabmenu1" activeIndex="#{param.i}"
-                           styleClass="fa-border ui-tabmenu-nav ui-helper-reset ui-card-header ui-corner-all">
-                    <p:menuitem value="Reservation" outcome="/ui/reservation.xhtml" icon="pi pi-calendar">
+                <p:tabMenu id="tabmenu1"
+                           activeIndex="#{param.i}"
+                           styleClass="fa-amazon ui-tabmenu-nav ui-helper-reset ui-card-header ui-corner-all"
+                           style="border-radius: 6px"
+                >
+                    <p:menuitem value="Reservation"
+                                styleClass="tab-header"
+                                outcome="/ui/reservation.xhtml"
+                                icon="pi pi-calendar">
                         <f:param name="i" value="0"/>
                     </p:menuitem>
-                    <p:menuitem value="List" outcome="/ui/list.xhtml" icon="pi pi-list">
+                    <p:menuitem value="List"
+                                styleClass="tab-header"
+                                outcome="/ui/list.xhtml"
+                                icon="pi pi-list">
                         <f:param name="i" value="1"/>
                     </p:menuitem>
-                    <p:menuitem value="Create" outcome="/ui/create.xhtml" icon="pi pi-user">
+                    <p:menuitem value="Create"
+                                styleClass="tab-header"
+                                outcome="/ui/create.xhtml"
+                                icon="pi pi-user">
                         <f:param name="i" value="2"/>
                     </p:menuitem>
                 </p:tabMenu>

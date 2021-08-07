@@ -1,6 +1,7 @@
 package de.senatov.reservatio.view;
 
 
+
 import de.senatov.reservatio.db.UserEntity;
 import de.senatov.reservatio.db.UserService;
 import lombok.Data;
@@ -18,6 +19,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 
 @Named("userView")
@@ -50,8 +52,7 @@ public class UserView implements Serializable {
 	public String prepareForUpdate(Long id) {
 
 		log.debug("prepareForUpdate()");
-		userEntity = userService.getUser(id)
-				.get();
+		userEntity = userService.getUser(id).get();
 		return "new";
 	}
 
@@ -78,44 +79,34 @@ public class UserView implements Serializable {
 
 	List<Long> getIds() {
 
-		return userEntities.stream()
-				.map(UserEntity::getId)
-				.collect(Collectors.toList());
+		return userEntities.stream().map(UserEntity::getId).collect(Collectors.toList());
 
 	}
 
 
 	List<String> getFirstNames() {
 
-		return userEntities.stream()
-				.map(UserEntity::getFirstName)
-				.collect(Collectors.toList());
+		return userEntities.stream().map(UserEntity::getFirstName).collect(Collectors.toList());
 
 	}
 
 
 	List<String> getLastNames() {
 
-		return userEntities.stream()
-				.map(UserEntity::getLastName)
-				.collect(Collectors.toList());
+		return userEntities.stream().map(UserEntity::getLastName).collect(Collectors.toList());
 	}
 
 
 	List<String> getUserNames() {
 
-		return userEntities.stream()
-				.map(UserEntity::getUserName)
-				.collect(Collectors.toList());
+		return userEntities.stream().map(UserEntity::getUserName).collect(Collectors.toList());
 
 	}
 
 
 	List<String> getEmails() {
 
-		return userEntities.stream()
-				.map(UserEntity::getEMail)
-				.collect(Collectors.toList());
+		return userEntities.stream().map(UserEntity::getEMail).collect(Collectors.toList());
 
 	}
 
@@ -123,8 +114,7 @@ public class UserView implements Serializable {
 	private void addMessage(String summary) {
 
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
-		PrimeFacesContext.getCurrentInstance()
-				.addMessage(null, message);
+		PrimeFacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
 }
