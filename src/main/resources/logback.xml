@@ -16,25 +16,25 @@
     <!--
             LOGGERS
      -->
-    <logger name="org.springframework.test" additivity="false" level="WARN">
+    <logger name="org.springframework.test" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.hibernate.engine" additivity="false" level="WARN">
+    <logger name="org.hibernate.engine" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.hibernate.type" additivity="false" level="WARN">
+    <logger name="org.hibernate.type" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.hibernate.internal" additivity="false" level="WARN">
+    <logger name="org.hibernate.internal" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.beans.factory" additivity="false" level="WARN">
+    <logger name="org.springframework.beans.factory" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="io.netty" additivity="false" level="WARN">
+    <logger name="io.netty" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
-    <logger name="org.springframework.security" additivity="false" level="ERROR">
+    <logger name="org.springframework.security" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
 </configuration>

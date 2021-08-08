@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.checkerframework.common.aliasing.qual.Unique;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.Column;
@@ -18,7 +17,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -42,7 +40,7 @@ public class ScheduleEntity implements Serializable {
 	@Column(name = "group_id")
 	String groupId;
 	@Column(name = "schedule_id")
-	@Unique @NotNull String scheduleId;
+	String scheduleId;
 	@Column(name = "is_editable")
 	@ColumnDefault("TRUE")
 	Boolean isEditable;

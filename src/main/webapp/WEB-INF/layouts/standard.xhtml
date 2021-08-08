@@ -23,22 +23,120 @@
         <meta name="viewport"
               content="width=device-width,initial-scale=1,maximum-scale=1,userEntity-scalable=1,viewport-fit=cover"/>
         <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-        <link rel="apple-touch-icon"
-              href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"
-        />
+        <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"/>
         <link rel="apple-touch-icon-precomposed"
               href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"/>
-        <link rel="shortcut icon" id="favicon-ico"
-              href="${pageContext.request.contextPath}/images/icons/favicon.ico"
+        <link rel="shortcut icon" id="favicon-ico" href="${pageContext.request.contextPath}/images/icons/favicon.ico"
               type="image/x-icon"/>
     </f:facet>
 </h:head>
 
 
+<h:outputStylesheet>
+    body .fc .fc-event:hover .fc-remove {
+        opacity: 1;
+        border-radius: 6px;
+        border-color: #15354f;
+        transition: 0.4s opacity, 0.4s transform;
+        font-size: 13px;
+        font-weight: normal;
+    }
+
+    body .fc .fc-event .fc-remove {
+        opacity: 0;
+        transition: 0.4s opacity, 0.4s transform;
+        position: absolute;
+        border-bottom-color: darkblue;
+        font-size: 13px;
+        font-weight: normal;
+        text-align: center;
+        top: 3px;
+        right: 3px;
+        width: 12px;
+        height: 12px;
+        z-index: 10;
+    }
+
+    element.style {
+    }
+
+    .fc .fc-col-header-cell-cushion {
+        display: inline-flex;
+        padding: 1px 1px;
+    }
+
+    body .fc a {
+        color: inherit;
+    }
+
+    .fc, .fc *, .fc *:before, .fc *:after {
+        box-sizing: border-box;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body .fc th {
+        background: #dde7e0;
+        border: 1px solid #c8c8c8;
+        color: #333333;
+        padding: 0.857rem 1rem;
+    }
+
+    .fc-daygrid-day-frame:after, .fc-daygrid-day-events:after, .fc-daygrid-event-harness:after {
+        content: "";
+        clear: both;
+        display: inline-block;
+    }
+
+    body .fc .fc-toolbar .fc-button {
+        background: #dde7e0;
+        color: #282972;
+        border-radius: 6px;
+        border-color: #15354f;
+    }
+
+    .fc .fc-daygrid-day-number {
+        background-color: #efefef;
+        color: #205354;
+        font-family: -webkit-pictograph;
+        min-height: 100%;
+        position: relative;
+        padding: 1px;
+    }
+
+    body .fc .fc-event .fc-remove:hover {
+        cursor: grabbing;
+        transform: scale(1.2);
+    }
+
+    .fc .fc-toolbar-title {
+        font-family: sans-serif;
+        font-size: 1.15em;
+        margin: 0;
+    }
+
+    tabmenuitem.ui-state-active a {
+        color: #ff9800;
+        background-repeat: revert;
+        background-color: darkblue;
+    }
+
+    body .fc .fc-event, body .fc .fc-event .fc-event-main {
+        background: #ffc107;
+        border-radius: 6px;
+        border-color: coral;
+        color: darkblue;
+    }
+
+</h:outputStylesheet>
+
+
 <h:body title="schedule">
     <p:card id="pg_12dc" columns="2" style="border-radius: 6px; background-color: #eaefea; border-color: cadetblue">
-        <h:outputText id="ot_02fs" style="font-size: smaller;" for="ot_2Fg" value="RealPath: "/>
-        <h:outputText id="ot_2Fg" style="font-size: smaller" value="${request.getRealPath('/')}"/>
+        <h:outputText id="ot_02fs" style="font-size: xx-small;" for="ot_2Fg" value="RealPath : "/>
+        <h:outputText id="ot_2Fg" style="font-size: xx-small" value="${request.getRealPath('/')}"/>
     </p:card>
     <div id="dv_01Mf" class="container">
         <h:form>
@@ -46,7 +144,7 @@
                 <p:tabMenu id="tabmenu1"
                            activeIndex="#{param.i}"
                            styleClass="fa-amazon ui-tabmenu-nav ui-helper-reset ui-card-header ui-corner-all"
-                           style="border-radius: 6px"
+                           style="border-radius: 6px; border-color: blueviolet; background-color: aliceblue"
                 >
                     <p:menuitem value="Reservation"
                                 styleClass="tab-header"

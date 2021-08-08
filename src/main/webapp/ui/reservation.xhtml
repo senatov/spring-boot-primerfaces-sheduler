@@ -107,14 +107,15 @@
                             <p:commandButton id="saveUpdateButton"
                                              icon="pi pi-save"
                                              value="Save"
-                                             action="#{scheduleView.addShEvent}"
-                                             oncomplete="PF('myschedule').update();PF('eventDialog').hide();"
+                                             action="#{scheduleView.addOrUpdateEvent}"
+                                             oncomplete="PF('eventDialog').hide();"
                                              styleClass="rounded-button ui-button-success ui-button-flat"
                             />
                             <p:commandButton id="deleteButton"
                                              icon="pi pi-minus"
                                              value="Delete"
-                                             oncomplete="PF('myschedule').delete();PF('eventDialog').hide();"
+                                             oncomplete="PF('eventDialog').hide();"
+                                             action="#{scheduleView.onShEventDelete}"
                                              styleClass="rounded-button ui-button-warning ui-button-flat"
                             />
                         </div>
