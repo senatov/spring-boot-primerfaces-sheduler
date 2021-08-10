@@ -7,6 +7,7 @@ import de.senatov.reservatio.db.UserEntity;
 import de.senatov.reservatio.db.UserService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.model.ScheduleEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -37,23 +38,25 @@ public class ScheduleRecordMapper {
 
 	private static String SELECT_ALL_FROM_VIEW = """
 			select s.schedule_id,
-			u.id,
-			u.e_mail,
-			u.first_name,
-			u.last_name,
-			u.user_name,
-			s.description,
-			s.end_date,
-			s.group_id,
-			s.is_editable,
-			s.schedule_id,
-			s.start_date,
-			s.style_class,
-			s.title,
-			s.url
-			FROM sc_schedule s, sc_user u
-			where s.user_name_id = u.id ORDER BY s.schedule_id
-			""";
+			       u.id,
+			       u.e_mail,
+			       u.first_name,
+			       u.last_name,
+			       u.user_name,
+			       s.description,
+			       s.end_date,
+			       s.group_id,
+			       s.is_editable,
+			       s.schedule_id,
+			       s.start_date,
+			       s.style_class,
+			       s.title,
+			       s.url
+			FROM sc_schedule s,
+			     sc_user u
+			where s.user_entity_id = u.id
+			ORDER BY s.schedule_id;
+						""";
 
 	@Autowired
 	UserService userService;
@@ -112,7 +115,23 @@ public class ScheduleRecordMapper {
 		ret.setStyleClass(event.getStyleClass());
 		ret.setTitle(event.getTitle());
 		ret.setUrl(event.getUrl());
-		ret.setUserName(getCurrentUser());
+		return ret;
+	}
+
+	public ScheduleEntity mapEvent(ScheduleEntryMoveEvent scheduleEntryMoveEvent) {
+
+		ScheduleEntity ret = new ScheduleEntity();
+		ScheduleEvent event = scheduleEntryMoveEvent.getScheduleEvent();
+		ret.setDescription(getDescription(event));
+		ret.setEndDate(event.getEndDate());
+		ret.setGroupId(event.getGroupId());
+		ret.setId((Long) map.get("id"));
+		ret.setIsEditable(Boolean.TRUE);
+		ret.setStartDate(event.getStartDate());
+		ret.setScheduleId(event.getId());
+		ret.setStyleClass(event.getStyleClass());
+		ret.setTitle(event.getTitle());
+		ret.setUrl(event.getUrl());
 		return ret;
 	}
 
@@ -139,4 +158,6 @@ public class ScheduleRecordMapper {
 
 		log.debug("saveEvent {}", event);
 	}
+
+
 }

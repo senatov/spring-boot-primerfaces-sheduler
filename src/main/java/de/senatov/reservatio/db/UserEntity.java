@@ -4,7 +4,10 @@ package de.senatov.reservatio.db;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.Column;
@@ -25,10 +28,14 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "sc_user")
+@Getter
+@Setter
+@ToString
 public class UserEntity implements Serializable {
 
 	@Serial
 	private static final long serialVersionUID = -809071111834277692L;
+	@Column(nullable = false)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
