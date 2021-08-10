@@ -118,10 +118,10 @@ public class ScheduleRecordMapper {
 		return ret;
 	}
 
-	public ScheduleEntity mapEvent(ScheduleEntryMoveEvent scheduleEntryMoveEvent) {
+	public ScheduleEntity mapEvent(ScheduleEntryMoveEvent moveEvent) {
 
 		ScheduleEntity ret = new ScheduleEntity();
-		ScheduleEvent event = scheduleEntryMoveEvent.getScheduleEvent();
+		ScheduleEvent event = moveEvent.getScheduleEvent();
 		ret.setDescription(getDescription(event));
 		ret.setEndDate(event.getEndDate());
 		ret.setGroupId(event.getGroupId());

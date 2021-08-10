@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.Optional;
 @ToString
 public class ScheduleService implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 3113025681276026951L;
 	private final ScheduleRepository scheduleRepository;
 
@@ -33,9 +35,9 @@ public class ScheduleService implements Serializable {
 	public List<ScheduleEntity> getAllSchedules() {
 
 		log.debug("getAllSchedules()");
-		List<ScheduleEntity> ScheduleEntities = new ArrayList<>(4);
-		scheduleRepository.findAll().forEach(ScheduleEntities::add);
-		return ScheduleEntities;
+		List<ScheduleEntity> scheduleEntities = new ArrayList<>(4);
+		scheduleEntities.addAll(scheduleRepository.findAll());
+		return scheduleEntities;
 	}
 
 
@@ -46,24 +48,24 @@ public class ScheduleService implements Serializable {
 	}
 
 
-	public void addSchedule(ScheduleEntity ScheduleEntity) {
+	public void addSchedule(ScheduleEntity entity) {
 
 		log.debug("addSchedule()");
-		scheduleRepository.save(ScheduleEntity);
+		scheduleRepository.save(entity);
 	}
 
 
-	public void updateSchedule(ScheduleEntity ScheduleEntity) {
+	public void updateSchedule(ScheduleEntity entity) {
 
 		log.debug("updateSchedule()");
-		scheduleRepository.save(ScheduleEntity);
+		scheduleRepository.save(entity);
 	}
 
 
-	public void deleteSchedule(ScheduleEntity ScheduleEntity) {
+	public void deleteSchedule(ScheduleEntity entity) {
 
 		log.debug("deleteSchedule()");
-		scheduleRepository.delete(ScheduleEntity);
+		scheduleRepository.delete(entity);
 	}
 
 }
