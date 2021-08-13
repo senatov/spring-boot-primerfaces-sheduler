@@ -25,8 +25,10 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
+import static java.lang.String.format;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 
 
@@ -41,113 +43,157 @@ public class ScheduleView implements Serializable {
 	@Serial
 	private static final long serialVersionUID = -2637195560425203881L;
 
-	private final ScheduleModel eventModel = new DefaultScheduleModel();
+	private final ScheduleModel eventModel = new DefaultScheduleModel ();
 	@Autowired
 	ScheduleRecordMapper mapper;
-	private ScheduleEvent event = new DefaultScheduleEvent();
+	private ScheduleEvent event = new DefaultScheduleEvent ();
 
 	@Autowired
 	private ScheduleService scheduleService;
 	@Autowired
 	private UserService user;
 
-	@PostConstruct
-	public void init() {
 
-		mapper.init();
-		for (Object value : mapper.getSheduleMaps()) {
-			mapper.extractValue(value);
-			eventModel.addEvent(DefaultScheduleEvent.builder().title(mapper.getTitle()).startDate(mapper.getStartDate()).endDate(mapper.getEndDate()).description(mapper.getDescription()).groupId(mapper.getGroupId()).id(mapper.getSchedule_id()).editable(mapper.getIsEditable()).styleClass(mapper.getStyle())
-					//.url(mapper.getUrl())  - Don't use it! This parameter already uised by PrimeFaces Schedule Controller's Event Editor.
-					.build());
+
+	@PostConstruct
+	public void init () throws Exception {
+		mapper.init ();
+		log.debug ("init() = {}", mapper.getSheduleMaps());
+		for (ScheduleEntity value : mapper.getSheduleMaps ()) {
+			mapper.extractValue (value);
+			eventModel.addEvent (DefaultScheduleEvent.builder ()
+			                                         .title (mapper.getTitle ())
+			                                         .startDate (mapper.getStartDate ())
+			                                         .endDate (mapper.getEndDate ())
+			                                         .description (mapper.getDescription ())
+			                                         .groupId (mapper.getGroupId ())
+			                                         .id (mapper.getSchedule_id ())
+			                                         .editable (mapper.getIsEditable ())
+			                                         .styleClass (mapper.getStyle ())
+			                                         .url (mapper.getUrl ())
+			                                         .build ());
 		}
 	}
 
 
-	public ScheduleModel getEventModel() {
 
-		log.debug("getEventModel() = {}", eventModel);
+	public ScheduleModel getEventModel () {
+
+		log.debug ("getEventModel() = {}", eventModel);
 		return eventModel;
 	}
 
 
-	public ScheduleEvent getScEvent() {
 
-		log.debug("getScEvent() = {}", event);
+	public ScheduleEvent getScEvent () {
+
+		log.debug ("getScEvent() = {}", event);
 		return event;
 	}
 
 
-	public void setShEvent(ScheduleEvent event) {
 
-		log.debug("setShEvent() = {}", event);
-		this.event = event;
+	public void setShEvent (ScheduleEvent scheduleEvent) throws Exception {
+
+		log.debug ("setShEvent() = {}", scheduleEvent);
+		event = scheduleEvent;
 	}
 
 
-	public void addOrUpdateEvent() {
 
-		log.debug("addOrUpdateEvent() = {}", event);
-		if (event.getId() == null) {
-			eventModel.addEvent(event);
-			ScheduleEntity scheduleEntity = mapper.mapEvent(event);
-			scheduleService.updateSchedule(scheduleEntity);
-		} else {
-			eventModel.updateEvent(event);
-			scheduleService.deleteSchedule(mapper.mapEvent(event));
-			scheduleService.updateSchedule(mapper.mapEvent(event));
+	public void addOrUpdateEvent () throws Exception {
+
+		log.debug ("addOrUpdateEvent() = {}", event);
+		if (event.getId () == null) {
+			eventModel.addEvent (event);
+			ScheduleEntity scheduleEntity = mapper.mapEvent (event);
+			scheduleService.saveSchedule (scheduleEntity);
 		}
-		event = new DefaultScheduleEvent();
-	}
-
-	public void onShEventDelete(AbstractAjaxBehaviorEvent deleteEvent) {
-
-		log.debug("onShEventDelete() = {}", deleteEvent);
-		event = (ScheduleEvent) deleteEvent.getSource();
-		scheduleService.deleteSchedule(mapper.mapEvent(event));
-	}
-
-
-	public void onShEventSelect(SelectEvent selectEvent) {
-
-		log.debug("onShEventSelect() = {}", selectEvent);
-		event = (ScheduleEvent) selectEvent.getObject();
+		else {
+			eventModel.updateEvent (event);
+			scheduleService.deleteSchedule (mapper.mapEvent (event));
+			scheduleService.saveSchedule (mapper.mapEvent (event));
+		}
+		event = new DefaultScheduleEvent ();
 	}
 
 
-	public void onDateSelect(SelectEvent selectEvent) {
 
-		event = DefaultScheduleEvent.builder().title("").startDate((LocalDateTime) selectEvent.getObject()).endDate((LocalDateTime) selectEvent.getObject()).build();
+	public void onShEventDelete (AbstractAjaxBehaviorEvent deleteEvent) throws Exception {
+
+		log.debug ("onShEventDelete() = {}", deleteEvent);
+		event = (ScheduleEvent) deleteEvent.getSource ();
+		scheduleService.deleteSchedule (mapper.mapEvent (event));
 	}
 
 
-	public void onShEventMove(ScheduleEntryMoveEvent event) {
-		log.debug("onShEventMove()");
-		FacesMessage message = new FacesMessage(SEVERITY_INFO,
-				"Event moved",
-				"Day delta:" + event.getDayDelta() + ", Minute delta:" + event.getMinuteDelta());
-		addMessage(message);
-		this.event = event.getScheduleEvent();
-		addOrUpdateEvent();
+
+	public void onShEventSelect (SelectEvent selectEvent) {
+
+		log.debug ("onShEventSelect() = {}", selectEvent);
+		event = (ScheduleEvent) selectEvent.getObject ();
 	}
 
 
-	public void onShEventResize(ScheduleEntryResizeEvent event) {
 
-		log.debug("onShEventResize()");
-		FacesMessage message = new FacesMessage(SEVERITY_INFO,
-				"Event resized",
-				"Day delta:" + event.getDayDeltaEnd() + ", Minute delta:" + event.getMinuteDeltaEnd());
-		addMessage(message);
-		this.event = event.getScheduleEvent();
-		addOrUpdateEvent();
+	public void onDateSelect (SelectEvent selectEvent) {
+
+		event = DefaultScheduleEvent.builder ()
+		                            .title ("")
+		                            .startDate ((LocalDateTime) selectEvent.getObject ())
+		                            .endDate ((LocalDateTime) selectEvent.getObject ())
+		                            .build ();
 	}
 
 
-	private void addMessage(FacesMessage message) {
 
-		log.debug("addMessage()");
-		FacesContext.getCurrentInstance().addMessage(null, message);
+	public void onShEventMove (ScheduleEntryMoveEvent scheduleEntryMoveEvent) throws Exception {
+
+		log.debug ("onShEventMove()");
+		Duration duratio = getDuration (scheduleEntryMoveEvent, "move");
+		event = scheduleEntryMoveEvent.getScheduleEvent ();
+		addOrUpdateEvent ();
+	}
+
+
+
+	public void onShEventResize (ScheduleEntryResizeEvent scheduleEntryResizeEvent) throws Exception {
+
+		log.debug ("onShEventResize()");
+		Duration duratio = getDuration (scheduleEntryResizeEvent, "Resize");
+		event = scheduleEntryResizeEvent.getScheduleEvent ();
+		addOrUpdateEvent ();
+	}
+
+
+
+	private void addMessage (FacesMessage message) throws Exception {
+
+		log.debug ("addMessage()");
+		FacesContext.getCurrentInstance ().addMessage (null, message);
+	}
+
+
+
+	//TODO: resize not works under 10.0
+	private Duration getDuration (Object event, String opName) throws Exception {
+
+		Duration duratio = null;
+		if (event instanceof ScheduleEntryMoveEvent) {
+			duratio = ((ScheduleEntryMoveEvent) event).getDeltaAsDuration ();
+		}
+		else {
+			duratio = ((ScheduleEntryResizeEvent) event).getDeltaEndAsDuration ();
+		}
+		String msg = format ("%s event deltas: Day: %s, Hour: %s, Minutes: %s",
+		                     opName,
+		                     duratio.toDays (),
+		                     duratio.toHours () % 24,
+		                     duratio.toMinutes () % (24 * 60));
+		FacesMessage message = new FacesMessage (SEVERITY_INFO, "Event moved", msg);
+		addMessage (message);
+		return duratio;
+
 	}
 
 }

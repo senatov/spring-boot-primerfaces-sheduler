@@ -26,13 +26,13 @@ public class ScheduleService implements Serializable {
 
 
 	@Autowired
-	public ScheduleService(ScheduleRepository scheduleRepository) {
+	public ScheduleService(ScheduleRepository scheduleRepository) throws Exception{
 
 		this.scheduleRepository = scheduleRepository;
 	}
 
 
-	public List<ScheduleEntity> getAllSchedules() {
+	public List<ScheduleEntity> getAllSchedules() throws Exception{
 
 		log.debug("getAllSchedules()");
 		List<ScheduleEntity> scheduleEntities = new ArrayList<>(4);
@@ -41,28 +41,28 @@ public class ScheduleService implements Serializable {
 	}
 
 
-	public Optional<ScheduleEntity> getSchedule(Long id) {
+	public Optional<ScheduleEntity> getSchedule(Long id) throws Exception{
 
 		log.debug("getScheduleEntity()");
 		return scheduleRepository.findById(id);
 	}
 
 
-	public void addSchedule(ScheduleEntity entity) {
+	public void addSchedule(ScheduleEntity entity) throws Exception{
 
 		log.debug("addSchedule()");
 		scheduleRepository.save(entity);
 	}
 
 
-	public void updateSchedule(ScheduleEntity entity) {
+	public void saveSchedule(ScheduleEntity entity) throws Exception{
 
-		log.debug("updateSchedule()");
+		log.debug("saveSchedule()");
 		scheduleRepository.save(entity);
 	}
 
 
-	public void deleteSchedule(ScheduleEntity entity) {
+	public void deleteSchedule(ScheduleEntity entity) throws Exception{
 
 		log.debug("deleteSchedule()");
 		scheduleRepository.delete(entity);
