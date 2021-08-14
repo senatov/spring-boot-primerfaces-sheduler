@@ -87,9 +87,9 @@ public class ScheduleRecordMapper {
 		ret.setDescription (event.getDescription ());
 		ret.setEndDate (event.getEndDate ());
 		ret.setGroupId (event.getGroupId ());
-		ret.setId (Long.parseLong (event.getId ()));
+		ret.setId (Long.valueOf(id));
 		ret.setIsEditable (Boolean.TRUE);
-		ret.setScheduleId (id.toString ());
+		ret.setScheduleId (event.getId());
 		ret.setStartDate (event.getStartDate ());
 		ret.setStyleClass (event.getStyleClass ());
 		ret.setTitle (event.getTitle ());

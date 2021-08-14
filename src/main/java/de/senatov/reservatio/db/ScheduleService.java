@@ -65,7 +65,7 @@ public class ScheduleService implements Serializable {
 	public void deleteSchedule(ScheduleEntity entity) throws Exception{
 
 		log.debug("deleteSchedule()");
-		scheduleRepository.delete(entity);
+		scheduleRepository.deleteById(entity.getId());
 	}
 
 }
