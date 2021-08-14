@@ -76,7 +76,8 @@ public class ScheduleRecordMapper {
 		isEditable = scheduleEntity.getIsEditable ();
 		style = scheduleEntity.getStyleClass ();
 		url = scheduleEntity.getUrl ();
-		userEntity = scheduleEntity.getUserEntity ();
+		//todo: where is real user-id?
+		userEntity = userService.getUser (1L).get ();
 	}
 
 
@@ -94,7 +95,7 @@ public class ScheduleRecordMapper {
 		ret.setStyleClass (event.getStyleClass ());
 		ret.setTitle (event.getTitle ());
 		ret.setUrl (event.getUrl ());
-		ret.setUserEntity (getUserEntity ());
+		ret.setUserEntity (userEntity);
 		return ret;
 	}
 
