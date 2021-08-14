@@ -77,7 +77,7 @@ public class ScheduleRecordMapper {
 		style = scheduleEntity.getStyleClass ();
 		url = scheduleEntity.getUrl ();
 		//todo: where is real user-id?
-		userEntity = userService.getUser (1L).get ();
+		userEntity = scheduleEntity.getUserEntity ();
 	}
 
 
