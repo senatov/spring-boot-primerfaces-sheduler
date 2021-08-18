@@ -175,10 +175,10 @@ public class ScheduleView implements Serializable {
 
 
 
-	//TODO: resize not works under 10.0
+	//FIXME: resize not works under 8.0
 	private Duration getDuration (Object event, String opName) throws Exception {
 
-		Duration duratio = null;
+		Duration duratio;
 		if (event instanceof ScheduleEntryMoveEvent) {
 			duratio = ((ScheduleEntryMoveEvent) event).getDeltaAsDuration ();
 		}
@@ -188,8 +188,8 @@ public class ScheduleView implements Serializable {
 		String msg = format ("%s event deltas: Day: %s, Hour: %s, Minutes: %s",
 		                     opName,
 		                     duratio.toDays (),
-		                     duratio.toHours () % 24,
-		                     duratio.toMinutes () % (24 * 60));
+		                     duratio.toHours () % 24L,
+		                     duratio.toMinutes () %(24L * 60L));
 		FacesMessage message = new FacesMessage (SEVERITY_INFO, "Event moved", msg);
 		addMessage (message);
 		return duratio;
