@@ -18,7 +18,7 @@ VALUES ('room123-descr', current_timestamp - interval '58 hour',
         '1',
         '2',
         'room123-title',
-        'url1');
+        '');
 
 INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url)
 VALUES ('WXC Lab 1-descr', current_timestamp + interval '64 hour',
@@ -27,7 +27,7 @@ VALUES ('WXC Lab 1-descr', current_timestamp + interval '64 hour',
         true, '2',
         '2',
         'WXC Lab 1-title',
-        'url2');
+        '');
 
 INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url)
 VALUES ('WXC Lab 2-descr', current_timestamp + interval '122 hour  20 minutes',
@@ -36,7 +36,7 @@ VALUES ('WXC Lab 2-descr', current_timestamp + interval '122 hour  20 minutes',
         true, '3',
         '2',
         'WXC Lab 2-title',
-        'url3');
+        '');
 
 INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url)
 VALUES ('room345-descr', current_timestamp - interval '12 hour',
@@ -46,7 +46,7 @@ VALUES ('room345-descr', current_timestamp - interval '12 hour',
         '4',
         '2',
         'room345-title',
-        'url4');
+        '');
 
 INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url)
 VALUES ('Kantine-descr', current_timestamp + interval '20 hour 00 minutes',
@@ -56,7 +56,7 @@ VALUES ('Kantine-descr', current_timestamp + interval '20 hour 00 minutes',
         '5',
         '2',
         'Kantine-title',
-        'url5');
+        '');
 
 INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url)
 VALUES ('Meeting Room 34-descr', current_timestamp + interval '32 hour 30 minutes',
@@ -66,7 +66,7 @@ VALUES ('Meeting Room 34-descr', current_timestamp + interval '32 hour 30 minute
         '6',
         '1',
         'Meeting Room 34-title',
-        'url6');
+        '');
 
 
 ------------------

@@ -39,7 +39,7 @@ public class UserView implements Serializable {
 
 
 	@PostConstruct
-	public void init() {
+	public void init() throws Exception {
 
 		log.debug("init()");
 		userEntity = new UserEntity();
@@ -49,7 +49,7 @@ public class UserView implements Serializable {
 	}
 
 
-	public String prepareForUpdate(Long id) {
+	public String prepareForUpdate(Long id) throws Exception {
 
 		log.debug("prepareForUpdate()");
 		userEntity = userService.getUser(id).get();
@@ -57,7 +57,7 @@ public class UserView implements Serializable {
 	}
 
 
-	public String savePerson() {
+	public String savePerson() throws Exception  {
 
 		log.debug("savePerson()");
 		userService.addUser(userEntity);
@@ -69,7 +69,7 @@ public class UserView implements Serializable {
 	}
 
 
-	public String newPerson() {
+	public String newPerson() throws Exception {
 
 		log.debug("newPerson()");
 		userEntity = new UserEntity();
@@ -77,41 +77,41 @@ public class UserView implements Serializable {
 	}
 
 
-	List<Long> getIds() {
+	List<Long> getIds() throws Exception {
 
 		return userEntities.stream().map(UserEntity::getId).collect(Collectors.toList());
 
 	}
 
 
-	List<String> getFirstNames() {
+	List<String> getFirstNames() throws Exception {
 
 		return userEntities.stream().map(UserEntity::getFirstName).collect(Collectors.toList());
 
 	}
 
 
-	List<String> getLastNames() {
+	List<String> getLastNames() throws Exception {
 
 		return userEntities.stream().map(UserEntity::getLastName).collect(Collectors.toList());
 	}
 
 
-	List<String> getUserNames() {
+	List<String> getUserNames() throws Exception {
 
 		return userEntities.stream().map(UserEntity::getUserName).collect(Collectors.toList());
 
 	}
 
 
-	List<String> getEmails() {
+	List<String> getEmails() throws Exception {
 
 		return userEntities.stream().map(UserEntity::getEMail).collect(Collectors.toList());
 
 	}
 
 
-	private void addMessage(String summary) {
+	private void addMessage(String summary) throws Exception {
 
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, null);
 		PrimeFacesContext.getCurrentInstance().addMessage(null, message);

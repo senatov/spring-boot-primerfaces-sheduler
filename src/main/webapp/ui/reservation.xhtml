@@ -40,9 +40,11 @@
                               widgetVar="eventDialog"
                               header="Event Details"
                               showEffect="clip"
-                              hideEffect="clip"
+                              hideEffect="fade"
                               style="border-radius:4px;background-color: beige"
                               styleClass="ui-dialog-content"
+                              minimizable="true"
+                              maximizable="true"
                     >
                         <h:panelGrid id="eventDetails" columns="2">
                             <p:outputLabel id="ol_01dS"
@@ -54,6 +56,7 @@
                                          required="true"
                                          styleClass="ui-inputtext"
                                          placeholder="Event name"
+                                         tabindex="1"
                             >
                                 <f:ajax/>
                             </p:inputText>
@@ -70,6 +73,7 @@
                                         showTime="true"
                                         monthNavigator="true"
                                         appendTo="@(body)"
+                                        tabindex="2"
                                         style="border-radius:4px;background-color: beige"
                             />
                             <p:outputLabel id="ol_03vf"
@@ -85,6 +89,7 @@
                                         monthNavigator="true"
                                         showTime="true"
                                         appendTo="@(body)"
+                                        tabindex="3"
                                         style="border-radius:4px;background-color: beige"
                             />
                             <p:outputLabel id="ol_04MY"
@@ -93,31 +98,34 @@
                             />
                             <p:selectBooleanCheckbox id="allDay"
                                                      value="#{scheduleView.scEvent.allDay}"
+                                                     tabindex="4"
                             />
                         </h:panelGrid>
 
                         <div class="p-d-flex p-jc-between p-mt-3">
-                            <p:commandButton id="reset"
-                                             icon="pi pi-ban"
-                                             type="reset"
-                                             value="Reset"
+                            <p:commandButton id="cancel"
+                                             icon="pi pi-cog"
+                                             value="Cancel"
                                              onclick="PF('eventDialog').hide()"
-                                             styleClass="rounded-button ui-button-secondary ui-button-flat"
-                            />
+                                             tabindex="5"
+                                             styleClass="ui-button-plain"
+                             />
                             <p:commandButton id="saveUpdateButton"
                                              icon="pi pi-save"
                                              value="Save"
                                              action="#{scheduleView.addOrUpdateEvent}"
-                                             oncomplete="PF('eventDialog').hide();"
-                                             styleClass="rounded-button ui-button-success ui-button-flat"
+                                             onclick="PF('eventDialog').hide();"
+                                             tabindex="6"
+                                             styleClass="ui-button-plain"
                             />
                             <p:commandButton id="deleteButton"
                                              icon="pi pi-minus"
                                              value="Delete"
-                                             oncomplete="PF('eventDialog').hide();"
+                                             onclick="PF('eventDialog').hide();"
                                              action="#{scheduleView.onShEventDelete}"
-                                             styleClass="rounded-button ui-button-warning ui-button-flat"
-                            />
+                                             tabindex="7"
+                                             styleClass="ui-button-plain"
+                                  />
                         </div>
                     </p:dialog>
                 </h:form>
