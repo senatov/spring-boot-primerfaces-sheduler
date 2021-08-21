@@ -6,7 +6,7 @@ import de.senatov.reservatio.db.ScheduleService;
 import de.senatov.reservatio.db.UserService;
 import de.senatov.reservatio.utl.ScheduleRecordMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.primefaces.event.AbstractAjaxBehaviorEvent;
+import org.apache.commons.lang3.StringUtils;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
@@ -44,7 +44,7 @@ public class ScheduleView implements Serializable {
     private final ScheduleModel eventModel = new DefaultScheduleModel();
     @Autowired
     ScheduleRecordMapper mapper;
-    private ScheduleEvent event = new DefaultScheduleEvent();
+    private DefaultScheduleEvent event = new DefaultScheduleEvent();
 
     @Autowired
     private ScheduleService scheduleService;
@@ -80,16 +80,16 @@ public class ScheduleView implements Serializable {
     }
 
 
-    public ScheduleEvent getScEvent() {
+    public ScheduleEvent getEvent() {
 
-        log.debug("getScEvent() = {}", event);
+        log.debug("getEvent() = {}", event);
         return event;
     }
 
 
-    public void setShEvent(ScheduleEvent scheduleEvent) throws Exception {
+    public void setEvent(DefaultScheduleEvent scheduleEvent) throws Exception {
 
-        log.debug("setShEvent() = {}", scheduleEvent);
+        log.debug("setEvent() = {}", scheduleEvent);
         event = scheduleEvent;
     }
 
@@ -97,35 +97,31 @@ public class ScheduleView implements Serializable {
     public void addOrUpdateEvent() throws Exception {
 
         log.debug("addOrUpdateEvent() = {}", event);
-        if (event.getId() == null) {
-            eventModel.addEvent(event);
-            ScheduleEntity scheduleEntity = mapper.mapEvent(event);
-            scheduleService.saveSchedule(scheduleEntity);
+        if (StringUtils.isBlank(event.getId())) {
+            createNewEntry();
         } else {
-            eventModel.updateEvent(event);
-            scheduleService.deleteSchedule(mapper.mapEvent(event));
-            scheduleService.saveSchedule(mapper.mapEvent(event));
+            moveEntryOnNewPlace();
         }
         event = new DefaultScheduleEvent();
     }
 
 
-    public void onShEventDelete(AbstractAjaxBehaviorEvent deleteEvent) throws Exception {
+    public void onEventSelect(SelectEvent selectEvent) throws Exception {
+        log.debug("onEventSelect() = {}", selectEvent);
+        event = (DefaultScheduleEvent) selectEvent.getObject();
+    }
 
-        log.debug("onShEventDelete() = {}", deleteEvent);
-        event = (ScheduleEvent) deleteEvent.getSource();
+    public void onEventDelete() throws Exception {
+        log.debug("deleteEvent() = {}", event);
         scheduleService.deleteSchedule(mapper.mapEvent(event));
     }
 
 
-    public void onShEventSelect(SelectEvent selectEvent) throws Exception  {
-
-        log.debug("onShEventSelect() = {}", selectEvent);
-        event = (ScheduleEvent) selectEvent.getObject();
+    public void onDateDblSelect(ScheduleEntryMoveEvent scheduleEntryMoveEvent) throws Exception {
+        log.debug("onDateDblSelect() = {}", scheduleEntryMoveEvent);
     }
 
-
-    public void onDateSelect(SelectEvent selectEvent)  throws Exception  {
+    public void onDateSelect(SelectEvent selectEvent) throws Exception {
 
         event = DefaultScheduleEvent.builder()
                 .id("")
@@ -140,20 +136,20 @@ public class ScheduleView implements Serializable {
     }
 
 
-    public void onShEventMove(ScheduleEntryMoveEvent scheduleEntryMoveEvent) throws Exception {
+    public void onEventMove(DefaultScheduleEvent scheduleEntryMoveEvent) throws Exception {
 
         log.debug("onShEventMove()");
         Duration duratio = getDuration(scheduleEntryMoveEvent, "move");
-        event = scheduleEntryMoveEvent.getScheduleEvent();
+        event = scheduleEntryMoveEvent;
         addOrUpdateEvent();
     }
 
 
-    public void onShEventResize(ScheduleEntryResizeEvent scheduleEntryResizeEvent) throws Exception {
+    public void onEventResize(DefaultScheduleEvent scheduleEvent) throws Exception {
 
         log.debug("onShEventResize()");
-        Duration duratio = getDuration(scheduleEntryResizeEvent, "Resize");
-        event = scheduleEntryResizeEvent.getScheduleEvent();
+        Duration duratio = getDuration(scheduleEvent, "Resize");
+        event = scheduleEvent;
         addOrUpdateEvent();
     }
 
@@ -185,4 +181,15 @@ public class ScheduleView implements Serializable {
 
     }
 
+    private void moveEntryOnNewPlace() throws Exception {
+        eventModel.updateEvent(event);
+        scheduleService.deleteSchedule(mapper.mapEvent(event));
+        scheduleService.saveSchedule(mapper.mapEvent(event));
+    }
+
+    private void createNewEntry() throws Exception {
+        eventModel.addEvent(event);
+        ScheduleEntity scheduleEntity = mapper.mapEvent(event);
+        scheduleService.saveSchedule(scheduleEntity);
+    }
 }
