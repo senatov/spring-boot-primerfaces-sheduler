@@ -15,7 +15,13 @@ VALUES ('lasty.tasty@example.org', 'lasty001', 'lasty', 'tasty');
 ------------------
 -- insert schedules
 ------------------
-INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url, userentity_id)
+INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable,
+                         schedule_id,
+                         style_class,
+                         title, url,
+                         userentity_id,
+                         createdat,
+                         modifiedat)
 VALUES ('room123-descr', current_timestamp - interval '58 hour',
         current_timestamp - interval '54 hour',
         'gr2', true,
@@ -23,9 +29,17 @@ VALUES ('room123-descr', current_timestamp - interval '58 hour',
         '2',
         'room123-title',
         '',
-        1);
+        1,
+        Now(),
+        Now());
 
-INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url, userentity_id)
+INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable,
+                         schedule_id,
+                         style_class,
+                         title, url,
+                         userentity_id,
+                         createdat,
+                         modifiedat)
 VALUES ('WXC Lab 1-descr', current_timestamp + interval '64 hour',
         current_timestamp + interval '66 hour',
         'gr3',
@@ -33,9 +47,17 @@ VALUES ('WXC Lab 1-descr', current_timestamp + interval '64 hour',
         '2',
         'WXC Lab 1-title',
         '',
-        1);
+        1,
+        Now(),
+        Now());
 
-INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url, userentity_id)
+INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable,
+                         schedule_id,
+                         style_class,
+                         title, url,
+                         userentity_id,
+                         createdat,
+                         modifiedat)
 VALUES ('WXC Lab 2-descr', current_timestamp + interval '122 hour  20 minutes',
         current_timestamp + interval '126 hour 10 minutes',
         'gr4',
@@ -43,9 +65,17 @@ VALUES ('WXC Lab 2-descr', current_timestamp + interval '122 hour  20 minutes',
         '2',
         'WXC Lab 2-title',
         '',
-        1);
+        1,
+        Now(),
+        Now());
 
-INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url, userentity_id)
+INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable,
+                         schedule_id,
+                         style_class,
+                         title, url,
+                         userentity_id,
+                         createdat,
+                         modifiedat)
 VALUES ('room345-descr', current_timestamp - interval '12 hour',
         current_timestamp - interval '10 hour',
         'gr5',
@@ -54,9 +84,17 @@ VALUES ('room345-descr', current_timestamp - interval '12 hour',
         '2',
         'room345-title',
         '',
-        1);
+        1,
+        Now(),
+        Now());
 
-INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url, userentity_id)
+INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable,
+                         schedule_id,
+                         style_class,
+                         title, url,
+                         userentity_id,
+                         createdat,
+                         modifiedat)
 VALUES ('Kantine-descr', current_timestamp + interval '20 hour 00 minutes',
         current_timestamp + interval '22 hour 30 minutes',
         'gr6',
@@ -65,9 +103,17 @@ VALUES ('Kantine-descr', current_timestamp + interval '20 hour 00 minutes',
         '2',
         'Kantine-title',
         '',
-        1);
+        1,
+        Now(),
+        Now());
 
-INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable, schedule_id, style_class, title, url, userentity_id)
+INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editable,
+                         schedule_id,
+                         style_class,
+                         title, url,
+                         userentity_id,
+                         createdat,
+                         modifiedat)
 VALUES ('Meeting Room 34-descr', current_timestamp + interval '32 hour 30 minutes',
         current_timestamp + interval '36 hour 30 minutes',
         'gr7',
@@ -76,7 +122,9 @@ VALUES ('Meeting Room 34-descr', current_timestamp + interval '32 hour 30 minute
         '1',
         'Meeting Room 34-title',
         '',
-        1);
+        1,
+        Now(),
+        Now());
 
 
 
