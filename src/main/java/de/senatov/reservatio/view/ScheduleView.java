@@ -136,11 +136,11 @@ public class ScheduleView implements Serializable {
     }
 
 
-    public void onEventMove(DefaultScheduleEvent scheduleEntryMoveEvent) throws Exception {
+    public void onEventMove(ScheduleEntryMoveEvent scheduleEntryMoveEvent) throws Exception {
 
         log.debug("onShEventMove()");
         Duration duratio = getDuration(scheduleEntryMoveEvent, "move");
-        event = scheduleEntryMoveEvent;
+        event = (DefaultScheduleEvent) scheduleEntryMoveEvent.getScheduleEvent();
         addOrUpdateEvent();
     }
 
@@ -183,8 +183,7 @@ public class ScheduleView implements Serializable {
 
     private void moveEntryOnNewPlace() throws Exception {
         eventModel.updateEvent(event);
-        scheduleService.deleteSchedule(mapper.mapEvent(event));
-        scheduleService.saveSchedule(mapper.mapEvent(event));
+        scheduleService.updateSchedule(mapper.mapEvent(event));
     }
 
     private void createNewEntry() throws Exception {
