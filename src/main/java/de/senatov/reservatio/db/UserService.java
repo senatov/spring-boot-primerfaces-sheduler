@@ -33,7 +33,7 @@ public class UserService implements Serializable {
 
 	public List<UserEntity> getAllUsers() throws Exception {
 
-		log.debug("getAllUsers()");
+        log.debug("getAllUsers()");
 		List<UserEntity> userEntities = new ArrayList<>(4);
 		userEntities.addAll(userRepository.findAll());
 		return userEntities;
@@ -42,28 +42,28 @@ public class UserService implements Serializable {
 
 	public Optional<UserEntity> getUser(Long id) throws Exception {
 
-		log.debug("getUserEntity()");
+        log.debug("getUserEntity()");
 		return userRepository.findById(id);
 	}
 
 
 	public void addUser(UserEntity userEntity) throws Exception {
 
-		log.debug("addUser()");
+        log.debug("addUser()");
 		userRepository.save(userEntity);
 	}
 
 
 	public void updateUser(UserEntity userEntity) throws Exception {
 
-		log.debug("updateUser()");
+        log.debug("updateUser()");
 		userRepository.save(userEntity);
 	}
 
 
 	public void deleteUser(UserEntity userEntity) throws Exception {
 
-		log.debug("deleteUser()");
+        log.debug("deleteUser()");
 		userRepository.delete(userEntity);
 	}
 

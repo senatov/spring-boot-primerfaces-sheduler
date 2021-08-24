@@ -58,6 +58,7 @@ public class ScheduleEntity implements Serializable {
     @CreatedDate
     private LocalDateTime  createdAt;
     @LastModifiedDate
+    @ColumnDefault("now()")
     private LocalDateTime  modifiedAt;
     @GeneratedValue(strategy = GenerationType.AUTO)
     @ManyToOne

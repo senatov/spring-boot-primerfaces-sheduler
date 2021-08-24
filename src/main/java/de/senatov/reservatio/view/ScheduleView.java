@@ -161,7 +161,6 @@ public class ScheduleView implements Serializable {
     }
 
 
-    //FIXME: resize not works under 8.0
     private Duration getDuration(Object event, String opName) throws Exception {
 
         Duration duratio;
@@ -183,7 +182,7 @@ public class ScheduleView implements Serializable {
 
     private void moveEntryOnNewPlace() throws Exception {
         eventModel.updateEvent(event);
-        scheduleService.updateSchedule(mapper.mapEvent(event));
+        scheduleService.updateSchedule(event);
     }
 
     private void createNewEntry() throws Exception {

@@ -12,13 +12,13 @@
 
 
     <description>
-        JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6, JSF2 Mojarra, PrimeFaces 10.0, Spring Security-NO, OpenAPI
+        JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.4.10, JSF2 Mojarra, PrimeFaces 10.0, Spring Security-NO, OpenAPI
     </description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.0-SNAPSHOT</version>
+        <version>2.4.10</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -220,6 +220,21 @@
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
             <version>[1.0.2, 2.0)</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>7.0.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>7.0.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.el</artifactId>
+            <version>3.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

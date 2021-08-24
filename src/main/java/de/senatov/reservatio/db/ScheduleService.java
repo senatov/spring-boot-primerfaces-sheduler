@@ -1,8 +1,10 @@
 package de.senatov.reservatio.db;
 
 
+import de.senatov.reservatio.utl.ScheduleRecordMapper;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.primefaces.model.DefaultScheduleEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,7 +27,10 @@ public class ScheduleService implements Serializable {
     private final JpaRepository scheduleRepository;
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private ScheduleRecordMapper mapper;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Autowired
     public ScheduleService(ScheduleRepository scheduleRepository) throws Exception {
@@ -57,25 +62,20 @@ public class ScheduleService implements Serializable {
     }
 
 
+    public void updateSchedule(DefaultScheduleEvent entity) throws Exception {
+
+        log.debug("updateSchedule()");
+        Optional<ScheduleEntity> oScheduleEntity = scheduleRepository.findById(Long.valueOf(entity.getId()));
+        ScheduleEntity abc = oScheduleEntity.get();
+        scheduleRepository.deleteById(abc.getId());
+        scheduleRepository.save(abc);
+    }
+
     public void saveSchedule(ScheduleEntity entity) throws Exception {
 
         log.debug("saveSchedule()");
         scheduleRepository.save(entity);
     }
-
-    public void updateSchedule(ScheduleEntity entity) throws Exception {
-
-        log.debug("updateSchedule()");
-        Optional<ScheduleEntity> oScheduleEntity = scheduleRepository.findById(entity.getId());
-        ScheduleEntity scheduleEntity = oScheduleEntity.get();
-        Long userId = Optional.of(scheduleEntity)
-                .map(o->o.getUserEntity())
-                .map(o->o.getId())
-                .get();
-        scheduleRepository.deleteById(entity.getId());
-        scheduleRepository.save(entity);
-    }
-
 
 
     public void deleteSchedule(ScheduleEntity entity) throws Exception {

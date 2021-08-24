@@ -17,7 +17,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	@Bean
 	public UrlBasedViewResolver faceletsViewResolver() {
 
-		log.debug("faceletsViewResolver()");
+        log.debug("faceletsViewResolver()");
 		UrlBasedViewResolver resolver = new UrlBasedViewResolver();
 		resolver.setViewClass(JsfView.class);
 		resolver.setPrefix("/WEB-INF/ui/");
