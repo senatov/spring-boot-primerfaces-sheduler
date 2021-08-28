@@ -118,5 +118,4 @@ public class ScheduleRecordMapper {
 		ret.setUserEntity (getUserEntity ());
 		return ret;
 	}
-
 }
