@@ -5,7 +5,6 @@ package de.senatov.reservatio.utl;
 import de.senatov.reservatio.db.ScheduleEntity;
 import de.senatov.reservatio.db.ScheduleService;
 import de.senatov.reservatio.db.UserEntity;
-import de.senatov.reservatio.db.UserService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
@@ -31,9 +30,6 @@ public class ScheduleRecordMapper {
                                              Wrong Event'%s': end Date before start Date!
                                              startDate = %s
                                              startDate = %s""";
-
-	@Autowired
-	private UserService userService;
 
 	@Autowired
 	private ScheduleService scheduleService;

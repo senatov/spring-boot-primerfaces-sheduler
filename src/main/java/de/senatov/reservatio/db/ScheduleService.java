@@ -87,11 +87,4 @@ public class ScheduleService implements Serializable {
         log.debug("deleteSchedule()");
         scheduleRepository.deleteById(entity.getId());
     }
-
-
-    public String getMaxScheduleId() {
-        log.debug("getMaxScheduleId()");
-        Long res = jdbcTemplate.queryForObject("select max(id) from sc_schedule", Long.class) + 1L;
-        return String.valueOf(res);
-    }
 }
