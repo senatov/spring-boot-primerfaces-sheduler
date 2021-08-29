@@ -12,7 +12,8 @@
 
 
     <description>
-        JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.4.10, JSF2 Mojarra, PrimeFaces 10.0, Spring Security-NO, OpenAPI
+        JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.4.10, JSF2 Mojarra, PrimeFaces 10.0, Spring Security-NO,
+        OpenAPI
     </description>
 
     <parent>
@@ -377,6 +378,12 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.hubspot.maven.plugins</groupId>
+                <artifactId>prettier-maven-plugin</artifactId>
+                <!-- Find the latest version at https://github.com/jhipster/prettier-java/releases -->
+                <version>0.8</version>
+            </plugin>
             <plugin>
                 <groupId>io.github.git-commit-id</groupId>
                 <artifactId>git-commit-id-maven-plugin</artifactId>
