@@ -382,7 +382,8 @@
                 <groupId>com.hubspot.maven.plugins</groupId>
                 <artifactId>prettier-maven-plugin</artifactId>
                 <!-- Find the latest version at https://github.com/jhipster/prettier-java/releases -->
-                <version>0.8</version>
+
+                <version>0.14</version>
             </plugin>
             <plugin>
                 <groupId>io.github.git-commit-id</groupId>

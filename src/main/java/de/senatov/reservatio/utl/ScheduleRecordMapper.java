@@ -1,7 +1,6 @@
 package de.senatov.reservatio.utl;
 
 
-
 import de.senatov.reservatio.db.ScheduleEntity;
 import de.senatov.reservatio.db.ScheduleService;
 import de.senatov.reservatio.db.UserEntity;
@@ -11,6 +10,8 @@ import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.model.ScheduleEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.LinkedCaseInsensitiveMap;
 
 import java.time.DateTimeException;
@@ -63,9 +64,7 @@ public class ScheduleRecordMapper {
 		title = scheduleEntity.getTitle ();
 		startDate = scheduleEntity.getStartDate ();
 		endDate = scheduleEntity.getEndDate ();
-		if (startDate.isAfter (endDate)) {
-			throw new DateTimeException (format (DATE_S_ERR_MSG, description, startDate, endDate));
-		}
+		breakIfDateAfterBefore(startDate, endDate, description);
 		groupId = scheduleEntity.getGroupId ();
 		schedule_id = scheduleEntity.getScheduleId ();
 		id = scheduleEntity.getId ();
@@ -76,6 +75,12 @@ public class ScheduleRecordMapper {
 		userEntity = scheduleEntity.getUserEntity ();
 	}
 
+
+	public void breakIfDateAfterBefore(LocalDateTime _sdate, LocalDateTime _edate, String _descr) {
+		if (_sdate.isAfter (_edate)) {
+			throw new DateTimeException (format (DATE_S_ERR_MSG, _descr, _sdate, _edate));
+		}
+	}
 
 
 	public ScheduleEntity mapEvent (ScheduleEvent event) throws Exception {
@@ -113,5 +118,11 @@ public class ScheduleRecordMapper {
 		ret.setUrl (event.getUrl ());
 		ret.setUserEntity (getUserEntity ());
 		return ret;
+	}
+
+	public String getCurrentUser() {
+		String ret = "nobody";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		return authentication.getName();
 	}
 }

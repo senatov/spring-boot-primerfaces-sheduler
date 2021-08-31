@@ -69,6 +69,7 @@ public class ScheduleService implements Serializable {
         scheduleRepository.deleteById(entity.getId());
         entity.setDescription(newEntity.getDescription());
         entity.setModifiedAt(LocalDateTime.now());
+        entity.setModifier(mapper.getCurrentUser());
         entity.setGroupId(newEntity.getGroupId());
         entity.setStartDate(newEntity.getStartDate());
         entity.setEndDate(newEntity.getEndDate());
