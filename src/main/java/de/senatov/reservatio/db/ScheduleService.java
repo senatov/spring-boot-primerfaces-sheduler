@@ -51,6 +51,11 @@ public class ScheduleService implements Serializable {
    }
 
 
+   public Long findMaxSheduleId() throws Exception{
+      return  scheduleRepository.findMaxSheduleId();
+
+   }
+
 
    public Optional<ScheduleEntity> getSchedule(Long id) throws Exception {
 

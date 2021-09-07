@@ -8,12 +8,12 @@ Tags:
 > JDK16 <br>
 > JPA/Hibernate <br>
 > Postgres:latest under Docker<br>
-> Spring-Boot 2.4.10 <br>
+> Spring-Boot 2.5.4<br>
 > JSF2 Mojarra <br>
 > PrimeFaces 10.0<br>
 ***
 - implementation of Basis Primefaces Scheduler.
-- Components: JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.4.10, <br> JSF2 Mojarra, PrimeFaces 10, Spring Security-NO
+- Components: JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.5.4, <br> JSF2 Mojarra, PrimeFaces 10, Spring Security-NO
 - URLs: [http://localhost:18087/ui/reservation.xhtml](http://localhost:18087/ui/reservation.xhtml)
 - GITH Info from Rest WS: [http://localhost:18087/version](http://localhost:18087/version)
 ***

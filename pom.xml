@@ -12,14 +12,14 @@
 
 
   <description>
-    JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.4.10, JSF2 Mojarra, PrimeFaces 10.0, Spring Security-NO,
+    JDK16, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.5.4, JSF2 Mojarra, PrimeFaces 10.0, Spring Security-NO,
     OpenAPI
   </description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.4.10</version>
+    <version>2.5.4</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
