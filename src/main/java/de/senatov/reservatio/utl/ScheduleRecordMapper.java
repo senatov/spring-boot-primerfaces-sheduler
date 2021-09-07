@@ -1,9 +1,10 @@
 package de.senatov.reservatio.utl;
 
 
-import de.senatov.reservatio.db.ScheduleEntity;
-import de.senatov.reservatio.db.ScheduleService;
-import de.senatov.reservatio.db.UserEntity;
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
@@ -14,9 +15,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.LinkedCaseInsensitiveMap;
 
-import java.time.DateTimeException;
-import java.time.LocalDateTime;
-import java.util.List;
+import de.senatov.reservatio.db.ScheduleEntity;
+import de.senatov.reservatio.db.ScheduleService;
+import de.senatov.reservatio.db.UserEntity;
 
 import static java.lang.String.format;
 
@@ -76,9 +77,9 @@ public class ScheduleRecordMapper {
 	}
 
 
-	public void breakIfDateAfterBefore(LocalDateTime _sdate, LocalDateTime _edate, String _descr) {
-		if (_sdate.isAfter (_edate)) {
-			throw new DateTimeException (format (DATE_S_ERR_MSG, _descr, _sdate, _edate));
+	public void breakIfDateAfterBefore(LocalDateTime bdate, LocalDateTime edate, String descr) {
+		if (bdate.isAfter (edate)) {
+			throw new DateTimeException (format (DATE_S_ERR_MSG, descr, bdate, edate));
 		}
 	}
 
@@ -89,7 +90,7 @@ public class ScheduleRecordMapper {
 		ret.setDescription (event.getDescription ());
 		ret.setEndDate (event.getEndDate ());
 		ret.setGroupId (event.getGroupId ());
-		ret.setId (id);
+		ret.setId (Long.parseLong (event.getId ()));
 		ret.setIsEditable (Boolean.TRUE);
 		ret.setScheduleId (event.getId());
 		ret.setStartDate (event.getStartDate ());
