@@ -20,6 +20,7 @@ import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
+import org.primefaces.model.ScheduleDisplayMode;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -147,6 +148,7 @@ public class ScheduleView implements Serializable {
 
     public void onDateSelect(SelectEvent selectEvent) throws Exception {
 
+        log.debug("onDateSelect()");
         event = DefaultScheduleEvent.builder()
                                     .id("")
                                     .title("")
@@ -156,6 +158,7 @@ public class ScheduleView implements Serializable {
                                     .resizable(Boolean.TRUE)
                                     .startDate((LocalDateTime) selectEvent.getObject())
                                     .endDate((LocalDateTime) selectEvent.getObject())
+                                    .display(ScheduleDisplayMode.LIST_ITEM)
                                     .build();
     }
 

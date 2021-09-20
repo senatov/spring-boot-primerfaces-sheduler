@@ -96,12 +96,12 @@ public class ScheduleRecordMapper {
     public ScheduleEntity mapEvent(ScheduleEvent event) throws Exception {
 
         ScheduleEntity ret = new ScheduleEntity();
-        ret.setDescription(isBlank(event.getDescription()) ? event.getTitle() : event.getDescription());
+        ret.setDescription(isBlank(event.getDescription()) ? event.getTitle() : event.getTitle());
         ret.setEndDate(event.getEndDate());
         ret.setGroupId(event.getGroupId());
-        ret.setId(Long.parseLong(event.getId()));
+        ret.setId(scheduleService.findMaxSheduleId() + 1L);
         ret.setIsEditable(Boolean.TRUE);
-        ret.setScheduleId(event.getId());
+        ret.setScheduleId(String.valueOf(scheduleService.findMaxSheduleId() + 1L));
         ret.setStartDate(event.getStartDate());
         ret.setStyleClass(event.getStyleClass());
         ret.setTitle(event.getTitle());
@@ -128,7 +128,7 @@ public class ScheduleRecordMapper {
         ret.setId(Long.parseLong(event.getId()));
         ret.setIsEditable(Boolean.TRUE);
         ret.setStartDate(event.getStartDate());
-        ret.setScheduleId(String.valueOf(scheduleService.findMaxSheduleId() + 1));
+        ret.setScheduleId(event.getId());
         ret.setStyleClass(event.getStyleClass());
         ret.setTitle(event.getTitle());
         ret.setUrl(event.getUrl());
