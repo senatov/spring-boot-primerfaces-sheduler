@@ -71,7 +71,7 @@ dependencies {
     implementation 'org.hibernate.validator:hibernate-validator:7.0.1.Final'
     implementation 'org.hibernate:hibernate-core:5.5.7.Final'
     implementation 'org.json:json:20210307'
-    implementation 'org.primefaces.extensions:primefaces-extensions-parent:10.0.4'
+    implementation 'org.primefaces.extensions:primefaces-extensions-parent:10.0.5'
     implementation 'org.primefaces.extensions:primefaces-selenium-components:10.0.0'
     implementation 'org.springdoc:springdoc-openapi-ui:1.5.10'
     implementation 'org.springdoc:springdoc-openapi-webmvc-core:1.5.10'
