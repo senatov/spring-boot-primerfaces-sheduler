@@ -37,7 +37,8 @@ public class ScheduleRecordMapper {
     public static final String DATE_S_ERR_MSG = """
                                                 Wrong Event'%s': end Date before start Date!
                                                 startDate = %s
-                                                startDate = %s""";
+                                                startDate = %s
+                                                """;
 
     @Autowired
     private ScheduleService scheduleService;
