@@ -114,6 +114,11 @@ configurations.all {
 test {
     outputs.dir snippetsDir
     useJUnitPlatform()
+    jvmArgs(['--enable-preview'])
+}
+
+tasks.withType(JavaCompile).each {
+    it.options.compilerArgs.add('--enable-preview')
 }
 
 asciidoctor {
