@@ -6,23 +6,43 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'org.asciidoctor.convert' version '1.5.8'
     id 'org.owasp.dependencycheck' version '6.3.1'
+    id 'war'
+    id 'net.nemerosa.versioning' version '2.8.2'
+    id 'com.coditory.manifest' version '0.1.14'
 }
 
-springBoot {
-    mainClassName = 'de.senatov.reservatio.SpringBootAppMain'
-}
 
 group = 'de.senatov'
 version = '0.0.15-SNAPSHOT'
 description = 'room-reservation'
-sourceCompatibility = '16'
-targetCompatibility = '16'
 
 compileJava {
     options.incremental = true
     options.fork = true
     options.failOnError = false
     options.compilerArgs += ["--enable-preview"]
+    options.release = 16
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(16)
+    }
+}
+
+
+jar {
+    manifest {
+        attributes(
+                'Built-By'       : System.properties['user.name'],
+                'Build-Timestamp': new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+                'Build-Revision' : versioning.info.commit,
+                'Build-Rev'      : versioning.info.commit,
+                'Created-By'     : "Gradle ${gradle.gradleVersion}",
+                'Build-Jdk'      : "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                'Build-OS'       : "${System.properties['os.name']} ${System.properties['os.arch']} ${System.properties['os.version']}"
+        )
+    }
 }
 
 configurations {
