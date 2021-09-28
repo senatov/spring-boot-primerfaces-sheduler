@@ -8,7 +8,7 @@
   <artifactId>spring-boot-primerfaces-sheduler</artifactId>
   <packaging>war</packaging>
   <name>room-reservation</name>
-  <version>0.0.14</version>
+  <version>0.0.16</version>
 
 
   <description>
@@ -48,13 +48,19 @@
   </properties>
 
   <repositories>
-
+    <repository>
+      <id>repo1.maven.org</id>
+      <url>https://repo1.maven.org/maven2/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
     <repository>
       <id>spring-milestones</id>
       <name>Spring Milestones</name>
       <url>https://repo.spring.io/milestone</url>
       <snapshots>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
       </snapshots>
     </repository>
     <repository>
@@ -62,17 +68,13 @@
       <name>Spring Snapshots</name>
       <url>https://repo.spring.io/snapshot</url>
       <releases>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
       </releases>
     </repository>
     <repository>
       <id>sonatype-snapshots</id>
       <name>Sonatype Snapshots</name>
       <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-    </repository>
-    <repository>
-      <id>repo1.maven.org</id>
-      <url>https://repo1.maven.org/maven2/</url>
     </repository>
     <repository>
       <id>jitpack</id>
@@ -133,7 +135,7 @@
     <dependency>
       <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>
-      <version>[7.0.1.Final, 8)</version>
+      <version>7.0.1.Final</version>
     </dependency>
     <dependency>
       <groupId>javax.enterprise</groupId>
@@ -370,19 +372,22 @@
       <version>1.5.2</version>
     </dependency>
     <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
       <version>20210307</version>
     </dependency>
     <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-tx</artifactId>
-      <version>5.3.9</version>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-core</artifactId>
-      <version>5.4.8</version>
+      <groupId>pl.project13.maven</groupId>
+      <artifactId>git-commit-id-plugin</artifactId>
+      <version>4.0.5</version>
     </dependency>
   </dependencies>
 
@@ -391,8 +396,6 @@
       <plugin>
         <groupId>com.hubspot.maven.plugins</groupId>
         <artifactId>prettier-maven-plugin</artifactId>
-        <!-- Find the latest version at https://github.com/jhipster/prettier-java/releases -->
-
         <version>0.14</version>
       </plugin>
       <plugin>
@@ -424,6 +427,7 @@
             <phase>package</phase>
             <configuration>
               <target>
+                <!--suppress UnresolvedMavenProperty -->
                 <echo>Git-Infos: ${git.commit.id}</echo>
               </target>
             </configuration>
