@@ -19,7 +19,7 @@ INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editabl
                          schedule_id,
                          style_class,
                          title, url,
-                         userentity_id,
+                         user_entity_id,
                          createdat,
                          modifiedat)
 VALUES ('roomXYZ-title',
@@ -38,7 +38,7 @@ INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editabl
                          schedule_id,
                          style_class,
                          title, url,
-                         userentity_id,
+                         user_entity_id,
                          createdat,
                          modifiedat)
 VALUES ('Zimmer ABCCDE',
@@ -58,7 +58,7 @@ INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editabl
                          schedule_id,
                          style_class,
                          title, url,
-                         userentity_id,
+                         user_entity_id,
                          createdat,
                          modifiedat)
 VALUES ('WXC Lab 2-descr',
@@ -78,7 +78,7 @@ INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editabl
                          schedule_id,
                          style_class,
                          title, url,
-                         userentity_id,
+                         user_entity_id,
                          createdat,
                          modifiedat)
 VALUES ('room345-descr',
@@ -98,7 +98,7 @@ INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editabl
                          schedule_id,
                          style_class,
                          title, url,
-                         userentity_id,
+                         user_entity_id,
                          createdat,
                          modifiedat)
 VALUES ('Kantine-descr',
@@ -118,7 +118,7 @@ INSERT INTO sc_schedule (description, start_date, end_date, group_id, is_editabl
                          schedule_id,
                          style_class,
                          title, url,
-                         userentity_id,
+                         user_entity_id,
                          createdat,
                          modifiedat)
 VALUES ('Meeting Room 34-descr',
@@ -140,9 +140,9 @@ VALUES ('Meeting Room 34-descr',
 ------------------
 -- update FK link;
 ------------------
-update sc_schedule set userentity_id=(select u.id from sc_user u where user_name like '%senatov%') where title like ('%room123%');
-update sc_schedule set userentity_id=(select u.id from sc_user u where user_name like '%ronny%') where title like ('%room345%');
-update sc_schedule set userentity_id=(select u.id from sc_user u where user_name like '%ronny%') where title like ('%Kan%');
-update sc_schedule set userentity_id=(select u.id from sc_user u where user_name like '%senatov%') where title like ('%WXC%');
-update sc_schedule set userentity_id=(select u.id from sc_user u where user_name like '%bush%') where title like ('%Meet%');
-update sc_schedule set userentity_id=(select u.id from sc_user u where user_name like '%bush%') where title like ('%Meet%');
+update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%senatov%') where title like ('%room123%');
+update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%ronny%') where title like ('%room345%');
+update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%ronny%') where title like ('%Kan%');
+update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%senatov%') where title like ('%WXC%');
+update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%bush%') where title like ('%Meet%');
+update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%bush%') where title like ('%Meet%');
