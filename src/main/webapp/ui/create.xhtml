@@ -1,14 +1,16 @@
 <ui:composition
-        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns="http://www.w3.org/1999/xhtml"
         template="/WEB-INF/layouts/standard.xhtml"
 >
 
     <ui:define name="notes">
         <div class="top-toolbar">
             <p:staticMessage
+                    id="create_shedule_Gh45_id"  
                     severity="info"
                     summary="Pet - App:" detail="Create Tab: Editable room reservation demo"
             />
@@ -69,6 +71,7 @@
                          header="Insert new user:"
                          style="margin-bottom:10px"
                 >
+
                     <div id="div_01Gh"
                          class="form-group"
                          style="padding-top: 10px"
@@ -114,7 +117,8 @@
                     </div>
                     <div class="form-group" style="padding-top: 10px">
                         <p:outputLabel id="ol_07jm"
-                                       for="@next" value="eMail:"
+                                       for="@next"
+                                       value="eMail:"
                                        style="padding-right: 10px"/>
                         <p:inputText id="eMail"
                                      value="#{userView.userEntity.EMail}"
@@ -124,17 +128,47 @@
                     </div>
                 </p:panel>
                 <br/>
-                <p:commandButton id="save_person_btn_id"
-                                 action="#{userView.savePerson}"
-                                 value="Save"
-                                 title="#{userView.hint}"
-                                 ajax="true"
-                                 update="table_panel_id"
-                                 icon="pi pi-save"
-                                 styleClass="rounded-button ui-button-success ui-button-flat"
-                />
+                <p:panelGrid id="button_panel_0034" columns="2" styleClass="clear">
+                    <p:commandButton id="save_person_btn_id"
+                                     action="#{userView.savePerson}"
+                                     value="Save"
+                                     title="#{userView.hint}"
+                                     ajax="true"
+                                     update="table_panel_id"
+                                     icon="pi pi-save"
+                                     styleClass="rounded-button ui-button-success ui-button-flat"
+                    />
+                    <p:commandButton id="btn_cfg001"
+                                     onclick="PF('exercises_dialog').show()"
+                                     styleClass="rounded-button ui-button-success ui-button-flat"
+                                     value="Exercises"
+                                     ajax="true"
+                                     icon="pi pi-external-link"
+                    />
+                </p:panelGrid>
             </h:form>
             <p:messages showDetail="true"/>
+
+
+            <p:dialog id="btn_dlg_id"
+                      header="Exercices: split and merge of control groups and reversable accordion"
+                      widgetVar="exercises_dialog"
+                      minHeight="1600"
+                      width="1600"
+                      showEffect="fade"
+                      closable="true"
+                      resizable="true"
+                      draggable="true"
+                      fitViewport="true"
+
+            >
+                <p:panel>
+                    <ui:include src="excercises/include1.xhtml"/>
+                </p:panel>
+                 
+            </p:dialog>
+
+
         </div>
     </ui:define>
 </ui:composition>

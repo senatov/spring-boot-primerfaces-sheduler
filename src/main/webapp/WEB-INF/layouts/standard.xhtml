@@ -134,13 +134,18 @@
 
 
 <h:body title="schedule">
-    <p:card id="pg_12dc" columns="2" style="border-radius: 6px; background-color: #eaefea; border-color: cadetblue">
+    <p:card columns="2"
+            style="border-radius: 6px; background-color: #eaefea; border-color: cadetblue"
+    >
         <h:outputText id="ot_02fs" style="font-size: xx-small;" for="ot_2Fg" value="RealPath : "/>
         <h:outputText id="ot_2Fg" style="font-size: xx-small" value="${request.getRealPath('/')}"/>
     </p:card>
     <div id="dv_01Mf" class="container">
         <h:form>
-            <div id="dv_41fG" class="card" style="margin-bottom: 20px; margin-top: 20px; border-radius: 6px">
+            <div id="dv_41fG"
+                 class="card"
+                 style="margin-bottom: 20px; margin-top: 20px; border-radius: 6px"
+            >
                 <p:tabMenu id="tabmenu1"
                            activeIndex="#{param.i}"
                            styleClass="fa-amazon ui-tabmenu-nav ui-helper-reset ui-card-header ui-corner-all"

@@ -56,7 +56,7 @@ public class SpringBootAppMain implements ServletContextAware {
 		sc.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
 		sc.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", FALSE.toString());
 		sc.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", TRUE.toString());
-		sc.setInitParameter("javax.faces.PROJECT_STAGE", "Development");
+		sc.setInitParameter("javax.faces.PROJECT_STAGE", "Production");
 		sc.setInitParameter("javax.faces.STATE_SAVING_METHOD", "server");
 		sc.setInitParameter("primefaces.THEME", "nova-light");
 
