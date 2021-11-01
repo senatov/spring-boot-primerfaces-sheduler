@@ -155,8 +155,8 @@
         <p:dialog id="btn_dlg_id"
                   header="Exercices: split and merge of control groups and reversable accordion"
                   widgetVar="exercises_dialog"
-                  minHeight="1600"
-                  width="1600"
+                  minHeight="1200"
+                  width="800"
                   showEffect="fade"
                   closable="true"
                   resizable="true"
@@ -164,9 +164,31 @@
                   fitViewport="true"
         >
             <p:panel>
-                <!-- ui:include src="/WEB-INF/layouts/standard.xhtml"/ -->
-            </p:panel>
+                <!-- ui:include src="/ui/excercises/include1.xhtml"/ -->
+                <p:outputLabel id="ou_lbl_001" value="Exercises:"/>
 
+                <div class="card">
+                    <h5>Basic</h5>
+                    <p:inputText value="abc" id="it-0001"/>
+                    <h5>Floating Label</h5>
+                    <span class="ui-float-label">
+                        <p:outputLabel id="ol_44dfG" for="float-input" value="Username"/>
+                        <p:inputText id="float-input" value="#{inputTextView.text}"/>
+                        
+                    </span>
+                    <h5>Left Icon</h5>
+                    <span class="ui-input-icon-left">
+                        <i class="pi pi-search"/>
+                        <p:inputText placeholder="Search"/>
+                    </span>
+
+                    <h5>Right Icon</h5>
+                    <span class="ui-input-icon-right">
+                        <i class="pi pi-spin pi-spinner"/>
+                        <p:inputText/>
+                    </span>
+                </div>
+            </p:panel>
         </p:dialog>
 
 
