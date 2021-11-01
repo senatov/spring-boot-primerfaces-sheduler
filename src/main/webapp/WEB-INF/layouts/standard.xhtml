@@ -134,15 +134,51 @@
 
 
 <h:body title="schedule">
-    <p:card columns="2"
-            style="border-radius: 6px; background-color: #eaefea; border-color: cadetblue"
-    >
-        <h:outputText id="ot_02fs" style="font-size: xx-small;" for="ot_2Fg" value="RealPath : "/>
-        <h:outputText id="ot_2Fg" style="font-size: xx-small" value="${request.getRealPath('/')}"/>
+    <p:card columns="2" style="border-radius: 6px; background-color: #eaefea; border-color: cadetblue">
+        <p:commandButton id="create_exercise_button001"
+                         onclick="PF('exercises_dialog').show()"
+                         styleClass="rounded-button ui-button-success ui-button-flat b--light-red"
+                         value="Exercises"
+                         ajax="true"
+                         icon="pi pi-external-link"
+        />
+        <p:tooltip id="standard_tt_button1"
+                   for="create_exercise_button001"
+                   style="animation: both"
+                   value="Dialog/Panel excercises"
+                   showEffect="clip"
+                   hideEffect="fold"
+        >
+            <p:graphicImage name="/images/primefaces-logo.svg" library="showcase"/>
+        </p:tooltip>
+
+        <!-- Dialog -->
+
+
+        <p:dialog id="btn_dlg_id"
+                  header="Exercices: split and merge of control groups and reversable accordion"
+                  widgetVar="exercises_dialog"
+                  minHeight="1600"
+                  width="1600"
+                  showEffect="fade"
+                  closable="true"
+                  resizable="true"
+                  draggable="true"
+                  fitViewport="true"
+        >
+            <p:panel>
+                <!-- ui:include src="/WEB-INF/layouts/standard.xhtml"/ -->
+            </p:panel>
+
+        </p:dialog>
+
+
+        <!-- End dialog -->
+
     </p:card>
-    <div id="dv_01Mf" class="container">
-        <h:form>
-            <div id="dv_41fG"
+    <div id="container_content_id" class="container">
+        <h:form id="standard_form_content_id">
+            <div id="standard_card_dv_41fG"
                  class="card"
                  style="margin-bottom: 20px; margin-top: 20px; border-radius: 6px"
             >
@@ -154,26 +190,29 @@
                     <p:menuitem value="Reservation"
                                 styleClass="tab-header"
                                 outcome="/ui/reservation.xhtml"
-                                icon="pi pi-calendar">
+                                icon="pi pi-calendar"
+                    >
                         <f:param name="i" value="0"/>
                     </p:menuitem>
                     <p:menuitem value="List"
                                 styleClass="tab-header"
                                 outcome="/ui/list.xhtml"
-                                icon="pi pi-list">
+                                icon="pi pi-list"
+                    >
                         <f:param name="i" value="1"/>
                     </p:menuitem>
                     <p:menuitem value="Create"
                                 styleClass="tab-header"
                                 outcome="/ui/create.xhtml"
-                                icon="pi pi-user">
+                                icon="pi pi-user"
+                    >
                         <f:param name="i" value="2"/>
                     </p:menuitem>
                 </p:tabMenu>
             </div>
         </h:form>
         <div class="card">
-            <div id="dv_03gK">
+            <div id="standard-layout_content_id">
                 <ui:insert name="content"/>
             </div>
         </div>

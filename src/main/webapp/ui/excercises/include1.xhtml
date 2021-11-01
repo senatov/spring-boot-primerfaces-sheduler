@@ -8,4 +8,47 @@
 
     <p:outputLabel id="ou_lbl_001" value="Exercises:"/>
 
+    <div class="card">
+        <h5>Basic</h5>
+        <p:inputText/>
+        <h5>Floating Label</h5>
+        <span class="ui-float-label">
+ 
+ <p:inputText id="float-input"
+              value="#{inputTextView.text}"/>
+ <p:outputLabel id="ol_44dfG"
+                for="@previous"
+                value="Username"/>
+ </span>
+
+        <h5>Left Icon</h5>
+        <span class="ui-input-icon-left">
+ <i class="pi pi-search"/>
+ <p:inputText placeholder="Search"/>
+ </span>
+
+        <h5>Right Icon</h5>
+        <span class="ui-input-icon-right">
+ <i class="pi pi-spin pi-spinner"/>
+ <p:inputText/>
+ </span>
+
+        <h5>Help Text</h5>
+        <div class="p-field">
+            <p:outputLabel for="username1" styleClass="p-d-block">Username</p:outputLabel>
+            <p:inputText id="username1" styleClass="p-d-block"/>
+            <small class="p-d-block">Enter your username to reset your password.</small>
+        </div>
+
+        <h5>Invalid</h5>
+        <div class="p-field">
+            <p:outputLabel for="username2" styleClass="p-d-block">Username</p:outputLabel>
+            <p:inputText id="username2" styleClass="p-d-block ui-state-error"/>
+            <small class="p-d-block ui-state-error">Username is not available.</small>
+        </div>
+
+        <h5>Disabled</h5>
+        <p:inputText disabled="true"/>
+
+    </div>
 </ui:composition>

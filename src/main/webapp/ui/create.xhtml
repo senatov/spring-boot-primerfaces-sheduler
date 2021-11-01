@@ -1,5 +1,4 @@
 <ui:composition
-        xmlns:f="http://java.sun.com/jsf/core"
         xmlns:h="http://java.sun.com/jsf/html"
         xmlns:p="http://primefaces.org/ui"
         xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -10,7 +9,7 @@
     <ui:define name="notes">
         <div class="top-toolbar">
             <p:staticMessage
-                    id="create_shedule_Gh45_id"  
+                    id="create_shedule_Gh45_id"
                     severity="info"
                     summary="Pet - App:" detail="Create Tab: Editable room reservation demo"
             />
@@ -18,13 +17,16 @@
     </ui:define>
 
     <ui:define name="content">
-        <div class="container" style="padding-left: 24px;padding-right: 24px">
-            <h:form id="tableform_id" styleClass="ui-widget">
+        <div id="create_dv_45F"
+             class="container"
+             style="padding-left: 24px;padding-right: 24px">
+            <h:form id="create_tableform_id"
+                    styleClass="ui-widget">
                 <p:panel id="table_panel_id"
                          header="Users in DB"
                          style="margin-bottom:10px"
                 >
-                    <p:dataTable id="userstable_id"
+                    <p:dataTable id="create_userstable_id"
                                  var="userEntities"
                                  value="#{userView.userEntities}"
                                  showGridlines="true"
@@ -67,11 +69,10 @@
                     </p:dataTable>
                 </p:panel>
                 <br/>
-                <p:panel id="panel"
+                <p:panel id="create_panel_id"
                          header="Insert new user:"
                          style="margin-bottom:10px"
                 >
-
                     <div id="div_01Gh"
                          class="form-group"
                          style="padding-top: 10px"
@@ -99,7 +100,7 @@
                                      required="true"
                         />
                     </div>
-                    <div Id="dv_02hs"
+                    <div Id="create_form_group_id"
                          class="form-group"
                          style="padding-top: 10px"
                     >
@@ -128,7 +129,10 @@
                     </div>
                 </p:panel>
                 <br/>
-                <p:panelGrid id="button_panel_0034" columns="2" styleClass="clear">
+                <p:panelGrid id="button_panel_0034" 
+                             columns="1" 
+                             styleClass="clear"
+                >
                     <p:commandButton id="save_person_btn_id"
                                      action="#{userView.savePerson}"
                                      value="Save"
@@ -138,37 +142,9 @@
                                      icon="pi pi-save"
                                      styleClass="rounded-button ui-button-success ui-button-flat"
                     />
-                    <p:commandButton id="btn_cfg001"
-                                     onclick="PF('exercises_dialog').show()"
-                                     styleClass="rounded-button ui-button-success ui-button-flat"
-                                     value="Exercises"
-                                     ajax="true"
-                                     icon="pi pi-external-link"
-                    />
                 </p:panelGrid>
             </h:form>
             <p:messages showDetail="true"/>
-
-
-            <p:dialog id="btn_dlg_id"
-                      header="Exercices: split and merge of control groups and reversable accordion"
-                      widgetVar="exercises_dialog"
-                      minHeight="1600"
-                      width="1600"
-                      showEffect="fade"
-                      closable="true"
-                      resizable="true"
-                      draggable="true"
-                      fitViewport="true"
-
-            >
-                <p:panel>
-                    <ui:include src="excercises/include1.xhtml"/>
-                </p:panel>
-                 
-            </p:dialog>
-
-
         </div>
     </ui:define>
 </ui:composition>
