@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="reservatio" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" singleton="false">
+  <configuration default="false" name="reservatio" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" singleton="false" show_console_on_std_err="true" show_console_on_std_out="true">
     <module name="spring-boot-primerfaces-sheduler" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="de.senatov.reservatio.SpringBootAppMain" />
     <option name="DEBUG_MODE" value="true" />

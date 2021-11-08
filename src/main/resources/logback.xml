@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--           Iakov Senatov.07.2021                                -->
+<!--           Iakov Senatov.11.2021         -->
 <configuration>
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%date %level %logger{15} [%file:%line] %msg%n</pattern>
+            <pattern>%date %level %logger{35} [%file:%line] %msg%n</pattern>
         </encoder>
     </appender>
     <!--
@@ -16,6 +16,15 @@
     <!--
             LOGGERS
      -->
+    <logger name="io.netty" additivity="false" level="WARN">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.hibernate.type.BasicTypeRegistry" additivity="false" level="WARN">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="org.hibernate.type.BasicType" additivity="false" level="WARN">
+        <appender-ref ref="console"/>
+    </logger>
     <logger name="org.springframework.test" additivity="false" level="DEBUG">
         <appender-ref ref="console"/>
     </logger>
