@@ -5,7 +5,6 @@
     <option name="DEBUG_MODE" value="true" />
     <option name="VM_PARAMETERS" value="-client -ea -Xmx1024m" />
     <option name="ALTERNATIVE_JRE_PATH" />
-    <option name="SHORTEN_COMMAND_LINE" value="NONE" />
     <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateResources" />
     <method v="2">
       <option name="Make" enabled="true" />
