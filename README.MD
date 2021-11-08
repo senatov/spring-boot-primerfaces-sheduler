@@ -1,11 +1,11 @@
 ## Spring Boot Integration example
 
 - example code.
-- `The Project builds under Oracle JDK16 General-Availability Release`
+- `The Project builds under Oracle JDK17 General-Availability Release`
 
 Tags:
 ****
-> JDK16 <br>
+> JDK17 <br>
 > JPA/Hibernate <br>
 > Postgres:latest under Docker<br>
 > Spring-Boot 2.5.4<br>
