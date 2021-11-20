@@ -16,6 +16,9 @@
     <!--
             LOGGERS
      -->
+    <logger name="com.zaxxer.hikari.pool" additivity="false" level="WARN">
+        <appender-ref ref="console"/>
+    </logger>
     <logger name="io.netty" additivity="false" level="WARN">
         <appender-ref ref="console"/>
     </logger>

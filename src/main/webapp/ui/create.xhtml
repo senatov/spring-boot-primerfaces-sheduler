@@ -9,7 +9,7 @@
     <ui:define name="notes">
         <div class="top-toolbar">
             <p:staticMessage
-                    id="create_shedule_Gh45_id"
+                    id="create_Gh45_id"
                     severity="info"
                     summary="Pet - App:" detail="Create Tab: Editable room reservation demo"
             />
@@ -39,28 +39,28 @@
                             <h:outputText value="#{userEntities.id}"/>
                         </p:column>
 
-                        <p:column id="col_1"
+                        <p:column id="create_col_1cg"
                                   headerText="First name"
                                   sortBy="#{userEntities.firstName}"
                         >
                             <h:outputText value="#{userEntities.firstName}"/>
                         </p:column>
 
-                        <p:column id="col_2"
+                        <p:column id="create_col_2"
                                   headerText="Last name"
                                   sortBy="#{userEntities.lastName}"
                         >
                             <h:outputText value="#{userEntities.lastName}"/>
                         </p:column>
 
-                        <p:column id="col_3"
+                        <p:column id="create_col_3"
                                   headerText="User's name"
                                   sortBy="#{userEntities.userName}"
                         >
                             <h:outputText value="#{userEntities.userName}"/>
                         </p:column>
 
-                        <p:column id="col_4"
+                        <p:column id="create_col_4"
                                   headerText="eMail"
                                   sortBy="#{userEntities.EMail}"
                         >
@@ -77,11 +77,11 @@
                          class="form-group"
                          style="padding-top: 10px"
                     >
-                        <p:outputLabel id="ot_03jL"
+                        <p:outputLabel id="create_ot_03jL"
                                        for="@next"
                                        value="First name:"
                         />
-                        <p:inputText id="firstName"
+                        <p:inputText id="create_firstName"
                                      value="#{userView.userEntity.firstName}"
                                      placeholder="first name..."
                                      autocomplete="true"
@@ -89,11 +89,11 @@
                         />
                     </div>
                     <div class="form-group" style="padding-top: 10px">
-                        <p:outputLabel id="ot_04jL"
+                        <p:outputLabel id="create_ot_04jL"
                                        for="@next"
                                        value="Last name:"
                         />
-                        <p:inputText id="lastName"
+                        <p:inputText id="create_lastName"
                                      value="#{userView.userEntity.lastName}"
                                      placeholder="last name...."
                                      autocomplete="true"
@@ -104,19 +104,19 @@
                          class="form-group"
                          style="padding-top: 10px"
                     >
-                        <p:outputLabel id="ot_05jL"
+                        <p:outputLabel id="create_ot_05jL"
                                        for="@next"
                                        value="User's name:"
                                        style="padding-right: 10px"
                         />
-                        <p:inputText id="userName"
+                        <p:inputText id="create_userName"
                                      value="#{userView.userEntity.userName}"
                                      placeholder="waldo..."
                                      autocomplete="true"
                                      required="true"
                         />
                     </div>
-                    <div class="form-group" style="padding-top: 10px">
+                    <div id="create_dv_98rt" class="form-group" style="padding-top: 10px">
                         <p:outputLabel id="ol_07jm"
                                        for="@next"
                                        value="eMail:"
@@ -129,8 +129,8 @@
                     </div>
                 </p:panel>
                 <br/>
-                <p:panelGrid id="button_panel_0034" 
-                             columns="1" 
+                <p:panelGrid id="create_button_panel_0034"
+                             columns="1"
                              styleClass="clear"
                 >
                     <p:commandButton id="save_person_btn_id"
