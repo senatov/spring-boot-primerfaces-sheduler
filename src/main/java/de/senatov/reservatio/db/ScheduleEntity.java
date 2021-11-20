@@ -70,7 +70,7 @@ public class ScheduleEntity implements Serializable {
     private LocalDateTime  modifiedAt;
     @GeneratedValue(strategy = GenerationType.AUTO)
     @ManyToOne
-    @JoinColumn(name = "userentity_id", foreignKey = @ForeignKey(name = "username_fk"))
+    @JoinColumn(name = "user_entity_id", foreignKey = @ForeignKey(name = "username_fk"))
     private UserEntity userEntity;
 
 }

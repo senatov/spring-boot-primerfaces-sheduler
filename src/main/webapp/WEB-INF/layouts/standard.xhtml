@@ -1,177 +1,133 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
 >
 
-
-<h:head>
-    <f:facet name="first">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <meta http-equiv="Cache-Control" content="no-cache, must-revalidate"/>
-        <meta http-equiv="Pragma" content="nocache"/>
-        <meta name="apple-mobile-web-app-status-bar-style" content="#f7ffef"/>
-        <meta name="description"
-              content="Scheduler Pet App: Spring Boot 2.6, JSF 2.4 and PrimeFaces 10.0.0.  I. Senatov"/>
-        <meta name="mobile-web-app-capable" content="yes"/>
-        <meta name="robots" content="follow,index"/>
-        <meta name="theme-color" content="#f7ffef"/>
-        <meta name="viewport"
-              content="width=device-width,initial-scale=1,maximum-scale=1,userEntity-scalable=1,viewport-fit=cover"/>
-        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
-        <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"/>
-        <link rel="apple-touch-icon-precomposed"
-              href="${pageContext.request.contextPath}/images/icons/apple-touch-icon.png"/>
-        <link rel="shortcut icon" id="favicon-ico" href="${pageContext.request.contextPath}/images/icons/favicon.ico"
-              type="image/x-icon"/>
-    </f:facet>
-</h:head>
+<f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
 
 
-<h:outputStylesheet>
-    body .fc .fc-event:hover .fc-remove {
-        opacity: 1;
-        border-radius: 6px;
-        border-color: #15354f;
-        transition: 0.4s opacity, 0.4s transform;
-        font-size: 13px;
-        font-weight: normal;
-    }
-
-    body .fc .fc-event .fc-remove {
-        opacity: 0;
-        transition: 0.4s opacity, 0.4s transform;
-        position: absolute;
-        border-bottom-color: darkblue;
-        font-size: 13px;
-        font-weight: normal;
-        text-align: center;
-        top: 3px;
-        right: 3px;
-        width: 12px;
-        height: 12px;
-        z-index: 10;
-    }
-
-    element.style {
-    }
-
-    .fc .fc-col-header-cell-cushion {
-        display: inline-flex;
-        padding: 1px 1px;
-    }
-
-    body .fc a {
-        color: inherit;
-    }
-
-    .fc, .fc *, .fc *:before, .fc *:after {
-        box-sizing: border-box;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
-    body .fc th {
-        background: #dde7e0;
-        border: 1px solid #c8c8c8;
-        color: #333333;
-        padding: 0.857rem 1rem;
-    }
-
-    .fc-daygrid-day-frame:after, .fc-daygrid-day-events:after, .fc-daygrid-event-harness:after {
-        content: "";
-        clear: both;
-        display: inline-block;
-    }
-
-    body .fc .fc-toolbar .fc-button {
-        background: #dde7e0;
-        color: #282972;
-        border-radius: 6px;
-        border-color: #15354f;
-    }
-
-    .fc .fc-daygrid-day-number {
-        background-color: #efefef;
-        color: #205354;
-        font-family: DialogInput;
-        min-height: 100%;
-        position: relative;
-        padding: 1px;
-    }
-
-    body .fc .fc-event .fc-remove:hover {
-        cursor: grabbing;
-        transform: scale(1.2);
-    }
-
-    .fc .fc-toolbar-title {
-        font-family: sans-serif;
-        font-size: 1.15em;
-        margin: 0;
-    }
-
-    tabmenuitem.ui-state-active a {
-        color: #ff9800;
-        background-repeat: revert;
-        background-color: darkblue;
-    }
-
-    body .fc .fc-event, body .fc .fc-event .fc-event-main {
-        background: #ffc107;
-        border-radius: 6px;
-        border-color: coral;
-        color: darkblue;
-    }
-
-</h:outputStylesheet>
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+            <meta name="apple-mobile-web-app-status-bar-style" content="#f7ffef"/>
+            <meta name="description" content="Scheduler: Spring Boot 2.6, JSF 2.4 and PrimeFaces 11RC1.I. Senatov"/>
+            <meta name="mobile-web-app-capable" content="yes"/>
+            <meta name="robots" content="follow,index"/>
+            <meta name="theme-color" content="#f7ffef"/>
+            <link href="/ui/css/my_sheduler.css" rel="stylesheet" type="text/css"/>
+            <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png"/>
+            <link rel="apple-touch-icon-precomposed"
+                  href="/images/icons/apple-touch-icon.png"/>
+            <link rel="shortcut icon" id="favicon-ico" href="/images/icons/favicon.ico"
+                  type="image/x-icon"/>
+        </f:facet>
+    </h:head>
 
 
-<h:body title="schedule">
-    <p:card id="pg_12dc" columns="2" style="border-radius: 6px; background-color: #eaefea; border-color: cadetblue">
-        <h:outputText id="ot_02fs" style="font-size: xx-small;" for="ot_2Fg" value="RealPath : "/>
-        <h:outputText id="ot_2Fg" style="font-size: xx-small" value="${request.getRealPath('/')}"/>
-    </p:card>
-    <div id="dv_01Mf" class="container">
-        <h:form>
-            <div id="dv_41fG" class="card" style="margin-bottom: 20px; margin-top: 20px; border-radius: 6px">
-                <p:tabMenu id="tabmenu1"
-                           activeIndex="#{param.i}"
-                           styleClass="fa-amazon ui-tabmenu-nav ui-helper-reset ui-card-header ui-corner-all"
-                           style="border-radius: 6px; border-color: blueviolet; background-color: aliceblue"
+    <h:body title="schedule">
+        <p:growl id="growl" life="2000"/>
+        <p:card columns="2" style="border-radius: 6px; background-color: #eaefea; border-color: cadetblue">
+            <p:commandButton id="standard_create_exercise_button001"
+                             onclick="PF('exercises_dialog').show()"
+                             styleClass="rounded-button ui-button-success ui-button-flat b--light-red"
+                             value="OpenAPI definition / Swagger"
+                             ajax="true"
+                             icon="pi pi-external-link"
+            />
+            <p:tooltip id="standard_tt_button1"
+                       for="@previous"
+                       position="top"
+                       style="background: antiquewhite"
+                       value="Dialog/Panel excercises">
+            </p:tooltip>
+
+            <!-- 
+            
+            Dialog 
+            
+            
+            -->
+            <p:dialog id="standard_dialog_id01kb"
+                      header="OpenAPI definition / Swagger"
+                      widgetVar="exercises_dialog"
+                      width="1200"
+                      height="1100"
+                      showEffect="fade"
+                      closable="true"
+                      resizable="true"
+                      draggable="true"
+                      fitViewport="true"
+            >
+                <div class="card">
+                    <h:form>
+                        <a href="#{inputTextView.path}" target="_blank">Test Link</a>
+
+                        <!--
+                                embedded window uri
+                        -->
+                        <iframe id="standard_object_id_01dG"
+                                title="OpenAPI definition / Swagger"
+                                src="#{inputTextView.path}"
+                                width="1200"
+                                height="1100"
+                                allow="fullscreen"
+                        />
+
+                    </h:form>
+                </div>
+
+
+            </p:dialog>
+        </p:card>
+
+
+        <div id="standard_container_content_id" class="container">
+            <h:form id="standard_form_content_id">
+                <div id="standard_card_dv_41fG"
+                     class="card"
+                     style="margin-bottom: 20px; margin-top: 20px; border-radius: 6px"
                 >
-                    <p:menuitem value="Reservation"
-                                styleClass="tab-header"
-                                outcome="/ui/reservation.xhtml"
-                                icon="pi pi-calendar">
-                        <f:param name="i" value="0"/>
-                    </p:menuitem>
-                    <p:menuitem value="List"
-                                styleClass="tab-header"
-                                outcome="/ui/list.xhtml"
-                                icon="pi pi-list">
-                        <f:param name="i" value="1"/>
-                    </p:menuitem>
-                    <p:menuitem value="Create"
-                                styleClass="tab-header"
-                                outcome="/ui/create.xhtml"
-                                icon="pi pi-user">
-                        <f:param name="i" value="2"/>
-                    </p:menuitem>
-                </p:tabMenu>
-            </div>
-        </h:form>
-        <div class="card">
-            <div id="dv_03gK">
-                <ui:insert name="content"/>
+                    <p:tabMenu id="standard_tabmenu1"
+                               activeIndex="#{param.i}"
+                               styleClass="fa-amazon ui-tabmenu-nav ui-helper-reset ui-card-header ui-corner-all"
+                               style="border-radius: 6px; border-color: blueviolet; background-color: aliceblue"
+                    >
+                        <p:menuitem id="standard_menuitem_12DF"
+                                    value="Reservation"
+                                    styleClass="tab-header"
+                                    outcome="/ui/reservation.xhtml"
+                                    icon="pi pi-calendar"
+                        >
+                            <f:param name="i" value="0"/>
+                        </p:menuitem>
+                        <p:menuitem id="standard_menuitem_156"
+                                    value="List"
+                                    styleClass="tab-header"
+                                    outcome="/ui/list.xhtml"
+                                    icon="pi pi-list"
+                        >
+                            <f:param name="i" value="1"/>
+                        </p:menuitem>
+                        <p:menuitem id="standard_menuitem_17vS"
+                                    value="Create"
+                                    styleClass="tab-header"
+                                    outcome="/ui/create.xhtml"
+                                    icon="pi pi-user"
+                        >
+                            <f:param name="i" value="2"/>
+                        </p:menuitem>
+                    </p:tabMenu>
+                </div>
+            </h:form>
+            <div class="card">
+                <div id="standard-layout_content_id">
+                    <ui:insert name="content"/>
+                </div>
             </div>
         </div>
-    </div>
-</h:body>
+    </h:body>
+</f:view>
 </html>

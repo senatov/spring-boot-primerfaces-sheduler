@@ -16,22 +16,22 @@
                     detail="Remove Tab: Editable room reservation demo"
             />
         </div>
-        <div class="container" style="padding-left: 24px;padding-right: 24px">
+        <div id="list_dv_98Hd" class="container" style="padding-left: 24px;padding-right: 24px">
             <f:view contentType="text/html">
-                <h:form>
-                    <p:dataTable value="#{userView.userEntities}" var="userEntity">
-                        <p:column headerText="Name">
+                <h:form id="list_form_643F">
+                    <p:dataTable id="list_datatable_98R" value="#{userView.userEntities}" var="userEntity">
+                        <p:column id="list_vol_4f" headerText="Name">
                             <p:outputLabel value="#{userEntity.firstName}"/>
                         </p:column>
                         <p:column>
-                            <p:commandButton id="btn_pre_34f"
+                            <p:commandButton id="list_btn_pre_34f"
                                              action="#{userView.prepareForUpdate(userEntity.id)}"
                                              icon="pi pi-save"
                                              styleClass="rounded-button ui-button-success ui-button-flat"
                             />
                         </p:column>
                     </p:dataTable>
-                    <p:commandButton id="command_button_id"
+                    <p:commandButton id="list_command_button_id"
                                      action="#{userView.newPerson}"
                                      value="Save"
                                      ajax="false"
