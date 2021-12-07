@@ -1,4 +1,4 @@
-package de.senatov.reservatio.db;
+package de.senatov.reservatio.service;
 
 
 
@@ -11,6 +11,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import de.senatov.reservatio.db.UserEntity;
+import de.senatov.reservatio.db.UserRepository;
 
 
 

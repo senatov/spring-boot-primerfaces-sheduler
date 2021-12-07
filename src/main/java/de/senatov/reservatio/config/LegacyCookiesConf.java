@@ -1,7 +1,5 @@
 package de.senatov.reservatio.config;
 
-import javax.faces.context.FacesContext;
-
 import org.apache.tomcat.util.http.LegacyCookieProcessor;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
@@ -13,10 +11,8 @@ public class LegacyCookiesConf {
 
     @Bean
     public WebServerFactoryCustomizer<TomcatServletWebServerFactory> cookieProcessorCustomizer() {
-        return (factory) -> {
-            factory.addContextCustomizers((context) -> {
-                context.setCookieProcessor(new LegacyCookieProcessor());
-            });
-        };
+        return (factory) -> factory.addContextCustomizers((context) -> {
+            context.setCookieProcessor(new LegacyCookieProcessor());
+        });
     }
 }

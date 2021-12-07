@@ -3,7 +3,7 @@ package de.senatov.reservatio.view;
 
 
 import de.senatov.reservatio.db.UserEntity;
-import de.senatov.reservatio.db.UserService;
+import de.senatov.reservatio.service.UserService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.context.PrimeFacesContext;

@@ -1,4 +1,4 @@
-package de.senatov.reservatio.db;
+package de.senatov.reservatio.service;
 
 
 
@@ -16,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import de.senatov.reservatio.utl.ScheduleRecordMapper;
+import de.senatov.reservatio.ScheduleRecordMapper;
+import de.senatov.reservatio.db.ScheduleEntity;
+import de.senatov.reservatio.db.ScheduleRepository;
 
 
 
@@ -27,9 +29,6 @@ public class ScheduleService implements Serializable {
    @Serial
    private static final long serialVersionUID = 3113025681276026951L;
    private final ScheduleRepository scheduleRepository;
-
-   @Autowired
-   private ScheduleRecordMapper mapper;
 
 
 
@@ -80,7 +79,7 @@ public class ScheduleService implements Serializable {
       scheduleRepository.deleteById(entity.getId());
       entity.setDescription(newEntity.getDescription());
       entity.setModifiedAt(LocalDateTime.now());
-      entity.setModifier(mapper.getCurrentUser());
+      entity.setModifier(  System.getProperty("user"));
       entity.setGroupId(newEntity.getGroupId());
       entity.setStartDate(newEntity.getStartDate());
       entity.setEndDate(newEntity.getEndDate());

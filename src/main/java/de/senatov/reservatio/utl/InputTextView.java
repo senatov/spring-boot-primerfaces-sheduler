@@ -34,7 +34,7 @@ public class InputTextView {
 	}
 
 	public String getUri() throws UnknownHostException {
-		String ret = "";
+		String ret;
 		String serverName = Inet4Address.getLocalHost().getHostAddress();
 		int serverPort = PrimeFacesContext.getCurrentInstance().getExternalContext().getRequestServerPort();
 		String protocol = PrimeFacesContext.getCurrentInstance().getExternalContext().getRequestScheme();

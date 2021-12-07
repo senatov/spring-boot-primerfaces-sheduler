@@ -27,9 +27,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import de.senatov.reservatio.db.ScheduleEntity;
-import de.senatov.reservatio.db.ScheduleService;
-import de.senatov.reservatio.db.UserService;
-import de.senatov.reservatio.utl.ScheduleRecordMapper;
+import de.senatov.reservatio.service.ScheduleService;
+import de.senatov.reservatio.service.UserService;
+import de.senatov.reservatio.ScheduleRecordMapper;
 
 import static java.lang.String.format;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
