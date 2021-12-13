@@ -12,7 +12,7 @@
 
 
     <description>
-        JDK 14, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6.0, JSF 2.3.9 Mojarra, PrimeFaces 11.0.0, No Spring
+        JDK 15, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6.0, JSF 2.3.9 Mojarra, PrimeFaces 11.0.0, No Spring
         Security,
         OpenAPI
     </description>
