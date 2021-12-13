@@ -58,8 +58,8 @@ public class SpringBootAppMain implements ServletContextAware {
 		sc.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", TRUE.toString());
 		sc.setInitParameter("javax.faces.PROJECT_STAGE", "Production");
 		sc.setInitParameter("javax.faces.STATE_SAVING_METHOD", "server");
+		sc.setInitParameter("javax.faces.TRANSFORM_METADATA", FALSE.toString());
 		sc.setInitParameter("primefaces.THEME", "nova-light");
-
 	}
 
 }
