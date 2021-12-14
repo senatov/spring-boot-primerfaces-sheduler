@@ -5,7 +5,6 @@
 **
 
 **Tags:**
-
 > LibericaJDK-17-Full<br>
 > JPA/Hibernate <br>
 > Postgres:latest under Docker<br>
@@ -32,7 +31,6 @@ refactoring and pom version changing
 **[EMail:javaentwickler@gmail.com](mailto://javaentwickler@gmail.com)**
 
 ---
-
 ![image1](doc/version_sshot.png "current version of app")
 ![image1](doc/reservation.png "Image #1")
 ![image1](doc/list.png "Image #2")
