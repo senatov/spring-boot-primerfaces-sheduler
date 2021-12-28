@@ -1,7 +1,6 @@
 package de.senatov.reservatio.config;
 
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.http.HttpStatus;
@@ -16,35 +15,34 @@ import java.io.InputStream;
 import java.util.Properties;
 
 
-
 @RestController
 @RequestMapping("/version")
 public class VersionRestController {
 
-	@GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String versionInformation() throws Exception {
+    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String versionInformation() throws Exception {
 
-		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-		return ow.writeValueAsString(getProperties());
-	}
-
-
-	private static Properties getProperties() throws Exception {
-
-		Properties prop = new Properties();
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		InputStream stream = loader.getResourceAsStream("git.properties");
-		prop.load(stream);
-		return prop;
-	}
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        return ow.writeValueAsString(getProperties());
+    }
 
 
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<Error> handleCustomException(Exception ce) {
+    private static Properties getProperties() throws Exception {
 
-		Error error = new Error("shit_happens", ce);
-		return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+        Properties prop = new Properties();
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        InputStream stream = loader.getResourceAsStream("git.properties");
+        prop.load(stream);
+        return prop;
+    }
 
-	}
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Error> handleCustomException(Exception ce) {
+
+        Error error = new Error("shit_happens", ce);
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }
 }
 

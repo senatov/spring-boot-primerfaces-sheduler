@@ -64,10 +64,10 @@ public class ScheduleEntity implements Serializable {
     @ColumnDefault("0")
     private String modifier;
     @CreatedDate
-    private LocalDateTime  createdAt;
+    private LocalDateTime createdAt;
     @LastModifiedDate
     @ColumnDefault("now()")
-    private LocalDateTime  modifiedAt;
+    private LocalDateTime modifiedAt;
     @GeneratedValue(strategy = GenerationType.AUTO)
     @ManyToOne
     @JoinColumn(name = "user_entity_id", foreignKey = @ForeignKey(name = "username_fk"))

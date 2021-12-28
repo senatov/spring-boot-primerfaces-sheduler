@@ -85,7 +85,7 @@ VALUES ('room345-descr',
         date_trunc('hour', current_timestamp) - interval '12 hour',
         date_trunc('hour', current_timestamp) - interval '10 hour',
         'gr5',
-         true,
+        true,
         '4',
         '2',
         'room345-title',
@@ -136,13 +136,24 @@ VALUES ('Meeting Room 34-descr',
 
 
 
-
 ------------------
 -- update FK link;
 ------------------
-update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%senatov%') where title like ('%room123%');
-update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%ronny%') where title like ('%room345%');
-update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%ronny%') where title like ('%Kan%');
-update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%senatov%') where title like ('%WXC%');
-update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%bush%') where title like ('%Meet%');
-update sc_schedule set user_entity_id=(select u.id from sc_user u where user_name like '%bush%') where title like ('%Meet%');
+update sc_schedule
+set user_entity_id=(select u.id from sc_user u where user_name like '%senatov%')
+where title like ('%room123%');
+update sc_schedule
+set user_entity_id=(select u.id from sc_user u where user_name like '%ronny%')
+where title like ('%room345%');
+update sc_schedule
+set user_entity_id=(select u.id from sc_user u where user_name like '%ronny%')
+where title like ('%Kan%');
+update sc_schedule
+set user_entity_id=(select u.id from sc_user u where user_name like '%senatov%')
+where title like ('%WXC%');
+update sc_schedule
+set user_entity_id=(select u.id from sc_user u where user_name like '%bush%')
+where title like ('%Meet%');
+update sc_schedule
+set user_entity_id=(select u.id from sc_user u where user_name like '%bush%')
+where title like ('%Meet%');

@@ -1,7 +1,6 @@
 package de.senatov.reservatio.view;
 
 
-
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -36,7 +35,6 @@ import static javax.faces.application.FacesMessage.SEVERITY_INFO;
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
 
-
 @Configuration
 @ManagedBean
 @ViewScoped
@@ -59,7 +57,6 @@ public class ScheduleView implements Serializable {
     private UserService user;
 
 
-
     @PostConstruct
     public void init() throws Exception {
 
@@ -68,19 +65,18 @@ public class ScheduleView implements Serializable {
         for (ScheduleEntity value : mapper.getSheduleMaps()) {
             mapper.extractValue(value);
             eventModel.addEvent(DefaultScheduleEvent.builder()
-                                                    .title(mapper.getTitle())
-                                                    .startDate(mapper.getStartDate())
-                                                    .endDate(mapper.getEndDate())
-                                                    .description(mapper.getDescription())
-                                                    .groupId(mapper.getGroupId())
-                                                    .id(mapper.getSchedule_id())
-                                                    .editable(mapper.getIsEditable())
-                                                    .styleClass(mapper.getStyle())
-                                                    .url(mapper.getUrl())
-                                                    .build());
+                    .title(mapper.getTitle())
+                    .startDate(mapper.getStartDate())
+                    .endDate(mapper.getEndDate())
+                    .description(mapper.getDescription())
+                    .groupId(mapper.getGroupId())
+                    .id(mapper.getSchedule_id())
+                    .editable(mapper.getIsEditable())
+                    .styleClass(mapper.getStyle())
+                    .url(mapper.getUrl())
+                    .build());
         }
     }
-
 
 
     public ScheduleModel getEventModel() {
@@ -90,7 +86,6 @@ public class ScheduleView implements Serializable {
     }
 
 
-
     public ScheduleEvent getEvent() {
 
         log.debug("getEvent() = {}", event);
@@ -98,13 +93,11 @@ public class ScheduleView implements Serializable {
     }
 
 
-
     public void setEvent(DefaultScheduleEvent scheduleEvent) throws Exception {
 
         log.debug("setEvent() = {}", scheduleEvent);
         event = scheduleEvent;
     }
-
 
 
     public void addOrUpdateEvent() throws Exception {
@@ -120,13 +113,11 @@ public class ScheduleView implements Serializable {
     }
 
 
-
     public void onEventSelect(SelectEvent selectEvent) throws Exception {
 
         event = (DefaultScheduleEvent) selectEvent.getObject();
         log.debug("onEventSelect() = {}", event);
     }
-
 
 
     public void onEventDelete() throws Exception {
@@ -138,30 +129,27 @@ public class ScheduleView implements Serializable {
     }
 
 
-
     public void onDateDblSelect(ScheduleEntryMoveEvent scheduleEntryMoveEvent) throws Exception {
 
         log.debug("onDateDblSelect() = {}", scheduleEntryMoveEvent);
     }
 
 
-
     public void onDateSelect(SelectEvent selectEvent) throws Exception {
 
         log.debug("onDateSelect()");
         event = DefaultScheduleEvent.builder()
-                                    .id("")
-                                    .title("")
-                                    .description("")
-                                    .groupId("")
-                                    .draggable(Boolean.TRUE)
-                                    .resizable(Boolean.TRUE)
-                                    .startDate((LocalDateTime) selectEvent.getObject())
-                                    .endDate((LocalDateTime) selectEvent.getObject())
-                                    .display(ScheduleDisplayMode.LIST_ITEM)
-                                    .build();
+                .id("")
+                .title("")
+                .description("")
+                .groupId("")
+                .draggable(Boolean.TRUE)
+                .resizable(Boolean.TRUE)
+                .startDate((LocalDateTime) selectEvent.getObject())
+                .endDate((LocalDateTime) selectEvent.getObject())
+                .display(ScheduleDisplayMode.LIST_ITEM)
+                .build();
     }
-
 
 
     public void onEventMove(ScheduleEntryMoveEvent scheduleEntryMoveEvent) throws Exception {
@@ -173,7 +161,6 @@ public class ScheduleView implements Serializable {
     }
 
 
-
     public void onEventResize(DefaultScheduleEvent scheduleEvent) throws Exception {
 
         log.debug("onShEventResize()");
@@ -183,14 +170,12 @@ public class ScheduleView implements Serializable {
     }
 
 
-
     private void addMessage(FacesMessage message) throws Exception {
 
         log.debug("addMessage()");
         FacesContext.getCurrentInstance()
-                    .addMessage(null, message);
+                .addMessage(null, message);
     }
-
 
 
     private Duration getDuration(Object event, String opName) throws Exception {
@@ -208,13 +193,11 @@ public class ScheduleView implements Serializable {
     }
 
 
-
     private void moveEntryOnNewPlace() throws Exception {
 
         eventModel.updateEvent(event);
         scheduleService.updateSchedule(event);
     }
-
 
 
     private void createNewEntry() throws Exception {

@@ -1,7 +1,6 @@
 package de.senatov.reservatio;
 
 
-
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,7 +22,6 @@ import de.senatov.reservatio.service.UserService;
 import static java.lang.String.format;
 
 
-
 @Configuration
 @Data
 @Slf4j
@@ -33,10 +31,10 @@ public class ScheduleRecordMapper {
     private UserService userService;
 
     public static final String DATE_S_ERR_MSG = """
-                                                Wrong Event'%s': end Date before start Date!
-                                                startDate = %s
-                                                startDate = %s
-                                                """;
+            Wrong Event'%s': end Date before start Date!
+            startDate = %s
+            startDate = %s
+            """;
 
     @Autowired
     private ScheduleService scheduleService;
@@ -56,12 +54,10 @@ public class ScheduleRecordMapper {
     private UserEntity userEntity;
 
 
-
     public void init() throws Exception {
 
         sheduleMaps = scheduleService.getAllSchedules();
     }
-
 
 
     public void extractValue(ScheduleEntity scheduleEntity) {
@@ -82,14 +78,12 @@ public class ScheduleRecordMapper {
     }
 
 
-
     public void breakIfDateAfterBefore(LocalDateTime bdate, LocalDateTime edate, String descr) {
 
         if (bdate.isAfter(edate)) {
             throw new DateTimeException(format(DATE_S_ERR_MSG, descr, bdate, edate));
         }
     }
-
 
 
     public ScheduleEntity mapEvent(ScheduleEvent event) throws Exception {
@@ -110,13 +104,11 @@ public class ScheduleRecordMapper {
     }
 
 
-
     private UserEntity getFirstEntity() throws Exception {
 
         return userService.getAllUsers()
-                          .get(0);
+                .get(0);
     }
-
 
 
     public ScheduleEntity mapEvent(ScheduleEntryMoveEvent moveEvent) {
@@ -138,12 +130,11 @@ public class ScheduleRecordMapper {
     }
 
 
-
     public String getCurrentUser() {
 
         return SecurityContextHolder.getContext()
-                                    .getAuthentication()
-                                    .getName();
+                .getAuthentication()
+                .getName();
     }
 
 }

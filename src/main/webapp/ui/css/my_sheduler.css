@@ -1,93 +1,93 @@
 body .fc .fc-event:hover .fc-remove {
-  opacity: 1;
-  border-radius: 6px;
-  border-color: #840766;
-  transition: 0.4s opacity, 0.4s transform;
-  font-size: 13px;
-  font-weight: normal;
+    opacity: 1;
+    border-radius: 6px;
+    border-color: #840766;
+    transition: 0.4s opacity, 0.4s transform;
+    font-size: 13px;
+    font-weight: normal;
 }
 
 body .fc .fc-event .fc-remove {
-  opacity: 0;
-  transition: 0.4s opacity, 0.4s transform;
-  position: absolute;
-  border-bottom-color: darkblue;
-  font-size: 13px;
-  font-weight: normal;
-  text-align: center;
-  top: 3px;
-  right: 3px;
-  width: 12px;
-  height: 12px;
-  z-index: 10;
+    opacity: 0;
+    transition: 0.4s opacity, 0.4s transform;
+    position: absolute;
+    border-bottom-color: darkblue;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: center;
+    top: 3px;
+    right: 3px;
+    width: 12px;
+    height: 12px;
+    z-index: 10;
 }
 
 .fc .fc-col-header-cell-cushion {
-  display: inline-flex;
-  padding: 1px 1px;
+    display: inline-flex;
+    padding: 1px 1px;
 }
 
 body .fc a {
-  color: inherit;
+    color: inherit;
 }
 
 .fc, .fc *, .fc *:before, .fc *:after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body .fc th {
-  background: #dde7e0;
-  border: 1px solid #9a9539;
-  color: #2d3e4b;
-  padding: 0.857rem 1rem;
+    background: #dde7e0;
+    border: 1px solid #9a9539;
+    color: #2d3e4b;
+    padding: 0.857rem 1rem;
 }
 
 .fc-daygrid-day-frame:after, .fc-daygrid-day-events:after, .fc-daygrid-event-harness:after {
-  content: "";
-  clear: both;
-  display: inline-block;
+    content: "";
+    clear: both;
+    display: inline-block;
 }
 
 body .fc .fc-toolbar .fc-button {
-  background: #dde7e0;
-  color: #282972;
-  border-radius: 6px;
-  border-color: #557fa1;
+    background: #dde7e0;
+    color: #282972;
+    border-radius: 6px;
+    border-color: #557fa1;
 }
 
 .fc .fc-daygrid-day-number {
-  background-color: #efefef;
-  color: #205354;
-  font-family: DialogInput;
-  min-height: 100%;
-  position: relative;
-  padding: 1px;
+    background-color: #efefef;
+    color: #205354;
+    font-family: DialogInput;
+    min-height: 100%;
+    position: relative;
+    padding: 1px;
 }
 
 body .fc .fc-event .fc-remove:hover {
-  cursor: grabbing;
-  transform: scale(1.2);
+    cursor: grabbing;
+    transform: scale(1.2);
 }
 
 .fc .fc-toolbar-title {
-  font-family: sans-serif;
-  font-size: 1.15em;
-  margin: 0;
+    font-family: sans-serif;
+    font-size: 1.15em;
+    margin: 0;
 }
 
 tabmenuitem.ui-state-active a {
-  color: #ff9800;
-  background-repeat: revert;
-  background-color: darkblue;
+    color: #ff9800;
+    background-repeat: revert;
+    background-color: darkblue;
 }
 
 body .fc .fc-event, body .fc .fc-event .fc-event-main {
-  background: #ffc107;
-  border-radius: 6px;
-  border-color: coral;
-  color: darkblue;
+    background: #ffc107;
+    border-radius: 6px;
+    border-color: coral;
+    color: darkblue;
 }
