@@ -7,17 +7,17 @@ Tags:
 
 ---
 
-> JDK17 <br>
+> Liberica JDK-17-Full <br>
 > JPA/Hibernate <br>
 > Postgres:latest under Docker<br>
-> Spring-Boot 2.5.4<br>
+> Spring-Boot 2.6.2<br>
 > JSF2 Mojarra <br>
-> PrimeFaces 11 RC1<br>
+> PrimeFaces 11.0.0<br>
 
 ---
 
 - implementation of Basis Primefaces Scheduler.
-- Components:  Liberica JDK-17-Full, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.5.4, JSF 2.4.0 Mojarra, PrimeFaces
+- Components:  Liberica JDK-17-Full, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6.2, JSF 2.4.0 Mojarra, PrimeFaces
   11.0.0, OpenAPI,~Spring Security~
 - URLs: [http://localhost:18087/ui/reservation.xhtml](http://localhost:18087/ui/reservation.xhtml)
 - GITH Info from Rest WS: [http://localhost:18087/version](http://localhost:18087/version)
