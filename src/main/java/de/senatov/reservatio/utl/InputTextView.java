@@ -1,35 +1,29 @@
 package de.senatov.reservatio.utl;
 
-import java.net.Inet4Address;
-import java.net.UnknownHostException;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import org.primefaces.context.PrimeFacesContext;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-
-import lombok.extern.slf4j.Slf4j;
-import org.primefaces.context.PrimeFacesContext;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 
 import static java.lang.String.format;
 
 
 @Named
+@Getter
+@Setter
 @RequestScoped
 @Slf4j
 public class InputTextView {
 
     private String text;
-    private final String path = "/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config";
 
     public String getPath() {
-        return path;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+        return "/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config";
     }
 
     public String getUri() throws UnknownHostException {

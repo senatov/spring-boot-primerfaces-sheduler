@@ -1,23 +1,20 @@
 package de.senatov.reservatio.service;
 
 
-import java.io.Serial;
-import java.io.Serializable;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
+import de.senatov.reservatio.db.ScheduleEntity;
+import de.senatov.reservatio.db.ScheduleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import de.senatov.reservatio.ScheduleRecordMapper;
-import de.senatov.reservatio.db.ScheduleEntity;
-import de.senatov.reservatio.db.ScheduleRepository;
+import java.io.Serial;
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 
 @Service

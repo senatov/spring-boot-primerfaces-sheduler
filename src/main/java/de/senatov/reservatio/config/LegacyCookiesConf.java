@@ -11,8 +11,6 @@ public class LegacyCookiesConf {
 
     @Bean
     public WebServerFactoryCustomizer<TomcatServletWebServerFactory> cookieProcessorCustomizer() {
-        return (factory) -> factory.addContextCustomizers((context) -> {
-            context.setCookieProcessor(new LegacyCookieProcessor());
-        });
+        return (factory) -> factory.addContextCustomizers((context) -> context.setCookieProcessor(new LegacyCookieProcessor()));
     }
 }

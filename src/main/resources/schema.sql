@@ -34,8 +34,8 @@ create table sc_schedule
             references sc_user,
     createdat      date         default now(),
     modifiedat     date         default now(),
-    creator        varchar      default 'some_creator'::character varying,
-    modifier       varchar(255) default 'some_mofigier'::character varying
+    creator        varchar      default 'some_creator':: character varying,
+    modifier       varchar(255) default 'some_mofigier':: character varying
 );
 
 alter table sc_schedule

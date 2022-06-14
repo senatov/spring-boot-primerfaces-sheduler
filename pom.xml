@@ -12,16 +12,16 @@
     <name>room-reservation</name>
     <version>0.0.18</version>
 
-
     <description>
-        Liberica JDK-17-Full, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6.2, JSF2 Mojarra, PrimeFaces 11.0.0, No
+        Liberica MS Zulu JDK 18.01, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6.2, JSF2 Mojarra, PrimeFaces
+        11.0.0, No
         Spring Security, OpenAPI
     </description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.2</version>
+        <version>2.7.0</version>
         <relativePath/>
     </parent>
 
@@ -41,7 +41,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>17</java.version>
+        <java.version>18</java.version>
         <compilerArgs>
             --enable-preview
         </compilerArgs>
@@ -76,7 +76,7 @@
         <repository>
             <id>sonatype-snapshots</id>
             <name>Sonatype Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
         </repository>
         <repository>
             <id>jitpack</id>
@@ -86,16 +86,11 @@
             <id>prime-repo</id>
             <name>PrimeFaces Maven Repository</name>
             <url>https://repository.primefaces.org/</url>
+        </repository>
+        <repository>
+            <id>maven-snapshots</id>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
             <layout>default</layout>
-        </repository>
-        <repository>
-            <id>JBoss-Repo</id>
-            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
-        </repository>
-        <repository>
-            <id>jvnet-nexus-snapshots</id>
-            <name>jvnet-nexus-snapshots</name>
-            <url>https://maven.java.net/content/repositories/snapshots/</url>
         </repository>
     </repositories>
 
@@ -135,7 +130,6 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>7.0.1.Final</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -156,7 +150,7 @@
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
-            <version>3.21.1</version>
+            <version>3.22.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -181,17 +175,17 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>31.0.1-jre</version>
+            <version>31.1-jre</version>
         </dependency>
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
-            <version>2.1.0-B1</version>
+            <version>2.1.0</version>
         </dependency>
         <dependency>
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
-            <version>3.0.0</version>
+            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>jakarta.validation</groupId>
@@ -231,7 +225,6 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator-annotation-processor</artifactId>
-            <version>7.0.1.Final</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
@@ -258,7 +251,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
+            <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -365,7 +358,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.3</version>
+            <version>1.6.9</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -374,6 +367,11 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-annotations-api</artifactId>
+            <version>9.0.63</version>
         </dependency>
         <dependency>
             <groupId>pl.project13.maven</groupId>
@@ -452,7 +450,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>analyze</id>
