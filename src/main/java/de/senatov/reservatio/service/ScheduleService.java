@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -21,7 +20,6 @@ import java.util.Optional;
 @Slf4j
 public class ScheduleService implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 3113025681276026951L;
     private final ScheduleRepository scheduleRepository;
 

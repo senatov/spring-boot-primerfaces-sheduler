@@ -7,7 +7,7 @@
 
 ---
 
-> MS Zulu JDK 18.01 <br>
+> Oracle 11<br>
 > JPA/Hibernate <br>
 > Postgres:latest under Docker<br>
 > Spring-Boot 2.6.2<br>
@@ -17,7 +17,7 @@
 ---
 
 - implementation of Basis Primefaces Scheduler.
-- Components: MS Zulu JDK 18.01, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6.2, JSF 2.4.0 Mojarra, PrimeFaces
+- Components: Oracle 11, JPA/Hibernate, Docker + Postgres, Spring-Boot 2.6.2, JSF 2.4.0 Mojarra, PrimeFaces
   11.0.0, OpenAPI,~Spring Security~
 - URLs: [http://localhost:18087/ui/reservation.xhtml](http://localhost:18087/ui/reservation.xhtml)
 - GITH Info from Rest WS: [http://localhost:18087/version](http://localhost:18087/version)

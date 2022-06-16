@@ -20,7 +20,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -32,7 +31,7 @@ import java.time.LocalDateTime;
 @Table(name = "sc_schedule")
 @Entity(name = "sc_schedule")
 public class ScheduleEntity implements Serializable {
-    @Serial
+
     private static final long serialVersionUID = 4411986672561000356L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

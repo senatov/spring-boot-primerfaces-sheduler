@@ -1,25 +1,22 @@
 package de.senatov.reservatio.service;
 
 
+import de.senatov.reservatio.db.UserEntity;
+import de.senatov.reservatio.db.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import de.senatov.reservatio.db.UserEntity;
-import de.senatov.reservatio.db.UserRepository;
 
 
 @Service
 @Slf4j
 public class UserService implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 2480837124037856177L;
 
     private final UserRepository userRepository;

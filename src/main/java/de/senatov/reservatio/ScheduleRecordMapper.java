@@ -1,10 +1,10 @@
 package de.senatov.reservatio;
 
 
-import java.time.DateTimeException;
-import java.time.LocalDateTime;
-import java.util.List;
-
+import de.senatov.reservatio.db.ScheduleEntity;
+import de.senatov.reservatio.db.UserEntity;
+import de.senatov.reservatio.service.ScheduleService;
+import de.senatov.reservatio.service.UserService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
@@ -14,10 +14,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.LinkedCaseInsensitiveMap;
 
-import de.senatov.reservatio.db.ScheduleEntity;
-import de.senatov.reservatio.db.UserEntity;
-import de.senatov.reservatio.service.ScheduleService;
-import de.senatov.reservatio.service.UserService;
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import static java.lang.String.format;
 
@@ -30,11 +29,7 @@ public class ScheduleRecordMapper {
     @Autowired
     private UserService userService;
 
-    public static final String DATE_S_ERR_MSG = """
-            Wrong Event'%s': end Date before start Date!
-            startDate = %s
-            startDate = %s
-            """;
+    public static final String DATE_S_ERR_MSG = "Wrong Event'%s': end Date before start Date!\n StartDate = %s \n EndDate = %s";
 
     @Autowired
     private ScheduleService scheduleService;
