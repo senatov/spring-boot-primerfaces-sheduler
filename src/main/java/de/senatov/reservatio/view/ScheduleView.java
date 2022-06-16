@@ -1,18 +1,10 @@
 package de.senatov.reservatio.view;
 
 
-import java.io.Serial;
-import java.io.Serializable;
-
-import java.time.Duration;
-import java.time.LocalDateTime;
-
-import javax.annotation.ManagedBean;
-import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
-
+import de.senatov.reservatio.ScheduleRecordMapper;
+import de.senatov.reservatio.db.ScheduleEntity;
+import de.senatov.reservatio.service.ScheduleService;
+import de.senatov.reservatio.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
@@ -25,10 +17,14 @@ import org.primefaces.model.ScheduleModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import de.senatov.reservatio.db.ScheduleEntity;
-import de.senatov.reservatio.service.ScheduleService;
-import de.senatov.reservatio.service.UserService;
-import de.senatov.reservatio.ScheduleRecordMapper;
+import javax.annotation.ManagedBean;
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import java.io.Serializable;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 import static java.lang.String.format;
 import static javax.faces.application.FacesMessage.SEVERITY_INFO;
@@ -42,7 +38,6 @@ import static org.apache.commons.lang3.StringUtils.isBlank;
 public class ScheduleView implements Serializable {
 
     private static final String S_MINUTE_DELTA_S = "Day delta: %s,  Minute delta: %s";
-    @Serial
     private static final long serialVersionUID = -2637195560425203881L;
     public static final String DELTAS = "%s event deltas: Day: %s, Hour: %s, Minutes: %s";
 
