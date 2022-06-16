@@ -399,9 +399,9 @@
             <version>2.9.0</version>
         </dependency>
         <dependency>
-            <groupId>com.squareup.okhttp</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>2.7.5</version>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>0.2.2</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -413,7 +413,6 @@
             <artifactId>gson-fire</artifactId>
             <version>1.8.5</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -437,7 +436,7 @@
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <!-- RELEASE_VERSION -->
-                <version>5.4.0</version>
+                <version>6.0.0</version>
                 <!-- /RELEASE_VERSION -->
                 <executions>
                     <execution>
@@ -447,12 +446,11 @@
                         <configuration>
                             <inputSpec>${project.basedir}/src/main/resources/openapi/open-api.yaml</inputSpec>
                             <generatorName>java</generatorName>
-                            <artifactVersion>0.0.4</artifactVersion>
-                            <httpUserAgent>Mozilla/7.06 [de] (Win10; US)</httpUserAgent>
-                            <generateApiTests>true</generateApiTests>
-                            <generateApiDocumentation>true</generateApiDocumentation>
-                            <generateModelDocumentation>true</generateModelDocumentation>
+                            <library>native</library>
                             <withXml>true</withXml>
+                            <configOptions>
+                                <sourceFolder>/src/main/java</sourceFolder>
+                            </configOptions>
                         </configuration>
                     </execution>
                 </executions>

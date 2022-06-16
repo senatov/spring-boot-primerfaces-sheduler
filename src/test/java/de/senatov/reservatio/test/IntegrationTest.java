@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-@DisplayName("Integration Test")
 @Slf4j
 @ExtendWith(SpringExtension.class)
 @AutoConfigureWebTestClient
@@ -24,7 +23,7 @@ public class IntegrationTest {
 
     @Test
     @DisplayName("Test Reservation")
-    public void testReservation() {
+    public void testReservation() throws Exception {
 
         log.debug("Part 1.");
         webClient.get()
