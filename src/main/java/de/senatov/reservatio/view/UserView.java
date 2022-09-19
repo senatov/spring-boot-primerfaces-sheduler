@@ -49,7 +49,7 @@ public class UserView implements Serializable {
     public String prepareForUpdate(Long id) throws Exception {
 
         log.debug("prepareForUpdate()");
-        userEntity = userService.getUser(id).get();
+        userEntity = userService.getUser(id).orElse(null);
         return "new";
     }
 
